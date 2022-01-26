@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/uim-modeller
+uim-modeller.so
+uim-modeller.dylib
+uim-modeller.dll
+uim-modeller.a
+uim-modeller.lib
+uim-modeller-test-*
+*.exe
+*.o
+*.obj
+*.lst
