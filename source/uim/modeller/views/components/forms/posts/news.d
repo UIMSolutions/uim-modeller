@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.news;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.news;
+// import models.modeller.entities.news;
 
 class DMDLNewsItemForm : DMDLPostForm {
   mixin(APPFormThis!("MDLNewsItemForm", true));

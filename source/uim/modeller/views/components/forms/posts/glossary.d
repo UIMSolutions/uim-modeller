@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.glossary;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.glossary_item;
+// import models.modeller.entities.glossary_item;
 
 class DMDLGlossaryItemForm : DMDLPostForm {
   mixin(APPFormThis!("MDLGlossaryItemForm", true));

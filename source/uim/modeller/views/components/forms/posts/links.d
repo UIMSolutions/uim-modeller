@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.links;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.link;
+// import models.modeller.entities.link;
 
 class DMDLLinkForm : DMDLPostForm {
   mixin(APPFormThis!("MDLLinkForm", true));

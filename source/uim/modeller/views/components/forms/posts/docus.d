@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.docus;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.docu;
+// import models.modeller.entities.docu;
 
 class DMDLDocuForm : DMDLPostForm {
   mixin(APPFormThis!("MDLDocuForm", true));

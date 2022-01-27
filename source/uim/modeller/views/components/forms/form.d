@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.form;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.demo;
+// import models.modeller.entities.demo;
 
 class DMDLForm : DAPPEntityForm {
   this() { super();

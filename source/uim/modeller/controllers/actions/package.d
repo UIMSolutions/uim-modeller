@@ -1,0 +1,12 @@
+module uim.modeller.controllers.actions;
+
+@safe:
+import uim.modeller;
+
+// Main
+public import uim.modeller.controllers.actions.action;
+
+// Modules
+public import uim.modeller.controllers.actions.attributes;
+public import uim.modeller.controllers.actions.attributeclasses;
+public import uim.modeller.controllers.actions.entityclasses;

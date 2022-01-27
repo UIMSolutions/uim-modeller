@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.tutorials;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.tutorial; 
+// import models.modeller.entities.tutorial; 
 
 class DMDLTutorialForm : DMDLPostForm {
   this() { super();

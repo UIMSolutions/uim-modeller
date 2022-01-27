@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.pages;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.page;
+// import models.modeller.entities.page;
 
 class DMDLPageForm : DMDLPostForm {
   this() { super();

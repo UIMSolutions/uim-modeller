@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.demos;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.demo;
+// import models.modeller.entities.demo;
 
 class DMDLDemoForm : DMDLPostForm {
   mixin(APPFormThis!("MDLDemoForm", true));

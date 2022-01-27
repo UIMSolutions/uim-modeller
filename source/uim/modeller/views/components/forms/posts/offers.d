@@ -2,7 +2,7 @@ module uim.modeller.views.components.forms.posts.offers;
 
 @safe:
 import uim.modeller;
-// import models.cms.entities.offer;
+// import models.modeller.entities.offer;
 
 class DMDLOfferForm : DMDLPostForm {
   mixin(APPFormThis!("MDLOfferForm", true));
