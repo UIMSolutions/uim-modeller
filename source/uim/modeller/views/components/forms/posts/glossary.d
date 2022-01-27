@@ -16,7 +16,7 @@ class DMDLGlossaryItemForm : DMDLPostForm {
 }
 mixin(APPFormCalls!("MDLGlossaryItemForm", true));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO
 }}

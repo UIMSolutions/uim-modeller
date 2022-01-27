@@ -13,6 +13,6 @@ public import uim.modeller.views.attributeclasses.update;
 public import uim.modeller.views.attributeclasses.delete_;
 
 package:
-  string myRootPath = "/cms/attributeclasses";
+  string myRootPath = "/modeller/attributeclasses";
   // Tuple!(string, "de", string, "en") entityNames = tuple!("Blog", "Blog");
   // alias entitiesNames = tuple!("de", "en")("Attributeclasses", "Attributeclasses");

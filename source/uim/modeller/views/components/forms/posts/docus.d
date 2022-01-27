@@ -16,7 +16,7 @@ class DMDLDocuForm : DMDLPostForm {
 }
 mixin(APPFormCalls!("MDLDocuForm", true));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO
 }}

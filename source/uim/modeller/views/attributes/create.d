@@ -52,7 +52,7 @@ class DMDLAttributesCreateView : DAPPEntityCreateView {
     }
 
     this.form
-      .action("/cms/attributes/actions/create")
+      .action("/modeller/attributes/actions/create")
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
  */      .entity(this.entity);

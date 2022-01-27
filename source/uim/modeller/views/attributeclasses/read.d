@@ -48,7 +48,7 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
 }
 mixin(APPViewCalls!("MDLAttributeClassesReadView"));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO
 }}

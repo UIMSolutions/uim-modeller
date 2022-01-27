@@ -60,7 +60,7 @@ class DMDLFormGroupTheme : DAPPFormGroup {
 }
 mixin(APPFormComponentCalls!("MDLFormGroupTheme", true));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO Tests
 }}

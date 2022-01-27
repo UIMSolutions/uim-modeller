@@ -17,7 +17,7 @@ class DMDLPostForm : DMDLForm {
 }
 mixin(APPFormCalls!("MDLPostForm", true));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO
 }}

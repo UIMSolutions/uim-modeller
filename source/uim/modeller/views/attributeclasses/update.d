@@ -22,7 +22,7 @@ class DMDLAttributeClassesUpdateView : DAPPEntityUpdateView {
       .title(titleEdit("Blog bearbeiten"));
       
     this.form
-      .action("/cms/attributeclasses/actions/save")
+      .action("/modeller/attributeclasses/actions/save")
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 

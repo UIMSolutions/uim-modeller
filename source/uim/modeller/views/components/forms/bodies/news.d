@@ -18,7 +18,7 @@ auto MDLNewsItemFormBody(DAPPForm myForm) { return new DMDLNewsItemFormBody(myFo
 auto MDLNewsItemFormBody(DOOPEntity myEntity) { return new DMDLNewsItemFormBody(myEntity); }
 auto MDLNewsItemFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLNewsItemFormBody(myForm, myEntity); }
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     assert(MDLNewsItemFormBody);
   }

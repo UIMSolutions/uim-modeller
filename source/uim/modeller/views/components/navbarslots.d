@@ -15,15 +15,15 @@ class DMDLNavSlot : DAPPNavbarSlot {
         BS5DropdownMenu
         .link((options.get("serverCmsOverview", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller"], "Übersicht")
         .divider
-        .link((options.get("serverCmsThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/blogs"], "Blogs")
-        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/pages"], "Seiten")
-        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/glossary"], "Glossar")
-        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/links"], "Links")
-        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/offers"], "Angebote")
-        .link((options.get("serverCmsPages", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/news"], "News")
-        .link((options.get("serverCmsPages", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/docus"], "Dokumentationen")
-        .link((options.get("serverCmsBlogs", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/themes"], "Themen")
-        .link((options.get("serverCmsBlogs", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/cms/tutorials"], "Tutorials")
+        .link((options.get("serverCmsThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/blogs"], "Blogs")
+        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/pages"], "Seiten")
+        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/glossary"], "Glossar")
+        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/links"], "Links")
+        .link((options.get("serverCmsNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/offers"], "Angebote")
+        .link((options.get("serverCmsPages", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/news"], "News")
+        .link((options.get("serverCmsPages", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/docus"], "Dokumentationen")
+        .link((options.get("serverCmsBlogs", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/themes"], "Themen")
+        .link((options.get("serverCmsBlogs", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/tutorials"], "Tutorials")
       )].toH5;
   }
 }

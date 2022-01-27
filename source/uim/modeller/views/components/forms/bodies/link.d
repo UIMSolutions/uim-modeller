@@ -17,7 +17,7 @@ auto MDLLinkFormBody(DAPPForm myForm) { return new DMDLLinkFormBody(myForm); }
 auto MDLLinkFormBody(DOOPEntity myEntity) { return new DMDLLinkFormBody(myEntity); }
 auto MDLLinkFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLLinkFormBody(myForm, myEntity); }
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     assert(MDLLinkFormBody);
 }}

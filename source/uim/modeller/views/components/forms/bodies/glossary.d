@@ -18,7 +18,7 @@ auto MDLGlossaryItemFormBody(DAPPForm myForm) { return new DMDLGlossaryItemFormB
 auto MDLGlossaryItemFormBody(DOOPEntity myEntity) { return new DMDLGlossaryItemFormBody(myEntity); }
 auto MDLGlossaryItemFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLGlossaryItemFormBody(myForm, myEntity); }
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     assert(MDLGlossaryItemFormBody);
 }}

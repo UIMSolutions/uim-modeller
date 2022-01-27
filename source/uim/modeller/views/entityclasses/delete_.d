@@ -22,7 +22,7 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
       .title(titleDelete("Blog löschen"));
 
     this.form
-      .action("/cms/entityclasses/actions/delete")
+      .action("/modeller/entityclasses/actions/delete")
       .rootPath(myRootPath);
     
     this.form.formHeader
@@ -42,7 +42,7 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
     auto bodyTitle = "Blog Name:";
 
     this.form
-      .action("/cms/entityclasses/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+      .action("/modeller/entityclasses/actions/delete?entity_id="~(entity ? entity.id.toString : null))
       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
       .entity(this.entity);

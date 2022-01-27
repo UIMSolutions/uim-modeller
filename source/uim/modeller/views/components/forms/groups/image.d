@@ -18,7 +18,7 @@ class DMDLFormGroupImage : DAPPTextFormGroup {
 }
 mixin(APPFormComponentCalls!("MDLFormGroupImage", true));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // assert(MDLFormGroupImage);
 }}

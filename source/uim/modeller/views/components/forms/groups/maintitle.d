@@ -18,7 +18,7 @@ class DMDLFormGroupMainTitle : DAPPTextFormGroup {
 }
 mixin(APPFormComponentCalls!("MDLFormGroupMainTitle", true));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO Tests
 }}

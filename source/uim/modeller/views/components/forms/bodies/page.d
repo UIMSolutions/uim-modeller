@@ -18,7 +18,7 @@ auto MDLPageFormBody(DAPPForm myForm) { return new DMDLPageFormBody(myForm); }
 auto MDLPageFormBody(DOOPEntity myEntity) { return new DMDLPageFormBody(myEntity); } 
 auto MDLPageFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLPageFormBody(myForm, myEntity); } 
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     assert(MDLPageFormBody);
 }}

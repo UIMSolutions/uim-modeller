@@ -18,7 +18,7 @@ auto MDLOfferFormBody(DAPPForm myForm) { return new DMDLOfferFormBody(myForm); }
 auto MDLOfferFormBody(DOOPEntity myEntity) { return new DMDLOfferFormBody(myEntity); }
 auto MDLOfferFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLOfferFormBody(myForm, myEntity); }
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
    assert(MDLOfferFormBody);
 }}

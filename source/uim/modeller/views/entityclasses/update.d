@@ -22,7 +22,7 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
       .title(titleEdit("Blog bearbeiten"));
       
     this.form
-      .action("/cms/entityclasses/actions/save")
+      .action("/modeller/entityclasses/actions/save")
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 

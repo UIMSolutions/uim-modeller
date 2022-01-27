@@ -19,7 +19,7 @@ class DMDLFormGroupPrivate : DAPPSwitchFormGroup {
 }
 mixin(APPFormComponentCalls!("MDLFormGroupPrivate"));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO Tests
 }}

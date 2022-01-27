@@ -59,7 +59,7 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
 }
 mixin(APPViewCalls!("MDLAttributeClassesIndexView"));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO
 }}

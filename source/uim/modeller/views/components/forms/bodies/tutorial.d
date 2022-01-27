@@ -50,7 +50,7 @@ auto MDLTutorialFormBody(DAPPForm myForm) { return new DMDLTutorialFormBody(myFo
 auto MDLTutorialFormBody(DOOPEntity myEntity) { return new DMDLTutorialFormBody(myEntity); }
 auto MDLTutorialFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLTutorialFormBody(myForm, myEntity); }
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     assert(MDLTutorialFormBody);
 }}

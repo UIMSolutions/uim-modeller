@@ -16,7 +16,7 @@ class DMDLOfferForm : DMDLPostForm {
 }
 mixin(APPFormCalls!("MDLOfferForm", true));
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     // TODO
 }}

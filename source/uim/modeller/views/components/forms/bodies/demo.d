@@ -17,7 +17,7 @@ auto MDLDemoFormBody(DAPPForm myForm) { return new DMDLDemoFormBody(myForm); }
 auto MDLDemoFormBody(DOOPEntity myEntity) { return new DMDLDemoFormBody(myEntity); }
 auto MDLDemoFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLDemoFormBody(myForm, myEntity); }
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     assert(MDLDemoFormBody);
 }}

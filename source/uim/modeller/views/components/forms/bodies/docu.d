@@ -18,7 +18,7 @@ auto MDLDocuFormBody(DAPPForm myForm) { return new DMDLDocuFormBody(myForm); }
 auto MDLDocuFormBody(DOOPEntity myEntity) { return new DMDLDocuFormBody(myEntity); }
 auto MDLDocuFormBody(DAPPForm myForm, DOOPEntity myEntity) { return new DMDLDocuFormBody(myForm, myEntity); }
 
-version(test_uim_cms) {
+version(test_uim_modeller) {
   unittest {
     assert(MDLDocuFormBody);
 }}
