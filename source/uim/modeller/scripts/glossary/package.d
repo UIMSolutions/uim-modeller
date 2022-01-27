@@ -3,8 +3,8 @@ module uim.modeller.scripts.glossary;
 @safe:
 import uim.modeller;
 
-auto myApi = "/api/v1/cms/glossary";
-auto myUrl = "/cms/glossary";
+auto myApi = "/api/v1/mdl/glossary";
+auto myUrl = "/mdl/glossary";
 
 public:
 auto entity() {  
@@ -16,7 +16,7 @@ auto entity() {
 
   result ~= "async function fetchThemes(sessionId) {
   try {
-    let response = await fetch(\"/api/v1/cms/themes\", {
+    let response = await fetch(\"/api/v1/mdl/themes\", {
       method: \"POST\",
       body: JSON.stringify({ sessionId: sessionId }),
       headers: { \"Content-Type\": \"application/json\" },

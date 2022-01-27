@@ -32,7 +32,7 @@ class DMDLFormGroupTheme : DAPPFormGroup {
     super.beforeH5(options);
 
     if (this.database) {
-      this.themes(database["uim", "themes"].findMany());
+      this.themes(database["modeller", "themes"].findMany());
     }
   }
 

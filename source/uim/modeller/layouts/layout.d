@@ -14,7 +14,7 @@ class DMDLLayout : DAPPLayout {
     this
     .title("UIM!MDL")   
     .parameters([
-      "appLogo":"/img/servers/cms/logo.png",
+      "appLogo":"/img/servers/mdl/logo.png",
       "appTitle":"UIM!MDL"
       ]);
 
@@ -33,7 +33,7 @@ class DMDLLayout : DAPPLayout {
     );
 //        ["href":"/css/uim.css", "rel":"stylesheet"],       
 /*         ["href":"/css/apps/main.css", "rel":"stylesheet"],        
-      ["href":"/css/apps/cms/main.css", "rel":"stylesheet"]
+      ["href":"/css/apps/mdl/main.css", "rel":"stylesheet"]
 */  
       _bodyAttributes["style"] = "background-color: #ffffff;";
       _bodyClasses = ["d-flex", "flex-column", "h-100"];  

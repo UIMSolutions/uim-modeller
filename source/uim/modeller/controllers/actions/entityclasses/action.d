@@ -23,7 +23,7 @@ class DMDLEntityClassAction : DMDLAction {
 }
 mixin(APPControllerCalls!("MDLEntityClassAction"));
 
-version(test_uim_cms) {
+version(test_uim_mdl) {
   unittest {
     testController(MDLEntityClassAction);
   }

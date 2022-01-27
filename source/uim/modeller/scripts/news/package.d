@@ -3,8 +3,8 @@ module uim.modeller.scripts.news;
 @safe:
 import uim.modeller;
 
-auto myApi = "/api/v1/cms/news";
-auto myUrl = "/cms/news";
+auto myApi = "/api/v1/mdl/news";
+auto myUrl = "/mdl/news";
 
 public:
 auto entity() {  
@@ -16,7 +16,7 @@ auto entity() {
 
   result ~= "async function fetchThemes(sessionId) {
   try {
-    let response = await fetch(\"/api/v1/cms/themes\", {
+    let response = await fetch(\"/api/v1/mdl/themes\", {
       method: \"POST\",
       body: JSON.stringify({ sessionId: sessionId }),
       headers: { \"Content-Type\": \"application/json\" },

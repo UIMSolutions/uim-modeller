@@ -4,11 +4,11 @@ module uim.modeller.scripts.app;
 import uim.modeller;
 import uim.modeller.scripts.blogs;
 
-auto cmsapp() {  
+auto mdlapp() {  
   return "";
 }
 
 unittest {
-  auto f = File("../../PUBLIC/js/apps/cms/app.js", "w"); // open for writing
-  f.write(cmsapp);
+  auto f = File("../../PUBLIC/js/apps/mdl/app.js", "w"); // open for writing
+  f.write(mdlapp);
 }

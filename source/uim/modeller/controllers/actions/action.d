@@ -20,7 +20,7 @@ class DMDLAction : DAPPActionController {
 }
 mixin(APPControllerCalls!("MDLAction"));
 
-version(test_uim_cms) {
+version(test_uim_mdl) {
   unittest {
     // TODO
   }

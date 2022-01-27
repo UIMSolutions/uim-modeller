@@ -48,7 +48,7 @@ class DMDLAttributesCreateView : DAPPEntityCreateView {
  */
 
     if (this.controller && this.controller.database) {
-      this.entity(this.controller.database["uim"]["attributes"].createEntity);
+      this.entity(this.controller.database["modeller"]["attributes"].createEntity);
     }
 
     this.form

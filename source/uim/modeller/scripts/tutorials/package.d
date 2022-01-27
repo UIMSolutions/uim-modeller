@@ -3,8 +3,8 @@ module uim.modeller.scripts.tutorials;
 @safe:
 import uim.modeller;
 
-auto myApi = "/api/v1/cms/tutorials";
-auto myUrl = "/cms/tutorials";
+auto myApi = "/api/v1/mdl/tutorials";
+auto myUrl = "/mdl/tutorials";
 
 public:
 auto entity() {  
@@ -16,7 +16,7 @@ auto entity() {
 
   result ~= "async function fetchTutorials(sessionId) {
   try {
-    let response = await fetch(\"/api/v1/cms/tutorials\", {
+    let response = await fetch(\"/api/v1/mdl/tutorials\", {
       method: \"POST\",
       body: JSON.stringify({ sessionId: sessionId }),
       headers: { \"Content-Type\": \"application/json\" },

@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.attributes.update;
 @safe:
 import uim.modeller;
 
-class DMDLAttributesUpdatePageController : DMDLPageController {
+class DMDLAttributesUpdatePageController : DAPPPageController {
   mixin(APPPageControllerThis!("MDLAttributesUpdatePageController"));
 
   override void initialize() {
@@ -30,7 +30,7 @@ class DMDLAttributesUpdatePageController : DMDLPageController {
 
     auto entityId = options.get("entity_id", null);
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database["uim", "attributes"].findOne(UUID(entityId))) {
+      if (auto dbEntity = database["modeller", "attributes"].findOne(UUID(entityId))) {
         
         if (auto entityView = cast(DAPPEntityView)this.view) {
 

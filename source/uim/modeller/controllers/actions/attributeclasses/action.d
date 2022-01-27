@@ -22,7 +22,7 @@ class DMDLAttributeClassAction : DMDLAction {
 }
 mixin(APPControllerCalls!("MDLAttributeClassAction"));
 
-version(test_uim_cms) {
+version(test_uim_mdl) {
   unittest {
     testController(MDLAttributeClassAction);
   }

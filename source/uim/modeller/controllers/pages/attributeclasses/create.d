@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.attributeclasses.create;
 @safe:
 import uim.modeller;
 
-class DMDLAttributeClassesCreatePageController : DMDLPageController {
+class DMDLAttributeClassesCreatePageController : DAPPPageController {
   mixin(APPPageControllerThis!("MDLAttributeClassesCreatePageController"));
 
   override void initialize() {
@@ -31,7 +31,7 @@ class DMDLAttributeClassesCreatePageController : DMDLPageController {
 
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database["uim", "attributeclasses"].createEntity;      
+      auto dbEntity = database["modeller", "attributeclasses"].createEntity;      
       if (auto entityView = cast(DAPPEntityView)this.view) {
         with(entityView) {
           entity(dbEntity);

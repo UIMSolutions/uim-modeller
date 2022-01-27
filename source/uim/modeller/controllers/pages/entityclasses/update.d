@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.entityclasses.update;
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassesUpdatePageController : DMDLPageController {
+class DMDLEntityClassesUpdatePageController : DAPPPageController {
   mixin(APPPageControllerThis!("MDLEntityClassesUpdatePageController"));
 
   override void initialize() {
@@ -30,7 +30,7 @@ class DMDLEntityClassesUpdatePageController : DMDLPageController {
 
     auto entityId = options.get("entity_id", null);
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database["uim", "entityclasses"].findOne(UUID(entityId))) {
+      if (auto dbEntity = database["modeller", "entityclasses"].findOne(UUID(entityId))) {
         
         if (auto entityView = cast(DAPPEntityView)this.view) {
 

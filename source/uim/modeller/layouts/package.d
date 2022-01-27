@@ -23,7 +23,7 @@ public import uim.modeller.layouts.layout;
     }
   });
  * /
-  // serverCms.layout(appLayout);
+  // serverMdl.layout(appLayout);
 }
 
 
