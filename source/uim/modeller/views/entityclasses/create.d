@@ -12,7 +12,8 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
     
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
-      .link(["href":"/modeller"], "MDL")
+      .link(["href":"/"], "UIM")
+      .link(["href":"/modeller"], "Modeller")
       .link(["href":myRootPath], "Entityclasses")
     );
 
@@ -32,7 +33,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       .actions([["cancel", "save"]]);
 
     this.form.formBody(
-      MDLPostFormBody(this.form)
+      MDLEntityClassFormBody(this.form)
       .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
   }
 
@@ -46,10 +47,6 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
 /*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
  */
-
-    if (this.controller && this.controller.database) {
-      this.entity(this.controller.database["modeller"]["entityclasses"].createEntity);
-    }
 
     this.form
       .action("/modeller/entityclasses/actions/create")

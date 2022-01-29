@@ -14,11 +14,16 @@ class DMDLAction_UpdateAttribute : DMDLAttributeAction {
     auto appSession = getAppSession(options);
 
     if (auto entityId = options.get("entity_id", null)) {
-      auto entity = database[appSession.site.name, "attributes"].findOne(UUID(entityId));
+      auto entity = database[appSession.site.name, collectionName].findOne(UUID(entityId));
       
       entity.fromRequest(options);
+      foreach(name, attribute; entity.attributes) { // Workaround :-O
+        if (auto booleanAttribute = cast(DOOPBooleanAttribute)attribute) {
+          if ("entity_"~name !in options) booleanAttribute.value(false);  
+        }
+      }
 
-      database[appSession.site.name, "attributes"].updateOne(entity);
+      database[appSession.site.name, collectionName].updateOne(entity);
       options["redirect"] = rootPath~"/view?id="~entityId;
     }
     else {

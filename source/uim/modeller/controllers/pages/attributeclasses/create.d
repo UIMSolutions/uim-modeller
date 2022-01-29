@@ -29,14 +29,19 @@ class DMDLAttributeClassesCreatePageController : DAPPPageController {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
-    auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
-    if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database["modeller", "attributeclasses"].createEntity;      
+    if (this.database) {
+      debug writeln("Found database"); 
+
+      auto dbEntity = database["uim", "modeller_attributeclasses"].createEntityFromTemplate;      
+      debug writeln(dbEntity ? "Has entity" : "no entity :-(");
+
       if (auto entityView = cast(DAPPEntityView)this.view) {
+        debug writeln("Has entityView");
+
         with(entityView) {
           entity(dbEntity);
           crudMode(CRUDModes.Create);
-          rootPath("/mdl/attributeclasses");
+          rootPath("/modeller/attributeclasses");
           readonly(true);
         }
       }

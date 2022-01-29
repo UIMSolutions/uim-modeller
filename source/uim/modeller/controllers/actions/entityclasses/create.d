@@ -15,12 +15,15 @@ class DMDLAction_CreateEntityClass : DMDLEntityClassAction {
 
     debug writeln(options);        
     debug writeln("appSession.site.name = ", appSession.site.name);
-    auto tenant = database[appSession.site.name];
-    auto entity = tenant["entityclasses"].createEntity.fromRequest(options);   
-    tenant["entityclasses"].insertOne(entity);
-    debug writeln("entity.id = ", entity.id);
+    if (auto tenant = database[appSession.site.name]) {
+      if (auto collection = tenant[collectionName]) {
+        auto entity = collection.createEntityFromTemplate.fromRequest(options);   
+        collection.insertOne(entity);
+        debug writeln("entity.id = ", entity.id);
 
-    options["redirect"] = this.rootPath ~ "/view?id="~entity.id.toString; 
-	}
+        options["redirect"] = this.rootPath ~ "/view?id="~entity.id.toString; 
+      }
+    }
+  }
 }
 mixin(APPControllerCalls!("MDLAction_CreateEntityClass"));

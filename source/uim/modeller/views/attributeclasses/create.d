@@ -12,7 +12,8 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
     
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
-      .link(["href":"/modeller"], "MDL")
+      .link(["href":"/"], "UIM")
+      .link(["href":"/modeller"], "Modeller")
       .link(["href":myRootPath], "Attributeclasses")
     );
 
@@ -22,7 +23,7 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       .title(titleCreate("Blog erstellen"));
 
     this.form
-      .action(myRootPath~"/actions/create")
+      .action("/modeller/attributeclasses/actions/create")
       .rootPath(myRootPath);
     
     this.form.formHeader
@@ -32,8 +33,7 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       .actions([["cancel", "save"]]);
 
     this.form.formBody(
-      MDLPostFormBody(this.form)
-      .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
+      MDLAttributeClassFormBody(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -47,15 +47,6 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
     auto bodyTitle = "Blog Name:";
  */
 
-    if (this.controller && this.controller.database) {
-      this.entity(this.controller.database["modeller"]["attributeclasses"].createEntity);
-    }
-
-    this.form
-      .action("/modeller/attributeclasses/actions/create")
-/*       .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
- */      .entity(this.entity);
   }
 }
 mixin(APPViewCalls!("MDLAttributeClassesCreateView"));

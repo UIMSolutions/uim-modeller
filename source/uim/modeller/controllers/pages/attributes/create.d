@@ -25,18 +25,23 @@ class DMDLAttributesCreatePageController : DAPPPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAttributesUpdatePageController~":DMDLAttributesUpdatePageController::beforeResponse");
+    debugMethodCall(moduleName!DMDLAttributesCreatePageController~":DMDLAttributesCreatePageController::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
-    auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
-    if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database["modeller", "attributes"].createEntity;      
+    if (this.database) {
+      debug writeln("Found database"); 
+
+      auto dbEntity = database["uim", "modeller_attributes"].createEntityFromTemplate;      
+      debug writeln(dbEntity ? "Has entity" : "no entity :-(");
+
       if (auto entityView = cast(DAPPEntityView)this.view) {
+        debug writeln("Has entityView");
+
         with(entityView) {
           entity(dbEntity);
           crudMode(CRUDModes.Create);
-          rootPath("/mdl/attributes");
+          rootPath("/modeller/attributes");
           readonly(true);
         }
       }

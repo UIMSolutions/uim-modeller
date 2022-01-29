@@ -30,7 +30,7 @@ class DMDLAttributesUpdatePageController : DAPPPageController {
 
     auto entityId = options.get("entity_id", null);
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database["modeller", "attributes"].findOne(UUID(entityId))) {
+      if (auto dbEntity = database["uim", "modeller_attributes"].findOne(UUID(entityId))) {
         
         if (auto entityView = cast(DAPPEntityView)this.view) {
 
@@ -38,7 +38,7 @@ class DMDLAttributesUpdatePageController : DAPPPageController {
           with(entityView) {
             entity(dbEntity);
             crudMode(CRUDModes.Update);
-            rootPath("/mdl/attributes");
+            rootPath("/modeller/attributes");
           }
         }
       }

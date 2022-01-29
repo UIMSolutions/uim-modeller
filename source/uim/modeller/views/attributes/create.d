@@ -12,50 +12,42 @@ class DMDLAttributesCreateView : DAPPEntityCreateView {
     
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
-      .link(["href":"/modeller"], "MDL")
-      .link(["href":myRootPath], "Attributes")
+      .link(["href":"/"], "UIM")
+      .link(["href":"/modeller"], "Modeller")
+      .link(["href":myRootPath], "Attribute")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleCreate("Blog erstellen"));
+      .title(titleCreate("Attribut erstellen"));
 
     this.form
-      .action(myRootPath~"/actions/create")
+      .action("/modeller/attributes/actions/create")
       .rootPath(myRootPath);
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Neuer Blog")
+      .mainTitle("Neues Attribute")
       .subTitle("Bitte Werte eingeben")
       .actions([["cancel", "save"]]);
 
-    this.form.formBody(
-      MDLPostFormBody(this.form)
-      .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
+    this
+      .form
+        .formBody(
+            MDLAttributeFormBody(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLAttributesCreateView~"::DMDLAttributesCreateView:beforeH5");
-    debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     super.beforeH5(options);
 
+    debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     options["rootPath"] = myRootPath;
 
-/*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Blog Name:";
- */
-
-    if (this.controller && this.controller.database) {
-      this.entity(this.controller.database["modeller"]["attributes"].createEntity);
-    }
-
-    this.form
-      .action("/modeller/attributes/actions/create")
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
- */      .entity(this.entity);
+ */  
   }
 }
 mixin(APPViewCalls!("MDLAttributesCreateView"));

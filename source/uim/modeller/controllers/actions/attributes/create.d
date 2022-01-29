@@ -15,12 +15,24 @@ class DMDLAction_CreateAttribute : DMDLAttributeAction {
 
     debug writeln(options);        
     debug writeln("appSession.site.name = ", appSession.site.name);
-    auto tenant = database[appSession.site.name];
-    auto entity = tenant["attributes"].createEntity.fromRequest(options);   
-    tenant["attributes"].insertOne(entity);
-    debug writeln("entity.id = ", entity.id);
+    if (auto tenant = database[appSession.site.name]) {
+      debug writeln("Found tenant for ", appSession.site.name);
+      
+      if (auto collection = tenant[collectionName]) {
+        debug writeln("Found collection for ", collectionName);
 
-    options["redirect"] = this.rootPath ~ "/view?id="~entity.id.toString; 
+        if (auto entity = collection.createEntityFromTemplate) {             
+          debug writeln("Created entity:", entity.id);
+
+          entity.fromRequest(options);
+
+          collection.insertOne(entity);
+          debug writeln("entity.id = ", entity.id);
+
+          options["redirect"] = this.rootPath ~ "/view?id="~entity.id.toString; 
+        }
+      }
+    }
 	}
 }
 mixin(APPControllerCalls!("MDLAction_CreateAttribute"));

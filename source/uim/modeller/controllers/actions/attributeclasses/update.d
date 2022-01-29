@@ -14,11 +14,11 @@ class DMDLAction_UpdateAttributeClass : DMDLAttributeClassAction {
     auto appSession = getAppSession(options);
 
     if (auto entityId = options.get("entity_id", null)) {
-      auto entity = database[appSession.site.name, "attributeclasses"].findOne(UUID(entityId));
+      auto entity = database[appSession.site.name, collectionName].findOne(UUID(entityId));
       
       entity.fromRequest(options);
 
-      database[appSession.site.name, "attributeclasses"].updateOne(entity);
+      database[appSession.site.name, collectionName].updateOne(entity);
       options["redirect"] = rootPath~"/view?id="~entityId;
     }
     else {

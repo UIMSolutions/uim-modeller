@@ -16,8 +16,9 @@ class DMDLAction_CreateAttributeClass : DMDLAttributeClassAction {
     debug writeln(options);        
     debug writeln("appSession.site.name = ", appSession.site.name);
     auto tenant = database[appSession.site.name];
-    auto entity = tenant["attributeclasses"].createEntity.fromRequest(options);   
-    tenant["attributeclasses"].insertOne(entity);
+    auto collection = tenant[collectionName];
+    auto entity = collection.createEntityFromTemplate.fromRequest(options);   
+    collection.insertOne(entity);
     debug writeln("entity.id = ", entity.id);
 
     options["redirect"] = this.rootPath ~ "/view?id="~entity.id.toString; 

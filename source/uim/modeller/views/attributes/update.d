@@ -12,7 +12,8 @@ class DMDLAttributesUpdateView : DAPPEntityUpdateView {
 
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
-      .link(["href":"/modeller"], "MDL")
+      .link(["href":"/"], "UIM")
+      .link(["href":"/modeller"], "Modeller")
       .link(["href":myRootPath], "Attributes")
     );
 
@@ -32,7 +33,7 @@ class DMDLAttributesUpdateView : DAPPEntityUpdateView {
       .subTitle("Attributes anzeigen");
       
     this.form.formBody(
-      MDLPostFormBody(this.form));
+      MDLAttributeFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

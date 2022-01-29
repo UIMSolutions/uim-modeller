@@ -12,14 +12,8 @@ class DMDLAttributeAction : DMDLAction {
 
     this
     .rootPath("/modeller/attributes") 
-    .collectionName("attributes"); 
+    .collectionName("modeller_attributes"); 
   }
-
-  override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAttributeAction~":DMDLAttributeAction::beforeResponse");
-    super.beforeResponse(options);
-    if (hasError || "redirect" in options) { return; }    
-	}
 }
 mixin(APPControllerCalls!("MDLAttributeAction"));
 

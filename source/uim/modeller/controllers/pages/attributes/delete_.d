@@ -23,18 +23,18 @@ class DMDLAttributesDeletePageController : DAPPPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAttributesUpdatePageController~":DMDLAttributesUpdatePageController::beforeResponse");
+    debugMethodCall(moduleName!DMDLAttributesDeletePageController~":DMDLAttributesDeletePageController::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database["modeller", "attributes"].findOne(UUID(entityId));      
+      auto dbEntity = database["uim", "modeller_attributes"].findOne(UUID(entityId));      
       if (auto entityView = cast(DAPPEntityView)this.view) {
         with(entityView) {
           entity(dbEntity);
           crudMode(CRUDModes.Delete);
-          rootPath("/mdl/attributes");
+          rootPath("/modeller/attributes");
           readonly(true);
         }
       }

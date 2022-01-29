@@ -12,7 +12,7 @@ class DMDLEntityClassAction : DMDLAction {
 
     this
     .rootPath("/modeller/entityclasses") 
-    .collectionName("entityclasses"); 
+    .collectionName("modeller_entityclasses"); 
   }
 
   override void beforeResponse(STRINGAA options = null) {

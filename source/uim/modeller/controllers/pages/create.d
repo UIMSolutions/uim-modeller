@@ -71,7 +71,7 @@ class DMDLCreatePageController : DMDLPageController {
     // debug writeln(moduleName!DMDLCreatePageController~":DMDLCreatePageController::beforeResponse - Looking for entities in ", site.name, ":", collectionName);
 
     auto poolId = uniform(1, 1_000_000_000);
-    if (auto ent = database[site.name, collectionName].createEntity) entityPool[poolId] = ent;
+    if (auto ent = database[site.name, collectionName].createEntityFromTemplate) entityPool[poolId] = ent;
     reqParameters["poolId"] = to!string(poolId);
   }
 }

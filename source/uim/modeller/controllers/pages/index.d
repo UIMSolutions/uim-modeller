@@ -36,7 +36,7 @@ class DMDLIndexPageController : DAPPPageController {
       else {
         debug writeln("No Site");
 
-        auto dbSites = database ? database["systems", "sites"].findMany : null;
+        auto dbSites = database ? database["systems", "system_sites"].findMany : null;
         debug writeln("Found sites = ", dbSites.length);
 
         this.view(

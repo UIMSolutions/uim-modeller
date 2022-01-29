@@ -36,12 +36,12 @@ class DMDLAttributeClassesIndexPageController : DAPPPageController {
     if (auto entitiesView = cast(DAPPEntitiesListView)this.view) {
       debug writeln("entitiesView found");
 
-      auto dbEntities = db["modeller", "attributeclasses"].findMany();
+      auto dbEntities = db["uim", "modeller_attributeclasses"].findMany();
       debug writeln("Found entities: ", dbEntities.length);
 
       entitiesView
         .entities(dbEntities)
-        .rootPath("/mdl/attributeclasses");
+        .rootPath("/modeller/attributeclasses");
     }
     else { 
       this.error("entitiesView missing"); 

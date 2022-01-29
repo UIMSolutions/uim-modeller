@@ -29,12 +29,12 @@ class DMDLAttributeClassesDeletePageController : DAPPPageController {
 
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database["modeller", "attributeclasses"].findOne(UUID(entityId));      
+      auto dbEntity = database["uim", "modeller_attributeclasses"].findOne(UUID(entityId));      
       if (auto entityView = cast(DAPPEntityView)this.view) {
         with(entityView) {
           entity(dbEntity);
           crudMode(CRUDModes.Delete);
-          rootPath("/mdl/attributeclasses");
+          rootPath("/modeller/attributeclasses");
           readonly(true);
         }
       }
