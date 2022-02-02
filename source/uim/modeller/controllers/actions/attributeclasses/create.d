@@ -17,7 +17,7 @@ class DMDLAction_CreateAttributeClass : DMDLAttributeClassAction {
     debug writeln("appSession.site.name = ", appSession.site.name);
     auto tenant = database[appSession.site.name];
     auto collection = tenant[collectionName];
-    auto entity = collection.createEntityFromTemplate.fromRequest(options);   
+    auto entity = collection.cloneEntity.fromRequest(options);   
     collection.insertOne(entity);
     debug writeln("entity.id = ", entity.id);
 

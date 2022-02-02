@@ -16,6 +16,7 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
         "isnullable": MDLIsNullableFormGroup,
         "isreadonly": MDLIsReadOnlyFormGroup,
         "dataformat": MDLDataFormatFormGroup,
+        "valueconstrainedtolist": MDLValueConstrainedToList
         ]); 
   } 
 }  

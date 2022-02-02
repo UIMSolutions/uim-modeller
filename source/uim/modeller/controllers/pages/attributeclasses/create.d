@@ -32,7 +32,7 @@ class DMDLAttributeClassesCreatePageController : DAPPPageController {
     if (this.database) {
       debug writeln("Found database"); 
 
-      auto dbEntity = database["uim", "modeller_attributeclasses"].createEntityFromTemplate;      
+      auto dbEntity = database["uim", "modeller_attributeclasses"].cloneEntity;      
       debug writeln(dbEntity ? "Has entity" : "no entity :-(");
 
       if (auto entityView = cast(DAPPEntityView)this.view) {

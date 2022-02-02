@@ -18,4 +18,5 @@ public import uim.modeller.views.components.forms.groups.dataformat;
 public import uim.modeller.views.components.forms.groups.summary;
 public import uim.modeller.views.components.forms.groups.text;
 public import uim.modeller.views.components.forms.groups.theme;
+public import uim.modeller.views.components.forms.groups.valueconstrainedtolist;
 

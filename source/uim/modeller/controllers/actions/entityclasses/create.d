@@ -17,7 +17,7 @@ class DMDLAction_CreateEntityClass : DMDLEntityClassAction {
     debug writeln("appSession.site.name = ", appSession.site.name);
     if (auto tenant = database[appSession.site.name]) {
       if (auto collection = tenant[collectionName]) {
-        auto entity = collection.createEntityFromTemplate.fromRequest(options);   
+        auto entity = collection.cloneEntity.fromRequest(options);   
         collection.insertOne(entity);
         debug writeln("entity.id = ", entity.id);
 

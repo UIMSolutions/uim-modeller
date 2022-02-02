@@ -62,7 +62,7 @@ class DMDLCreatePageController : DMDLPageController {
   override void beforeResponse(STRINGAA reqParameters) {
     // debugMethodCall(moduleName!DMDLCreatePageController~":DMDLCreatePageController::beforeResponse");
     super.beforeResponse(reqParameters);   
-    if ("redirect" in reqParameters) return;
+    if (hasError || "redirect" in reqParameters) { return; }
 
     auto appSession = getAppSession(reqParameters);
     // debug writeln(appSession.debugInfo); 
@@ -71,7 +71,7 @@ class DMDLCreatePageController : DMDLPageController {
     // debug writeln(moduleName!DMDLCreatePageController~":DMDLCreatePageController::beforeResponse - Looking for entities in ", site.name, ":", collectionName);
 
     auto poolId = uniform(1, 1_000_000_000);
-    if (auto ent = database[site.name, collectionName].createEntityFromTemplate) entityPool[poolId] = ent;
+    if (auto ent = database[site.name, collectionName].cloneEntity) entityPool[poolId] = ent;
     reqParameters["poolId"] = to!string(poolId);
   }
 }

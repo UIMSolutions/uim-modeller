@@ -31,7 +31,7 @@ class DMDLEntityClassesCreatePageController : DAPPPageController {
 
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database["uim", "modeller_entityclasses"].createEntityFromTemplate;      
+      auto dbEntity = database["uim", "modeller_entityclasses"].cloneEntity;      
       if (auto entityView = cast(DAPPEntityView)this.view) {
         with(entityView) {
           entity(dbEntity);
