@@ -3,15 +3,8 @@ module uim.modeller.views.indexnosite;
 @safe:
 import uim.modeller;
 
-class DMDLIndexNoSiteView : DAPPView {
-  this() { 
-    super();
-    this.name = "MDLIndexNoSiteView";
-  }
-
-  this(DAPPPageController myController) { 
-    this().controller(myController); 
-  }
+class DMDLIndexNoSiteView : DAPPView { 
+  mixin(APPViewThis!("MDLIndexNoSiteView"));
 
   mixin(OProperty!("DOOPEntity[]", "sites"));
 
@@ -21,6 +14,7 @@ class DMDLIndexNoSiteView : DAPPView {
     // debug writeln("uim.modeller.pages.index:serverCms.index:toH5 -> reqParameters = ", options);
     // debug writeln("uim.modeller.pages.index:serverCms.index:toH5 -> pageTitle = ", options.get("pageTitle", ""));
 
+    debug writeln("Existing sites: ", sites.length);
     DH5Obj[] sitesContent; 
     foreach(s; sites) {
       sitesContent ~= 
@@ -41,5 +35,4 @@ class DMDLIndexNoSiteView : DAPPView {
             BS5Row(["row-deck row-cards"], sitesContent)))].toH5;
     }
   }
-auto MDLIndexNoSiteView() { return new DMDLIndexNoSiteView; }
-auto MDLIndexNoSiteView(DAPPPageController myController) { return new DMDLIndexNoSiteView(myController); }
+mixin(APPViewCalls!("MDLIndexNoSiteView"));

@@ -21,7 +21,7 @@ class DMDLAction_CreateAttribute : DMDLAttributeAction {
       if (auto collection = tenant[collectionName]) {
         debug writeln("Found collection for ", collectionName);
 
-        if (auto entity = collection.cloneEntity) {             
+        if (auto entity = collection.createFromTemplate) {             
           debug writeln("Created entity:", entity.id);
 
           entity.fromRequest(options);
