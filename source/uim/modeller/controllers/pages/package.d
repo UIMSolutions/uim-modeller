@@ -7,6 +7,7 @@ import uim.modeller;
 public import uim.modeller.controllers.pages.attributeclasses;
 public import uim.modeller.controllers.pages.attributes;
 public import uim.modeller.controllers.pages.entityclasses;
+public import uim.modeller.controllers.pages.models;
 
 // Modules
 public import uim.modeller.controllers.pages.create;

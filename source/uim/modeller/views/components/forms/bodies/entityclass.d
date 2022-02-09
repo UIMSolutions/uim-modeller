@@ -18,5 +18,5 @@ mixin(APPFormComponentCalls!("MDLEntityClassFormBody", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLLinkFormBody);
+    assert(MDLAttributeClassFormBody);
 }}

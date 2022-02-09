@@ -1,11 +1,11 @@
-module uim.modeller.views.entityclasses.create;
+module uim.modeller.views.models.create;
 
 @safe:
 import uim.modeller;
-import uim.modeller.views.entityclasses;
+import uim.modeller.views.models;
 
-class DMDLEntityClassesCreateView : DAPPEntityCreateView {
-  mixin(APPViewThis!("MDLEntityClassesCreateView"));
+class DMDLModelsCreateView : DAPPEntityCreateView {
+  mixin(APPViewThis!("MDLModelsCreateView"));
 
   override void initialize() {
     super.initialize;
@@ -14,13 +14,13 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Entityclasses")
+      .link(["href":myRootPath], "Models")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleCreate("EntityClass erstellen"));
+      .title(titleCreate("Blog erstellen"));
 
     this.form
       .action(myRootPath~"/actions/create")
@@ -38,7 +38,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLEntityClassesCreateView~"::DMDLEntityClassesCreateView:beforeH5");
+    debugMethodCall(moduleName!DMDLModelsCreateView~"::DMDLModelsCreateView:beforeH5");
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     super.beforeH5(options);
 
@@ -49,10 +49,10 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
  */
 
     this.form
-      .action("/modeller/entityclasses/actions/create")
+      .action("/modeller/models/actions/create")
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
  */      .entity(this.entity);
   }
 }
-mixin(APPViewCalls!("MDLEntityClassesCreateView"));
+mixin(APPViewCalls!("MDLModelsCreateView"));

@@ -1,17 +1,17 @@
-module uim.modeller.controllers.pages.entityclasses.create;
+module uim.modeller.controllers.pages.models.create;
 
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassesCreatePageController : DAPPPageController {
-  mixin(APPPageControllerThis!("MDLEntityClassesCreatePageController"));
+class DMDLModelsCreatePageController : DAPPPageController {
+  mixin(APPPageControllerThis!("MDLModelsCreatePageController"));
 
-  override void initialize() {
+   override void initialize() {
     super.initialize;
 
     this
     .view(
-      MDLEntityClassesCreateView(this))
+      MDLModelsCreateView(this))
     .scripts
       .addContents(
         editorSummary~
@@ -25,26 +25,27 @@ class DMDLEntityClassesCreatePageController : DAPPPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLEntityClassesUpdatePageController~":DMDLEntityClassesUpdatePageController::beforeResponse");
+    debugMethodCall(moduleName!DMDLModelsCreatePageController~":DMDLModelsCreatePageController::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
     if (this.database) {
       debug writeln("Found database"); 
 
-      auto dbEntity = database["uim", "modeller_entityclasses"].createFromTemplate;      
+      auto dbEntity = database["uim", "modeller_models"].createFromTemplate;      
       debug writeln(dbEntity ? "Has entity" : "no entity :-(");
 
       if (auto entityView = cast(DAPPEntityView)this.view) {
         debug writeln("Has entityView");
 
-        entityView
-          .entity(dbEntity)
-          .crudMode(CRUDModes.Create)
-          .rootPath("/modeller/entityclasses")
-          .readonly(true);
+        with(entityView) {
+          entity(dbEntity);
+          crudMode(CRUDModes.Create);
+          rootPath("/modeller/models");
+          readonly(true);
+        }
       }
     }
   }
 }
-mixin(APPPageControllerCalls!("MDLEntityClassesCreatePageController"));
+mixin(APPPageControllerCalls!("MDLModelsCreatePageController"));

@@ -10,3 +10,4 @@ public import uim.modeller.controllers.actions.action;
 public import uim.modeller.controllers.actions.attributes;
 public import uim.modeller.controllers.actions.attributeclasses;
 public import uim.modeller.controllers.actions.entityclasses;
+public import uim.modeller.controllers.actions.models;

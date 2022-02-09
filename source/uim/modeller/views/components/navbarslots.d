@@ -15,15 +15,10 @@ class DMDLNavSlot : DAPPNavbarSlot {
         BS5DropdownMenu
         .link((options.get("serverMdlOverview", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller"], "Übersicht")
         .divider
-        .link((options.get("serverMdlThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/blogs"], "Blogs")
-        .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/pages"], "Seiten")
-        .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/glossary"], "Glossar")
-        .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/links"], "Links")
-        .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/offers"], "Angebote")
-        .link((options.get("serverMdlPages", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/news"], "News")
-        .link((options.get("serverMdlPages", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/docus"], "Dokumentationen")
-        .link((options.get("serverMdlBlogs", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/themes"], "Themen")
-        .link((options.get("serverMdlBlogs", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/tutorials"], "Tutorials")
+        .link((options.get("serverMdlThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/models"], "Models")
+        .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/entityclasses"], "EntityClasses")
+        .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/attributeclasses"], "AttributeClasses")
+        .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/attributes"], "Attributes")
       )].toH5;
   }
 }

@@ -8,6 +8,7 @@ public import uim.modeller.views.components;
 public import uim.modeller.views.attributeclasses;
 public import uim.modeller.views.attributes;
 public import uim.modeller.views.entityclasses;
+public import uim.modeller.views.models;
 
 // Modules
 public import uim.modeller.views.indexnosite;
