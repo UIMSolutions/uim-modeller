@@ -1,4 +1,4 @@
-module source.uim.modeller.controllers.pages.methods copy.create;
+module uim.modeller.controllers.pages.methods.create;
 
 @safe:
 import uim.modeller;
