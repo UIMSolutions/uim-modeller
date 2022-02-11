@@ -17,11 +17,6 @@ class DMDLAction_UpdateMethod : DMDLMethodAction {
       auto entity = database[appSession.site.name, collectionName].findOne(UUID(entityId));
       
       entity.fromRequest(options);
-      foreach(name, method; entity.methods) { // Workaround :-O
-        if (auto booleanMethod = cast(DOOPBooleanMethod)method) {
-          if ("entity_"~name !in options) booleanMethod.value(false);  
-        }
-      }
 
       database[appSession.site.name, collectionName].updateOne(entity);
       options["redirect"] = rootPath~"/view?id="~entityId;
