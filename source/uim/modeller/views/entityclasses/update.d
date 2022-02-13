@@ -14,13 +14,14 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Entityclasses")
+      .link(["href":"/modeller/entityclasses"], "Entitätenklassen")
+      .link(["active"], ["href":"/modeller/entityclasses/update"], "Bearbeiten")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleEdit("Blog bearbeiten"));
+      .title(titleEdit("Entitätenklasse bearbeiten"));
       
     this.form
       .action("/modeller/entityclasses/actions/save")
@@ -29,8 +30,8 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
 
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Entityclasses")
-      .subTitle("Entityclasses anzeigen");
+      .mainTitle("Entitätenklassen")
+      .subTitle("Entitätenklasse bearbeiten");
       
     this.form.formBody(
       MDLEntityClassFormBody(this.form));
@@ -40,8 +41,8 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
     debugMethodCall(moduleName!DMDLEntityClassesUpdateView~"::DMDLEntityClassesUpdateView:beforeH5");
     super.beforeH5(options);
 
-    auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Blog Name:";
+    auto headerTitle = "Entitätenklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
+    auto bodyTitle = "Entitätenklasse Name:";
 
     this.form
       .headerTitle(headerTitle)

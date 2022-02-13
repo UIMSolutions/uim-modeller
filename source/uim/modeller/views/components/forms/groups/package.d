@@ -7,6 +7,8 @@ import uim.modeller;
 public import uim.modeller.views.components.forms.groups.handler;
 
 // Modules
+public import uim.modeller.views.components.forms.groups.attributeclasses;
+public import uim.modeller.views.components.forms.groups.entityclasses;
 public import uim.modeller.views.components.forms.groups.image;
 public import uim.modeller.views.components.forms.groups.dataformat;
 public import uim.modeller.views.components.forms.groups.isarray;

@@ -14,13 +14,14 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attributeclasses")
+      .link(["href":"/modeller/attributeclasses"], "Attributklassen")
+      .link(["active"], ["href":"/modeller/attributeclasses/create"], "Erstellen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleCreate("Blog erstellen"));
+      .title(titleCreate("Attributklasse erstellen"));
 
     this.form
       .action("/modeller/attributeclasses/actions/create")
@@ -28,7 +29,7 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Neuer Blog")
+      .mainTitle("Neue Attributklasse")
       .subTitle("Bitte Werte eingeben")
       .actions([["cancel", "save"]]);
 

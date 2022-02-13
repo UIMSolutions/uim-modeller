@@ -14,13 +14,14 @@ class DMDLModulesUpdateView : DAPPEntityUpdateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Modules")
+      .link(["href":"/modeller/modules"], "Module")
+      .link(["active"], ["href":"/modeller/modules/update"], "Bearbeiten")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleEdit("Blog bearbeiten"));
+      .title(titleEdit("Modul bearbeiten"));
       
     this.form
       .action("/modeller/modules/actions/save")
@@ -29,8 +30,8 @@ class DMDLModulesUpdateView : DAPPEntityUpdateView {
 
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Modules")
-      .subTitle("Modules anzeigen");
+      .mainTitle("Module")
+      .subTitle("Modul anzeigen");
       
     this.form.formBody(
       MDLModuleFormBody(this.form));
@@ -40,8 +41,8 @@ class DMDLModulesUpdateView : DAPPEntityUpdateView {
     debugMethodCall(moduleName!DMDLModulesUpdateView~"::DMDLModulesUpdateView:beforeH5");
     super.beforeH5(options);
 
-    auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Blog Name:";
+    auto headerTitle = "Modul ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
+    auto bodyTitle = "Modul Name:";
 
     this.form
       .headerTitle(headerTitle)

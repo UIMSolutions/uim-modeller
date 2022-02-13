@@ -14,7 +14,8 @@ class DMDLModulesReadView : DAPPEntityReadView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Modules")
+      .link(["href":"/modeller/modules"], "Module")
+      .link(["active"], ["href":"/modeller/modules/read"], "Anzeigen")
     );
 
     this.pageHeader
@@ -28,8 +29,8 @@ class DMDLModulesReadView : DAPPEntityReadView {
 
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Modules")
-      .subTitle("Modules anzeigen");
+      .mainTitle("Module")
+      .subTitle("Modul anzeigen");
 
     this.form.formBody(
       MDLModuleFormBody(this.form)); 

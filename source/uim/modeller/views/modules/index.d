@@ -14,11 +14,11 @@ class DMDLModulesIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Modules")
+      .link(["active"], ["href":"/modeller/modules"], "Module")
     );
 
-    auto headerTitle = titleList("Modules");
-    auto bodyTitle = "Gefundene Modules";
+    auto headerTitle = titleList("Module");
+    auto bodyTitle = "Gefundene Module";
 
     this
       .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Modules")).actions(["refresh", "list", "create"]))
@@ -33,7 +33,7 @@ class DMDLModulesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLModulesIndexView~":DMDLModulesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/modules").mainTitle("Modules").subTitle("Übersicht Modules").actions([["refresh"],["create"]]));
+    this.form.formHeader(APPFormHeader.rootPath("/modules").mainTitle("Module").subTitle("Übersicht Module").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

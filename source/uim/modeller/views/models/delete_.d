@@ -14,13 +14,14 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Models")
+      .link(["href":"/modeller/models"], "Modelle")
+      .link(["active"], ["href":"/modeller/models/delete"], "Löschen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleDelete("Blog löschen"));
+      .title(titleDelete("Modell löschen"));
 
     this.form
       .action("/modeller/models/actions/delete")
@@ -28,8 +29,8 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Models")
-      .subTitle("Models löschen");
+      .mainTitle("Modelle")
+      .subTitle("Modell löschen");
     
     this.form.formBody(
       MDLEntityClassFormBody(this.form));
@@ -39,8 +40,8 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
     debugMethodCall(moduleName!DMDLModelsDeleteView~"::DMDLModelsDeleteView:beforeH5");
     super.beforeH5(options);
 
-    auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Blog Name:";
+    auto headerTitle = "Modell ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
+    auto bodyTitle = "Modell Name:";
 
     this.form
       .action("/modeller/models/actions/delete?entity_id="~(entity ? entity.id.toString : null))

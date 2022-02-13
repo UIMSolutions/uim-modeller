@@ -14,13 +14,14 @@ class DMDLModulesDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Modules")
+      .link(["href":"/modeller/modules"], "Module")
+      .link(["active"], ["href":"/modeller/modules/delete"], "Löschen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleDelete("Blog löschen"));
+      .title(titleDelete("Modul löschen"));
 
     this.form
       .action("/modeller/modules/actions/delete")
@@ -28,8 +29,8 @@ class DMDLModulesDeleteView : DAPPEntityDeleteView {
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Modules")
-      .subTitle("Modules löschen");
+      .mainTitle("Module")
+      .subTitle("Modul löschen");
     
     this
       .form

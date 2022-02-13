@@ -14,21 +14,22 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attributeclasses")
+      .link(["href":"/modeller/attributeclasses"], "Attributklassen")
+      .link(["active"], ["href":"/modeller/attributeclasses/read"], "Anzeigen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleView("Blog anzeigen"));
+      .title(titleView("Attributklasse anzeigen"));
     
     this.form
       .rootPath(myRootPath);
 
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Attributeclasses")
-      .subTitle("Attributeclasses anzeigen");
+      .mainTitle("Attributklassen")
+      .subTitle("Attributklasse anzeigen");
 
     this.form.formBody(
       MDLAttributeClassFormBody(this.form));
@@ -38,8 +39,8 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
     debugMethodCall(moduleName!DMDLAttributeClassesReadView~"::DMDLAttributeClassesReadView:beforeH5");
     super.beforeH5(options);
 
-    auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Blog Name:";
+    auto headerTitle = "Attributklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
+    auto bodyTitle = "Attributklasse Name:";
 
     this.form
       .headerTitle(headerTitle)

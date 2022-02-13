@@ -14,13 +14,14 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Entityclasses")
+      .link(["href":"/modeller/entityclasses"], "Entitätenklassen")
+      .link(["active"], ["href":"/modeller/entityclasses/create"], "Erstellen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleCreate("EntityClass erstellen"));
+      .title(titleCreate("Entitätenklasse erstellen"));
 
     this.form
       .action(myRootPath~"/actions/create")
@@ -28,7 +29,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Neuer Blog")
+      .mainTitle("Neue Entitätenklasse")
       .subTitle("Bitte Werte eingeben")
       .actions([["cancel", "save"]]);
 

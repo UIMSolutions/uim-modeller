@@ -14,11 +14,11 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attributeclasses")
+      .link(["href":myRootPath], "Attributklassen")
     );
 
-    auto headerTitle = titleList("Attributeclasses");
-    auto bodyTitle = "Gefundene Attributeclasses";
+    auto headerTitle = titleList("Attributklassen");
+    auto bodyTitle = "Gefundene Attributklassen";
 
     this
       .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Attributeclasses")).actions(["refresh", "list", "create"]))
@@ -33,7 +33,7 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAttributeClassesIndexView~":DMDLAttributeClassesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/attributeclasses").mainTitle("Attributeclasses").subTitle("Übersicht Attributeclasses").actions([["refresh"],["create"]]));
+    this.form.formHeader(APPFormHeader.rootPath("/attributeclasses").mainTitle("Attributklassen").subTitle("Übersicht Attributklassen").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

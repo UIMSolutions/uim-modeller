@@ -14,21 +14,22 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Entityclasses")
+      .link(["href":"/modeller/entityclasses"], "Entitätenklassen")
+      .link(["active"], ["href":"/modeller/entityclasses/read"], "Anzeigen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleView("Blog anzeigen"));
+      .title(titleView("Entitätenklasse anzeigen"));
     
     this.form
       .rootPath(myRootPath);
 
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Entityclasses")
-      .subTitle("Entityclasses anzeigen");
+      .mainTitle("Entitätenklassen")
+      .subTitle("Entitätenklasse anzeigen");
 
     this.form.formBody(
       MDLEntityClassFormBody(this.form));

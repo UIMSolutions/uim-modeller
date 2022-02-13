@@ -1,11 +1,11 @@
-module uim.modeller.views.models.read;
+module uim.modeller.views.libraries.read;
 
 @safe:
 import uim.modeller;
-import uim.modeller.views.models;
+import uim.modeller.views.libraries;
 
-class DMDLModelsReadView : DAPPEntityReadView {
-  mixin(APPViewThis!("MDLModelsReadView"));
+class DMDLlibrariesReadView : DAPPEntityReadView {
+  mixin(APPViewThis!("MDLlibrariesReadView"));
 
   override void initialize() {
     super.initialize;
@@ -14,33 +14,33 @@ class DMDLModelsReadView : DAPPEntityReadView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":"/modeller/models"], "Modelle")
-      .link(["active"], ["href":"/modeller/models/read"], "Anzeigen")
+      .link(["href":"/modeller/libraries"], "Libraryle")
+      .link(["active"], ["href":"/modeller/libraries/read"], "Anzeigen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleView("Modell anzeigen"));
+      .title(titleView("Libraryl anzeigen"));
     
     this.form
       .rootPath(myRootPath);
 
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Modelle")
-      .subTitle("Modell anzeigen");
+      .mainTitle("Libraryle")
+      .subTitle("Libraryl anzeigen");
 
     this.form.formBody(
       MDLEntityClassFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLModelsReadView~"::DMDLModelsReadView:beforeH5");
+    debugMethodCall(moduleName!DMDLlibrariesReadView~"::DMDLlibrariesReadView:beforeH5");
     super.beforeH5(options);
 
-    auto headerTitle = "Modell ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Modell Name:";
+    auto headerTitle = "Libraryl ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
+    auto bodyTitle = "Libraryl Name:";
 
     this.form
       .headerTitle(headerTitle)
@@ -48,7 +48,7 @@ class DMDLModelsReadView : DAPPEntityReadView {
       .entity(this.entity);
   }
 }
-mixin(APPViewCalls!("MDLModelsReadView"));
+mixin(APPViewCalls!("MDLlibrariesReadView"));
 
 version(test_uim_modeller) {
   unittest {

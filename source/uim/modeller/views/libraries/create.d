@@ -1,11 +1,11 @@
-module uim.modeller.views.models.create;
+module uim.modeller.views.libraries.create;
 
 @safe:
 import uim.modeller;
-import uim.modeller.views.models;
+import uim.modeller.views.libraries;
 
-class DMDLModelsCreateView : DAPPEntityCreateView {
-  mixin(APPViewThis!("MDLModelsCreateView"));
+class DMDLlibrariesCreateView : DAPPEntityCreateView {
+  mixin(APPViewThis!("MDLlibrariesCreateView"));
 
   override void initialize() {
     super.initialize;
@@ -14,14 +14,14 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":"/modeller/models"], "Modelle")
-      .link(["active"], ["href":"/modeller/models/create"], "Erstellen")
+      .link(["href":"/modeller/libraries"], "Libraryle")
+      .link(["active"], ["href":"/modeller/libraries/create"], "Erstellen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleCreate("Modell erstellen"));
+      .title(titleCreate("Libraryl erstellen"));
 
     this.form
       .action(myRootPath~"/actions/create")
@@ -29,7 +29,7 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Neues Modell")
+      .mainTitle("Neues Libraryl")
       .subTitle("Bitte Werte eingeben")
       .actions([["cancel", "save"]]);
 
@@ -39,7 +39,7 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLModelsCreateView~"::DMDLModelsCreateView:beforeH5");
+    debugMethodCall(moduleName!DMDLlibrariesCreateView~"::DMDLlibrariesCreateView:beforeH5");
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     super.beforeH5(options);
 
@@ -50,10 +50,10 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
  */
 
     this.form
-      .action("/modeller/models/actions/create")
+      .action("/modeller/libraries/actions/create")
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
  */      .entity(this.entity);
   }
 }
-mixin(APPViewCalls!("MDLModelsCreateView"));
+mixin(APPViewCalls!("MDLlibrariesCreateView"));

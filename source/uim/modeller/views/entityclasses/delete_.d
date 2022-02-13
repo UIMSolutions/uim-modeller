@@ -14,13 +14,14 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Entityclasses")
+      .link(["href":"/modeller/entityclasses"], "Entitätenklassen")
+      .link(["active"], ["href":"/modeller/entityclasses/delete"], "Löschen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleDelete("Blog löschen"));
+      .title(titleDelete("Entitätenklasse löschen"));
 
     this.form
       .action("/modeller/entityclasses/actions/delete")
@@ -28,8 +29,8 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Entityclasses")
-      .subTitle("Entityclasses löschen");
+      .mainTitle("Entitätenklassen")
+      .subTitle("Entitätenklasse löschen");
     
     this.form.formBody(
       MDLEntityClassFormBody(this.form));

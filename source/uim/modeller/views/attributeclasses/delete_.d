@@ -14,7 +14,8 @@ class DMDLAttributeClassesDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attributeclasses")
+      .link(["href":"/modeller/attributeclasses"], "Attributklassen")
+      .link(["active"], ["href":"/modeller/attributeclasses/delete"], "Löschen")
     );
 
     this.pageHeader
@@ -28,8 +29,8 @@ class DMDLAttributeClassesDeleteView : DAPPEntityDeleteView {
     
     this.form.formHeader
       .rootPath(myRootPath)
-      .mainTitle("Attributeclasses")
-      .subTitle("Attributeclasses löschen");
+      .mainTitle("Attributklassen")
+      .subTitle("Attributklasse löschen");
     
     this.form.formBody(
       MDLAttributeClassFormBody(this.form));
@@ -39,8 +40,8 @@ class DMDLAttributeClassesDeleteView : DAPPEntityDeleteView {
     debugMethodCall(moduleName!DMDLAttributeClassesDeleteView~"::DMDLAttributeClassesDeleteView:beforeH5");
     super.beforeH5(options);
 
-    auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Blog Name:";
+    auto headerTitle = "Attributklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
+    auto bodyTitle = "Attributklasse Name:";
 
     this.form
       .action("/modeller/attributeclasses/actions/delete?entity_id="~(entity ? entity.id.toString : null))

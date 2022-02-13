@@ -14,13 +14,14 @@ class DMDLModulesCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Modul")
+      .link(["href":"/modeller/modules"], "Module")
+      .link(["active"], ["href":"/modeller/modules/create"], "Erstellen")
     );
 
     this.pageHeader
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleCreate("Attribut erstellen"));
+      .title(titleCreate("Modul erstellen"));
 
     this.form
       .action("/modeller/modules/actions/create")
