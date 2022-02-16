@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.attributes.read;
 @safe:
 import uim.modeller;
 
-class DMDLAttributesReadPageController : DAPPPageController {
+class DMDLAttributesReadPageController : DMDLPageController {
   mixin(APPPageControllerThis!("MDLAttributesReadPageController"));
 
   override void initialize() {
@@ -25,9 +25,10 @@ class DMDLAttributesReadPageController : DAPPPageController {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
+    auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database["uim", "modeller_attributes"].findOne(UUID(entityId))) {
+      if (auto dbEntity = database[appSession.site.name, "modeller_attributes"].findOne(UUID(entityId))) {
         
         debug writeln("Found Entity -> ", dbEntity.id);        
         if (auto entityView = cast(DAPPEntityView)this.view) {

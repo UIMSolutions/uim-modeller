@@ -17,5 +17,5 @@ mixin(APPFormComponentCalls!("MDLPackageFormBody", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLDemoFormBody);
+    assert(MDLPackageFormBody);
 }}

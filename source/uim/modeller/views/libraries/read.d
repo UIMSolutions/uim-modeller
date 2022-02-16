@@ -4,8 +4,8 @@ module uim.modeller.views.libraries.read;
 import uim.modeller;
 import uim.modeller.views.libraries;
 
-class DMDLlibrariesReadView : DAPPEntityReadView {
-  mixin(APPViewThis!("MDLlibrariesReadView"));
+class DMDLLibrariesReadView : DAPPEntityReadView {
+  mixin(APPViewThis!("MDLLibrariesReadView"));
 
   override void initialize() {
     super.initialize;
@@ -36,7 +36,7 @@ class DMDLlibrariesReadView : DAPPEntityReadView {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLlibrariesReadView~"::DMDLlibrariesReadView:beforeH5");
+    debugMethodCall(moduleName!DMDLLibrariesReadView~"::DMDLLibrariesReadView:beforeH5");
     super.beforeH5(options);
 
     auto headerTitle = "Libraryl ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
@@ -48,7 +48,7 @@ class DMDLlibrariesReadView : DAPPEntityReadView {
       .entity(this.entity);
   }
 }
-mixin(APPViewCalls!("MDLlibrariesReadView"));
+mixin(APPViewCalls!("MDLLibrariesReadView"));
 
 version(test_uim_modeller) {
   unittest {

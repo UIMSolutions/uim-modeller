@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.entityclasses.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassesDeletePageController : DAPPPageController {
+class DMDLEntityClassesDeletePageController : DMDLPageController {
   mixin(APPPageControllerThis!("MDLEntityClassesDeletePageController"));
 
   override void initialize() {
@@ -27,9 +27,10 @@ class DMDLEntityClassesDeletePageController : DAPPPageController {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
+    auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database["uim", "modeller_entityclasses"].findOne(UUID(entityId));      
+      auto dbEntity = database[appSession.site.name, "modeller_entityclasses"].findOne(UUID(entityId));      
       if (auto entityView = cast(DAPPEntityView)this.view) {
         with(entityView) {
           entity(dbEntity);

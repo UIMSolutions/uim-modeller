@@ -5,9 +5,14 @@ import uim.modeller;
 
 public import uim.modeller.views.components;
 
+public import uim.modeller.views.apis;
+public import uim.modeller.views.apps;
 public import uim.modeller.views.attributeclasses;
 public import uim.modeller.views.attributes;
+public import uim.modeller.views.classes;
 public import uim.modeller.views.entityclasses;
+public import uim.modeller.views.interfaces;
+public import uim.modeller.views.libraries;
 public import uim.modeller.views.methods;
 public import uim.modeller.views.models;
 public import uim.modeller.views.modules;

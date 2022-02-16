@@ -4,8 +4,8 @@ module uim.modeller.views.libraries.delete_;
 import uim.modeller;
 import uim.modeller.views.libraries;
 
-class DMDLlibrariesDeleteView : DAPPEntityDeleteView {
-  mixin(APPViewThis!("MDLlibrariesDeleteView"));
+class DMDLLibrariesDeleteView : DAPPEntityDeleteView {
+  mixin(APPViewThis!("MDLLibrariesDeleteView"));
 
   override void initialize() {
     super.initialize;
@@ -37,7 +37,7 @@ class DMDLlibrariesDeleteView : DAPPEntityDeleteView {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLlibrariesDeleteView~"::DMDLlibrariesDeleteView:beforeH5");
+    debugMethodCall(moduleName!DMDLLibrariesDeleteView~"::DMDLLibrariesDeleteView:beforeH5");
     super.beforeH5(options);
 
     auto headerTitle = "Libraryl ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
@@ -50,4 +50,4 @@ class DMDLlibrariesDeleteView : DAPPEntityDeleteView {
       .entity(this.entity);
   }
 }
-mixin(APPViewCalls!("MDLlibrariesDeleteView"));
+mixin(APPViewCalls!("MDLLibrariesDeleteView"));

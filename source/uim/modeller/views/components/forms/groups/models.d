@@ -31,8 +31,9 @@ class DMDLModelsFormGroup : DAPPFormGroup {
   override void beforeH5(STRINGAA options = null) { 
     super.beforeH5(options);
 
+    auto appSession = getAppSession(options);
     if (this.database) {
-      this.modelIds(database["uim", "modeller_models"].findMany());
+      this.modelIds(database[appSession.site.name, "modeller_models"].findMany());
     }
   }
 

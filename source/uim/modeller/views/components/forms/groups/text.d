@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.groups.text;
 @safe:
 import uim.modeller;
 
-class DMDLFormGroupText : DAPPTextAreaFormGroup {
-  mixin(APPFormComponentThis!("MDLFormGroupText", true));
+class DMDLTextFormGroup : DAPPTextAreaFormGroup {
+  mixin(APPFormComponentThis!("MDLTextFormGroup", true));
 
   override void initialize() {
     super.initialize();
@@ -16,7 +16,7 @@ class DMDLFormGroupText : DAPPTextAreaFormGroup {
     .label("Inhalt");
   }
 }
-mixin(APPFormComponentCalls!("MDLFormGroupText", true));
+mixin(APPFormComponentCalls!("MDLTextFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

@@ -4,8 +4,8 @@ module uim.modeller.views.libraries.index;
 import uim.modeller;
 import uim.modeller.views.libraries;
 
-class DMDLlibrariesIndexView : DAPPEntitiesListView {
-  mixin(APPViewThis!("MDLlibrariesIndexView"));
+class DMDLLibrariesIndexView : DAPPEntitiesListView {
+  mixin(APPViewThis!("MDLLibrariesIndexView"));
 
   override void initialize() {
     super.initialize;
@@ -30,20 +30,20 @@ class DMDLlibrariesIndexView : DAPPEntitiesListView {
  */  }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLlibrariesIndexView~":DMDLlibrariesIndexView("~this.name~")::beforeH5");
+    debugMethodCall(moduleName!DMDLLibrariesIndexView~":DMDLLibrariesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
     this.form.formHeader(APPFormHeader.rootPath("/libraries").mainTitle("Libraryle").subTitle("Übersicht Libraryle").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLlibrariesIndexView~":DMDLlibrariesIndexView("~this.name~")::toH5");
+    debugMethodCall(moduleName!DMDLLibrariesIndexView~":DMDLLibrariesIndexView("~this.name~")::toH5");
     super.toH5(options);
 
     options["rootPath"] = myRootPath;
 
     this.rootPath(myRootPath);
-    debug writeln("RootPath in DMDLlibrariesIndexView:toH5 -> ", this.rootPath);
+    debug writeln("RootPath in DMDLLibrariesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 
     return [
@@ -58,7 +58,7 @@ class DMDLlibrariesIndexView : DAPPEntitiesListView {
     )))].toH5;              
   }  */
 }
-mixin(APPViewCalls!("MDLlibrariesIndexView"));
+mixin(APPViewCalls!("MDLLibrariesIndexView"));
 
 version(test_uim_modeller) {
   unittest {

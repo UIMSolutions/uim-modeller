@@ -4,8 +4,8 @@ module uim.modeller.views.libraries.update;
 import uim.modeller;
 import uim.modeller.views.libraries;
 
-class DMDLlibrariesUpdateView : DAPPEntityUpdateView {
-  mixin(APPViewThis!("MDLlibrariesUpdateView"));
+class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
+  mixin(APPViewThis!("MDLLibrariesUpdateView"));
 
   override void initialize() {
     super.initialize;
@@ -38,7 +38,7 @@ class DMDLlibrariesUpdateView : DAPPEntityUpdateView {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLlibrariesUpdateView~"::DMDLlibrariesUpdateView:beforeH5");
+    debugMethodCall(moduleName!DMDLLibrariesUpdateView~"::DMDLLibrariesUpdateView:beforeH5");
     super.beforeH5(options);
 
     auto headerTitle = "Libraryl ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
@@ -50,4 +50,4 @@ class DMDLlibrariesUpdateView : DAPPEntityUpdateView {
       .entity(this.entity);
   }
 }
-mixin(APPViewCalls!("MDLlibrariesUpdateView"));
+mixin(APPViewCalls!("MDLLibrariesUpdateView"));

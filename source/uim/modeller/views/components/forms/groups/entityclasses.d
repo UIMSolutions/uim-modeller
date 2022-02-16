@@ -1,4 +1,4 @@
-module source.uim.modeller.views.components.forms.groups.entityclasses;
+module uim.modeller.views.components.forms.groups.entityclasses;
 
 @safe:
 import uim.modeller;
@@ -31,8 +31,9 @@ class DMDLEntityClassesFormGroup : DAPPFormGroup {
   override void beforeH5(STRINGAA options = null) { 
     super.beforeH5(options);
 
+    auto appSession = getAppSession(options);
     if (this.database) {
-      this.entityClassId(database["uim", "modeller_entityclasses"].findMany());
+      this.entityClassId(database[appSession.site.name, "modeller_entityclasses"].findMany());
     }
   }
 

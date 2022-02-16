@@ -31,8 +31,9 @@ class DMDLFormGroupTheme : DAPPFormGroup {
   override void beforeH5(STRINGAA options = null) { 
     super.beforeH5(options);
 
+    auto appSession = getAppSession(options);
     if (this.database) {
-      this.themes(database["uim", "themes"].findMany());
+      this.themes(database[appSession.site.name, "themes"].findMany());
     }
   }
 

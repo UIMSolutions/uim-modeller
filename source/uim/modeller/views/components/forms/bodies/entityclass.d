@@ -10,7 +10,7 @@ class DMDLEntityClassFormBody : DAPPEntityFormBody {
     super.initialize;
 
     this
-      .addFields([])
+      .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist"])
       .formGroupHandler(MDLFormGroupHandler); 
   }
 }
@@ -18,5 +18,5 @@ mixin(APPFormComponentCalls!("MDLEntityClassFormBody", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLAttributeClassFormBody);
+    assert(MDLEntityClassFormBody);
 }}

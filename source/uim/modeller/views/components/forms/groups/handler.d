@@ -11,13 +11,19 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
 
     this
       .addFormGroups([
+        "attributeclasses": MDLAttributeClassesFormGroup,
+        "dataformat": MDLDataFormatFormGroup,
+        "entityclasses": MDLEntityClassesFormGroup,
+        "imagepath": MDLIsArrayFormGroup,
         "isarray": MDLIsArrayFormGroup,
         "isbig": MDLIsBigFormGroup,
         "isnullable": MDLIsNullableFormGroup,
         "isreadonly": MDLIsReadOnlyFormGroup,
-        "dataformat": MDLDataFormatFormGroup,
         "models": MDLModelsFormGroup,
-        "valueconstrainedtolist": MDLValueConstrainedToList
+        "packages": MDLPackagesFormGroup,
+        "summary": MDLSummaryFormGroup,
+        "text": MDLTextFormGroup,
+        "valueconstrainedtolist": MDLValueConstrainedToListFormGroup
         ]); 
   } 
 }  

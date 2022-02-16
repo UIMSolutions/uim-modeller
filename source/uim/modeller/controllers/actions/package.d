@@ -7,9 +7,14 @@ import uim.modeller;
 public import uim.modeller.controllers.actions.action;
 
 // Modules
+public import uim.modeller.controllers.actions.apis;
+public import uim.modeller.controllers.actions.apps;
 public import uim.modeller.controllers.actions.attributes;
 public import uim.modeller.controllers.actions.attributeclasses;
+public import uim.modeller.controllers.actions.classes;
 public import uim.modeller.controllers.actions.entityclasses;
+public import uim.modeller.controllers.actions.interfaces;
+public import uim.modeller.controllers.actions.libraries;
 public import uim.modeller.controllers.actions.methods;
 public import uim.modeller.controllers.actions.models;
 public import uim.modeller.controllers.actions.modules;

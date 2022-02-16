@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.groups.attributeclasses;
 @safe:
 import uim.modeller;
 
-class DMDLAttributeclassesFormGroup : DAPPFormGroup {
-  mixin(APPFormComponentThis!("MDLAttributeclassesFormGroup", true));
+class DMDLAttributeClassesFormGroup : DAPPFormGroup {
+  mixin(APPFormComponentThis!("MDLAttributeClassesFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -31,8 +31,9 @@ class DMDLAttributeclassesFormGroup : DAPPFormGroup {
   override void beforeH5(STRINGAA options = null) { 
     super.beforeH5(options);
 
+    auto appSession = getAppSession(options);
     if (this.database) {
-      this.attributeclassId(database["uim", "modeller_attributeclasses"].findMany());
+      this.attributeclassId(database[appSession.site.name, "modeller_attributeclasses"].findMany());
     }
   }
 
@@ -58,7 +59,7 @@ class DMDLAttributeclassesFormGroup : DAPPFormGroup {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(APPFormComponentCalls!("MDLAttributeclassesFormGroup", true));
+mixin(APPFormComponentCalls!("MDLAttributeClassesFormGroup", true));
 
 version(test_uim_cms) {
   unittest {

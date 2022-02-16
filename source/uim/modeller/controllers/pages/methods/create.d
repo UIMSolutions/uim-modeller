@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.methods.create;
 @safe:
 import uim.modeller;
 
-class DMDLMethodsCreatePageController : DAPPPageController {
+class DMDLMethodsCreatePageController : DMDLPageController {
   mixin(APPPageControllerThis!("MDLMethodsCreatePageController"));
 
   override void initialize() {
@@ -29,10 +29,11 @@ class DMDLMethodsCreatePageController : DAPPPageController {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
+    auto appSession = getAppSession(options);
     if (this.database) {
       debug writeln("Found database"); 
 
-      auto dbEntity = database["uim", "modeller_methods"].createFromTemplate;      
+      auto dbEntity = database[appSession.site.name, "modeller_methods"].createFromTemplate;      
       debug writeln(dbEntity ? "Has entity" : "no entity :-(");
 
       if (auto entityView = cast(DAPPEntityView)this.view) {

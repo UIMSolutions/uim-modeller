@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.packages.update;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesUpdatePageController : DAPPPageController {
+class DMDLPackagesUpdatePageController : DMDLPageController {
   mixin(APPPageControllerThis!("MDLPackagesUpdatePageController"));
 
   override void initialize() {
@@ -28,9 +28,10 @@ class DMDLPackagesUpdatePageController : DAPPPageController {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
+    auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", null);
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database["uim", "modeller_packages"].findOne(UUID(entityId))) {
+      if (auto dbEntity = database[appSession.site.name, "modeller_packages"].findOne(UUID(entityId))) {
         
         if (auto entityView = cast(DAPPEntityView)this.view) {
 

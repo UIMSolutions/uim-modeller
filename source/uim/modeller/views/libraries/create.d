@@ -4,8 +4,8 @@ module uim.modeller.views.libraries.create;
 import uim.modeller;
 import uim.modeller.views.libraries;
 
-class DMDLlibrariesCreateView : DAPPEntityCreateView {
-  mixin(APPViewThis!("MDLlibrariesCreateView"));
+class DMDLLibrariesCreateView : DAPPEntityCreateView {
+  mixin(APPViewThis!("MDLLibrariesCreateView"));
 
   override void initialize() {
     super.initialize;
@@ -39,7 +39,7 @@ class DMDLlibrariesCreateView : DAPPEntityCreateView {
   }
 
   override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLlibrariesCreateView~"::DMDLlibrariesCreateView:beforeH5");
+    debugMethodCall(moduleName!DMDLLibrariesCreateView~"::DMDLLibrariesCreateView:beforeH5");
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     super.beforeH5(options);
 
@@ -56,4 +56,4 @@ class DMDLlibrariesCreateView : DAPPEntityCreateView {
  */      .entity(this.entity);
   }
 }
-mixin(APPViewCalls!("MDLlibrariesCreateView"));
+mixin(APPViewCalls!("MDLLibrariesCreateView"));

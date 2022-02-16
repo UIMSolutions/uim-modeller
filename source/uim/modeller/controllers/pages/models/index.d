@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.models.index;
 @safe:
 import uim.modeller;
 
-class DMDLModelsIndexPageController : DAPPPageController {
+class DMDLModelsIndexPageController : DMDLPageController {
   mixin(APPPageControllerThis!("MDLModelsIndexPageController"));
 
   override void initialize() {
@@ -36,7 +36,7 @@ class DMDLModelsIndexPageController : DAPPPageController {
     if (auto entitiesView = cast(DAPPEntitiesListView)this.view) {
       debug writeln("entitiesView found");
 
-      auto dbEntities = db["uim", "modeller_models"].findMany();
+      auto dbEntities = db[appSession.site.name, "modeller_models"].findMany();
       debug writeln("Found entities: ", dbEntities.length);
 
       entitiesView

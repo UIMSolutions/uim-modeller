@@ -1,4 +1,4 @@
-module source.uim.modeller.views.components.forms.groups.packages;
+module uim.modeller.views.components.forms.groups.packages;
 
 @safe:
 import uim.modeller;
@@ -31,8 +31,9 @@ class DMDLPackagesFormGroup : DAPPFormGroup {
   override void beforeH5(STRINGAA options = null) { 
     super.beforeH5(options);
 
+    auto appSession = getAppSession(options);
     if (this.database) {
-      this.packageId(database["uim", "modeller_packages"].findMany());
+      this.packageId(database[appSession.site.name, "modeller_packages"].findMany());
     }
   }
 
