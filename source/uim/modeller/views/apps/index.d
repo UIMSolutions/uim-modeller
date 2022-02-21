@@ -21,7 +21,7 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Apps";
 
     this
-      .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Apps")).actions(["refresh", "list", "create"]))
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Apps")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Apps").subTitle("Apps anzeigen").actions([["print", "export"]]))
@@ -33,7 +33,7 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAppsIndexView~":DMDLAppsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/apps").mainTitle("Apps").subTitle("Übersicht Apps").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/apps").mainTitle("Apps").subTitle("Übersicht Apps").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

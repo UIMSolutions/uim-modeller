@@ -31,7 +31,7 @@ class DMDLMethodsReadPageController : DMDLPageController {
       if (auto dbEntity = database[appSession.site.name, "modeller_methods"].findOne(UUID(entityId))) {
         
         debug writeln("Found Entity -> ", dbEntity.id);        
-        if (auto entityView = cast(DAPPEntityView)this.view) {
+        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
 
           debug writeln("Setting entityView");
           with(entityView) {

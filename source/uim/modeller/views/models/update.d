@@ -18,7 +18,7 @@ class DMDLModelsUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/models/update"], "Bearbeiten")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Modell bearbeiten"));
@@ -28,7 +28,7 @@ class DMDLModelsUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Modelle")
       .subTitle("Modell anzeigen");

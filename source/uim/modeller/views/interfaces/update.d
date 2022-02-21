@@ -17,7 +17,7 @@ class DMDLInterfacesUpdateView : DAPPEntityUpdateView {
       .link(["href":myRootPath], "Interfaces")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Blog bearbeiten"));
@@ -27,7 +27,7 @@ class DMDLInterfacesUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Interfaces")
       .subTitle("Interfaces anzeigen");

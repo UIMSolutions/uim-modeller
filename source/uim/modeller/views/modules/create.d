@@ -18,7 +18,7 @@ class DMDLModulesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/modules/create"], "Erstellen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleCreate("Modul erstellen"));
@@ -27,7 +27,7 @@ class DMDLModulesCreateView : DAPPEntityCreateView {
       .action("/modeller/modules/actions/create")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Neues Modul")
       .subTitle("Bitte Werte eingeben")

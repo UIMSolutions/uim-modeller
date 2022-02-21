@@ -21,7 +21,7 @@ class DMDLLibrariesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Libraryle";
 
     this
-      .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht libraries")).actions(["refresh", "list", "create"]))
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht libraries")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("libraries").subTitle("libraries anzeigen").actions([["print", "export"]]))
@@ -33,7 +33,7 @@ class DMDLLibrariesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLLibrariesIndexView~":DMDLLibrariesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/libraries").mainTitle("Libraryle").subTitle("Übersicht Libraryle").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/libraries").mainTitle("Libraryle").subTitle("Übersicht Libraryle").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

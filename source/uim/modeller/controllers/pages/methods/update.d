@@ -33,7 +33,7 @@ class DMDLMethodsUpdatePageController : DMDLPageController {
     if (entityId && entityId.isUUID && this.database) {  
       if (auto dbEntity = database[appSession.site.name, "modeller_methods"].findOne(UUID(entityId))) {
         
-        if (auto entityView = cast(DAPPEntityView)this.view) {
+        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
 
           debug writeln("Setting entityView");
           with(entityView) {

@@ -18,7 +18,7 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
       .link(["active"], ["href":"/modeller/entityclasses/delete"], "Löschen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleDelete("Entitätenklasse löschen"));
@@ -27,7 +27,7 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
       .action("/modeller/entityclasses/actions/delete")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Entitätenklassen")
       .subTitle("Entitätenklasse löschen");

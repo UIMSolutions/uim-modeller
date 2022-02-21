@@ -17,7 +17,7 @@ class DMDLPackagesReadView : DAPPEntityReadView {
       .link(["href":myRootPath], "Packages")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(
@@ -26,7 +26,7 @@ class DMDLPackagesReadView : DAPPEntityReadView {
     this.form
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Packages")
       .subTitle("Packages anzeigen");

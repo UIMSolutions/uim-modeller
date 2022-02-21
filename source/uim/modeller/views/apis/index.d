@@ -21,7 +21,7 @@ class DMDLApisIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Apis";
 
     this
-      .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Apis")).actions(["refresh", "list", "create"]))
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Apis")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Apis").subTitle("Apis anzeigen").actions([["print", "export"]]))
@@ -33,7 +33,7 @@ class DMDLApisIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLApisIndexView~":DMDLApisIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/apis").mainTitle("Apis").subTitle("Übersicht Apis").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/apis").mainTitle("Apis").subTitle("Übersicht Apis").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

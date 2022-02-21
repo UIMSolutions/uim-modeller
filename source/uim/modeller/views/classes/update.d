@@ -17,7 +17,7 @@ class DMDLClassesUpdateView : DAPPEntityUpdateView {
       .link(["href":myRootPath], "Classes")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Blog bearbeiten"));
@@ -27,7 +27,7 @@ class DMDLClassesUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Classes")
       .subTitle("Classes anzeigen");

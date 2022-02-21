@@ -12,8 +12,8 @@ class DMDLModelsFormGroup : DAPPFormGroup {
     this
     .id("entity_modelid")
     .name("entity_modelid")
-    .fieldName("modelidId")
-    .label("modelidThema"); 
+    .fieldName("modelId")
+    .label("Modell"); 
   }
   mixin(SProperty!("DOOPEntity[]", "modelIds"));
 

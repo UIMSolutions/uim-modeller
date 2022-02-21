@@ -17,7 +17,7 @@ class DMDLInterfacesCreateView : DAPPEntityCreateView {
       .link(["href":myRootPath], "Attribute")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleCreate("Attribut erstellen"));
@@ -26,7 +26,7 @@ class DMDLInterfacesCreateView : DAPPEntityCreateView {
       .action("/modeller/interfaces/actions/create")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Neues Attribute")
       .subTitle("Bitte Werte eingeben")

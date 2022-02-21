@@ -17,7 +17,7 @@ class DMDLAttributesUpdateView : DAPPEntityUpdateView {
       .link(["href":myRootPath], "Attributes")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Blog bearbeiten"));
@@ -27,7 +27,7 @@ class DMDLAttributesUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Attributes")
       .subTitle("Attributes anzeigen");

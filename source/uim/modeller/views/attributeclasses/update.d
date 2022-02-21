@@ -18,7 +18,7 @@ class DMDLAttributeClassesUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/attributeclasses/update"], "Bearbeiten")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Blog bearbeiten"));
@@ -28,7 +28,7 @@ class DMDLAttributeClassesUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Attributklassen")
       .subTitle("Attributklasse anzeigen");

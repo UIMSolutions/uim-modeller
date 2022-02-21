@@ -18,7 +18,7 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/entityclasses/update"], "Bearbeiten")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Entitätenklasse bearbeiten"));
@@ -28,7 +28,7 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Entitätenklassen")
       .subTitle("Entitätenklasse bearbeiten");

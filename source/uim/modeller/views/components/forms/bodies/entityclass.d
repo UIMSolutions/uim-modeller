@@ -10,7 +10,7 @@ class DMDLEntityClassFormBody : DAPPEntityFormBody {
     super.initialize;
 
     this
-      .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist"])
+      .addFields(["models", "mainTitle", "subTitle"])
       .formGroupHandler(MDLFormGroupHandler); 
   }
 }

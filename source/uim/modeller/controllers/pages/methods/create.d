@@ -36,7 +36,7 @@ class DMDLMethodsCreatePageController : DMDLPageController {
       auto dbEntity = database[appSession.site.name, "modeller_methods"].createFromTemplate;      
       debug writeln(dbEntity ? "Has entity" : "no entity :-(");
 
-      if (auto entityView = cast(DAPPEntityView)this.view) {
+      if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
         debug writeln("Has entityView");
 
         with(entityView) {

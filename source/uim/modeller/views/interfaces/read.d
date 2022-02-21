@@ -17,7 +17,7 @@ class DMDLInterfacesReadView : DAPPEntityReadView {
       .link(["href":myRootPath], "Interfaces")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(
@@ -26,7 +26,7 @@ class DMDLInterfacesReadView : DAPPEntityReadView {
     this.form
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Interfaces")
       .subTitle("Interfaces anzeigen");

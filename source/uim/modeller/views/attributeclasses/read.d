@@ -18,7 +18,7 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
       .link(["active"], ["href":"/modeller/attributeclasses/read"], "Anzeigen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleView("Attributklasse anzeigen"));
@@ -26,7 +26,7 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
     this.form
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Attributklassen")
       .subTitle("Attributklasse anzeigen");

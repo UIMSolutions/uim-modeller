@@ -18,7 +18,7 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/attributeclasses/create"], "Erstellen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleCreate("Attributklasse erstellen"));
@@ -27,7 +27,7 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       .action("/modeller/attributeclasses/actions/create")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Neue Attributklasse")
       .subTitle("Bitte Werte eingeben")

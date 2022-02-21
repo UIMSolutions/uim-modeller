@@ -17,7 +17,7 @@ class DMDLAppsDeleteView : DAPPEntityDeleteView {
       .link(["href":myRootPath], "Apps")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleDelete("Blog löschen"));
@@ -26,7 +26,7 @@ class DMDLAppsDeleteView : DAPPEntityDeleteView {
       .action("/modeller/apps/actions/delete")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Apps")
       .subTitle("Apps löschen");

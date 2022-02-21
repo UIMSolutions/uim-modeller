@@ -18,7 +18,7 @@ class DMDLLibrariesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/libraries/create"], "Erstellen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleCreate("Libraryl erstellen"));
@@ -27,7 +27,7 @@ class DMDLLibrariesCreateView : DAPPEntityCreateView {
       .action(myRootPath~"/actions/create")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Neues Libraryl")
       .subTitle("Bitte Werte eingeben")

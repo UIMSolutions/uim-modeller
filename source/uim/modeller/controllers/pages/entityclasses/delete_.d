@@ -31,7 +31,7 @@ class DMDLEntityClassesDeletePageController : DMDLPageController {
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
       auto dbEntity = database[appSession.site.name, "modeller_entityclasses"].findOne(UUID(entityId));      
-      if (auto entityView = cast(DAPPEntityView)this.view) {
+      if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
         with(entityView) {
           entity(dbEntity);
           crudMode(CRUDModes.Delete);

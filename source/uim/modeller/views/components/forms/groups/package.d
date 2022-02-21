@@ -20,6 +20,7 @@ public import uim.modeller.views.components.forms.groups.maintitle;
 public import uim.modeller.views.components.forms.groups.models;
 public import uim.modeller.views.components.forms.groups.packages;
 public import uim.modeller.views.components.forms.groups.summary;
+public import uim.modeller.views.components.forms.groups.subtitle;
 public import uim.modeller.views.components.forms.groups.text;
 public import uim.modeller.views.components.forms.groups.theme;
 public import uim.modeller.views.components.forms.groups.valueconstrainedtolist;

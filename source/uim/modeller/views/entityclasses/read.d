@@ -14,37 +14,32 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":"/modeller/entityclasses"], "Entitätenklassen")
+      .link(["href":"/modeller/entityclasses"], "Entitätsklassen")
       .link(["active"], ["href":"/modeller/entityclasses/read"], "Anzeigen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
-      .title(titleView("Entitätenklasse anzeigen"));
+      .title(titleView("Entitätsklasse anzeigen"));
     
     this.form
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Entitätenklassen")
       .subTitle("Entitätenklasse anzeigen");
 
     this.form.formBody(
-      MDLEntityClassFormBody(this.form));
+      MDLEntityClassFormBody(this.form).crudMode(CRUDModes.Read));
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLEntityClassesReadView~"::DMDLEntityClassesReadView:beforeH5");
     super.beforeH5(options);
 
-    auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
-    auto bodyTitle = "Blog Name:";
-
     this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
       .entity(this.entity);
   }
 }

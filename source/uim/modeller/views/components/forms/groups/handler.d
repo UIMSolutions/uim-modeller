@@ -19,8 +19,10 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
         "isbig": MDLIsBigFormGroup,
         "isnullable": MDLIsNullableFormGroup,
         "isreadonly": MDLIsReadOnlyFormGroup,
+        "mainTitle": MDLMainTitleFormGroup,
         "models": MDLModelsFormGroup,
         "packages": MDLPackagesFormGroup,
+        "subTitle": MDLSubTitleFormGroup,
         "summary": MDLSummaryFormGroup,
         "text": MDLTextFormGroup,
         "valueconstrainedtolist": MDLValueConstrainedToListFormGroup

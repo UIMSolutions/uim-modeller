@@ -17,7 +17,7 @@ class DMDLAttributesReadView : DAPPEntityReadView {
       .link(["href":myRootPath], "Attributes")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(
@@ -26,7 +26,7 @@ class DMDLAttributesReadView : DAPPEntityReadView {
     this.form
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Attributes")
       .subTitle("Attributes anzeigen");

@@ -17,7 +17,7 @@ class DMDLMethodsReadView : DAPPEntityReadView {
       .link(["href":myRootPath], "Methods")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(
@@ -26,7 +26,7 @@ class DMDLMethodsReadView : DAPPEntityReadView {
     this.form
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Methods")
       .subTitle("Methods anzeigen");

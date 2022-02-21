@@ -17,7 +17,7 @@ class DMDLMethodsCreateView : DAPPEntityCreateView {
       .link(["href":myRootPath], "Method")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleCreate("Attribut erstellen"));
@@ -26,7 +26,7 @@ class DMDLMethodsCreateView : DAPPEntityCreateView {
       .action("/modeller/methods/actions/create")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Neues Method")
       .subTitle("Bitte Werte eingeben")

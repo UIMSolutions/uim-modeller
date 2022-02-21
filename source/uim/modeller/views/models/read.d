@@ -18,7 +18,7 @@ class DMDLModelsReadView : DAPPEntityReadView {
       .link(["active"], ["href":"/modeller/models/read"], "Anzeigen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleView("Modell anzeigen"));
@@ -26,7 +26,7 @@ class DMDLModelsReadView : DAPPEntityReadView {
     this.form
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Modelle")
       .subTitle("Modell anzeigen");

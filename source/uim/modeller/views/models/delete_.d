@@ -18,7 +18,7 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
       .link(["active"], ["href":"/modeller/models/delete"], "Löschen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleDelete("Modell löschen"));
@@ -27,7 +27,7 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
       .action("/modeller/models/actions/delete")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Modelle")
       .subTitle("Modell löschen");

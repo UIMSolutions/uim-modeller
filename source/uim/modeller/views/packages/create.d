@@ -17,7 +17,7 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
       .link(["href":myRootPath], "Package")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleCreate("Attribut erstellen"));
@@ -26,7 +26,7 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
       .action("/modeller/packages/actions/create")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Neues Package")
       .subTitle("Bitte Werte eingeben")

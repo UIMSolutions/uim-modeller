@@ -18,7 +18,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/entityclasses/create"], "Erstellen")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleCreate("Entitätenklasse erstellen"));
@@ -27,7 +27,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       .action(myRootPath~"/actions/create")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Neue Entitätenklasse")
       .subTitle("Bitte Werte eingeben")

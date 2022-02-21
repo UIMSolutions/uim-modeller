@@ -17,7 +17,7 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
       .link(["href":myRootPath], "Apis")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Blog bearbeiten"));
@@ -27,7 +27,7 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Apis")
       .subTitle("Apis anzeigen");

@@ -17,7 +17,7 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
       .link(["href":myRootPath], "Apis")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleDelete("Blog löschen"));
@@ -26,7 +26,7 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
       .action("/modeller/apis/actions/delete")
       .rootPath(myRootPath);
     
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Apis")
       .subTitle("Apis löschen");

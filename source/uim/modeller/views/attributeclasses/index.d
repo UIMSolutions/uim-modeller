@@ -21,7 +21,7 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Attributklassen";
 
     this
-      .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Attributeclasses")).actions(["refresh", "list", "create"]))
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Attributeclasses")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Attributeclasses").subTitle("Attributeclasses anzeigen").actions([["print", "export"]]))
@@ -33,7 +33,7 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAttributeClassesIndexView~":DMDLAttributeClassesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/attributeclasses").mainTitle("Attributklassen").subTitle("Übersicht Attributklassen").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/attributeclasses").mainTitle("Attributklassen").subTitle("Übersicht Attributklassen").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

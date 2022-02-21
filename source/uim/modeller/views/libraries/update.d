@@ -18,7 +18,7 @@ class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/libraries/update"], "Bearbeiten")
     );
 
-    this.pageHeader
+    this.header
       .breadcrumbs(bc)
       .rootPath(myRootPath)
       .title(titleEdit("Libraryl bearbeiten"));
@@ -28,7 +28,7 @@ class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .rootPath(myRootPath);
 
-    this.form.formHeader
+    this.form.header
       .rootPath(myRootPath)
       .mainTitle("Libraryle")
       .subTitle("Libraryl anzeigen");

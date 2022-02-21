@@ -21,7 +21,7 @@ class DMDLClassesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Classes";
 
     this
-      .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Classes")).actions(["refresh", "list", "create"]))
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Classes")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Classes").subTitle("Classes anzeigen").actions([["print", "export"]]))
@@ -33,7 +33,7 @@ class DMDLClassesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLClassesIndexView~":DMDLClassesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/classes").mainTitle("Classes").subTitle("Übersicht Classes").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/classes").mainTitle("Classes").subTitle("Übersicht Classes").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

@@ -21,7 +21,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Entitätenklassen";
 
     this
-      .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Entityclasses")).actions(["refresh", "list", "create"]))
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Entityclasses")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Entityclasses").subTitle("Entityclasses anzeigen").actions([["print", "export"]]))
@@ -33,7 +33,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLEntityClassesIndexView~":DMDLEntityClassesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/entityclasses").mainTitle("Entitätenklassen").subTitle("Übersicht Entitätenklassen").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/entityclasses").mainTitle("Entitätenklassen").subTitle("Übersicht Entitätenklassen").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

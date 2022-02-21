@@ -21,7 +21,7 @@ class DMDLMethodsIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Methods";
 
     this
-      .pageHeader(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Methods")).actions(["refresh", "list", "create"]))
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Methods")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Methods").subTitle("Methods anzeigen").actions([["print", "export"]]))
@@ -33,7 +33,7 @@ class DMDLMethodsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLMethodsIndexView~":DMDLMethodsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.formHeader(APPFormHeader.rootPath("/methods").mainTitle("Methods").subTitle("Übersicht Methods").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/methods").mainTitle("Methods").subTitle("Übersicht Methods").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
