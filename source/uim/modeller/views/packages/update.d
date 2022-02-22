@@ -32,7 +32,7 @@ class DMDLPackagesUpdateView : DAPPEntityUpdateView {
       .mainTitle("Packages")
       .subTitle("Packages anzeigen");
       
-    this.form.formBody(
+    this.form.body_(
       MDLPackageFormBody(this.form));
   }
 
