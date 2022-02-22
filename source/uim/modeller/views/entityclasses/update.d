@@ -30,16 +30,17 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
 
     this.form.header
       .rootPath(myRootPath)
-      .mainTitle("Entitätenklassen")
-      .subTitle("Entitätenklasse bearbeiten");
+      .mainTitle("Entitätsklassen")
+      .subTitle("Entitätsklasse bearbeiten");
       
-    this.form.formBody(
+    this.form.body_(
       MDLEntityClassFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLEntityClassesUpdateView~"::DMDLEntityClassesUpdateView:beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     auto headerTitle = "Entitätenklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Entitätenklasse Name:";

@@ -32,7 +32,7 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
       .mainTitle("Apis")
       .subTitle("Apis anzeigen");
       
-    this.form.formBody(
+    this.form.body_(
       MDLAttributeFormBody(this.form));
   }
 

@@ -31,7 +31,7 @@ class DMDLAppsReadView : DAPPEntityReadView {
       .mainTitle("Apps")
       .subTitle("Apps anzeigen");
 
-    this.form.formBody(
+    this.form.body_(
       MDLAttributeFormBody(this.form)); 
   }
 

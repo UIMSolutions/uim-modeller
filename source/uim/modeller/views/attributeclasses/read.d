@@ -31,7 +31,7 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
       .mainTitle("Attributklassen")
       .subTitle("Attributklasse anzeigen");
 
-    this.form.formBody(
+    this.form.body_(
       MDLAttributeClassFormBody(this.form));
   }
 

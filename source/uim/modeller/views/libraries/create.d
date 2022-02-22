@@ -33,8 +33,8 @@ class DMDLLibrariesCreateView : DAPPEntityCreateView {
       .subTitle("Bitte Werte eingeben")
       .actions([["cancel", "save"]]);
 
-    this.form.formBody(
-      MDLEntityClassFormBody(this.form)
+    this.form.body_(
+      MDLLibraryFormBody(this.form)
       .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
   }
 

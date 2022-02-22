@@ -14,7 +14,7 @@ class DMDLLibrariesDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":"/modeller/libraries"], "Libraryle")
+      .link(["href":"/modeller/libraries"], "Bibliotheken")
       .link(["active"], ["href":"/modeller/libraries/delete"], "Löschen")
     );
 
@@ -29,16 +29,17 @@ class DMDLLibrariesDeleteView : DAPPEntityDeleteView {
     
     this.form.header
       .rootPath(myRootPath)
-      .mainTitle("Libraryle")
-      .subTitle("Libraryl löschen");
+      .mainTitle("Bibliotheken")
+      .subTitle("Bibliothek löschen");
     
-    this.form.formBody(
-      MDLEntityClassFormBody(this.form));
+    this.form.body_(
+      MDLLibraryFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLLibrariesDeleteView~"::DMDLLibrariesDeleteView:beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     auto headerTitle = "Libraryl ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Libraryl Name:";

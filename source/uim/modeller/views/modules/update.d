@@ -33,7 +33,7 @@ class DMDLModulesUpdateView : DAPPEntityUpdateView {
       .mainTitle("Module")
       .subTitle("Modul anzeigen");
       
-    this.form.formBody(
+    this.form.body_(
       MDLModuleFormBody(this.form));
   }
 

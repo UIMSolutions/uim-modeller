@@ -28,16 +28,17 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
 
     this.form.header
       .rootPath(myRootPath)
-      .mainTitle("Entitätenklassen")
-      .subTitle("Entitätenklasse anzeigen");
+      .mainTitle("Entitätsklassen")
+      .subTitle("Entitätsklasse anzeigen");
 
-    this.form.formBody(
+    this.form.body_(
       MDLEntityClassFormBody(this.form).crudMode(CRUDModes.Read));
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLEntityClassesReadView~"::DMDLEntityClassesReadView:beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     this.form
       .entity(this.entity);

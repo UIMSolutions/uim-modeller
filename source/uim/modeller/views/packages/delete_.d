@@ -33,7 +33,7 @@ class DMDLPackagesDeleteView : DAPPEntityDeleteView {
     
     this
       .form
-        .formBody(
+        .body_(
           MDLPackageFormBody(this.form)); 
   }
 

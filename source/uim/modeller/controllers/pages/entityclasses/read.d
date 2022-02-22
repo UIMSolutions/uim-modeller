@@ -28,12 +28,12 @@ class DMDLEntityClassesReadPageController : DMDLPageController {
     auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database[appSession.site.name, "modeller_entityclasses"].findOne(UUID(entityId))) {
-        
+      if (auto dbEntity = database[appSession.site.name, "modeller_entityclasses"].findOne(UUID(entityId))) {        
         debug writeln("Found Entity -> ", dbEntity.id);        
-        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
 
-          debug writeln("Setting entityView");
+        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
+          debug writeln("Found entityView");
+
           with(entityView) {
             entity(dbEntity);
             crudMode(CRUDModes.Read);

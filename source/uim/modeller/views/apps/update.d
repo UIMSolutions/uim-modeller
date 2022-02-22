@@ -32,7 +32,7 @@ class DMDLAppsUpdateView : DAPPEntityUpdateView {
       .mainTitle("Apps")
       .subTitle("Apps anzeigen");
       
-    this.form.formBody(
+    this.form.body_(
       MDLAttributeFormBody(this.form));
   }
 

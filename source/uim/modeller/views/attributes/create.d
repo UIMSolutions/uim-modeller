@@ -34,7 +34,7 @@ class DMDLAttributesCreateView : DAPPEntityCreateView {
 
     this
       .form
-        .formBody(
+        .body_(
             MDLAttributeFormBody(this.form)); 
   }
 

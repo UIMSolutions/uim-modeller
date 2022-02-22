@@ -33,7 +33,7 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       .subTitle("Bitte Werte eingeben")
       .actions([["cancel", "save"]]);
 
-    this.form.formBody(
+    this.form.body_(
       MDLAttributeClassFormBody(this.form)); 
   }
 

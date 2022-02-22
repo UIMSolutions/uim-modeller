@@ -25,7 +25,7 @@ class DMDLMethodsIndexView : DAPPEntitiesListView {
       .form(APPEntitiesListForm(this).rootPath(myRootPath));
 /*       .form
         .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Methods").subTitle("Methods anzeigen").actions([["print", "export"]]))
-        .formBody(APPListFormBody(this.form).rootPath(myRootPath));
+        .body_(APPListFormBody(this.form).rootPath(myRootPath));
         
  */  }
 

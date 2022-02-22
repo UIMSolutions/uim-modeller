@@ -31,7 +31,7 @@ class DMDLMethodsReadView : DAPPEntityReadView {
       .mainTitle("Methods")
       .subTitle("Methods anzeigen");
 
-    this.form.formBody(
+    this.form.body_(
       MDLMethodFormBody(this.form)); 
   }
 

@@ -35,7 +35,7 @@ class DMDLModulesCreateView : DAPPEntityCreateView {
 
     this
       .form
-        .formBody(
+        .body_(
             MDLModuleFormBody(this.form)); 
   }
 

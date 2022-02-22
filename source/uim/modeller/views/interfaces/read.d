@@ -31,7 +31,7 @@ class DMDLInterfacesReadView : DAPPEntityReadView {
       .mainTitle("Interfaces")
       .subTitle("Interfaces anzeigen");
 
-    this.form.formBody(
+    this.form.body_(
       MDLAttributeFormBody(this.form)); 
   }
 

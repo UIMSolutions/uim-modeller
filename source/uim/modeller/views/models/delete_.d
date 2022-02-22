@@ -32,13 +32,14 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
       .mainTitle("Modelle")
       .subTitle("Modell löschen");
     
-    this.form.formBody(
-      MDLEntityClassFormBody(this.form));
+    this.form.body_(
+      MDLModelFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLModelsDeleteView~"::DMDLModelsDeleteView:beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     auto headerTitle = "Modell ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Modell Name:";

@@ -34,7 +34,7 @@ class DMDLModulesDeleteView : DAPPEntityDeleteView {
     
     this
       .form
-        .formBody(
+        .body_(
           MDLModuleFormBody(this.form)); 
   }
 

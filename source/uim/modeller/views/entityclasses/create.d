@@ -33,7 +33,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       .subTitle("Bitte Werte eingeben")
       .actions([["cancel", "save"]]);
 
-    this.form.formBody(
+    this.form.body_(
       MDLEntityClassFormBody(this.form)
       .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
   }
@@ -42,6 +42,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
     debugMethodCall(moduleName!DMDLEntityClassesCreateView~"::DMDLEntityClassesCreateView:beforeH5");
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     options["rootPath"] = myRootPath;
 

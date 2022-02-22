@@ -31,13 +31,14 @@ class DMDLModelsReadView : DAPPEntityReadView {
       .mainTitle("Modelle")
       .subTitle("Modell anzeigen");
 
-    this.form.formBody(
-      MDLEntityClassFormBody(this.form));
+    this.form.body_(
+      MDLModelFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLModelsReadView~"::DMDLModelsReadView:beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     auto headerTitle = "Modell ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Modell Name:";

@@ -31,8 +31,8 @@ class DMDLLibrariesReadView : DAPPEntityReadView {
       .mainTitle("Libraryle")
       .subTitle("Libraryl anzeigen");
 
-    this.form.formBody(
-      MDLEntityClassFormBody(this.form));
+    this.form.body_(
+      MDLLibraryFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

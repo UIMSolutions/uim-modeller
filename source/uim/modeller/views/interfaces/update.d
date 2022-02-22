@@ -32,7 +32,7 @@ class DMDLInterfacesUpdateView : DAPPEntityUpdateView {
       .mainTitle("Interfaces")
       .subTitle("Interfaces anzeigen");
       
-    this.form.formBody(
+    this.form.body_(
       MDLAttributeFormBody(this.form));
   }
 

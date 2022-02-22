@@ -32,13 +32,14 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
       .mainTitle("Entitätenklassen")
       .subTitle("Entitätenklasse löschen");
     
-    this.form.formBody(
+    this.form.body_(
       MDLEntityClassFormBody(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLEntityClassesDeleteView~"::DMDLEntityClassesDeleteView:beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
