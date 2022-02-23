@@ -20,18 +20,18 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleEdit("Entitätenklasse bearbeiten"));
       
     this.form
       .action("/modeller/entityclasses/actions/save")
       .crudMode(CRUDModes.Update)
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Entitätsklassen")
-      .subTitle("Entitätsklasse bearbeiten");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Entitätsklassen")
+      .parameter("subTitle", "Entitätsklasse bearbeiten");
       
     this.form.body_(
       MDLEntityClassFormBody(this.form));

@@ -20,19 +20,22 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleCreate("Entitätenklasse erstellen"));
 
     this.form
       .action(myRootPath~"/actions/create")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Neue Entitätenklasse")
-      .subTitle("Bitte Werte eingeben")
-      .actions([["cancel", "save"]]);
-
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Neue Entitätenklasse")
+      .parameter("subTitle", "Bitte Werte eingeben");
+    
+    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+      formHeader.actions([["cancel", "save"]]);
+    }
+    
     this.form.body_(
       MDLEntityClassFormBody(this.form)
       .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 

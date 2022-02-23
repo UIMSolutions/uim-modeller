@@ -20,18 +20,18 @@ class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleEdit("Libraryl bearbeiten"));
       
     this.form
       .action("/modeller/libraries/actions/save")
       .crudMode(CRUDModes.Update)
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Libraryle")
-      .subTitle("Libraryl anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Libraryle")
+      .parameter("subTitle", "Libraryl anzeigen");
       
     this.form.body_(
       MDLLibraryFormBody(this.form));

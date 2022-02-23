@@ -20,17 +20,17 @@ class DMDLModulesReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(
         titleView("Blog anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Module")
-      .subTitle("Modul anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Module")
+      .parameter("subTitle", "Modul anzeigen");
 
     this.form.body_(
       MDLModuleFormBody(this.form)); 

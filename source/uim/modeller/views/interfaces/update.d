@@ -19,18 +19,18 @@ class DMDLInterfacesUpdateView : DAPPEntityUpdateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleEdit("Blog bearbeiten"));
       
     this.form
       .action("/modeller/interfaces/actions/save")
       .crudMode(CRUDModes.Update)
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Interfaces")
-      .subTitle("Interfaces anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Interfaces")
+      .parameter("subTitle", "Interfaces anzeigen");
       
     this.form.body_(
       MDLAttributeFormBody(this.form));

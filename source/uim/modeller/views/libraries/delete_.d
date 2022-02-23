@@ -20,17 +20,17 @@ class DMDLLibrariesDeleteView : DAPPEntityDeleteView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleDelete("Libraryl löschen"));
 
     this.form
       .action("/modeller/libraries/actions/delete")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Bibliotheken")
-      .subTitle("Bibliothek löschen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Bibliotheken")
+      .parameter("subTitle", "Bibliothek löschen");
     
     this.form.body_(
       MDLLibraryFormBody(this.form));

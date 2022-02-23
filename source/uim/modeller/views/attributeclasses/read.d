@@ -20,16 +20,16 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
-      .title(titleView("Attributklasse anzeigen"));
+      .parameter("rootPath", myRootPath)
+      .parameter("title", titleView("Attributklasse anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Attributklassen")
-      .subTitle("Attributklasse anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Attributklassen")
+      .parameter("subTitle", "Attributklasse anzeigen");
 
     this.form.body_(
       MDLAttributeClassFormBody(this.form));

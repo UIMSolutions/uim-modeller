@@ -20,19 +20,22 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleCreate("Attributklasse erstellen"));
 
     this.form
       .action("/modeller/attributeclasses/actions/create")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Neue Attributklasse")
-      .subTitle("Bitte Werte eingeben")
-      .actions([["cancel", "save"]]);
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Neue Attributklasse")
+      .parameter("subTitle", "Bitte Werte eingeben");
 
+    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+      formHeader.actions([["cancel", "save"]]);
+    }
+    
     this.form.body_(
       MDLAttributeClassFormBody(this.form)); 
   }

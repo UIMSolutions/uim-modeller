@@ -19,17 +19,17 @@ class DMDLApisReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(
         titleView("Blog anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Apis")
-      .subTitle("Apis anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Apis")
+      .parameter("subTitle", "Apis anzeigen");
 
     this.form.body_(
       MDLAttributeFormBody(this.form)); 

@@ -19,17 +19,17 @@ class DMDLAttributesReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(
         titleView("Blog anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Attributes")
-      .subTitle("Attributes anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Attributes")
+      .parameter("subTitle", "Attributes anzeigen");
 
     this.form.body_(
       MDLAttributeFormBody(this.form)); 

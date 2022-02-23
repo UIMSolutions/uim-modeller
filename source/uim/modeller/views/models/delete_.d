@@ -20,17 +20,17 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleDelete("Modell löschen"));
 
     this.form
       .action("/modeller/models/actions/delete")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Modelle")
-      .subTitle("Modell löschen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Modelle")
+      .parameter("subTitle", "Modell löschen");
     
     this.form.body_(
       MDLModelFormBody(this.form));

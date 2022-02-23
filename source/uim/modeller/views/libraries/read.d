@@ -20,16 +20,16 @@ class DMDLLibrariesReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
-      .title(titleView("Libraryl anzeigen"));
+      .parameter("rootPath", myRootPath)
+      .parameter("title", titleView("Libraryl anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Libraryle")
-      .subTitle("Libraryl anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Libraryle")
+      .parameter("subTitle", "Libraryl anzeigen");
 
     this.form.body_(
       MDLLibraryFormBody(this.form));

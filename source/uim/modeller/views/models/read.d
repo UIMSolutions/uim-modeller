@@ -20,16 +20,16 @@ class DMDLModelsReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
-      .title(titleView("Modell anzeigen"));
+      .parameter("rootPath", myRootPath)
+      .parameter("title", titleView("Modell anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Modelle")
-      .subTitle("Modell anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Modelle")
+      .parameter("subTitle", "Modell anzeigen");
 
     this.form.body_(
       MDLModelFormBody(this.form));

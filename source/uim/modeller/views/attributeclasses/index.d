@@ -21,11 +21,11 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Attributklassen";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Attributeclasses")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(myRootPath));
+      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Attributeclasses")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
 /*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Attributeclasses").subTitle("Attributeclasses anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormBody(this.form).rootPath(myRootPath));
+        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Attributeclasses").parameter("subTitle", "Attributeclasses anzeigen").actions([["print", "export"]]))
+        .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
         
  */  }
 
@@ -33,7 +33,7 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAttributeClassesIndexView~":DMDLAttributeClassesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/attributeclasses").mainTitle("Attributklassen").subTitle("Übersicht Attributklassen").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/attributeclasses").parameter("mainTitle", "Attributklassen").parameter("subTitle", "Übersicht Attributklassen").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -42,7 +42,7 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.rootPath(myRootPath);
+    this.parameter("rootPath", myRootPath);
     debug writeln("RootPath in DMDLAttributeClassesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

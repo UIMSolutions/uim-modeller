@@ -21,11 +21,11 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Modelle";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Models")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(myRootPath));
+      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Models")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
 /*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Models").subTitle("Models anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormBody(this.form).rootPath(myRootPath));
+        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Models").parameter("subTitle", "Models anzeigen").actions([["print", "export"]]))
+        .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
         
  */  }
 
@@ -33,7 +33,7 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLModelsIndexView~":DMDLModelsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/models").mainTitle("Modelle").subTitle("Übersicht Modelle").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/models").parameter("mainTitle", "Modelle").parameter("subTitle", "Übersicht Modelle").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -42,7 +42,7 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.rootPath(myRootPath);
+    this.parameter("rootPath", myRootPath);
     debug writeln("RootPath in DMDLModelsIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

@@ -20,17 +20,17 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleDelete("Entitätenklasse löschen"));
 
     this.form
       .action("/modeller/entityclasses/actions/delete")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Entitätenklassen")
-      .subTitle("Entitätenklasse löschen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Entitätenklassen")
+      .parameter("subTitle", "Entitätenklasse löschen");
     
     this.form.body_(
       MDLEntityClassFormBody(this.form));

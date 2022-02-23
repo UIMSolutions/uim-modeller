@@ -20,19 +20,22 @@ class DMDLLibrariesCreateView : DAPPEntityCreateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleCreate("Libraryl erstellen"));
 
     this.form
       .action(myRootPath~"/actions/create")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Neues Libraryl")
-      .subTitle("Bitte Werte eingeben")
-      .actions([["cancel", "save"]]);
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Neues Libraryl")
+      .parameter("subTitle", "Bitte Werte eingeben");
 
+    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+      formHeader.actions([["cancel", "save"]]);
+    }
+    
     this.form.body_(
       MDLLibraryFormBody(this.form)
       .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 

@@ -21,11 +21,11 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Packages";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Packages")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(myRootPath));
+      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Packages")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
 /*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Packages").subTitle("Packages anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormBody(this.form).rootPath(myRootPath));
+        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Packages").parameter("subTitle", "Packages anzeigen").actions([["print", "export"]]))
+        .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
         
  */  }
 
@@ -33,7 +33,7 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLPackagesIndexView~":DMDLPackagesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/packages").mainTitle("Packages").subTitle("Übersicht Packages").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/packages").parameter("mainTitle", "Packages").parameter("subTitle", "Übersicht Packages").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -42,7 +42,7 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.rootPath(myRootPath);
+    this.parameter("rootPath", myRootPath);
     debug writeln("RootPath in DMDLPackagesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

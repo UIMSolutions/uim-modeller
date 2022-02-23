@@ -21,11 +21,11 @@ class DMDLAttributesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Attributes";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(myRootPath).title(titleView("Übersicht Attributes")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(myRootPath));
+      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Attributes")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
 /*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).rootPath(myRootPath).mainTitle("Attributes").subTitle("Attributes anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormBody(this.form).rootPath(myRootPath));
+        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Attributes").parameter("subTitle", "Attributes anzeigen").actions([["print", "export"]]))
+        .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
         
  */  }
 
@@ -33,7 +33,7 @@ class DMDLAttributesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAttributesIndexView~":DMDLAttributesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/attributes").mainTitle("Attributes").subTitle("Übersicht Attributes").actions([["refresh"],["create"]]));
+    this.form.header(APPFormHeader.rootPath("/attributes").parameter("mainTitle", "Attributes").parameter("subTitle", "Übersicht Attributes").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -42,7 +42,7 @@ class DMDLAttributesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.rootPath(myRootPath);
+    this.parameter("rootPath", myRootPath);
     debug writeln("RootPath in DMDLAttributesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

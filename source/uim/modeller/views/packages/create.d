@@ -19,19 +19,22 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleCreate("Attribut erstellen"));
 
     this.form
       .action("/modeller/packages/actions/create")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Neues Package")
-      .subTitle("Bitte Werte eingeben")
-      .actions([["cancel", "save"]]);
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Neues Package")
+      .parameter("subTitle", "Bitte Werte eingeben");
 
+    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+      formHeader.actions([["cancel", "save"]]);
+    }
+    
     this
       .form
         .body_(

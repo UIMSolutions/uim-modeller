@@ -18,19 +18,22 @@ class DMDLApisCreateView : DAPPEntityCreateView {
     );
 
     this.header
-      .breadcrumbs(bc)
-      .rootPath(myRootPath)
-      .title(titleCreate("Attribut erstellen"));
+      .parameter("rootPath", myRootPath)
+      .parameter("title", titleCreate("Attribut erstellen"))
+      .breadcrumbs(bc);
 
     this.form
-      .action("/modeller/apis/actions/create")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath)
+      .action("/modeller/apis/actions/create");
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Neues Attribute")
-      .subTitle("Bitte Werte eingeben")
-      .actions([["cancel", "save"]]);
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Neues Attribute")
+      .parameter("subTitle", "Bitte Werte eingeben");
+
+    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+      formHeader.actions([["cancel", "save"]]);
+    }
 
     this
       .form

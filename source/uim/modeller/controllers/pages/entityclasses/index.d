@@ -3,10 +3,11 @@ module uim.modeller.controllers.pages.entityclasses.index;
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassesIndexPageController : DMDLPageController {
+class DMDLEntityClassesIndexPageController : DAPPEntitiesPageController {
   mixin(APPPageControllerThis!("MDLEntityClassesIndexPageController"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DMDLEntityClassesIndexPageController~":DMDLEntityClassesIndexPageController("~this.name~")::beforeResponse");
     super.initialize;
 
     this
@@ -15,7 +16,7 @@ class DMDLEntityClassesIndexPageController : DMDLPageController {
   }
   
   override void beforeResponse(STRINGAA options = null) {
-    // debugMethodCall(moduleName!DMDLEntityClassesIndexPageController~":DMDLEntityClassesIndexPageController::beforeResponse");
+    debugMethodCall(moduleName!DMDLEntityClassesIndexPageController~":DMDLEntityClassesIndexPageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
     

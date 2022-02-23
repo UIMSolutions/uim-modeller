@@ -19,17 +19,17 @@ class DMDLPackagesReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(
         titleView("Blog anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Packages")
-      .subTitle("Packages anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Packages")
+      .parameter("subTitle", "Packages anzeigen");
 
     this.form.body_(
       MDLPackageFormBody(this.form)); 

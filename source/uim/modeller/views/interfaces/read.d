@@ -19,17 +19,17 @@ class DMDLInterfacesReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(
         titleView("Blog anzeigen"));
     
     this.form
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Interfaces")
-      .subTitle("Interfaces anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Interfaces")
+      .parameter("subTitle", "Interfaces anzeigen");
 
     this.form.body_(
       MDLAttributeFormBody(this.form)); 

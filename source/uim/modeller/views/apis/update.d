@@ -19,18 +19,18 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleEdit("Blog bearbeiten"));
       
     this.form
       .action("/modeller/apis/actions/save")
       .crudMode(CRUDModes.Update)
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Apis")
-      .subTitle("Apis anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Apis")
+      .parameter("subTitle", "Apis anzeigen");
       
     this.form.body_(
       MDLAttributeFormBody(this.form));

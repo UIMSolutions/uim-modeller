@@ -19,18 +19,18 @@ class DMDLClassesUpdateView : DAPPEntityUpdateView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleEdit("Blog bearbeiten"));
       
     this.form
       .action("/modeller/classes/actions/save")
       .crudMode(CRUDModes.Update)
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
 
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Classes")
-      .subTitle("Classes anzeigen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Classes")
+      .parameter("subTitle", "Classes anzeigen");
       
     this.form.body_(
       MDLAttributeFormBody(this.form));

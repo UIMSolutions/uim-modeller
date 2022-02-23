@@ -20,17 +20,17 @@ class DMDLAttributeClassesDeleteView : DAPPEntityDeleteView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleDelete("Blog löschen"));
 
     this.form
       .action("/modeller/attributeclasses/actions/delete")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Attributklassen")
-      .subTitle("Attributklasse löschen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Attributklassen")
+      .parameter("subTitle", "Attributklasse löschen");
     
     this.form.body_(
       MDLAttributeClassFormBody(this.form));

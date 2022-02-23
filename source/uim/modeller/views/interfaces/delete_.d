@@ -19,17 +19,17 @@ class DMDLInterfacesDeleteView : DAPPEntityDeleteView {
 
     this.header
       .breadcrumbs(bc)
-      .rootPath(myRootPath)
+      .parameter("rootPath", myRootPath)
       .title(titleDelete("Blog löschen"));
 
     this.form
       .action("/modeller/interfaces/actions/delete")
-      .rootPath(myRootPath);
+      .parameter("rootPath", myRootPath);
     
     this.form.header
-      .rootPath(myRootPath)
-      .mainTitle("Interfaces")
-      .subTitle("Interfaces löschen");
+      .parameter("rootPath", myRootPath)
+      .parameter("mainTitle", "Interfaces")
+      .parameter("subTitle", "Interfaces löschen");
     
     this
       .form

@@ -19,6 +19,7 @@ mixin(APPControllerCalls!("MDLLibraryAction"));
 
 version(test_uim_mdl) {
   unittest {
+    writeln("--- Test in ", __MODULE__, "/", __LINE__);
     testController(MDLLibraryAction);
   }
 }

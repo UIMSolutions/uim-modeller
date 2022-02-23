@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.interfaces.index;
 @safe:
 import uim.modeller;
 
-class DMDLInterfacesIndexPageController : DMDLPageController {
+class DMDLInterfacesIndexPageController : DAPPEntitiesPageController {
   mixin(APPPageControllerThis!("MDLInterfacesIndexPageController"));
 
   override void initialize() {
