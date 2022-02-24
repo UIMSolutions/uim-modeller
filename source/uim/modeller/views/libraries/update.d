@@ -51,3 +51,12 @@ class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
   }
 }
 mixin(APPViewCalls!("MDLLibrariesUpdateView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLLibrariesUpdateView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLLibrariesUpdateView); 
+}}

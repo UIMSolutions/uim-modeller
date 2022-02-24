@@ -11,8 +11,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLEntityClassesIndexView~":DMDLEntityClassesIndexView("~this.name~")::beforeResponse");
     super.initialize;
 
-    debugMethodCall(moduleName!DMDLEntityClassesIndexView~":DMDLEntityClassesIndexView("~this.name~")::back");
-
+    debug writeln("In ", __MODULE__, "/", __LINE__);
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
@@ -23,27 +22,37 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
     auto headerTitle = titleList("Entitätsklassen");
     auto bodyTitle = "Gefundene Entitätsklassen";
 
+    debug writeln("In ", __MODULE__, "/", __LINE__);
+    
     this
       .header(
         APPPageHeader(this)
           .breadcrumbs(bc)
           .parameter("rootPath", myRootPath)
           .parameter("title", titleView("Übersicht Entitätsklassen"))
-          .actions(["refresh", "list", "create"]))
-      .form(
-          APPEntitiesListForm(this)
-          .parameter("rootPath", myRootPath))
-      .form
-        .header(
-          APPEntitiesFormHeader(this.form)
-            .parameter("rootPath", myRootPath)
-            .parameter("mainTitle", "Entityclasses")
-            .parameter("subTitle", "Entityclasses anzeigen")
-            .actions([["print", "export"]]))
-        .body_(
-            APPListFormBody(this.form)
-              .parameter("rootPath", myRootPath));
-        
+          .actions(["refresh", "list", "create"]));
+
+    debug writeln("In ", __MODULE__, "/", __LINE__);
+    this.form(
+      APPEntitiesListForm(this)
+        .parameter("rootPath", myRootPath));
+
+    
+    debug writeln("In ", __MODULE__, "/", __LINE__);
+    if (this.form) {
+      debug writeln("In ", __MODULE__, "/", __LINE__);
+      this.form.header(
+        APPEntitiesFormHeader(this.form)
+          .parameter("rootPath", myRootPath)
+          .parameter("mainTitle", "Entityclasses")
+          .parameter("subTitle", "Entityclasses anzeigen")
+          .actions([["print", "export"]]));
+      
+      debug writeln("In ", __MODULE__, "/", __LINE__);
+      this.form.body_(
+          APPListFormBody(this.form)
+            .parameter("rootPath", myRootPath));
+    }        
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -51,7 +60,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-    this.form.header(APPFormHeader.rootPath("/entityclasses").parameter("mainTitle", "Entitätsklassen").parameter("subTitle", "Übersicht Entitätsklassen").actions([["refresh"],["create"]]));
+    debug writeln("In ", __MODULE__, "/", __LINE__);
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -80,5 +89,9 @@ mixin(APPViewCalls!("MDLEntityClassesIndexView"));
 
 version(test_uim_modeller) {
   unittest {
-    // TODO
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLEntityClassesIndexView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLEntityClassesIndexView); 
 }}

@@ -8,6 +8,7 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
   mixin(APPViewThis!("MDLApisDeleteView"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DMDLApisDeleteView~"::DMDLApisDeleteView("~this.name~"):initialize");   
     super.initialize;
 
     auto bc = BS5Breadcrumb(
@@ -52,3 +53,12 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
   }
 }
 mixin(APPViewCalls!("MDLApisDeleteView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLApisDeleteView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLApisDeleteView); 
+}}

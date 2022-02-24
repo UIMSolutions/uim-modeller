@@ -50,3 +50,12 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
   }
 }
 mixin(APPViewCalls!("MDLApisUpdateView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLApisUpdateView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLApisUpdateView); 
+}}

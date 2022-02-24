@@ -49,3 +49,12 @@ class DMDLApisIndexPageController : DAPPEntitiesPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLApisIndexPageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLApisIndexPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLApisIndexPageController); 
+}}

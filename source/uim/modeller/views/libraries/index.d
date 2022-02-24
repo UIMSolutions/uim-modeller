@@ -62,5 +62,9 @@ mixin(APPViewCalls!("MDLLibrariesIndexView"));
 
 version(test_uim_modeller) {
   unittest {
-    // TODO
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLLibrariesIndexView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLLibrariesIndexView); 
 }}

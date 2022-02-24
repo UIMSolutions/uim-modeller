@@ -49,3 +49,12 @@ class DMDLMethodsIndexPageController : DAPPEntitiesPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLMethodsIndexPageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLMethodsIndexPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLMethodsIndexPageController); 
+}}

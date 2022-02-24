@@ -43,3 +43,12 @@ class DMDLPackagesDeletePageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLPackagesDeletePageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLPackagesDeletePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLPackagesDeletePageController); 
+}}

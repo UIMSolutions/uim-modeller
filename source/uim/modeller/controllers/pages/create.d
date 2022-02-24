@@ -77,8 +77,11 @@ class DMDLCreatePageController : DMDLPageController {
 }
 mixin(APPPageControllerCalls!("MDLCreatePageController"));
 
-version(test_uim_mdl) {
+version(test_uim_modeller) {
   unittest {
-    assert(new DMDLCreatePageController);
-    assert(MDLCreatePageController);
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLCreatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLCreatePageController); 
 }}

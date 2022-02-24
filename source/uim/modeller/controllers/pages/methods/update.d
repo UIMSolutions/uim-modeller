@@ -47,3 +47,12 @@ class DMDLMethodsUpdatePageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLMethodsUpdatePageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLMethodsUpdatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLMethodsUpdatePageController); 
+}}

@@ -52,3 +52,12 @@ class DMDLModelsUpdateView : DAPPEntityUpdateView {
   }
 }
 mixin(APPViewCalls!("MDLModelsUpdateView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLModelsUpdateView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLModelsUpdateView); 
+}}

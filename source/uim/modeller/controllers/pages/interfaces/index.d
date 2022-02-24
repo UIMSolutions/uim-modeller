@@ -49,3 +49,12 @@ class DMDLInterfacesIndexPageController : DAPPEntitiesPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLInterfacesIndexPageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLInterfacesIndexPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLInterfacesIndexPageController); 
+}}

@@ -52,3 +52,12 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
   }
 }
 mixin(APPViewCalls!("MDLModelsDeleteView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLModelsDeleteView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLModelsDeleteView); 
+}}

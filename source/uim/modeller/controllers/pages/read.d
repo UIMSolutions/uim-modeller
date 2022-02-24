@@ -70,8 +70,11 @@ else addToPageScript(reqParameters,
 }
 mixin(APPPageControllerCalls!("MDLReadPageController"));
 
-version(test_uim_mdl) {
+version(test_uim_modeller) {
   unittest {
-    assert(new DMDLReadPageController);
-    assert(MDLReadPageController);
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLReadPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLReadPageController); 
 }}

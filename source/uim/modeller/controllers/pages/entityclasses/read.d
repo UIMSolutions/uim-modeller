@@ -46,3 +46,12 @@ class DMDLEntityClassesReadPageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLEntityClassesReadPageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLEntityClassesReadPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLEntityClassesReadPageController); 
+}}

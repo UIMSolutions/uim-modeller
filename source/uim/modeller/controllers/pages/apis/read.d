@@ -46,3 +46,12 @@ class DMDLApisReadPageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLApisReadPageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLApisReadPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLApisReadPageController); 
+}}

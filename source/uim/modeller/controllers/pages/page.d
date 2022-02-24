@@ -19,8 +19,11 @@ class DMDLPageController : DAPPPageController {
 }
 mixin(APPPageControllerCalls!("MDLPageController"));
 
-version(test_uim_mdl) {
+version(test_uim_modeller) {
   unittest {
-    assert(new DMDLPageController);
-    assert(MDLPage);
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLPageController); 
 }}

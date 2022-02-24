@@ -54,3 +54,12 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
   }
 }
 mixin(APPViewCalls!("MDLAttributeClassesCreateView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLAttributeClassesCreateView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLAttributeClassesCreateView); 
+}}

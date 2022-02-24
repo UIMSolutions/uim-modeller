@@ -8,7 +8,9 @@ class DMDLApisCreateView : DAPPEntityCreateView {
   mixin(APPViewThis!("MDLApisCreateView"));
 
   override void initialize() {
+    debugMethodCall(moduleName!DMDLApisCreateView~"::DMDLApisCreateView("~this.name~"):initialize");   
     super.initialize;
+    debugMethodCall(moduleName!DMDLApisCreateView~"::DMDLApisCreateView("~this.name~"):--> back");   
     
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
@@ -54,3 +56,12 @@ class DMDLApisCreateView : DAPPEntityCreateView {
   }
 }
 mixin(APPViewCalls!("MDLApisCreateView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLApisCreateView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLApisCreateView); 
+}}

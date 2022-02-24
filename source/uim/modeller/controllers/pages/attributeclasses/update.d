@@ -47,3 +47,12 @@ class DMDLAttributeClassesUpdatePageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLAttributeClassesUpdatePageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLAttributeClassesUpdatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLAttributeClassesUpdatePageController); 
+}}

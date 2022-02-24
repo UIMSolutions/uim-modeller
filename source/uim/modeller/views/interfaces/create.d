@@ -54,3 +54,12 @@ class DMDLInterfacesCreateView : DAPPEntityCreateView {
   }
 }
 mixin(APPViewCalls!("MDLInterfacesCreateView"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLInterfacesCreateView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLInterfacesCreateView); 
+}}

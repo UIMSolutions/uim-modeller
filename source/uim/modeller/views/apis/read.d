@@ -52,5 +52,9 @@ mixin(APPViewCalls!("MDLApisReadView"));
 
 version(test_uim_modeller) {
   unittest {
-    // TODO
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLApisReadView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLApisReadView); 
 }}

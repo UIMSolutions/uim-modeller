@@ -64,8 +64,11 @@ class DMDLUpdatePageController : DMDLPageController {
 }
 mixin(APPPageControllerCalls!("MDLUpdatePageController"));
 
-version(test_uim_mdl) {
+version(test_uim_modeller) {
   unittest {
-    assert(new DMDLUpdatePageController);
-    assert(MDLUpdatePageController);
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLUpdatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLUpdatePageController); 
 }}

@@ -50,3 +50,12 @@ class DMDLModelsCreatePageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLModelsCreatePageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLModelsCreatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLModelsCreatePageController); 
+}}

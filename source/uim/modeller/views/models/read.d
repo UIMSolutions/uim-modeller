@@ -53,5 +53,9 @@ mixin(APPViewCalls!("MDLModelsReadView"));
 
 version(test_uim_modeller) {
   unittest {
-    // TODO
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(new DMDLModelsReadView); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testView(MDLModelsReadView); 
 }}

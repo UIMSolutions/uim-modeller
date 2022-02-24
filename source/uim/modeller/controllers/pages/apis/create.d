@@ -11,7 +11,8 @@ class DMDLApisCreatePageController : DMDLPageController {
 
     this
     .view(
-      MDLApisCreateView(this))
+      MDLApisCreateView(this)
+      )
     .scripts
       .addContents(
         editorSummary~
@@ -50,3 +51,12 @@ class DMDLApisCreatePageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLApisCreatePageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLApisCreatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLApisCreatePageController); 
+}}

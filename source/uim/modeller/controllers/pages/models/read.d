@@ -46,3 +46,12 @@ class DMDLModelsReadPageController : DMDLPageController {
   }
 }
 mixin(APPPageControllerCalls!("MDLModelsReadPageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLModelsReadPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLModelsReadPageController); 
+}}
