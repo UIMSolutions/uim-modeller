@@ -50,7 +50,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
       
       debug writeln("In ", __MODULE__, "/", __LINE__);
       this.form.body_(
-          APPListFormBody(this.form)
+          APPEntitiesFormBody(this.form)
             .parameter("rootPath", myRootPath));
     }        
   }

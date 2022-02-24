@@ -23,16 +23,29 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
       .parameter("rootPath", myRootPath)
       .parameter("title", titleView("Entitätsklasse anzeigen"));
     
+    this.form();
+    
     this.form
       .parameter("rootPath", myRootPath);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Entitätsklassen")
-      .parameter("subTitle", "Entitätsklasse anzeigen");
+    if (this.form) {
+      debug writeln("Found form: (%s)".format(form.name));
+      if (this.form.header) {
+        debug writeln("Found this.form.header: (%s)".format(this.form.header.name));
 
-    this.form.body_(
-      MDLEntityClassFormBody.crudMode(CRUDModes.Read));
+        this.form.header
+          .parameter("rootPath", myRootPath)
+          .parameter("mainTitle", "Entitätsklassen")
+          .parameter("subTitle", "Entitätsklasse anzeigen");
+      }
+
+      if (this.form.body_) {
+        debug writeln("Found this.form.body_: (%s)".format(this.form.body_.name));
+
+        this.form.body_(
+          MDLEntityClassFormBody.crudMode(CRUDModes.Read));
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
