@@ -11,7 +11,7 @@ class DMDLIsBigFormGroup : DAPPSwitchFormGroup {
 
     this
     .id("entity_isbig")
-    .formName("entity_isBig")
+    .inputName("entity_isBig")
     .fieldName("isBig")
     .label("Datenformat Big"); 
   }

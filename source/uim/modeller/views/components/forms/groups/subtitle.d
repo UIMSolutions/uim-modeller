@@ -12,6 +12,7 @@ class DMDLSubTitleFormGroup : DAPPTextFormGroup {
     this
     .id("entity_subTitle")
     .name("entity_subTitle")
+    .inputName("entity_subTitle")
     .fieldName("subTitle")
     .label("Untertitle"); 
   }

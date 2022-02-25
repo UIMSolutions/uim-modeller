@@ -3,7 +3,7 @@ module uim.modeller.views.components.forms.groups.packages;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesFormGroup : DAPPFormGroup {
+class DMDLPackagesFormGroup : DAPPEntityFormGroup {
   mixin(APPFormComponentThis!("MDLPackagesFormGroup", true));
 
   override void initialize() {

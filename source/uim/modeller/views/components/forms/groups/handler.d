@@ -12,6 +12,7 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
     this
       .addFormGroups([
         "attributeclasses": MDLAttributeClassesFormGroup,
+        "classname": MDLClassNameFormGroup,
         "dataformat": MDLDataFormatFormGroup,
         "entityclasses": MDLEntityClassesFormGroup,
         "imagepath": MDLIsArrayFormGroup,
@@ -19,10 +20,10 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
         "isbig": MDLIsBigFormGroup,
         "isnullable": MDLIsNullableFormGroup,
         "isreadonly": MDLIsReadOnlyFormGroup,
-        "mainTitle": MDLMainTitleFormGroup,
+        "maintitle": MDLMainTitleFormGroup,
         "models": MDLModelsFormGroup,
         "packages": MDLPackagesFormGroup,
-        "subTitle": MDLSubTitleFormGroup,
+        "subtitle": MDLSubTitleFormGroup,
         "summary": MDLSummaryFormGroup,
         "text": MDLTextFormGroup,
         "valueconstrainedtolist": MDLValueConstrainedToListFormGroup

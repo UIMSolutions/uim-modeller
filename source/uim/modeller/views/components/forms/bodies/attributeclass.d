@@ -11,7 +11,7 @@ class DMDLAttributeClassFormBody : DAPPEntityFormBody {
 
     this
       .addFields([])
-      .formGroupHandler(MDLFormGroupHandler); 
+      .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
 mixin(APPFormComponentCalls!("MDLAttributeClassFormBody", true));

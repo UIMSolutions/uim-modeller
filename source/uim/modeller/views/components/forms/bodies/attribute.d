@@ -11,7 +11,7 @@ class DMDLAttributeFormBody : DAPPEntityFormBody {
     
     this
       .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist"])
-      .formGroupHandler(MDLFormGroupHandler); 
+      .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
 mixin(APPFormComponentCalls!("MDLAttributeFormBody", true));

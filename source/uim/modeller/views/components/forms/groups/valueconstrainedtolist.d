@@ -11,7 +11,7 @@ class DMDLValueConstrainedToListFormGroup : DAPPSwitchFormGroup {
 
     this
     .id("entity_valueconstrainedtolist")
-    .formName("entity_valueConstrainedToList")
+    .inputName("entity_valueConstrainedToList")
     .fieldName("valueConstrainedToList")
     .label("Value Constrained To List"); 
   }

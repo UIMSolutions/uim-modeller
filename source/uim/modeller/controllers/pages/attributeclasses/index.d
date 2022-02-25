@@ -39,6 +39,11 @@ class DMDLAttributeClassesIndexPageController : DAPPEntitiesPageController {
       auto dbEntities = db[appSession.site.name, "modeller_attributeclasses"].findMany();
       debug writeln("Found entities: ", dbEntities.length);
 
+      if ("entityName" in options) {
+        auto entityName = options["entityName"].toLower;
+        dbEntities = dbEntities.filter!(entity => entity.name.indexOf(entityName) == 0).array;
+      } 
+
       entitiesView
         .entities(dbEntities)
         .rootPath("/modeller/attributeclasses");

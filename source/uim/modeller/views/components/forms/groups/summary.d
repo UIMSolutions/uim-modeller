@@ -12,6 +12,7 @@ class DMDLSummaryFormGroup : DAPPTextAreaFormGroup {
     this
     .id("entity_summary")
     .name("entity_summary")
+    .inputName("entity_summary")
     .fieldName("summary")
     .label("Zusammenfassung") 
     .fieldName("summary"); 

@@ -11,7 +11,7 @@ class DMDLEntityClassFormBody : DAPPEntityFormBody {
 
     this
       .addFields(["models", "mainTitle", "subTitle"])
-      .formGroupHandler(MDLFormGroupHandler); 
+      .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
 mixin(APPFormComponentCalls!("MDLEntityClassFormBody", true));

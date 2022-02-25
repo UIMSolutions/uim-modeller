@@ -11,7 +11,7 @@ class DMDLDataFormatFormGroup : DAPPTextFormGroup {
 
     this
     .id("entity_dataformat")
-    .formName("entity_dataFormat")
+    .inputName("entity_dataFormat")
     .fieldName("dataFormat")
     .label("Datenformat"); 
   }

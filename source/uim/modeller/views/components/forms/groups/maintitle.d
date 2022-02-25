@@ -12,6 +12,7 @@ class DMDLMainTitleFormGroup : DAPPTextFormGroup {
     this
     .id("entity_mainTitle")
     .name("entity_mainTitle")
+    .inputName("entity_mainTitle")
     .fieldName("mainTitle")
     .label("Überschrift"); 
   }

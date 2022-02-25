@@ -3,38 +3,46 @@ module uim.modeller.views.components.forms.groups.models;
 @safe:
 import uim.modeller;
 
-class DMDLModelsFormGroup : DAPPFormGroup {
+class DMDLModelsFormGroup : DAPPEntityFormGroup {
   mixin(APPFormComponentThis!("MDLModelsFormGroup", true));
 
   override void initialize() {
     super.initialize;
 
     this
-    .id("entity_modelid")
-    .name("entity_modelid")
+    .id("entity_modelId")
+    .name("entity_modelId")
     .fieldName("modelId")
+    .inputName("entity_modelId")
     .label("Modell"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "modelIds"));
+  mixin(SProperty!("DOOPEntity[]", "models"));
 
-  auto database() {
-    if (auto f = form) {
-      if (auto v = f.view) {
-        if (auto c = v.controller) {
-          return c.database;
-        }
-      }
-    }
-    return null;
+  DETBBase _database; 
+  O database(this O)(DETBBase aDatabase) { 
+    _database = aDatabase; 
+    return cast(O)this; }
+
+  DETBBase database() {
+    if (_database) { return _database; } // has his own database
+    if (this.form && this.form.database) { return this.form.database; } // owner class has database
+    return null; // no database found
   }
 
   override void beforeH5(STRINGAA options = null) { 
+    debugMethodCall(moduleName!DMDLModelsFormGroup~":DMDLModelsFormGroup("~this.name~")::beforeH5");
     super.beforeH5(options);
+    if (hasError || "redirect" in options) { return; }
 
     auto appSession = getAppSession(options);
+    if (appSession) debug writeln("Has appSession");
+    debug writeln(this.form ? "Has form" : "No form");
+
     if (this.database) {
-      this.modelIds(database[appSession.site.name, "modeller_models"].findMany());
-    }
+      debug writeln("Has database");
+      this.models(database["uim", "modeller_models"].findMany());
+      debug writeln("Found %s models".format(this.models.length));
+    } else debug writeln("Has no database");
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
@@ -42,14 +50,14 @@ class DMDLModelsFormGroup : DAPPFormGroup {
     if (hasError) { return null; }
     
     DH5Obj[] selectOptions;
-    if (entity && modelIds) {
-      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No modelid");
-      selectOptions ~= modelIds.map!(modelid => (entity[fieldName] == modelid.id.toString) 
-        ? H5Option(["selected":"selected", "value":modelid.id.toString], modelid.display)
-        : H5Option(["value":modelid.id.toString], modelid.display)).array.toH5;
+    if (entity && models) {
+      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Model");
+      selectOptions ~= models.map!(model => (entity[fieldName] == model.id.toString) 
+        ? H5Option(["selected":"selected", "value":model.id.toString], model.display)
+        : H5Option(["value":model.id.toString], model.display)).array.toH5;
     }
 
-    auto input = H5Select(name, ["form-select"], ["name":name, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 
+    auto input = H5Select(name, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 
     if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["modelid"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     

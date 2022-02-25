@@ -10,7 +10,7 @@ class DMDLModuleFormBody : DAPPEntityFormBody {
     super.initialize;
     
     this
-      .formGroupHandler(MDLFormGroupHandler); 
+      .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
 mixin(APPFormComponentCalls!("MDLModuleFormBody", true));

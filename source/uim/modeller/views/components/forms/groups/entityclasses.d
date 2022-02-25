@@ -3,7 +3,7 @@ module uim.modeller.views.components.forms.groups.entityclasses;
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassesFormGroup : DAPPFormGroup {
+class DMDLEntityClassesFormGroup : DAPPEntityFormGroup {
   mixin(APPFormComponentThis!("MDLEntityClassesFormGroup", true));
 
   override void initialize() {

@@ -11,7 +11,7 @@ class DMDLIsNullableFormGroup : DAPPSwitchFormGroup {
 
     this
     .id("entity_isnullable")
-    .formName("entity_isNullable")
+    .inputName("entity_isNullable")
     .fieldName("isNullable")
     .label("Datenformat Nullable"); 
   }

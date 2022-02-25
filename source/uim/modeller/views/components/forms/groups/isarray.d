@@ -11,7 +11,7 @@ class DMDLIsArrayFormGroup : DAPPSwitchFormGroup {
 
     this
     .id("entity_isarray")
-    .formName("entity_isArray")
+    .inputName("entity_isArray")
     .fieldName("isArray")
     .label("Datenformat Array"); 
   }

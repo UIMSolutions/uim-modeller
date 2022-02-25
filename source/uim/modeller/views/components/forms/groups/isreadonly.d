@@ -11,7 +11,7 @@ class DMDLIsReadOnlyFormGroup : DAPPSwitchFormGroup {
 
     this
     .id("entity_isreadonly")
-    .formName("entity_isReadOnly")
+    .inputName("entity_isReadOnly")
     .fieldName("isReadOnly")
     .label("Datenformat ReadOnly"); 
   }
