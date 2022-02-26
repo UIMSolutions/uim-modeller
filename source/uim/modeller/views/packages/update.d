@@ -27,13 +27,16 @@ class DMDLPackagesUpdateView : DAPPEntityUpdateView {
       .crudMode(CRUDModes.Update)
       .parameter("rootPath", myRootPath);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Packages")
-      .parameter("subTitle", "Packages anzeigen");
-      
-    this.form.body_(
-      MDLPackageFormBody(this.form));
+    if (this.form) {
+      this.form.header
+        .parameter("rootPath", myRootPath)
+        .parameter("mainTitle", "Packages")
+        .parameter("subTitle", "Packages anzeigen");
+        
+      this.form.body_(
+        MDLPackageFormBody(this.form)
+          .fields(["name", "display", "description", "packages", "text"])); 
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {

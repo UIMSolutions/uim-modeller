@@ -19,6 +19,7 @@ public import uim.modeller.views.components.forms.groups.isreadonly;
 public import uim.modeller.views.components.forms.groups.keywords;
 public import uim.modeller.views.components.forms.groups.maintitle;
 public import uim.modeller.views.components.forms.groups.models;
+public import uim.modeller.views.components.forms.groups.modules;
 public import uim.modeller.views.components.forms.groups.packages;
 public import uim.modeller.views.components.forms.groups.summary;
 public import uim.modeller.views.components.forms.groups.subtitle;

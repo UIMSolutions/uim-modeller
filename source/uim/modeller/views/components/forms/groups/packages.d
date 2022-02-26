@@ -10,22 +10,23 @@ class DMDLPackagesFormGroup : DAPPEntityFormGroup {
     super.initialize;
 
     this
-    .id("entity_modelid")
-    .name("entity_modelid")
-    .fieldName("modelidId")
-    .label("modelidThema"); 
+    .id("entity_packageId")
+    .name("entity_packageId")
+    .inputName("entity_packageId")
+    .fieldName("packageId")
+    .label("Name Package"); 
   }
   mixin(SProperty!("DOOPEntity[]", "packageId"));
 
-  auto database() {
-    if (auto f = form) {
-      if (auto v = f.view) {
-        if (auto c = v.controller) {
-          return c.database;
-        }
-      }
-    }
-    return null;
+  DETBBase _database; 
+  O database(this O)(DETBBase aDatabase) { 
+    _database = aDatabase; 
+    return cast(O)this; }
+
+  DETBBase database() {
+    if (_database) { return _database; } // has his own database
+    if (this.form && this.form.database) { return this.form.database; } // owner class has database
+    return null; // no database found
   }
 
   override void beforeH5(STRINGAA options = null) { 

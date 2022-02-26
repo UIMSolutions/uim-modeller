@@ -22,6 +22,7 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
         "isreadonly": MDLIsReadOnlyFormGroup,
         "maintitle": MDLMainTitleFormGroup,
         "models": MDLModelsFormGroup,
+        "modules": MDLModulesFormGroup,
         "packages": MDLPackagesFormGroup,
         "subtitle": MDLSubTitleFormGroup,
         "summary": MDLSummaryFormGroup,

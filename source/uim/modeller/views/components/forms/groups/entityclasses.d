@@ -10,22 +10,23 @@ class DMDLEntityClassesFormGroup : DAPPEntityFormGroup {
     super.initialize;
 
     this
-    .id("entity_modelid")
-    .name("entity_modelid")
-    .fieldName("modelidId")
-    .label("modelidThema"); 
+    .id("entity_entityclassid")
+    .name("entity_entityclassid")
+    .fieldName("entityClassId")
+    .inputName("entity_entityClassId")
+    .label("entityclassidThema"); 
   }
   mixin(SProperty!("DOOPEntity[]", "entityClassId"));
 
-  auto database() {
-    if (auto f = form) {
-      if (auto v = f.view) {
-        if (auto c = v.controller) {
-          return c.database;
-        }
-      }
-    }
-    return null;
+  DETBBase _database; 
+  O database(this O)(DETBBase aDatabase) { 
+    _database = aDatabase; 
+    return cast(O)this; }
+
+  DETBBase database() {
+    if (_database) { return _database; } // has his own database
+    if (this.form && this.form.database) { return this.form.database; } // owner class has database
+    return null; // no database found
   }
 
   override void beforeH5(STRINGAA options = null) { 
@@ -43,14 +44,14 @@ class DMDLEntityClassesFormGroup : DAPPEntityFormGroup {
     
     DH5Obj[] selectOptions;
     if (entity && entityClassId) {
-      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No modelid");
-      selectOptions ~= entityClassId.map!(modelid => (entity[fieldName] == modelid.id.toString) 
-        ? H5Option(["selected":"selected", "value":modelid.id.toString], modelid.display)
-        : H5Option(["value":modelid.id.toString], modelid.display)).array.toH5;
+      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No entityclassid");
+      selectOptions ~= entityClassId.map!(entityclassid => (entity[fieldName] == entityclassid.id.toString) 
+        ? H5Option(["selected":"selected", "value":entityclassid.id.toString], entityclassid.display)
+        : H5Option(["value":entityclassid.id.toString], entityclassid.display)).array.toH5;
     }
 
-    auto input = H5Select(name, ["form-select"], ["name":name, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 
-    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["modelid"]);
+    auto input = H5Select(name, ["form-select"], ["name":name, "readonly":"readonly", "value":entity["entityclassid"]], selectOptions); 
+    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["entityclassid"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     
     return [

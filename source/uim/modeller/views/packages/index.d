@@ -22,12 +22,12 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
 
     this
       .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Packages")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
-/*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Packages").parameter("subTitle", "Packages anzeigen").actions([["print", "export"]]))
+      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath))
+      .form
+        .header(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Packages").parameter("subTitle", "Packages anzeigen").actions([["print", "export"]]))
         .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
         
- */  }
+  }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLPackagesIndexView~":DMDLPackagesIndexView("~this.name~")::beforeH5");
