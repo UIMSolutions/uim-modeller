@@ -11,7 +11,7 @@ class DMDLAction_DeleteAttributeClass : DMDLAttributeClassAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
-    auto appSession = getAppSession(options);
+  
 
     auto entity = MDLAttributeClass.fromRequest(options);  
     database[appSession.site.name, collectionName].removeOne(entity);

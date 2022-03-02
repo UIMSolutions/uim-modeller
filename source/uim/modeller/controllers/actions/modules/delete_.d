@@ -11,7 +11,7 @@ class DMDLAction_DeleteModule : DMDLModuleAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
-    auto appSession = getAppSession(options);
+  
 
     auto entity = MDLModule.fromRequest(options);  
     database[appSession.site.name, collectionName].removeOne(entity);

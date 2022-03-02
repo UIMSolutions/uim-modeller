@@ -23,6 +23,7 @@ public import uim.modeller.controllers.pages.delete_;
 public import uim.modeller.controllers.pages.index;
 public import uim.modeller.controllers.pages.list;
 public import uim.modeller.controllers.pages.modeller;
-public import uim.modeller.controllers.pages.page;
+public import uim.modeller.controllers.pages.entity;
+public import uim.modeller.controllers.pages.entities;
 public import uim.modeller.controllers.pages.read;
 public import uim.modeller.controllers.pages.update;

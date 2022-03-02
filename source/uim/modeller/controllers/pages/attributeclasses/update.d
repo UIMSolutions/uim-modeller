@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.attributeclasses.update;
 @safe:
 import uim.modeller;
 
-class DMDLAttributeClassesUpdatePageController : DMDLPageController {
+class DMDLAttributeClassesUpdatePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLAttributeClassesUpdatePageController"));
 
   override void initialize() {

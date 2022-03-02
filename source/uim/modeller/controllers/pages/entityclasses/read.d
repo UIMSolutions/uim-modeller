@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.entityclasses.read;
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassesReadPageController : DMDLPageController {
+class DMDLEntityClassesReadPageController : DMDLReadPageController {
   mixin(APPPageControllerThis!("MDLEntityClassesReadPageController"));
 
   override void initialize() {

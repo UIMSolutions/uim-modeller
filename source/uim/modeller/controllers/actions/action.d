@@ -17,6 +17,15 @@ class DMDLAction : DAPPActionController {
 
   mixin(OProperty!("string", "collectionName"));
   mixin(OProperty!("string", "rootPath"));
+  mixin(OProperty!("DAPPSession", "appSession"));
+
+  override void beforeResponse(STRINGAA options = null) {
+    debugMethodCall(moduleName!DMDLAction_CreateApi~":DMDLAction_CreateApi::beforeResponse");
+    super.beforeResponse(options);
+    if (hasError || "redirect" in options) { return; }    
+
+    this.appSession = getAppSession(options);
+  }
 }
 mixin(APPControllerCalls!("MDLAction"));
 

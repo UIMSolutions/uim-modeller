@@ -11,7 +11,7 @@ class DMDLAction_UpdateModel : DMDLModelAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }     
 
-    auto appSession = getAppSession(options);
+  
 
     if (auto entityId = options.get("entity_id", null)) {
       auto entity = database[appSession.site.name, collectionName].findOne(UUID(entityId));

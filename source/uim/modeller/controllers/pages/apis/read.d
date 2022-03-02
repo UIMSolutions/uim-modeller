@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.apis.read;
 @safe:
 import uim.modeller;
 
-class DMDLApisReadPageController : DMDLPageController {
+class DMDLApisReadPageController : DMDLReadPageController {
   mixin(APPPageControllerThis!("MDLApisReadPageController"));
 
   override void initialize() {

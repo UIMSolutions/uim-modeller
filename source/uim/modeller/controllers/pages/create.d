@@ -3,10 +3,21 @@ module uim.modeller.controllers.pages.create;
 @safe:
 import uim.modeller;
 
-class DMDLCreatePageController : DMDLPageController {
+class DMDLCreatePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLCreatePageController"));
+}
+mixin(APPPageControllerCalls!("MDLCreatePageController"));
 
-  this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLCreatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLCreatePageController); 
+}} 
+
+/*   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 
     this
     .jsPath(jsPath).pgPath(myPath).entitiesName(myEntities).entityName(myEntity).collectionName(myCollectionName)
     .title("UIM!MDL > "~myEntities~" > Erstellen")
@@ -75,13 +86,5 @@ class DMDLCreatePageController : DMDLPageController {
     reqParameters["poolId"] = to!string(poolId);
   }
 }
-mixin(APPPageControllerCalls!("MDLCreatePageController"));
+*/
 
-version(test_uim_modeller) {
-  unittest {
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLCreatePageController); 
-
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLCreatePageController); 
-}}

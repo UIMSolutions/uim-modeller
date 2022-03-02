@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.update;
 @safe:
 import uim.modeller;
 
-class DMDLUpdatePageController : DMDLPageController {
+class DMDLUpdatePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLUpdatePageController"));
 
   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 

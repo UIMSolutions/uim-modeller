@@ -11,7 +11,7 @@ class DMDLAction_CreateAttributeClass : DMDLAttributeClassAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
-    auto appSession = getAppSession(options);
+  
 
     debug writeln(options);        
     debug writeln("appSession.site.name = ", appSession.site.name);

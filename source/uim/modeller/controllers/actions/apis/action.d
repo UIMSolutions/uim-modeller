@@ -5,7 +5,7 @@ module uim.modeller.controllers.actions.apis.action;
 import uim.modeller;
 
 class DMDLApiAction : DMDLAction {
- mixin(APPControllerThis!("MDLApiAction"));
+  mixin(APPControllerThis!("MDLApiAction"));
 
   override void initialize() {
     super.initialize;

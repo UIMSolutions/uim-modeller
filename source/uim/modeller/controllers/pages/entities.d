@@ -1,11 +1,10 @@
-module uim.modeller.controllers.pages.page;
+module uim.modeller.controllers.pages.entities;
 
 @safe:
 import uim.modeller;
 
-class DMDLPageController : DAPPPageController {
-  mixin(APPPageControllerThis!("MDLPageController"));
-  mixin(OProperty!("string", "entityName"));
+class DMDLEntitiesPageController : DAPPEntitiesPageController {
+  mixin(APPPageControllerThis!("MDLEntitiesPageController"));
 
   override void initialize() {
     super.initialize;
@@ -17,13 +16,13 @@ class DMDLPageController : DAPPPageController {
     ]);
   }
 }
-mixin(APPPageControllerCalls!("MDLPageController"));
+mixin(APPPageControllerCalls!("MDLEntitiesPageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLPageController); 
+		testPageController(new DMDLEntitiesPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLPageController); 
+		testPageController(MDLEntitiesPageController); 
 }}

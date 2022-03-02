@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.apis.index;
 @safe:
 import uim.modeller;
 
-class DMDLApisIndexPageController : DAPPEntitiesPageController {
+class DMDLApisIndexPageController : DMDLEntitiesPageController {
   mixin(APPPageControllerThis!("MDLApisIndexPageController"));
 
   override void initialize() {

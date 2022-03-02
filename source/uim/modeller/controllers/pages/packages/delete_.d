@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.packages.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesDeletePageController : DMDLPageController {
+class DMDLPackagesDeletePageController : DMDLDeletePageController {
   mixin(APPPageControllerThis!("MDLPackagesDeletePageController"));
 
   override void initialize() {

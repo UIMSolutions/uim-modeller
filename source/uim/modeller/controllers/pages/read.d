@@ -3,9 +3,21 @@ module uim.modeller.controllers.pages.read;
 @safe:
 import uim.modeller;
 
-class DMDLReadPageController : DMDLPageController {
+class DMDLReadPageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLReadPageController"));
+}
+mixin(APPPageControllerCalls!("MDLReadPageController"));
 
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLReadPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLReadPageController); 
+}}
+
+/*
   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 
     this
     .jsPath(jsPath).pgPath(myPath).entitiesName(myEntities).entityName(myEntity).collectionName(myCollectionName)
@@ -67,14 +79,4 @@ else addToPageScript(reqParameters,
     // debug writeln(moduleName!DMDLReadPageController~":DMDLReadPageController::beforeResponse - Reading entity for selector ", selector);
     auto entity = database[appSession.site.name, collectionName].findOne(selector);
   }
-}
-mixin(APPPageControllerCalls!("MDLReadPageController"));
-
-version(test_uim_modeller) {
-  unittest {
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLReadPageController); 
-
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLReadPageController); 
-}}
+*/

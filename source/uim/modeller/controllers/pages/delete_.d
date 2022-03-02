@@ -3,9 +3,21 @@ module uim.modeller.controllers.pages.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLDeletePageController : DMDLPageController {
+class DMDLDeletePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLDeletePageController"));
+}
+mixin(APPPageControllerCalls!("MDLDeletePageController"));
 
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLDeletePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLDeletePageController); 
+}}
+
+/*
   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 
     this
     .jsPath(jsPath).pgPath(myPath).entitiesName(myEntities).entityName(myEntity).collectionName(myCollectionName)
@@ -28,15 +40,4 @@ class DMDLDeletePageController : DMDLPageController {
   unittest {
     version(test_uim_mdl) {
       /// TODO
-    }}
-}
-mixin(APPPageControllerCalls!("MDLDeletePageController"));
-
-version(test_uim_modeller) {
-  unittest {
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLDeletePageController); 
-
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLDeletePageController); 
-}}
+    }}*/

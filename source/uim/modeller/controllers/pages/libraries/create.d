@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.libraries.create;
 @safe:
 import uim.modeller;
 
-class DMDLLibrariesCreatePageController : DMDLPageController {
+class DMDLLibrariesCreatePageController : DMDLCreatePageController {
   mixin(APPPageControllerThis!("MDLLibrariesCreatePageController"));
 
   override void initialize() {

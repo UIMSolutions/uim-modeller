@@ -11,10 +11,6 @@ class DMDLAction_CreateApi : DMDLApiAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
-    auto appSession = getAppSession(options);
-
-    debug writeln(options);        
-    debug writeln("appSession.site.name = ", appSession.site.name);
     if (auto tenant = database[appSession.site.name]) {
       debug writeln("Found tenant for ", appSession.site.name);
       

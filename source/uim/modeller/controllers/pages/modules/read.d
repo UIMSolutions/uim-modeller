@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.modules.read;
 @safe:
 import uim.modeller;
 
-class DMDLModulesReadPageController : DMDLPageController {
+class DMDLModulesReadPageController : DMDLReadPageController {
   mixin(APPPageControllerThis!("MDLModulesReadPageController"));
 
   override void initialize() {

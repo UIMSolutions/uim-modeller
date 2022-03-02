@@ -11,8 +11,6 @@ class DMDLAction_DeleteApi : DMDLApiAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
-    auto appSession = getAppSession(options);
-
     auto entity = MDLApi.fromRequest(options);  
     database[appSession.site.name, collectionName].removeOne(entity);
 
