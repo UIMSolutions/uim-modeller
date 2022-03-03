@@ -10,3 +10,9 @@ public import uim.modeller.controllers.actions.interfaces.action;
 public import uim.modeller.controllers.actions.interfaces.create;
 public import uim.modeller.controllers.actions.interfaces.update;
 public import uim.modeller.controllers.actions.interfaces.delete_;
+
+void _initInterfacesAction(DMDLAction action) {
+  action
+  .rootPath("/modeller/interfaces") 
+  .collectionName("modeller_interfaces"); 
+}

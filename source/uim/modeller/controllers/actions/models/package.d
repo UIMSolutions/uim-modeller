@@ -10,3 +10,9 @@ public import uim.modeller.controllers.actions.models.action;
 public import uim.modeller.controllers.actions.models.create;
 public import uim.modeller.controllers.actions.models.update;
 public import uim.modeller.controllers.actions.models.delete_;
+
+void _initModelsAction(DMDLAction action) {
+  action
+  .rootPath("/modeller/models") 
+  .collectionName("modeller_models"); 
+}

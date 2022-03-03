@@ -10,3 +10,9 @@ public import uim.modeller.controllers.actions.modules.action;
 public import uim.modeller.controllers.actions.modules.create;
 public import uim.modeller.controllers.actions.modules.update;
 public import uim.modeller.controllers.actions.modules.delete_;
+
+void _initModulesAction(DMDLAction action) {
+  action
+  .rootPath("/modeller/modules") 
+  .collectionName("modeller_modules"); 
+}

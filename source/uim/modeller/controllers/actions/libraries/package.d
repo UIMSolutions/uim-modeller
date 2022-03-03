@@ -10,3 +10,9 @@ public import uim.modeller.controllers.actions.libraries.action;
 public import uim.modeller.controllers.actions.libraries.create;
 public import uim.modeller.controllers.actions.libraries.update;
 public import uim.modeller.controllers.actions.libraries.delete_;
+
+void _initLibrariesAction(DMDLAction action) {
+  action
+  .rootPath("/modeller/libraries") 
+  .collectionName("modeller_libraries"); 
+}

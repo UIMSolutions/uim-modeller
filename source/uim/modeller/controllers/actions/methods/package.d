@@ -10,3 +10,9 @@ public import uim.modeller.controllers.actions.methods.action;
 public import uim.modeller.controllers.actions.methods.create;
 public import uim.modeller.controllers.actions.methods.update;
 public import uim.modeller.controllers.actions.methods.delete_;
+
+void _initMethodsAction(DMDLAction action) {
+  action
+  .rootPath("/modeller/methods") 
+  .collectionName("modeller_methods"); 
+}

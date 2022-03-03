@@ -10,3 +10,9 @@ public import uim.modeller.controllers.actions.classes.action;
 public import uim.modeller.controllers.actions.classes.create;
 public import uim.modeller.controllers.actions.classes.update;
 public import uim.modeller.controllers.actions.classes.delete_;
+
+void _initClassesAction(DMDLAction action) {
+  action
+  .rootPath("/modeller/classes") 
+  .collectionName("modeller_classes"); 
+}
