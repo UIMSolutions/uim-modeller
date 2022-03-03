@@ -14,20 +14,29 @@ class DMDLMethodsIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Methods")
+      .link(["href":myRootPath], "Methoden")
     );
 
-    auto headerTitle = titleList("Methods");
-    auto bodyTitle = "Gefundene Methods";
+    auto headerTitle = titleList("Methoden");
+    auto bodyTitle = "Gefundene Methoden";
 
     this
       .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Methods")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
-/*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Methods").parameter("subTitle", "Methods anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
-        
- */  }
+
+    if (this.form) {
+      this.form.header(
+        APPEntitiesFormHeader(this.form)
+          .parameter("rootPath", myRootPath)
+          .parameter("mainTitle", "Methoden")
+          .parameter("subTitle", "Methoden anzeigen")
+          .actions([["print", "export"]]));
+      
+      this.form.body_(
+          APPEntitiesFormBody(this.form)
+            .parameter("rootPath", myRootPath));
+    }        
+  }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLMethodsIndexView~":DMDLMethodsIndexView("~this.name~")::beforeH5");

@@ -3,50 +3,22 @@ module uim.modeller.controllers.pages.methods.update;
 @safe:
 import uim.modeller;
 
-class DMDLMethodsUpdatePageController : DMDLEntityPageController {
-  mixin(APPPageControllerThis!("MDLMethodsUpdatePageController"));
-
-  override void initialize() {
-    super.initialize;
-
-    this
-      .view(
-        MDLMethodsUpdateView(this))
-      .scripts
+mixin(MDLUpdatePageController!(
+  "MDLMethods",
+  "MDLUpdate",
+  `this
+    .collectionName("modeller_methods")
+    .rootPath("/modeller/methods")
+    .scripts
         .addContents(
           editorSummary~editorText,
-    `window.addEventListener('load', (event) => {
-      document.getElementById("entityForm").addEventListener("submit", event => {
-        editorSummary.save();
-        editorText.save();
-      })
-    });`);
-  }
-
-  override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLMethodsUpdatePageController~":DMDLMethodsUpdatePageController::beforeResponse");
-    super.beforeResponse(options);
-    if (hasError || "redirect" in options) { return; }
-
-    auto appSession = getAppSession(options);
-    auto entityId = options.get("entity_id", null);
-    if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database[appSession.site.name, "modeller_methods"].findOne(UUID(entityId))) {
-        
-        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
-
-          debug writeln("Setting entityView");
-          with(entityView) {
-            entity(dbEntity);
-            crudMode(CRUDModes.Update);
-            rootPath("/modeller/methods");
-          }
-        }
-      }
-    }
-  }
-}
-mixin(APPPageControllerCalls!("MDLMethodsUpdatePageController"));
+          "window.addEventListener('load', (event) => {
+            document.getElementById('entityForm').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+    );`));
 
 version(test_uim_modeller) {
   unittest {

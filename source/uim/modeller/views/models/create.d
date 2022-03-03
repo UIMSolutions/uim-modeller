@@ -24,7 +24,7 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
       .title(titleCreate("Modell erstellen"));
 
     this.form
-      .action(myRootPath~"/actions/create")
+      .action("/modeller/models/actions/create")
       .parameter("rootPath", myRootPath);
     
     this.form.header

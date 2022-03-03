@@ -3,21 +3,32 @@ module uim.modeller.controllers.pages.apps.read;
 @safe:
 import uim.modeller;
 
-class DMDLAppsReadPageController : DMDLReadPageController {
-  mixin(APPPageControllerThis!("MDLAppsReadPageController"));
-
-  override void initialize() {
-    super.initialize;
-
-    this
-      .view(
-        MDLAppsReadView(this))
-      .scripts.addContents(
+mixin(MDLReadPageController!(
+  "MDLApps",
+  "MDLRead",
+  `this
+    .collectionName("modeller_apps")
+    .rootPath("/modeller/apps")
+    .scripts.addContents(
       editorSummary~
       editorText~
       "editorSummary.disabled();"~
       "editorText.disabled();"
-    );
+    );`));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLAppsReadPageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLAppsReadPageController); 
+}}
+/*
+    this
+      .view(
+        MDLAppsReadView(this))
+      
   }
 
   override void beforeResponse(STRINGAA options = null) {
@@ -45,13 +56,4 @@ class DMDLAppsReadPageController : DMDLReadPageController {
     }
   }
 }
-mixin(APPPageControllerCalls!("MDLAppsReadPageController"));
-
-version(test_uim_modeller) {
-  unittest {
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLAppsReadPageController); 
-
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLAppsReadPageController); 
-}}
+*/

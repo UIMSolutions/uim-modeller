@@ -5,8 +5,34 @@ import uim.modeller;
 
 class DMDLCreatePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLCreatePageController"));
+
+  mixin(OProperty!("string", "rootPath"));
+
+  override void beforeResponse(STRINGAA options = null) {
+    debugMethodCall(moduleName!DMDLCreatePageController~":DMDLCreatePageController("~this.name~")::beforeResponse");
+    super.beforeResponse(options);
+    if (hasError || "redirect" in options) { return; }
+
+    auto appSession = getAppSession(options);
+    if (this.database) {
+      debug writeln("Found database"); 
+
+      auto dbEntity = database[appSession.site.name, collectionName].createFromTemplate;      
+      debug writeln(dbEntity ? "Has entity" : "no entity :-(");
+
+      if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
+        debug writeln("Has entityView");
+
+        with(entityView) {
+          entity(dbEntity);
+          crudMode(CRUDModes.Create);
+          rootPath(rootPath);
+          readonly(true);
+        }
+      }
+    }
+  }
 }
-mixin(APPPageControllerCalls!("MDLCreatePageController"));
 
 version(test_uim_modeller) {
   unittest {
@@ -16,6 +42,29 @@ version(test_uim_modeller) {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(MDLCreatePageController); 
 }} 
+
+auto mdlCreatePageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
+  return `
+    class D`~classesName~`CreatePageController : D`~rootController~`PageController {
+      `~appPageControllerThis(classesName~`CreatePageController`, true)~`
+
+    override void initialize() {
+      super.initialize;
+
+      this
+        .view(
+          `~classesName~`CreateView(this));
+
+      `~addInitialize~`
+      }
+    }`~
+    appPageControllerCalls(classesName~`CreatePageController`, true);
+}
+
+
+template MDLCreatePageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
+  const char[] MDLCreatePageController = mdlCreatePageController(classesName, rootController, addInitialize, addBeforeResponse);
+}
 
 /*   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 
     this

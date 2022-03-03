@@ -5,6 +5,32 @@ import uim.modeller;
 
 class DMDLReadPageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLReadPageController"));
+
+  mixin(OProperty!("string", "rootPath"));
+
+  override void beforeResponse(STRINGAA options = null) {
+    debugMethodCall(moduleName!DMDLApisReadPageController~":DMDLApisReadPageController::beforeResponse");
+    super.beforeResponse(options);
+    if (hasError || "redirect" in options) { return; }
+
+    auto appSession = getAppSession(options);
+    auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
+    if (entityId && entityId.isUUID && this.database) {  
+      if (auto dbEntity = database[appSession.site.name, collectionName].findOne(UUID(entityId))) {
+        
+        debug writeln("Found Entity -> ", dbEntity.id);        
+        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
+
+          debug writeln("Setting entityView");
+          entityView
+            .entity(dbEntity)
+            .crudMode(CRUDModes.Read)
+            .rootPath(this.rootPath)
+            .readonly(true);
+        }
+      }
+    }
+  }
 }
 mixin(APPPageControllerCalls!("MDLReadPageController"));
 
@@ -16,6 +42,30 @@ version(test_uim_modeller) {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(MDLReadPageController); 
 }}
+
+
+auto mdlReadPageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
+  return `
+    class D`~classesName~`ReadPageController : D`~rootController~`PageController {
+      `~appPageControllerThis(classesName~`ReadPageController`, true)~`
+
+    override void initialize() {
+      super.initialize;
+
+      this
+        .view(
+          `~classesName~`ReadView(this));
+
+      `~addInitialize~`
+      }
+    }`~
+    appPageControllerCalls(classesName~`ReadPageController`, true);
+}
+
+
+template MDLReadPageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
+  const char[] MDLReadPageController = mdlReadPageController(classesName, rootController, addInitialize, addBeforeResponse);
+}
 
 /*
   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 

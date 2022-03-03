@@ -6,6 +6,64 @@ import uim.modeller;
 class DMDLUpdatePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLUpdatePageController"));
 
+  mixin(OProperty!("string", "rootPath"));
+
+  override void beforeResponse(STRINGAA options = null) {
+    debugMethodCall(moduleName!DMDLPackagesUpdatePageController~":DMDLPackagesUpdatePageController::beforeResponse");
+    super.beforeResponse(options);
+    if (hasError || "redirect" in options) { return; }
+
+    auto appSession = getAppSession(options);
+    auto entityId = options.get("entity_id", null);
+    if (entityId && entityId.isUUID && this.database) {  
+      if (auto dbEntity = database[appSession.site.name, this.collectionName].findOne(UUID(entityId))) {
+        debug writeln("Found entity");
+
+        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
+          debug writeln("Setting entityView");
+          entityView
+            .entity(dbEntity)
+            .crudMode(CRUDModes.Update)
+            .rootPath(this.rootPath);
+          }
+        }
+      }
+    }
+}
+mixin(APPPageControllerCalls!("MDLUpdatePageController"));
+
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLUpdatePageController); 
+
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLUpdatePageController); 
+}}
+
+auto mdlUpdatePageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
+  return `
+    class D`~classesName~`UpdatePageController : D`~rootController~`PageController {
+      `~appPageControllerThis(classesName~`UpdatePageController`, true)~`
+
+    override void initialize() {
+      super.initialize;
+
+      this
+        .view(
+          `~classesName~`UpdateView(this));
+
+      `~addInitialize~`
+      }
+    }`~
+    appPageControllerCalls(classesName~`UpdatePageController`, true);
+}
+
+template MDLUpdatePageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
+  const char[] MDLUpdatePageController = mdlUpdatePageController(classesName, rootController, addInitialize, addBeforeResponse);
+}
+
+/*
   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 
     this
     .jsPath(jsPath).pgPath(myPath).entitiesName(myEntities).entityName(myEntity).collectionName(myCollectionName)
@@ -62,13 +120,4 @@ class DMDLUpdatePageController : DMDLEntityPageController {
       /// TODO
     }}
 }
-mixin(APPPageControllerCalls!("MDLUpdatePageController"));
-
-version(test_uim_modeller) {
-  unittest {
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLUpdatePageController); 
-
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLUpdatePageController); 
-}}
+*/

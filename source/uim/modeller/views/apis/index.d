@@ -23,11 +23,20 @@ class DMDLApisIndexView : DAPPEntitiesListView {
     this
       .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Apis")).actions(["refresh", "list", "create"]))
       .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
-/*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Apis").parameter("subTitle", "Apis anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
-        
- */  }
+
+    if (this.form) {
+      this.form.header(
+        APPEntitiesFormHeader(this.form)
+          .parameter("rootPath", myRootPath)
+          .parameter("mainTitle", "Apis")
+          .parameter("subTitle", "Apis anzeigen")
+          .actions([["print", "export"]]));
+      
+      this.form.body_(
+          APPEntitiesFormBody(this.form)
+            .parameter("rootPath", myRootPath));
+    }        
+  }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLApisIndexView~":DMDLApisIndexView("~this.name~")::beforeH5");

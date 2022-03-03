@@ -3,15 +3,24 @@ module uim.modeller.controllers.pages.entityclasses.create;
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassesCreatePageController : DMDLCreatePageController {
-  mixin(APPPageControllerThis!("MDLEntityClassesCreatePageController"));
+mixin(MDLCreatePageController!(
+  "MDLEntityClasses",
+  "MDLCreate",
+  `this
+    .collectionName("modeller_entityclasses")
+    .rootPath("/modeller/entityclasses");`));
 
-  override void initialize() {
-    super.initialize;
+version(test_uim_modeller) {
+  unittest {
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(new DMDLEntityClassesCreatePageController); 
 
-    this
-    .view(
-      MDLEntityClassesCreateView(this))
+    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
+		testPageController(MDLEntityClassesCreatePageController); 
+}}
+
+/*
+
     .scripts
       .addContents(
         editorSummary~
@@ -22,8 +31,7 @@ class DMDLEntityClassesCreatePageController : DMDLCreatePageController {
       editorText.save();
     })
   });`);
-  }
-
+  
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLEntityClassesUpdatePageController~":DMDLEntityClassesUpdatePageController::beforeResponse");
     super.beforeResponse(options);
@@ -48,13 +56,6 @@ class DMDLEntityClassesCreatePageController : DMDLCreatePageController {
     }
   }
 }
-mixin(APPPageControllerCalls!("MDLEntityClassesCreatePageController"));
 
-version(test_uim_modeller) {
-  unittest {
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLEntityClassesCreatePageController); 
+*/ 
 
-    writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLEntityClassesCreatePageController); 
-}}

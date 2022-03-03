@@ -3,32 +3,13 @@ module uim.modeller.controllers.actions.apps.update;
 @safe:
 import uim.modeller;
 
-class DMDLAction_UpdateApp : DMDLAppAction {
+class DMDLAction_UpdateApp : DMDLUpdateAction {
   mixin(APPControllerThis!("MDLAction_UpdateApp"));
 
-  override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAction_UpdateApp~":DMDLAction_UpdateApp::beforeResponse");
-    super.beforeResponse(options);
-    if (hasError || "redirect" in options) { return; }     
+  override void initialize() {
+    super.initialize;
 
-  
-
-    if (auto entityId = options.get("entity_id", null)) {
-      auto entity = database[appSession.site.name, collectionName].findOne(UUID(entityId));
-      
-      entity.fromRequest(options);
-      foreach(name, attribute; entity.attributes) { // Workaround :-O
-        if (auto booleanAttribute = cast(DOOPBooleanAttribute)attribute) {
-          if ("entity_"~name !in options) booleanAttribute.value(false);  
-        }
-      }
-
-      database[appSession.site.name, collectionName].updateOne(entity);
-      options["redirect"] = rootPath~"/view?id="~entityId;
-    }
-    else {
-      this.error("Entity Id not found");
-    }
-	}
+    _initAppsAction(this); 
+  }
 }
 mixin(APPControllerCalls!("MDLAction_UpdateApp"));

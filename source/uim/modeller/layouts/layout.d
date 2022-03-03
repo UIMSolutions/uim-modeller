@@ -41,7 +41,7 @@ class DMDLLayout : DAPPLayout {
       this
       .navigation
         .secondNavbar
-          .leftSlots([MDLNavSlot]);
+          .leftSlotsWithLogin([MDLNavSlot]);
   }
 
   override void renderBody(DH5Html html, string[] classes, STRINGAA attributes, string content, STRINGAA options = null) {

@@ -3,18 +3,13 @@ module uim.modeller.controllers.actions.apps.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLAction_DeleteApp : DMDLAppAction {
+class DMDLAction_DeleteApp : DMDLDeleteAction {
   mixin(APPControllerThis!("MDLAction_DeleteApp"));
 
-  override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAction_DeleteApp~":DMDLAction_DeleteApp::beforeResponse");
-    super.beforeResponse(options);
-    if (hasError || "redirect" in options) { return; }    
+  override void initialize() {
+    super.initialize;
 
-    auto entity = MDLApp.fromRequest(options);  
-    database[appSession.site.name, collectionName].removeOne(entity);
-
-    options["redirect"] = rootPath;
-	}
+    _initAppsAction(this); 
+  }
 }
 mixin(APPControllerCalls!("MDLAction_DeleteApp"));
