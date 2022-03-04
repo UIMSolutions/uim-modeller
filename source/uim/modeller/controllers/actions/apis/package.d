@@ -8,8 +8,10 @@ public import uim.modeller.controllers.actions.apis.create;
 public import uim.modeller.controllers.actions.apis.update;
 public import uim.modeller.controllers.actions.apis.delete_;
 
-void _initApiAction(DMDLAction action) {
+T _initApiAction(T:DMDLAction)(T action) {
   action
   .rootPath("/modeller/apis") 
-  .collectionName("modeller_apis"); 
+  .collectionName("modeller_apis");
+
+  return action; 
 }

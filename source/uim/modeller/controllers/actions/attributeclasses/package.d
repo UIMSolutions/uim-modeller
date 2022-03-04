@@ -8,8 +8,10 @@ public import uim.modeller.controllers.actions.attributeclasses.create;
 public import uim.modeller.controllers.actions.attributeclasses.update;
 public import uim.modeller.controllers.actions.attributeclasses.delete_;
 
-void _initAttributeClassesAction(DMDLAction action) {
+T _initAttributeClassesAction(T:DMDLAction)(T action) {
   action
   .rootPath("/modeller/attributeclasses") 
-  .collectionName("modeller_attributeclasses"); 
+  .collectionName("modeller_attributeclasses");
+
+  return action; 
 }

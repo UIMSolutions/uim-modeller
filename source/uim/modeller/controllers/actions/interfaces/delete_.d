@@ -3,20 +3,13 @@ module uim.modeller.controllers.actions.interfaces.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLAction_DeleteInterface : DMDLInterfaceAction {
+class DMDLAction_DeleteInterface : DMDLDeleteAction {
   mixin(APPControllerThis!("MDLAction_DeleteInterface"));
 
-  override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAction_DeleteInterface~":DMDLAction_DeleteInterface::beforeResponse");
-    super.beforeResponse(options);
-    if (hasError || "redirect" in options) { return; }    
+  override void initialize() {
+    super.initialize;
 
-  
-
-    auto entity = MDLInterface.fromRequest(options);  
-    database[appSession.site.name, collectionName].removeOne(entity);
-
-    options["redirect"] = rootPath;
-	}
+    this._initInterfacesAction; 
+  }
 }
 mixin(APPControllerCalls!("MDLAction_DeleteInterface"));

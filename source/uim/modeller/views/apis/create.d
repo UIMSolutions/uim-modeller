@@ -10,26 +10,28 @@ class DMDLApisCreateView : DAPPEntityCreateView {
   override void initialize() {
     debugMethodCall(moduleName!DMDLApisCreateView~"::DMDLApisCreateView("~this.name~"):initialize");   
     super.initialize;
-    debugMethodCall(moduleName!DMDLApisCreateView~"::DMDLApisCreateView("~this.name~"):--> back");   
     
+    this
+      .rootPath("/modeller/apis");
+
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attribute")
+      .link(["href":this.rootPath], "Attribute")
     );
 
     this.header
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("title", titleCreate("Attribut erstellen"))
       .breadcrumbs(bc);
 
     this.form
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .action("/modeller/apis/actions/create");
     
     this.form.header
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("mainTitle", "Neues Attribute")
       .parameter("subTitle", "Bitte Werte eingeben");
 
@@ -48,7 +50,7 @@ class DMDLApisCreateView : DAPPEntityCreateView {
     super.beforeH5(options);
 
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
-    options["rootPath"] = myRootPath;
+    options["rootPath"] = this.rootPath;
 
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)

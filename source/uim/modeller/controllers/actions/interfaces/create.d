@@ -9,9 +9,7 @@ class DMDLAction_CreateInterface : DMDLCreateAction {
   override void initialize() {
     super.initialize;
 
-    this
-    .rootPath("/modeller/interfaces") 
-    .collectionName("modeller_interfaces"); 
+    this._initInterfacesAction; 
   }
 }
 mixin(APPControllerCalls!("MDLAction_CreateInterface"));

@@ -3,20 +3,13 @@ module uim.modeller.controllers.actions.libraries.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLAction_DeleteLibrary : DMDLLibraryAction {
+class DMDLAction_DeleteLibrary : DMDLDeleteAction {
   mixin(APPControllerThis!("MDLAction_DeleteLibrary"));
 
-  override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAction_DeleteLibrary~":DMDLAction_DeleteLibrary::beforeResponse");
-    super.beforeResponse(options);
-    if (hasError || "redirect" in options) { return; }    
+  override void initialize() {
+    super.initialize;
 
-  
-
-    auto entity = MDLLibrary.fromRequest(options);  
-    database[appSession.site.name, collectionName].removeOne(entity);
-
-    options["redirect"] = rootPath;
-	}
+    this._initLibrariesAction; 
+  }
 }
 mixin(APPControllerCalls!("MDLAction_DeleteLibrary"));

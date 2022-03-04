@@ -9,9 +9,7 @@ class DMDLAction_CreateLibrary : DMDLCreateAction {
   override void initialize() {
     super.initialize;
 
-    this
-    .rootPath("/modeller/libraries") 
-    .collectionName("modeller_libraries"); 
+    this._initLibrariesAction; 
   }
 }
 mixin(APPControllerCalls!("MDLAction_CreateLibrary"));

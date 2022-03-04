@@ -9,9 +9,7 @@ class DMDLAction_CreateModel : DMDLCreateAction {
   override void initialize() {
     super.initialize;
 
-    this
-    .rootPath("/modeller/models") 
-    .collectionName("modeller_models"); 
+    this._initModelsAction; 
   }
 }
 mixin(APPControllerCalls!("MDLAction_CreateModel"));

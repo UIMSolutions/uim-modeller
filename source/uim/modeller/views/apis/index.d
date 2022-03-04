@@ -10,31 +10,34 @@ class DMDLApisIndexView : DAPPEntitiesListView {
   override void initialize() {
     super.initialize;
 
+    this
+      .rootPath("/modeller/apis");
+
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Apis")
+      .link(["href":this.rootPath], "Apis")
     );
 
-    auto headerTitle = titleList("Apis");
-    auto bodyTitle = "Gefundene Apis";
-
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Apis")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
+      .header(
+        APPPageHeader(this)
+          .breadcrumbs(bc)
+          .parameter("rootPath", this.rootPath).parameter("title", titleView("Übersicht Apis")).actions(["refresh", "list", "create"]));
+
 
     if (this.form) {
       this.form.header(
         APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", myRootPath)
+          .parameter("rootPath", this.rootPath)
           .parameter("mainTitle", "Apis")
           .parameter("subTitle", "Apis anzeigen")
           .actions([["print", "export"]]));
       
       this.form.body_(
           APPEntitiesFormBody(this.form)
-            .parameter("rootPath", myRootPath));
+            .parameter("rootPath", this.rootPath));
     }        
   }
 
@@ -49,9 +52,9 @@ class DMDLApisIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLApisIndexView~":DMDLApisIndexView("~this.name~")::toH5");
     super.toH5(options);
 
-    options["rootPath"] = myRootPath;
+    options["rootPath"] = this.rootPath;
 
-    this.parameter("rootPath", myRootPath);
+    this.parameter("rootPath", this.rootPath);
     debug writeln("RootPath in DMDLApisIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

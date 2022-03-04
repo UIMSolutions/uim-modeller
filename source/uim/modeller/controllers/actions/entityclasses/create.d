@@ -9,9 +9,7 @@ class DMDLAction_CreateEntityClass : DMDLCreateAction {
   override void initialize() {
     super.initialize;
 
-    this
-    .rootPath("/modeller/entityclasses") 
-    .collectionName("modeller_entityclasses"); 
+    this._initEntityClassesAction; 
   }
 }
 mixin(APPControllerCalls!("MDLAction_CreateEntityClass"));

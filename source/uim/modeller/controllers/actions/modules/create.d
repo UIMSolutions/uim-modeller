@@ -3,15 +3,13 @@ module uim.modeller.controllers.actions.modules.create;
 @safe:
 import uim.modeller;
 
-class DMDLAction_CreateModule : DMDLModuleAction {
+class DMDLAction_CreateModule : DMDLCreateAction {
   mixin(APPControllerThis!("MDLAction_CreateModule"));
 
   override void initialize() {
     super.initialize;
 
-    this
-    .rootPath("/modeller/modules") 
-    .collectionName("modeller_modules"); 
+    this._initModulesAction; 
   }
 }
 mixin(APPControllerCalls!("MDLAction_CreateModule"));

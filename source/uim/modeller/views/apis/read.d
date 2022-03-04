@@ -10,24 +10,27 @@ class DMDLApisReadView : DAPPEntityReadView {
   override void initialize() {
     super.initialize;
 
+    this
+      .rootPath("/modeller/apis");
+      
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Apis")
+      .link(["href":this.rootPath], "Apis")
     );
 
     this.header
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .title(
         titleView("Blog anzeigen"));
     
     this.form
-      .parameter("rootPath", myRootPath);
+      .parameter("rootPath", this.rootPath);
 
     this.form.header
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("mainTitle", "Apis")
       .parameter("subTitle", "Apis anzeigen");
 

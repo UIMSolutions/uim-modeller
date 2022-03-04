@@ -8,8 +8,10 @@ public import uim.modeller.controllers.actions.apps.create;
 public import uim.modeller.controllers.actions.apps.update;
 public import uim.modeller.controllers.actions.apps.delete_;
 
-void _initAppsAction(DMDLAction action) {
+T _initAppsAction(T:DMDLAction)(T action) {
   action
   .rootPath("/modeller/apps") 
-  .collectionName("modeller_apps"); 
+  .collectionName("modeller_apps");
+
+  return action; 
 }

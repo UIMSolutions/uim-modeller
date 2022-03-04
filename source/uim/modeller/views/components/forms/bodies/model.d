@@ -10,7 +10,7 @@ class DMDLModelFormBody : DAPPEntityFormBody {
     super.initialize;
 
     this
-      .addFields(["mainTitle", "subTitle"])
+      .addFields(["summary", "text"])
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }

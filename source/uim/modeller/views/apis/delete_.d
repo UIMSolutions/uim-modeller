@@ -11,24 +11,27 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
     debugMethodCall(moduleName!DMDLApisDeleteView~"::DMDLApisDeleteView("~this.name~"):initialize");   
     super.initialize;
 
+    this
+      .rootPath("/modeller/apis");
+      
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Apis")
+      .link(["href":this.rootPath], "Apis")
     );
 
     this.header
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .title(titleDelete("Blog löschen"));
 
     this.form
       .action("/modeller/apis/actions/delete")
-      .parameter("rootPath", myRootPath);
+      .parameter("rootPath", this.rootPath);
     
     this.form.header
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("mainTitle", "Apis")
       .parameter("subTitle", "Apis löschen");
     

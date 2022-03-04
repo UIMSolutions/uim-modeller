@@ -9,9 +9,7 @@ class DMDLAction_CreateMethod : DMDLCreateAction {
   override void initialize() {
     super.initialize;
 
-    this
-    .rootPath("/modeller/methods") 
-    .collectionName("modeller_methods"); 
+    this._initInterfacesAction; 
   }
 }
 mixin(APPControllerCalls!("MDLAction_CreateMethod"));

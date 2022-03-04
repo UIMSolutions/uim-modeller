@@ -9,9 +9,7 @@ class DMDLAction_CreatePackage : DMDLCreateAction {
   override void initialize() {
     super.initialize;
 
-    this
-    .rootPath("/modeller/packages") 
-    .collectionName("modeller_packages"); 
+    this._initPackagesAction;
   }
 }
 mixin(APPControllerCalls!("MDLAction_CreatePackage"));
