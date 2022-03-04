@@ -9,26 +9,29 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
 
   override void initialize() {
     super.initialize;
-    
+
+    this
+      .rootPath("/modeller/entityclasses");
+          
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":"/modeller/entityclasses"], "Entitätenklassen")
-      .link(["active"], ["href":"/modeller/entityclasses/create"], "Erstellen")
+      .link(["href":this.rootPath], "Entitätenklassen")
+      .link(["active"], ["href":this.rootPath~"/create"], "Erstellen")
     );
 
     this.header
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .title(titleCreate("Entitätenklasse erstellen"));
 
     this.form
-      .action(myRootPath~"/actions/create")
-      .parameter("rootPath", myRootPath);
+      .action(this.rootPath~"/actions/create")
+      .parameter("rootPath", this.rootPath);
     
     this.form.header
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("mainTitle", "Neue Entitätenklasse")
       .parameter("subTitle", "Bitte Werte eingeben");
     
@@ -47,7 +50,7 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-    options["rootPath"] = myRootPath;
+    options["rootPath"] = this.rootPath;
 
 /*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";

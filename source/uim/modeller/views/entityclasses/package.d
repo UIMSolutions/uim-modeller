@@ -12,7 +12,3 @@ public import uim.modeller.views.entityclasses.read;
 public import uim.modeller.views.entityclasses.update;
 public import uim.modeller.views.entityclasses.delete_;
 
-package:
-  string myRootPath = "/modeller/entityclasses";
-  // Tuple!(string, "de", string, "en") entityNames = tuple!("Blog", "Blog");
-  // alias entitiesNames = tuple!("de", "en")("Entityclasses", "Entityclasses");

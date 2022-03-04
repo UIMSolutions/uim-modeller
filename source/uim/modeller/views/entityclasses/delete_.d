@@ -10,25 +10,28 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
   override void initialize() {
     super.initialize;
 
+    this
+      .rootPath("/modeller/entityclasses");
+
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":"/modeller/entityclasses"], "Entitätenklassen")
-      .link(["active"], ["href":"/modeller/entityclasses/delete"], "Löschen")
+      .link(["href":this.rootPath], "Entitätenklassen")
+      .link(["active"], ["href":this.rootPath~"/delete"], "Löschen")
     );
 
     this.header
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .title(titleDelete("Entitätenklasse löschen"));
 
     this.form
-      .action("/modeller/entityclasses/actions/delete")
-      .parameter("rootPath", myRootPath);
+      .action(this.rootPath~"/actions/delete")
+      .parameter("rootPath", this.rootPath);
     
     this.form.header
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("mainTitle", "Entitätenklassen")
       .parameter("subTitle", "Entitätenklasse löschen");
     
@@ -46,7 +49,7 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
     auto bodyTitle = "Blog Name:";
 
     this.form
-      .action("/modeller/entityclasses/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+      .action(this.rootPath~"/actions/delete?entity_id="~(entity ? entity.id.toString : null))
       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
       .entity(this.entity);

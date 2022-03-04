@@ -10,6 +10,9 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
   override void initialize() {
     super.initialize;
 
+    this
+      .rootPath("/modeller/entityclasses");
+      
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
@@ -20,13 +23,13 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
 
     this.header
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("title", titleView("Entitätsklasse anzeigen"));
     
     this.form();
     
     this.form
-      .parameter("rootPath", myRootPath);
+      .parameter("rootPath", this.rootPath);
 
     if (this.form) {
       debug writeln("Found form: (%s)".format(form.name));
@@ -34,7 +37,7 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
         debug writeln("Found this.form.header: (%s)".format(this.form.header.name));
 
         this.form.header
-          .parameter("rootPath", myRootPath)
+          .parameter("rootPath", this.rootPath)
           .parameter("mainTitle", "Entitätsklassen")
           .parameter("subTitle", "Entitätsklasse anzeigen");
       }

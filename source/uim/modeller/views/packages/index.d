@@ -18,9 +18,6 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
       .link(["href":myRootPath], "Packages")
     );
 
-    auto headerTitle = titleList("Packages");
-    auto bodyTitle = "Gefundene Packages";
-
     this
       .rootPath("/modeller/packages")
       .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Packages")).actions(["refresh", "list", "create"]))

@@ -10,6 +10,9 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
   override void initialize() {
     super.initialize;
 
+    this
+      .rootPath("/modeller/entityclasses");
+    
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
@@ -20,16 +23,16 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
 
     this.header
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .title(titleEdit("Entitätenklasse bearbeiten"));
       
     this.form
       .action("/modeller/entityclasses/actions/save")
       .crudMode(CRUDModes.Update)
-      .parameter("rootPath", myRootPath);
+      .parameter("rootPath", this.rootPath);
 
     this.form.header
-      .parameter("rootPath", myRootPath)
+      .parameter("rootPath", this.rootPath)
       .parameter("mainTitle", "Entitätsklassen")
       .parameter("subTitle", "Entitätsklasse bearbeiten");
       
