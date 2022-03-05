@@ -20,7 +20,7 @@ class DMDLAction : DAPPActionController {
   mixin(OProperty!("DAPPSession", "appSession"));
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAction_CreateApi~":DMDLAction_CreateApi::beforeResponse");
+    debugMethodCall(moduleName!DMDLAction~":DMDLAction("~this.name~")::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 

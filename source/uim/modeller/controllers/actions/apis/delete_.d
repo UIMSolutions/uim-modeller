@@ -3,8 +3,8 @@ module uim.modeller.controllers.actions.apis.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLAction_DeleteApi : DMDLDeleteAction {
-  mixin(APPControllerThis!("MDLAction_DeleteApi"));
+class DMDLApiDeleteAction : DMDLDeleteAction {
+  mixin(APPControllerThis!("MDLApiDeleteAction"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DMDLAction_DeleteApi : DMDLDeleteAction {
     _initApiAction(this);
   }
 }
-mixin(APPControllerCalls!("MDLAction_DeleteApi"));
+mixin(APPControllerCalls!("MDLApiDeleteAction"));

@@ -3,8 +3,8 @@ module uim.modeller.controllers.actions.apis.create;
 @safe:
 import uim.modeller;
 
-class DMDLAction_CreateApi : DMDLCreateAction {
-  mixin(APPControllerThis!("MDLAction_CreateApi"));
+class DMDLApiCreateAction : DMDLCreateAction {
+  mixin(APPControllerThis!("MDLApiCreateAction"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DMDLAction_CreateApi : DMDLCreateAction {
     _initApiAction(this);
   }
 }
-mixin(APPControllerCalls!("MDLAction_CreateApi"));
+mixin(APPControllerCalls!("MDLApiCreateAction"));

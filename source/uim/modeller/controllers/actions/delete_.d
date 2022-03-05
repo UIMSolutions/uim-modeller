@@ -7,7 +7,7 @@ class DMDLDeleteAction : DMDLAction {
   mixin(APPControllerThis!("MDLDeleteAction"));
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLAction_DeleteApi~":DMDLAction_DeleteApi::beforeResponse");
+    debugMethodCall(moduleName!DMDLDeleteAction~":DMDLDeleteAction("~this.name~")::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
