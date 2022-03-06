@@ -13,3 +13,4 @@ uim-modeller-test-*
 *.o
 *.obj
 *.lst
+libuim-modeller.a
