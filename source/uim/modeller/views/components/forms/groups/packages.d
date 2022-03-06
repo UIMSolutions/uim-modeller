@@ -44,14 +44,14 @@ class DMDLPackagesFormGroup : DAPPEntityFormGroup {
     
     DH5Obj[] selectOptions;
     if (entity && packageId) {
-      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No modelid");
+      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Package");
       selectOptions ~= packageId.map!(modelid => (entity[fieldName] == modelid.id.toString) 
         ? H5Option(["selected":"selected", "value":modelid.id.toString], modelid.display)
         : H5Option(["value":modelid.id.toString], modelid.display)).array.toH5;
     }
 
-    auto input = H5Select(name, ["form-select"], ["name":name, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 
-    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["modelid"]);
+    auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["packageId"]], selectOptions); 
+    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["packageId"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     
     return [

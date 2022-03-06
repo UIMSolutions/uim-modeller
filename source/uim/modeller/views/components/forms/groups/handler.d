@@ -20,6 +20,7 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
         "isbig": MDLIsBigFormGroup,
         "isnullable": MDLIsNullableFormGroup,
         "isreadonly": MDLIsReadOnlyFormGroup,
+        "github": MDLGitHubFormGroup,
         "maintitle": MDLMainTitleFormGroup,
         "models": MDLModelsFormGroup,
         "modules": MDLModulesFormGroup,

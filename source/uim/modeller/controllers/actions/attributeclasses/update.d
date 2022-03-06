@@ -3,8 +3,8 @@ module uim.modeller.controllers.actions.attributeclasses.update;
 @safe:
 import uim.modeller;
 
-class DMDLAction_UpdateAttributeClass : DMDLUpdateAction {
-  mixin(APPControllerThis!("MDLAction_UpdateAttributeClass"));
+class DMDLAttributeClassUpdateAction : DMDLUpdateAction {
+  mixin(APPControllerThis!("MDLAttributeClassUpdateAction"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DMDLAction_UpdateAttributeClass : DMDLUpdateAction {
     _initAttributeClassesAction(this);
   }
 }
-mixin(APPControllerCalls!("MDLAction_UpdateAttributeClass"));
+mixin(APPControllerCalls!("MDLAttributeClassUpdateAction"));

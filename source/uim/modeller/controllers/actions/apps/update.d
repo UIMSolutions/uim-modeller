@@ -3,8 +3,8 @@ module uim.modeller.controllers.actions.apps.update;
 @safe:
 import uim.modeller;
 
-class DMDLAction_UpdateApp : DMDLUpdateAction {
-  mixin(APPControllerThis!("MDLAction_UpdateApp"));
+class DMDLAppUpdateAction : DMDLUpdateAction {
+  mixin(APPControllerThis!("MDLAppUpdateAction"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DMDLAction_UpdateApp : DMDLUpdateAction {
     _initAppsAction(this); 
   }
 }
-mixin(APPControllerCalls!("MDLAction_UpdateApp"));
+mixin(APPControllerCalls!("MDLAppUpdateAction"));

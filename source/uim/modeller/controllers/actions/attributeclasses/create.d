@@ -3,8 +3,8 @@ module uim.modeller.controllers.actions.attributeclasses.create;
 @safe:
 import uim.modeller;
 
-class DMDLAction_CreateAttributeClass : DMDLCreateAction {
-  mixin(APPControllerThis!("MDLAction_CreateAttributeClass"));
+class DMDLAttributeClassCreateAction : DMDLCreateAction {
+  mixin(APPControllerThis!("MDLAttributeClassCreateAction"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DMDLAction_CreateAttributeClass : DMDLCreateAction {
     _initAttributeClassesAction(this);
   }
 }
-mixin(APPControllerCalls!("MDLAction_CreateAttributeClass"));
+mixin(APPControllerCalls!("MDLAttributeClassCreateAction"));

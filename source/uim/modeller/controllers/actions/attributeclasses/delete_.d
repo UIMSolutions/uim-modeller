@@ -3,8 +3,8 @@ module uim.modeller.controllers.actions.attributeclasses.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLAction_DeleteAttributeClass : DMDLDeleteAction {
-  mixin(APPControllerThis!("MDLAction_DeleteAttributeClass"));
+class DMDLAttributeClassDeleteAction : DMDLDeleteAction {
+  mixin(APPControllerThis!("MDLAttributeClassDeleteAction"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DMDLAction_DeleteAttributeClass : DMDLDeleteAction {
     _initAttributeClassesAction(this);
   }
 }
-mixin(APPControllerCalls!("MDLAction_DeleteAttributeClass"));
+mixin(APPControllerCalls!("MDLAttributeClassDeleteAction"));

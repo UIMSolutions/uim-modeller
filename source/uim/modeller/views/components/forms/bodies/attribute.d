@@ -10,7 +10,7 @@ class DMDLAttributeFormBody : DAPPEntityFormBody {
     super.initialize;
     
     this
-      .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist"])
+      .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist","packages", "modules", "github", "summary", "text"])
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }

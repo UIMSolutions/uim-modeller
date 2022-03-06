@@ -51,14 +51,14 @@ class DMDLModulesFormGroup : DAPPEntityFormGroup {
     
     DH5Obj[] selectOptions;
     if (entity && modules) {
-      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Model");
+      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Modul");
       selectOptions ~= modules.map!(model => (entity[fieldName] == model.id.toString) 
         ? H5Option(["selected":"selected", "value":model.id.toString], model.display)
         : H5Option(["value":model.id.toString], model.display)).array.toH5;
     }
 
-    auto input = H5Select(name, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 
-    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["modelid"]);
+    auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["moduleId"]], selectOptions); 
+    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["moduleId"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     
     return [

@@ -57,7 +57,7 @@ class DMDLModelsFormGroup : DAPPEntityFormGroup {
         : H5Option(["value":model.id.toString], model.display)).array.toH5;
     }
 
-    auto input = H5Select(name, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 
+    auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 
     if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["modelid"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     

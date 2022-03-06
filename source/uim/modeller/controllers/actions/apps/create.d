@@ -3,8 +3,8 @@ module uim.modeller.controllers.actions.apps.create;
 @safe:
 import uim.modeller;
 
-class DMDLAction_CreateApp : DMDLCreateAction {
-  mixin(APPControllerThis!("MDLAction_CreateApp"));
+class DMDLAppCreateAction : DMDLCreateAction {
+  mixin(APPControllerThis!("MDLAppCreateAction"));
 
   override void initialize() {
     super.initialize;
@@ -12,4 +12,4 @@ class DMDLAction_CreateApp : DMDLCreateAction {
     _initAppsAction(this); 
   }
 }
-mixin(APPControllerCalls!("MDLAction_CreateApp"));
+mixin(APPControllerCalls!("MDLAppCreateAction"));

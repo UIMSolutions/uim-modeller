@@ -13,6 +13,7 @@ public import uim.modeller.views.components.forms.groups.entityclasses;
 public import uim.modeller.views.components.forms.groups.imagepath;
 public import uim.modeller.views.components.forms.groups.dataformat;
 public import uim.modeller.views.components.forms.groups.isarray;
+public import uim.modeller.views.components.forms.groups.github;
 public import uim.modeller.views.components.forms.groups.isbig;
 public import uim.modeller.views.components.forms.groups.isnullable;
 public import uim.modeller.views.components.forms.groups.isreadonly;
