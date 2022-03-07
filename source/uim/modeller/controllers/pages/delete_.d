@@ -13,10 +13,9 @@ class DMDLDeletePageController : DMDLEntityPageController {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
-    auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
-    if (entityId && entityId.isUUID && this.database) {  
-      auto dbEntity = database[appSession.site.name, this.collectionName].findOne(UUID(entityId));      
+    if (entityId && entityId.isUUID) {  
+      auto dbEntity = collection.findOne(UUID(entityId));      
       if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
         entityView
           .entity(dbEntity)

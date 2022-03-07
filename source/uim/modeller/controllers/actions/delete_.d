@@ -11,25 +11,15 @@ class DMDLDeleteAction : DMDLAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
-    debug writeln(options);        
-    debug writeln("appSession.site.name = ", appSession.site.name);
-    if (auto tenant = database[appSession.site.name]) {
-      debug writeln("Found tenant for ", appSession.site.name);
-      
-      if (auto collection = tenant[collectionName]) {
-        debug writeln("Found collection for ", collectionName);
-        
-        if (auto entity = collection.createFromTemplate) {             
-          debug writeln("Created entity:", entity.id);
+    if (auto entity = collection.createFromTemplate) {             
+      debug writeln("Created entity:", entity.id);
 
-          entity.fromRequest(options);
-          database[appSession.site.name, collectionName].removeOne(entity);
+      entity.fromRequest(options);
+      database[appSession.site.name, collectionName].removeOne(entity);
 
-          options["redirect"] = rootPath;
-        }
-      }
+      options["redirect"] = rootPath;
     }
-	}
+  }
 }
 mixin(APPControllerCalls!("MDLDeleteAction"));
 

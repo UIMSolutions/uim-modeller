@@ -13,11 +13,10 @@ class DMDLCreatePageController : DMDLEntityPageController {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
-    auto appSession = getAppSession(options);
-    if (this.database) {
-      debug writeln("Found database"); 
+    if (this.collection) {
+      debug writeln("Found collection"); 
 
-      auto dbEntity = database[appSession.site.name, collectionName].createFromTemplate;      
+      auto dbEntity = collection.createFromTemplate;      
       debug writeln(dbEntity ? "Has entity" : "no entity :-(");
 
       if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
