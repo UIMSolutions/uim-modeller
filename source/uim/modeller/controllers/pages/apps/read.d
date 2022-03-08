@@ -39,7 +39,7 @@ version(test_uim_modeller) {
     auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database[appSession.site.name, "modeller_apps"].findOne(UUID(entityId))) {
+      if (auto dbEntity = database[appSession.site, "modeller_apps"].findOne(UUID(entityId))) {
         
         debug writeln("Found Entity -> ", dbEntity.id);        
         if (auto entityView = cast(DAPPEntityCRUDView)this.view) {

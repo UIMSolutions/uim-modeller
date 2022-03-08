@@ -33,7 +33,7 @@ class DMDLAttributesFormGroup : DAPPEntityFormGroup {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.attributeId(database[appSession.site.name, "modeller_attributes"].findMany());
+      this.attributeId(database[appSession.site, "modeller_attributes"].findMany());
     }
   }
 

@@ -13,6 +13,7 @@ class DMDLGitHubFormGroup : DAPPTextFormGroup {
     .id("entity_githubLink")
     .name("entity_githubLink")
     .fieldName("githubLink")
+    .inputName("entity_githubLink")
     .label("Link zu Github"); 
   }
 }

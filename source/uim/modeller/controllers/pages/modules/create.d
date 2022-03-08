@@ -8,7 +8,17 @@ mixin(MDLCreatePageController!(
   "MDLCreate",
   `this
     .collectionName("modeller_modules")
-    .rootPath("/modeller/modules");`));
+    .rootPath("/modeller/modules")
+    .scripts
+        .addContents(
+          editorSummary~editorText,
+          "window.addEventListener('load', (event) => {
+            document.getElementById('entityForm').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+    );`));
 
 version(test_uim_modeller) {
   unittest {

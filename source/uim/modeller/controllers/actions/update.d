@@ -21,8 +21,10 @@ class DMDLUpdateAction : DMDLAction {
         }
       }
 
-      database[appSession.site.name, collectionName].updateOne(entity);
-      options["redirect"] = rootPath~"/view?id="~entityId;
+      if (auto site = appSession.site) {
+        database[site.name, collectionName].updateOne(entity);
+        options["redirect"] = rootPath~"/view?id="~entityId;
+      }
     }
     else {
       this.error("Entity Id not found");

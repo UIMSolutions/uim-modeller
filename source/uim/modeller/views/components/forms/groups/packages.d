@@ -34,7 +34,7 @@ class DMDLPackagesFormGroup : DAPPEntityFormGroup {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.packageId(database[appSession.site.name, "modeller_packages"].findMany());
+      this.packageId(database[appSession.site, "modeller_packages"].findMany());
     }
   }
 

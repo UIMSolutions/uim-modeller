@@ -16,7 +16,7 @@ class DMDLReadPageController : DMDLEntityPageController {
     auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", options.get("id", options.get("entityId", null)));
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database[appSession.site.name, collectionName].findOne(UUID(entityId))) {
+      if (auto dbEntity = database[appSession.site, collectionName].findOne(UUID(entityId))) {
         
         debug writeln("Found Entity -> ", dbEntity.id);        
         if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
@@ -127,6 +127,6 @@ else addToPageScript(reqParameters,
   
     auto selector = reqParameters.toEntitySelect;
     // debug writeln(moduleName!DMDLReadPageController~":DMDLReadPageController::beforeResponse - Reading entity for selector ", selector);
-    auto entity = database[appSession.site.name, collectionName].findOne(selector);
+    auto entity = database[appSession.site, collectionName].findOne(selector);
   }
 */

@@ -34,7 +34,7 @@ class DMDLEntityClassesFormGroup : DAPPEntityFormGroup {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.entityClassId(database[appSession.site.name, "modeller_entityclasses"].findMany());
+      this.entityClassId(database[appSession.site, "modeller_entityclasses"].findMany());
     }
   }
 

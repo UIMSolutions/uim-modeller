@@ -14,7 +14,7 @@ class DMDLModulesFormGroup : DAPPEntityFormGroup {
     .name("entity_moduleId")
     .fieldName("moduleId")
     .inputName("entity_moduleId")
-    .label("Modell"); 
+    .label("Modul"); 
   }
   mixin(SProperty!("DOOPEntity[]", "modules"));
 

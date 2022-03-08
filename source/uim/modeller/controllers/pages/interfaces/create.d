@@ -8,7 +8,17 @@ mixin(MDLCreatePageController!(
   "MDLCreate",
   `this
     .collectionName("modeller_interfaces")
-    .rootPath("/modeller/interfaces");`));
+    .rootPath("/modeller/interfaces")
+    .scripts
+        .addContents(
+          editorSummary~editorText,
+          "window.addEventListener('load', (event) => {
+            document.getElementById('entityForm').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+    );`));
 
 version(test_uim_modeller) {
   unittest {

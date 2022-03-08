@@ -8,7 +8,17 @@ mixin(MDLCreatePageController!(
   "MDLCreate",
   `this
     .collectionName("modeller_entityclasses")
-    .rootPath("/modeller/entityclasses");`));
+    .rootPath("/modeller/entityclasses")
+    .scripts
+        .addContents(
+          editorSummary~editorText,
+          "window.addEventListener('load', (event) => {
+            document.getElementById('entityForm').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+    );`));
 
 version(test_uim_modeller) {
   unittest {
@@ -41,7 +51,7 @@ version(test_uim_modeller) {
     if (this.database) {
       debug writeln("Found database"); 
 
-      auto dbEntity = database[appSession.site.name, "modeller_entityclasses"].createFromTemplate;      
+      auto dbEntity = database[appSession.site, "modeller_entityclasses"].createFromTemplate;      
       debug writeln(dbEntity ? "Has entity" : "no entity :-(");
 
       if (auto entityView = cast(DAPPEntityCRUDView)this.view) {

@@ -6,8 +6,6 @@ import uim.modeller;
 class DMDLEntityPageController : DAPPEntityPageController {
   mixin(APPPageControllerThis!("MDLEntityPageController"));
 
-  mixin(OProperty!("DETBCollection", "collection"));
-  mixin(OProperty!("DETBTenant", "tenant"));
   
   override void initialize() {
     super.initialize;
@@ -29,10 +27,9 @@ class DMDLEntityPageController : DAPPEntityPageController {
     if (this.database) {
       debug writeln("Found database"); 
 
-      this.tenant(database[appSession.site.name]);
-      if (this.tenant) {
-        this.collection(this.tenant[this.collectionName]);
-      }
+      this
+        .tenant(database[appSession.site])
+        .collection(this.tenant[this.collectionName]);
     }
   }
 }

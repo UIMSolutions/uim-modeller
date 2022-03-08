@@ -33,7 +33,7 @@ class DMDLFormGroupTheme : DAPPEntityFormGroup {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.themes(database[appSession.site.name, "themes"].findMany());
+      this.themes(database[appSession.site, "themes"].findMany());
     }
   }
 

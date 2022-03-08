@@ -15,8 +15,7 @@ class DMDLDeleteAction : DMDLAction {
       debug writeln("Created entity:", entity.id);
 
       entity.fromRequest(options);
-      database[appSession.site.name, collectionName].removeOne(entity);
-
+      database[appSession.site, collectionName].removeOne(entity);
       options["redirect"] = rootPath;
     }
   }

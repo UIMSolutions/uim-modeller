@@ -14,7 +14,7 @@ class DMDLIndexPageController : DMDLEntityPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLIndexPageController~":DMDLIndexPageController::beforeResponse");
+    debugMethodCall(moduleName!DMDLIndexPageController~":DMDLIndexPageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 
@@ -25,6 +25,7 @@ class DMDLIndexPageController : DMDLEntityPageController {
       auto session = appSession.session; 
       auto site    = appSession.site;
 
+      debug writeln(this.name~"-site");
       if (site) { // selected site
         debug writeln("Has Site", site.id, "/", site.name);
         session["siteId"] = site.id.toString;

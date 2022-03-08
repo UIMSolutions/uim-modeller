@@ -16,7 +16,7 @@ class DMDLUpdatePageController : DMDLEntityPageController {
     auto appSession = getAppSession(options);
     auto entityId = options.get("entity_id", null);
     if (entityId && entityId.isUUID && this.database) {  
-      if (auto dbEntity = database[appSession.site.name, this.collectionName].findOne(UUID(entityId))) {
+      if (auto dbEntity = database[appSession.site, this.collectionName].findOne(UUID(entityId))) {
         debug writeln("Found entity");
 
         if (auto entityView = cast(DAPPEntityCRUDView)this.view) {

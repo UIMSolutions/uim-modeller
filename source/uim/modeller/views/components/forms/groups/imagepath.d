@@ -13,6 +13,7 @@ class DMDLImagePathFormGroup : DAPPTextFormGroup {
     .id("entity_imagePath")
     .name("entity_imagePath")
     .fieldName("imagePath")
+    .inputName("entity_imagePath")
     .label("Titelbild"); 
   }
 }

@@ -11,16 +11,17 @@ class DMDLCreateAction : DMDLAction {
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }    
 
-    debug writeln("appSession.site.name = ", appSession.site.name);
-    if (auto entity = collection.createFromTemplate) {             
-      debug writeln("Created entity:", entity.id);
+    if (this.collection) {
+      if (auto entity = collection.createFromTemplate) {             
+        debug writeln("Created entity:", entity.id);
 
-      entity.fromRequest(options);
+        entity.fromRequest(options);
 
-      collection.insertOne(entity);
-      debug writeln("entity.id = ", entity.id);
+        collection.insertOne(entity);
+        debug writeln("entity.id = ", entity.id);
 
-      options["redirect"] = this.rootPath ~ "/view?id="~entity.id.toString; 
+        options["redirect"] = this.rootPath ~ "/view?id="~entity.id.toString; 
+      }
     }
 	}
 }
