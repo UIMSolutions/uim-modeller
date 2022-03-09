@@ -8,7 +8,15 @@ mixin(MDLReadPageController!(
   "MDLRead",
   `this
     .collectionName("modeller_apis")
-    .rootPath("/modeller/apis");`));
+    .rootPath("/modeller/apis")
+    .scripts
+      .addContents(
+        editorSummary~
+        editorText~
+        "editorSummary.disabled();"~
+        "editorText.disabled();"
+      );
+  `));
 
 version(test_uim_modeller) {
   unittest {

@@ -8,7 +8,15 @@ mixin(MDLDeletePageController!(
   "MDLDelete",
   `this
     .collectionName("modeller_attributeclasses")
-    .rootPath("/modeller/attributeclasses");`));
+    .rootPath("/modeller/attributeclasses")
+      .scripts
+      .addContents(
+        editorSummary~
+        editorText~
+        "editorSummary.disabled();"~
+        "editorText.disabled();"
+      );
+  `));
 
 version(test_uim_modeller) {
   unittest {

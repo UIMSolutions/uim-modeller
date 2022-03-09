@@ -8,7 +8,15 @@ mixin(MDLReadPageController!(
   "MDLRead",
   `this
     .collectionName("modeller_entityclasses")
-    .rootPath("/modeller/entityclasses");`));
+    .rootPath("/modeller/entityclasses")
+    .scripts
+      .addContents(
+        editorSummary~
+        editorText~
+        "editorSummary.disabled();"~
+        "editorText.disabled();"
+      );
+`));
 
 version(test_uim_modeller) {
   unittest {
