@@ -10,9 +10,6 @@ class DMDLApisIndexView : DAPPEntitiesListView {
   override void initialize() {
     super.initialize;
 
-    this
-      .rootPath("/modeller/apis");
-
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
@@ -28,16 +25,17 @@ class DMDLApisIndexView : DAPPEntitiesListView {
 
 
     if (this.form) {
-      this.form.header(
-        APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", this.rootPath)
-          .parameter("mainTitle", "Apis")
-          .parameter("subTitle", "Apis anzeigen")
-          .actions([["print", "export"]]));
-      
-      this.form.body_(
+      this.form
+        .rootPath(this.rootPath)      
+        .header(
+          APPEntitiesFormHeader(this.form)
+            .parameter("rootPath", this.rootPath)
+            .parameter("mainTitle", "Apis")
+            .parameter("subTitle", "Apis anzeigen")
+            .actions([["print", "export"]]))
+        .body_(
           APPEntitiesFormBody(this.form)
-            .parameter("rootPath", this.rootPath));
+            .rootPath(this.rootPath));
     }        
   }
 

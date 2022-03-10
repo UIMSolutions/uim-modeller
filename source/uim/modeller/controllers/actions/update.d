@@ -3,8 +3,17 @@ module uim.modeller.controllers.actions.update;
 @safe:
 import uim.modeller;
 
-class DMDLUpdateAction : DMDLAction {
+class DMDLUpdateAction : DAPPActionController {
   mixin(APPControllerThis!("MDLUpdateAction"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+    .checks([
+      APPCheckAppSessionHasSession, APPCheckAppSessionHasSite, // AppSession related checks
+      APPCheckDatabaseHasSystems]); // Database related checks
+  }
 
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLUpdateAction~":DMDLUpdateAction("~this.name~")::beforeResponse");

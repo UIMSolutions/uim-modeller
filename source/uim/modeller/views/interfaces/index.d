@@ -25,12 +25,14 @@ class DMDLInterfacesIndexView : DAPPEntitiesListView {
       .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
 
     if (this.form) {
-      this.form.header(
-        APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", myRootPath)
-          .parameter("mainTitle", "Interfaces")
-          .parameter("subTitle", "Interfaces anzeigen")
-          .actions([["print", "export"]]));
+      this.form
+        .rootPath(this.rootPath)           
+        .header(
+          APPEntitiesFormHeader(this.form)
+            .parameter("rootPath", myRootPath)
+            .parameter("mainTitle", "Interfaces")
+            .parameter("subTitle", "Interfaces anzeigen")
+            .actions([["print", "export"]]));
       
       this.form.body_(
           APPEntitiesFormBody(this.form)

@@ -3,8 +3,17 @@ module uim.modeller.controllers.actions.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLDeleteAction : DMDLAction {
+class DMDLDeleteAction : DAPPActionController {
   mixin(APPControllerThis!("MDLDeleteAction"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+    .checks([
+      APPCheckAppSessionHasSession, APPCheckAppSessionHasSite, // AppSession related checks
+      APPCheckDatabaseHasSystems]); // Database related checks
+  }
 
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLDeleteAction~":DMDLDeleteAction("~this.name~")::beforeResponse");

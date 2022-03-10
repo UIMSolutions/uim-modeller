@@ -25,14 +25,15 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
       .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
 
     if (this.form) {
-      this.form.header(
-        APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", myRootPath)
-          .parameter("mainTitle", "Attributklassen")
-          .parameter("subTitle", "Attributklassen anzeigen")
-          .actions([["print", "export"]]));
-      
-      this.form.body_(
+      this.form
+        .rootPath(this.rootPath)      
+        .header(
+          APPEntitiesFormHeader(this.form)
+            .parameter("rootPath", myRootPath)
+            .parameter("mainTitle", "Attributklassen")
+            .parameter("subTitle", "Attributklassen anzeigen")
+            .actions([["print", "export"]]))
+        .body_(
           APPEntitiesFormBody(this.form)
             .parameter("rootPath", myRootPath));
     }        

@@ -29,14 +29,15 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
           .actions(["refresh", "list", "create"]));
 
     if (this.form) {
-      this.form.header(
-        APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", this.rootPath)
-          .parameter("mainTitle", "Entityclasses")
-          .parameter("subTitle", "Entityclasses anzeigen")
-          .actions([["print", "export"]]));
-      
-      this.form.body_(
+      this.form
+        .rootPath(this.rootPath)      
+        .header(
+          APPEntitiesFormHeader(this.form)
+            .parameter("rootPath", this.rootPath)
+            .parameter("mainTitle", "Entityclasses")
+            .parameter("subTitle", "Entityclasses anzeigen")
+            .actions([["print", "export"]]))
+        .body_(
           APPEntitiesFormBody(this.form)
             .parameter("rootPath", this.rootPath));
     }        
@@ -48,6 +49,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
     if (hasError || "redirect" in options) { return; }
 
     debug writeln("In ", __MODULE__, "/", __LINE__);
+    debug writeln("In ", __MODULE__, "/rootPath = ", this.rootPath);
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

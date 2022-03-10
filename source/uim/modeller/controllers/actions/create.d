@@ -3,8 +3,17 @@ module uim.modeller.controllers.actions.create;
 @safe:
 import uim.modeller;
 
-class DMDLCreateAction : DMDLAction {
+class DMDLCreateAction : DAPPActionController {
   mixin(APPControllerThis!("MDLCreateAction"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+    .checks([
+      APPCheckAppSessionHasSession, APPCheckAppSessionHasSite, // AppSession related checks
+      APPCheckDatabaseHasSystems]); // Database related checks
+  }
 
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLCreateAction~":DMDLCreateAction("~this.name~")::beforeResponse");

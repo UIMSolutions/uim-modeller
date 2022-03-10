@@ -4,7 +4,6 @@ module uim.modeller.controllers.actions;
 import uim.modeller;
 
 // Main
-public import uim.modeller.controllers.actions.action;
 public import uim.modeller.controllers.actions.create;
 public import uim.modeller.controllers.actions.delete_;
 public import uim.modeller.controllers.actions.update;

@@ -8,6 +8,14 @@ class DMDLEntitiesPageController : DAPPEntitiesPageController {
 
   mixin(OProperty!("string", "rootPath"));
 
+  override void _afterSetEntities() {
+    super._afterSetEntities;
+
+    if (auto entitiesView = cast(DAPPEntitiesListView)this.view) {
+      entitiesView.entities(this.entities);
+    }
+  }
+
   override void initialize() {
     super.initialize;
 
@@ -49,8 +57,7 @@ class DMDLEntitiesPageController : DAPPEntitiesPageController {
       } 
 
       entitiesView
-        .entities(dbEntities)
-        .rootPath(this.rootPath);
+        .entities(dbEntities);
     }
     else { 
       this.error("entitiesView missing"); 
