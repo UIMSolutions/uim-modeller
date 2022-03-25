@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.github;
 import uim.modeller;
 
 class DMDLGitHubFormGroup : DAPPTextFormGroup {
-  mixin(APPFormComponentThis!("MDLGitHubFormGroup", true));
+  mixin(FormComponentThis!("MDLGitHubFormGroup", true));
   
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLGitHubFormGroup : DAPPTextFormGroup {
     .label("Link zu Github"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLGitHubFormGroup", true));
+mixin(FormComponentCalls!("MDLGitHubFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

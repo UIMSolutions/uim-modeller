@@ -33,7 +33,7 @@ class DMDLModulesReadView : DAPPEntityReadView {
       .parameter("subTitle", "Modul anzeigen");
 
     this.form.body_(
-      MDLModuleFormBody(this.form)); 
+      MDLModuleFormContent(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {

@@ -46,7 +46,7 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
         debug writeln("Found this.form.body_: (%s)".format(this.form.body_.name));
 
         this.form.body_(
-          MDLEntityClassFormBody(this.form).crudMode(CRUDModes.Read)
+          MDLEntityClassFormContent(this.form).crudMode(CRUDModes.Read)
             .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
       }
     }

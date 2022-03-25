@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.bodies.package_;
 @safe:
 import uim.modeller;
 
-class DMDLPackageFormBody : DAPPEntityFormBody {
-  mixin(APPFormComponentThis!("MDLPackageFormBody", true));
+class DMDLPackageFormContent : DAPPEntityFormContent {
+  mixin(FormComponentThis!("MDLPackageFormContent", true));
 
   override void initialize() {
     super.initialize;
@@ -14,9 +14,9 @@ class DMDLPackageFormBody : DAPPEntityFormBody {
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
-mixin(APPFormComponentCalls!("MDLPackageFormBody", true));
+mixin(FormComponentCalls!("MDLPackageFormContent", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLPackageFormBody);
+    assert(MDLPackageFormContent);
 }}

@@ -37,7 +37,7 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
       .parameter("subTitle", "Entitätsklasse bearbeiten");
       
     this.form.body_(
-      MDLEntityClassFormBody(this.form)
+      MDLEntityClassFormContent(this.form)
         .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
   }
 

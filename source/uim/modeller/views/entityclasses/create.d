@@ -35,12 +35,12 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neue Entitätenklasse")
       .parameter("subTitle", "Bitte Werte eingeben");
     
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
     
     this.form.body_(
-      MDLEntityClassFormBody(this.form)
+      MDLEntityClassFormContent(this.form)
         .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
   }
 

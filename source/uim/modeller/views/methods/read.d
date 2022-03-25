@@ -32,7 +32,7 @@ class DMDLMethodsReadView : DAPPEntityReadView {
       .parameter("subTitle", "Methods anzeigen");
 
     this.form.body_(
-      MDLMethodFormBody(this.form)); 
+      MDLMethodFormContent(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {

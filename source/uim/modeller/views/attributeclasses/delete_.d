@@ -33,7 +33,7 @@ class DMDLAttributeClassesDeleteView : DAPPEntityDeleteView {
       .parameter("subTitle", "Attributklasse löschen");
     
     this.form.body_(
-      MDLAttributeClassFormBody(this.form));
+      MDLAttributeClassFormContent(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

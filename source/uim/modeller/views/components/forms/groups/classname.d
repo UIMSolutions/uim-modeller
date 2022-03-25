@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.classname;
 import uim.modeller;
 
 class DMDLClassNameFormGroup : DAPPTextFormGroup {
-  mixin(APPFormComponentThis!("MDLClassNameFormGroup", true));
+  mixin(FormComponentThis!("MDLClassNameFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLClassNameFormGroup : DAPPTextFormGroup {
     .label("Klassenname"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLClassNameFormGroup", true));
+mixin(FormComponentCalls!("MDLClassNameFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

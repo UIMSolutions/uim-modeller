@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.bodies.attribute;
 @safe:
 import uim.modeller;
 
-class DMDLAttributeFormBody : DAPPEntityFormBody {
-  mixin(APPFormComponentThis!("MDLAttributeFormBody", true));
+class DMDLAttributeFormContent : DAPPEntityFormContent {
+  mixin(FormComponentThis!("MDLAttributeFormContent", true));
 
   override void initialize() {
     super.initialize;
@@ -14,9 +14,9 @@ class DMDLAttributeFormBody : DAPPEntityFormBody {
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
-mixin(APPFormComponentCalls!("MDLAttributeFormBody", true));
+mixin(FormComponentCalls!("MDLAttributeFormContent", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLAttributeFormBody);
+    assert(MDLAttributeFormContent);
 }}

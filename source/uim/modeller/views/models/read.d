@@ -32,7 +32,7 @@ class DMDLModelsReadView : DAPPEntityReadView {
       .parameter("subTitle", "Modell anzeigen");
 
     this.form.body_(
-      MDLModelFormBody(this.form));
+      MDLModelFormContent(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

@@ -33,7 +33,7 @@ class DMDLMethodsIndexView : DAPPEntitiesListView {
           .actions([["print", "export"]]));
       
       this.form.body_(
-          APPEntitiesFormBody(this.form)
+          APPEntitiesFormContent(this.form)
             .parameter("rootPath", myRootPath));
     }        
   }
@@ -42,7 +42,7 @@ class DMDLMethodsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLMethodsIndexView~":DMDLMethodsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/methods").parameter("mainTitle", "Methods").parameter("subTitle", "Übersicht Methods").actions([["refresh"],["create"]]));
+    this.form.header(FormHeader.rootPath("/methods").parameter("mainTitle", "Methods").parameter("subTitle", "Übersicht Methods").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

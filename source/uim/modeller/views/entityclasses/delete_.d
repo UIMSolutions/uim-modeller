@@ -36,7 +36,7 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
       .parameter("subTitle", "Entitätenklasse löschen");
     
     this.form.body_(
-      MDLEntityClassFormBody(this.form)
+      MDLEntityClassFormContent(this.form)
         .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
   }
 

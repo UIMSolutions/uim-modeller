@@ -32,12 +32,12 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neue Attributklasse")
       .parameter("subTitle", "Bitte Werte eingeben");
 
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
     
     this.form.body_(
-      MDLAttributeClassFormBody(this.form)); 
+      MDLAttributeClassFormContent(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {

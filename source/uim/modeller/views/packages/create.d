@@ -31,14 +31,14 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neues Package")
       .parameter("subTitle", "Bitte Werte eingeben");
 
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
     
     this
       .form
         .body_(
-            MDLPackageFormBody(this.form)
+            MDLPackageFormContent(this.form)
               .fields(["name", "display", "description", "packages", "text"])); 
   }
 

@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.isarray;
 import uim.modeller;
 
 class DMDLIsArrayFormGroup : DAPPSwitchFormGroup {
-  mixin(APPFormComponentThis!("MDLIsArrayFormGroup", true));  // not MDLIsArrayFormGroup!
+  mixin(FormComponentThis!("MDLIsArrayFormGroup", true));  // not MDLIsArrayFormGroup!
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsArrayFormGroup : DAPPSwitchFormGroup {
     .label("Datenformat Array"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLIsArrayFormGroup", true));
+mixin(FormComponentCalls!("MDLIsArrayFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

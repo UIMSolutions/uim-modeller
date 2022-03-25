@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.bodies.library;
 @safe:
 import uim.modeller;
 
-class DMDLLibraryFormBody : DAPPEntityFormBody {
-  mixin(APPFormComponentThis!("MDLLibraryFormBody", true));
+class DMDLLibraryFormContent : DAPPEntityFormContent {
+  mixin(FormComponentThis!("MDLLibraryFormContent", true));
 
   override void initialize() {
     super.initialize;
@@ -13,9 +13,9 @@ class DMDLLibraryFormBody : DAPPEntityFormBody {
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
-mixin(APPFormComponentCalls!("MDLLibraryFormBody", true));
+mixin(FormComponentCalls!("MDLLibraryFormContent", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLLibraryFormBody);
+    assert(MDLLibraryFormContent);
 }}

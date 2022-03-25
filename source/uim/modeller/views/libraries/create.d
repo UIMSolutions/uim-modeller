@@ -32,12 +32,12 @@ class DMDLLibrariesCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neues Libraryl")
       .parameter("subTitle", "Bitte Werte eingeben");
 
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
     
     this.form.body_(
-      MDLLibraryFormBody(this.form)
+      MDLLibraryFormContent(this.form)
       .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
   }
 

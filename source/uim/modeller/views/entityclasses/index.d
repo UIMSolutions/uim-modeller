@@ -38,7 +38,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
             .parameter("subTitle", "Entityclasses anzeigen")
             .actions([["print", "export"]]))
         .body_(
-          APPEntitiesFormBody(this.form)
+          APPEntitiesFormContent(this.form)
             .parameter("rootPath", this.rootPath));
     }        
   }

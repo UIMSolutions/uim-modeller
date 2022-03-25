@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.groups.handler;
 @safe:
 import uim.modeller;
 
-class DMDLFormGroupHandler : DAPPFormGroupHandler {
-  mixin(APPFormComponentThis!("MDLFormGroupHandler", true));
+class DMDLFormGroupHandler : DFormGroupHandler {
+  mixin(FormComponentThis!("MDLFormGroupHandler", true));
 
   override void initialize() {
     super.initialize;
@@ -32,4 +32,4 @@ class DMDLFormGroupHandler : DAPPFormGroupHandler {
         ]); 
   } 
 }  
-mixin(APPFormComponentCalls!("MDLFormGroupHandler", true));
+mixin(FormComponentCalls!("MDLFormGroupHandler", true));

@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.dataformat;
 import uim.modeller;
 
 class DMDLDataFormatFormGroup : DAPPTextFormGroup {
-  mixin(APPFormComponentThis!("MDLDataFormatFormGroup", true));
+  mixin(FormComponentThis!("MDLDataFormatFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLDataFormatFormGroup : DAPPTextFormGroup {
     .label("Datenformat"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLDataFormatFormGroup", true));
+mixin(FormComponentCalls!("MDLDataFormatFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

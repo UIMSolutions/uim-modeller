@@ -31,14 +31,14 @@ class DMDLAttributesCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neues Attribute")
       .parameter("subTitle", "Bitte Werte eingeben");
 
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
 
     this
       .form
         .body_(
-            MDLAttributeFormBody(this.form)); 
+            MDLAttributeFormContent(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {

@@ -31,14 +31,14 @@ class DMDLMethodsCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neues Method")
       .parameter("subTitle", "Bitte Werte eingeben");
 
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
 
     this
       .form
         .body_(
-            MDLMethodFormBody(this.form)); 
+            MDLMethodFormContent(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {

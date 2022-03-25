@@ -33,7 +33,7 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
           .actions([["print", "export"]]));
       
       this.form.body_(
-          APPEntitiesFormBody(this.form)
+          APPEntitiesFormContent(this.form)
             .parameter("rootPath", myRootPath));
     }        
   }
@@ -42,7 +42,7 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLModelsIndexView~":DMDLModelsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/models").parameter("mainTitle", "Modelle").parameter("subTitle", "Übersicht Modelle").actions([["refresh"],["create"]]));
+    this.form.header(FormHeader.rootPath("/models").parameter("mainTitle", "Modelle").parameter("subTitle", "Übersicht Modelle").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

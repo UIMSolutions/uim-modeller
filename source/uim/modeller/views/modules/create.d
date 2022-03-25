@@ -32,14 +32,14 @@ class DMDLModulesCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neues Modul")
       .parameter("subTitle", "Bitte Werte eingeben");
     
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
     
     this
       .form
         .body_(
-            MDLModuleFormBody(this.form)); 
+            MDLModuleFormContent(this.form)); 
   }
 
   override void beforeH5(STRINGAA options = null) {

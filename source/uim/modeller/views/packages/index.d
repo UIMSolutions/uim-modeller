@@ -24,7 +24,7 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
       .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath))
       .form
         .header(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Packages").parameter("subTitle", "Packages anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormBody(this.form).parameter("rootPath", myRootPath));
+        .body_(APPListFormContent(this.form).parameter("rootPath", myRootPath));
         
     if (this.form) {
       this.form.header(
@@ -35,7 +35,7 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
           .actions([["print", "export"]]));
       
       this.form.body_(
-          APPEntitiesFormBody(this.form)
+          APPEntitiesFormContent(this.form)
             .parameter("rootPath", myRootPath));
     }   
   }
@@ -44,7 +44,7 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLPackagesIndexView~":DMDLPackagesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/packages").parameter("mainTitle", "Packages").parameter("subTitle", "Übersicht Packages").actions([["refresh"],["create"]]));
+    this.form.header(FormHeader.rootPath("/packages").parameter("mainTitle", "Packages").parameter("subTitle", "Übersicht Packages").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

@@ -32,12 +32,12 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
       .parameter("mainTitle", "Neues Modell")
       .parameter("subTitle", "Bitte Werte eingeben");
 
-    if (auto formHeader = cast(DAPPFormHeader)this.form.header) {
+    if (auto formHeader = cast(DFormHeader)this.form.header) {
       formHeader.actions([["cancel", "save"]]);
     }
     
     this.form.body_(
-      MDLModelFormBody(this.form)
+      MDLModelFormContent(this.form)
       .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
   }
 

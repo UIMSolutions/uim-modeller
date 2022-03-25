@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.attributeclasses;
 import uim.modeller;
 
 class DMDLAttributeClassesFormGroup : DAPPEntityFormGroup {
-  mixin(APPFormComponentThis!("MDLAttributeClassesFormGroup", true));
+  mixin(FormComponentThis!("MDLAttributeClassesFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -59,7 +59,7 @@ class DMDLAttributeClassesFormGroup : DAPPEntityFormGroup {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(APPFormComponentCalls!("MDLAttributeClassesFormGroup", true));
+mixin(FormComponentCalls!("MDLAttributeClassesFormGroup", true));
 
 version(test_uim_cms) {
   unittest {

@@ -33,7 +33,7 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
           .actions([["print", "export"]]));
       
       this.form.body_(
-          APPEntitiesFormBody(this.form)
+          APPEntitiesFormContent(this.form)
             .parameter("rootPath", myRootPath));
     }        
   }
@@ -42,7 +42,7 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAppsIndexView~":DMDLAppsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/apps").parameter("mainTitle", "Apps").parameter("subTitle", "Übersicht Apps").actions([["refresh"],["create"]]));
+    this.form.header(FormHeader.rootPath("/apps").parameter("mainTitle", "Apps").parameter("subTitle", "Übersicht Apps").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

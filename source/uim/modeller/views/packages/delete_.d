@@ -34,7 +34,7 @@ class DMDLPackagesDeleteView : DAPPEntityDeleteView {
     this
       .form
         .body_(
-          MDLPackageFormBody(this.form)
+          MDLPackageFormContent(this.form)
             .fields(["name", "display", "description", "packages", "text"])); 
 
   }

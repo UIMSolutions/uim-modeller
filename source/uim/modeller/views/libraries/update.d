@@ -34,7 +34,7 @@ class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
       .parameter("subTitle", "Libraryl anzeigen");
       
     this.form.body_(
-      MDLLibraryFormBody(this.form));
+      MDLLibraryFormContent(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

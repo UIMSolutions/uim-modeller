@@ -33,7 +33,7 @@ class DMDLModulesIndexView : DAPPEntitiesListView {
           .actions([["print", "export"]]));
       
       this.form.body_(
-          APPEntitiesFormBody(this.form)
+          APPEntitiesFormContent(this.form)
             .parameter("rootPath", myRootPath));
     }        
   }
@@ -42,7 +42,7 @@ class DMDLModulesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLModulesIndexView~":DMDLModulesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(APPFormHeader.rootPath("/modules").parameter("mainTitle", "Module").parameter("subTitle", "Übersicht Module").actions([["refresh"],["create"]]));
+    this.form.header(FormHeader.rootPath("/modules").parameter("mainTitle", "Module").parameter("subTitle", "Übersicht Module").actions([["refresh"],["create"]]));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -77,3 +77,14 @@ version(test_uim_modeller) {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testView(MDLModulesIndexView); 
 }}
+
+/*         APPListViewComponent
+          .showFilter(true)
+          .showHeader(true)
+          .showNumber(true)
+          .showSorter(true)
+          .filterValues(["className": "KlassenName", "display": "Titel"])
+          .sortValues(["className": "KlassenName", "display": "Titel"])
+          .itemTemplate(
+            UIMModuleListItem
+              .rootPath("/projects/module/"))) */

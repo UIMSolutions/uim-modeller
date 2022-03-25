@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.isnullable;
 import uim.modeller;
 
 class DMDLIsNullableFormGroup : DAPPSwitchFormGroup {
-  mixin(APPFormComponentThis!("MDLIsNullableFormGroup", true));  
+  mixin(FormComponentThis!("MDLIsNullableFormGroup", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsNullableFormGroup : DAPPSwitchFormGroup {
     .label("Datenformat Nullable"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLIsNullableFormGroup", true));
+mixin(FormComponentCalls!("MDLIsNullableFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

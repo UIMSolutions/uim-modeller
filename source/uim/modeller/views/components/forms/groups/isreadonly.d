@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.isreadonly;
 import uim.modeller;
 
 class DMDLIsReadOnlyFormGroup : DAPPSwitchFormGroup {
-  mixin(APPFormComponentThis!("MDLIsReadOnlyFormGroup", true));  
+  mixin(FormComponentThis!("MDLIsReadOnlyFormGroup", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsReadOnlyFormGroup : DAPPSwitchFormGroup {
     .label("Datenformat ReadOnly"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLIsReadOnlyFormGroup", true));
+mixin(FormComponentCalls!("MDLIsReadOnlyFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

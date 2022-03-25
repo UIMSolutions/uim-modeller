@@ -33,7 +33,7 @@ class DMDLLibrariesDeleteView : DAPPEntityDeleteView {
       .parameter("subTitle", "Bibliothek löschen");
     
     this.form.body_(
-      MDLLibraryFormBody(this.form));
+      MDLLibraryFormContent(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

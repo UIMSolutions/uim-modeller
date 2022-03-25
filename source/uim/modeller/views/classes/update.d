@@ -33,7 +33,7 @@ class DMDLClassesUpdateView : DAPPEntityUpdateView {
       .parameter("subTitle", "Classes anzeigen");
       
     this.form.body_(
-      MDLAttributeFormBody(this.form));
+      MDLAttributeFormContent(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

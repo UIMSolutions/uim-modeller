@@ -32,7 +32,7 @@ class DMDLPackagesReadView : DAPPEntityReadView {
       .parameter("subTitle", "Packages anzeigen");
 
     this.form.body_(
-      MDLPackageFormBody(this.form)
+      MDLPackageFormContent(this.form)
         .fields(["name", "display", "description", "packages", "text"])); 
 
   }

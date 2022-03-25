@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.isbig;
 import uim.modeller;
 
 class DMDLIsBigFormGroup : DAPPSwitchFormGroup {
-  mixin(APPFormComponentThis!("MDLIsBigFormGroup", true));  
+  mixin(FormComponentThis!("MDLIsBigFormGroup", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsBigFormGroup : DAPPSwitchFormGroup {
     .label("Datenformat Big"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLIsBigFormGroup", true));
+mixin(FormComponentCalls!("MDLIsBigFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

@@ -32,7 +32,7 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
       .parameter("subTitle", "Attributklasse anzeigen");
 
     this.form.body_(
-      MDLAttributeClassFormBody(this.form));
+      MDLAttributeClassFormContent(this.form));
   }
 
   override void beforeH5(STRINGAA options = null) {

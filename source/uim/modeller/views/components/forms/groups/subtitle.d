@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.subtitle;
 import uim.modeller;
 
 class DMDLSubTitleFormGroup : DAPPTextFormGroup {
-  mixin(APPFormComponentThis!("MDLSubTitleFormGroup", true));
+  mixin(FormComponentThis!("MDLSubTitleFormGroup", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLSubTitleFormGroup : DAPPTextFormGroup {
     .label("Untertitle"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLSubTitleFormGroup", true));
+mixin(FormComponentCalls!("MDLSubTitleFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {

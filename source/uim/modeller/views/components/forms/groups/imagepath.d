@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.groups.imagepath;
 import uim.modeller;
 
 class DMDLImagePathFormGroup : DAPPTextFormGroup {
-  mixin(APPFormComponentThis!("MDLImagePathFormGroup", true));
+  mixin(FormComponentThis!("MDLImagePathFormGroup", true));
   
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLImagePathFormGroup : DAPPTextFormGroup {
     .label("Titelbild"); 
   }
 }
-mixin(APPFormComponentCalls!("MDLImagePathFormGroup", true));
+mixin(FormComponentCalls!("MDLImagePathFormGroup", true));
 
 version(test_uim_modeller) {
   unittest {
