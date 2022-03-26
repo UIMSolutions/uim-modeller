@@ -50,8 +50,8 @@ class DMDLClassesDeleteView : DAPPEntityDeleteView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/classes/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

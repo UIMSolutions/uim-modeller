@@ -29,7 +29,7 @@ class DMDLModulesUpdateView : DAPPEntityUpdateView {
       frm
         .action("/modeller/modules/actions/save")
         .crudMode(CRUDModes.Update)
-        .rootPath(this.rootPath);
+        .rootPath(this.rootPath)
         .content(
           MDLModuleFormContent);
 
@@ -51,8 +51,8 @@ class DMDLModulesUpdateView : DAPPEntityUpdateView {
 
     if (auto frm = cast(DForm)this.form) {
       frm
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

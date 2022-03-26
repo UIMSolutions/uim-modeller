@@ -18,22 +18,24 @@ class DMDLAttributesIndexView : DAPPEntitiesListView {
     );
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Attributes")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
-
-    if (auto frm = cast(DForm)this.form) {
-      frm
-        .rootPath(this.rootPath)      
-        .header(
-          FormHeader
-            .rootPath(this.rootPath)
-            .mainTitle("Attributes")
-            .subTitle("Attributes anzeigen")
-            .actions([["print", "export"]]))
-          .content(
-            EntitiesFormContent
-              .rootPath(this.rootPath));
-    }        
+      .header(
+        PageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht Attributes"))
+          .actions([["refresh", "list", "create"]]))
+      .form(
+        APPEntitiesListForm(this)
+          .rootPath(this.rootPath)
+          .header(
+            FormHeader
+              .rootPath(this.rootPath)
+              .mainTitle("Attributes")
+              .subTitle("Attributes anzeigen")
+              .actions([["print", "export"]]))
+            .content(
+              EntitiesFormContent
+                .rootPath(this.rootPath)));
   }
 
   override void beforeH5(STRINGAA options = null) {

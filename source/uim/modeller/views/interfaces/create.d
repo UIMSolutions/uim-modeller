@@ -27,21 +27,18 @@ class DMDLInterfacesCreateView : DAPPEntityCreateView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/interfaces/actions/create")
-      .rootPath(this.rootPath);
-    
-      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent);
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) {
         frmHeader
           .rootPath(this.rootPath)
           .mainTitle("Neues Attribute")
           .subTitle("Bitte Werte eingeben")
           .actions([["cancel", "save"]]);
       }
-    }
-    
-    this
-      .form
-        .content(
-            MDLAttributeFormContent); 
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -51,8 +48,8 @@ class DMDLInterfacesCreateView : DAPPEntityCreateView {
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     options["rootPath"] = myRootPath;
 
-/*       .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
+/*       // .headerTitle(headerTitle)
+      // .bodyTitle(bodyTitle)
  */  
   }
 }

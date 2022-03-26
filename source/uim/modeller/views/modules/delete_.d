@@ -28,7 +28,7 @@ class DMDLModulesDeleteView : DAPPEntityDeleteView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/modules/actions/delete")
-        .rootPath(this.rootPath);
+        .rootPath(this.rootPath)
         .content(
           MDLModuleFormContent);     
 
@@ -51,8 +51,8 @@ class DMDLModulesDeleteView : DAPPEntityDeleteView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/modules/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

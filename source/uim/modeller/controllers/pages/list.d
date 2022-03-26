@@ -14,7 +14,7 @@ class DMDLListPageController : DAPPListPage {
     .title("UIM!MDL > "~myEntities)
     .checks([APPCheckAppSessionExists, APPCheckAppSessionHasSession, APPCheckAppSessionHasSite, APPCheckDatabaseExists])
     .pageHeader(
-      APPPageHeader
+      PageHeader
       .rootPath(pgPath).preTitle(myEntities).title("Übersicht "~myEntities).actions(["refresh", "create"])
       .breadcrumbs(
         BS5BreadcrumbList(["breadcrumb-arrows"])

@@ -28,8 +28,10 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/attributeclasses/actions/create")
-      .rootPath(this.rootPath);
-    
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeClassFormContent); 
+
       if (auto frmHeader = cast(DFormHeader)frm.header) { 
         frmHeader
           .rootPath(this.rootPath)
@@ -37,10 +39,7 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
           .subTitle("Bitte Werte eingeben")
           .actions([["cancel", "save"]]);
       }
-    }
-    
-    this.form.content(
-      MDLAttributeClassFormContent); 
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {

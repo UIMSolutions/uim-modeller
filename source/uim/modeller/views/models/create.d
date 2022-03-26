@@ -28,7 +28,7 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/models/actions/create")
-        .rootPath(this.rootPath);
+        .rootPath(this.rootPath)
         .content(
           MDLModelFormContent
           .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
@@ -57,8 +57,8 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/models/actions/create")
-/*       .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
+/*       // .headerTitle(headerTitle)
+      // .bodyTitle(bodyTitle)
  */      .entity(this.entity);
     }
   }

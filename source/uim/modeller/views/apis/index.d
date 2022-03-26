@@ -25,7 +25,7 @@ class DMDLApisIndexView : DAPPEntitiesListView {
         .breadcrumbs(bc)
         .rootPath(this.rootPath)
         .title(titleView("Übersicht Apis"))
-        .actions(["refresh", "list", "create"]);
+        .actions([["refresh", "list", "create"]]);
     }
 
 

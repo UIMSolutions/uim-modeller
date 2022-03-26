@@ -28,7 +28,7 @@ class DMDLPackagesUpdateView : DAPPEntityUpdateView {
       frm
         .action("/modeller/packages/actions/save")
         .crudMode(CRUDModes.Update)
-        .rootPath(this.rootPath);
+        .rootPath(this.rootPath)
         .content(
           MDLPackageFormContent
             .fields(["name", "display", "description", "packages", "text"])); 
@@ -51,8 +51,8 @@ class DMDLPackagesUpdateView : DAPPEntityUpdateView {
 
     if (auto frm = cast(DForm)this.form) {
       frm
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

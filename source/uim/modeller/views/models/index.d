@@ -22,11 +22,14 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
 
     this
       .header(
-        APPPageHeader(this)
+        PageHeader(this)
           .breadcrumbs(bc)
           .rootPath(this.rootPath)
-          .title(titleView("Übersicht Models")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
+          .title(titleView("Übersicht Models"))
+          .actions([["refresh", "list", "create"]]))
+      .form(
+        APPEntitiesListForm(this)
+        .rootPath(this.rootPath));
 
     if (auto frm = cast(DForm)this.form) {
       frm

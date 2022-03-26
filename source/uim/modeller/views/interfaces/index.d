@@ -21,36 +21,24 @@ class DMDLInterfacesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Interfaces";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Interfaces")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
-
-    if (auto frm = cast(DForm)this.form) {
-      frm
+      .header(
+        PageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht Interfaces"))
+          .actions([["refresh", "list", "create"]]))
+      .form(
+        APPEntitiesListForm(this)
         .rootPath(this.rootPath)           
         .header(
           FormHeader
             .rootPath(this.rootPath)
             .mainTitle("Interfaces")
             .subTitle("Interfaces anzeigen")
-            .actions([["print", "export"]]))
+            .actions([["refresh"],["create"], ["print", "export"]]))
         .content(
           EntitiesFormContent
-            .rootPath(this.rootPath));
-    }        
-  }
-
-  override void beforeH5(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLInterfacesIndexView~":DMDLInterfacesIndexView("~this.name~")::beforeH5");
-    super.beforeH5(options);
-
-    if (auto frm = cast(DForm)this.form) { 
-      frm.header(
-        FormHeader
-          .rootPath("/interfaces")
-          .mainTitle("Interfaces")
-          .subTitle("Übersicht Interfaces")
-          .actions([["refresh"],["create"]]));
-    }
+            .rootPath(this.rootPath)));
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {

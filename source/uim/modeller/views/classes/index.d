@@ -22,11 +22,11 @@ class DMDLClassesIndexView : DAPPEntitiesListView {
 
     this
       .header(
-        APPPageHeader(this)
+        PageHeader(this)
           .breadcrumbs(bc)
           .rootPath(this.rootPath)
           .title(titleView("Übersicht Classes"))
-          .actions(["refresh", "list", "create"]))          
+          .actions([["refresh", "list", "create"]]))          
       .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 /*       .form
         .formHeader(FormHeader.rootPath(this.rootPath).mainTitle("Classes").subTitle("Classes anzeigen").actions([["print", "export"]]))

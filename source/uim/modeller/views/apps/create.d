@@ -27,7 +27,9 @@ class DMDLAppsCreateView : DAPPEntityCreateView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/apps/actions/create")
-        .rootPath(this.rootPath);
+        .rootPath(this.rootPath)
+        .content(
+            MDLAttributeFormContent); 
     
       if (auto frmHeader = cast(DFormHeader)frm.header) { 
         frmHeader
@@ -37,11 +39,6 @@ class DMDLAppsCreateView : DAPPEntityCreateView {
           .actions([["cancel", "save"]]);
       }
     }
-
-    this
-      .form
-        .content(
-            MDLAttributeFormContent); 
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -51,8 +48,8 @@ class DMDLAppsCreateView : DAPPEntityCreateView {
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     options["rootPath"] = myRootPath;
 
-/*       .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
+/*       // .headerTitle(headerTitle)
+      // .bodyTitle(bodyTitle)
  */  
   }
 }

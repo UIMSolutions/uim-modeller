@@ -21,11 +21,11 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
     this
       .rootPath("/modeller/packages")
       .header(
-        APPPageHeader(this)
+        PageHeader(this)
           .breadcrumbs(bc)
           .rootPath(this.rootPath)
           .title(titleView("Übersicht Packages"))
-          .actions(["refresh", "list", "create"]))
+          .actions([["refresh", "list", "create"]]))
       .form(
         APPEntitiesListForm(this)
         .rootPath(this.rootPath)

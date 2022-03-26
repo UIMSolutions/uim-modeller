@@ -27,8 +27,11 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/packages/actions/create")
-      .rootPath(this.rootPath);
-    
+        .rootPath(this.rootPath)
+        .content(
+          MDLPackageFormContent
+            .fields(["name", "display", "description", "packages", "text"])); 
+
       if (auto frmHeader = cast(DFormHeader)frm.header) { 
         frmHeader
           .rootPath(this.rootPath)
@@ -36,13 +39,7 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
           .subTitle("Bitte Werte eingeben")
           .actions([["cancel", "save"]]);
       }
-    }
-    
-    this
-      .form
-        .content(
-            MDLPackageFormContent
-              .fields(["name", "display", "description", "packages", "text"])); 
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -52,8 +49,8 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     options["rootPath"] = myRootPath;
 
-/*       .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
+/*       // .headerTitle(headerTitle)
+      // .bodyTitle(bodyTitle)
  */  
   }
 }

@@ -21,24 +21,24 @@ class DMDLLibrariesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Bibliotheken";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht libraries")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
-
-    if (this.form) {
-      frm
-        .content(
-          EntitiesFormContent
-            .rootPath(this.rootPath));
-      
-      if (auto frmHeader = cast(DFormHeader)frm.header) { 
-        frmHeader(
-          FormHeader
-            .rootPath(this.rootPath)
-            .mainTitle("Bibliotheken")
-            .subTitle("Bibliotheken anzeigen")
-            .actions([["print", "export"]]));
-      }
-    }        
+      .header(
+        PageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht libraries"))
+          .actions([["refresh", "list", "create"]]))
+      .form(
+        APPEntitiesListForm(this)
+          .rootPath(this.rootPath)
+          .content(
+            EntitiesFormContent
+            .rootPath(this.rootPath))
+          .header(
+            FormHeader
+              .rootPath(this.rootPath)
+              .mainTitle("Bibliotheken")
+              .subTitle("Bibliotheken anzeigen")
+              .actions([["print", "export"]]))); 
   }
   
   override void beforeH5(STRINGAA options = null) {

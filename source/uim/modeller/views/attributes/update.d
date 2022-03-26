@@ -28,9 +28,8 @@ class DMDLAttributesUpdateView : DAPPEntityUpdateView {
       frm
         .action("/modeller/attributes/actions/save")
         .crudMode(CRUDModes.Update)
-        .rootPath(this.rootPath);
-        .content(
-          MDLAttributeFormContent);
+        .rootPath(this.rootPath)
+        .content(MDLAttributeFormContent);
 
       if (auto frmHeader = cast(DFormHeader)frm.header) { 
         frmHeader
@@ -50,8 +49,8 @@ class DMDLAttributesUpdateView : DAPPEntityUpdateView {
 
     if (auto frm = cast(DForm)this.form) {
       frm
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

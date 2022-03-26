@@ -21,7 +21,12 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Anwendungen";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Apps")).actions(["refresh", "list", "create"]))
+      .header(
+        PageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht Apps"))
+          .actions([["refresh", "list", "create"]]))
       .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 
     if (auto frm = cast(DForm)this.form) { 

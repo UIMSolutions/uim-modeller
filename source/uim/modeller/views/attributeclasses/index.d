@@ -21,7 +21,7 @@ class DMDLAttributeClassesIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Attributklassen";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Attributeclasses")).actions(["refresh", "list", "create"]))
+      .header(PageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Attributeclasses")).actions([["refresh", "list", "create"]]))
       .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 
     if (auto frm = cast(DForm)this.form) {

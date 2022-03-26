@@ -53,8 +53,8 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
 
     if (auto frm = cast(DForm)this.form) {
       frm
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

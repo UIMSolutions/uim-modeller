@@ -32,7 +32,7 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
       frm
         .action("/modeller/entityclasses/actions/save")
         .crudMode(CRUDModes.Update)
-        .rootPath(this.rootPath);
+        .rootPath(this.rootPath)
         .content(
           MDLEntityClassFormContent
             .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
@@ -56,8 +56,8 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
 
     if (auto frm = cast(DForm)this.form) {
       frm
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

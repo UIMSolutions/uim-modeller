@@ -64,8 +64,8 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/entityclasses/actions/create")
-/*       .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
+/*       // .headerTitle(headerTitle)
+      // .bodyTitle(bodyTitle)
  */      .entity(this.entity);
     }
   }

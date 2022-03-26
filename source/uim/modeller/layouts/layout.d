@@ -38,10 +38,9 @@ class DMDLLayout : DAPPLayout {
       _bodyAttributes["style"] = "background-color: #ffffff;";
       _bodyClasses = ["d-flex", "flex-column", "h-100"];  
 
-      this
-      .navigation
-        .secondNavbar
-          .leftSlotsWithLogin([MDLNavSlot]);
+      if (auto secNavvar = cast(DAPPSecondNavbar)this.navigation.secondNavbar) {
+        secNavvar.leftSlotsWithLogin([MDLNavSlot]);
+      }
   }
 
   override void renderBody(DH5Html html, string[] classes, STRINGAA attributes, string content, STRINGAA options = null) {
@@ -59,9 +58,9 @@ class DMDLLayout : DAPPLayout {
       ).toString;
 
     html
-    .content(classes)
-		.content(attributes)
-		.content(bodyContent); 
+    .body_(classes)
+		.body_(attributes)
+		.body_(bodyContent); 
   }
 }
 auto MDLLayout() { return new DMDLLayout; }

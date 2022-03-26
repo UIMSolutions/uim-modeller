@@ -51,8 +51,8 @@ class DMDLApisCreateView : DAPPEntityCreateView {
     debug writeln("this.entity -> ", this.entity ? this.entity.id.toString : " 'null' " );
     options["rootPath"] = this.rootPath;
 
-/*       .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
+/*       // .headerTitle(headerTitle)
+      // .bodyTitle(bodyTitle)
  */  
   }
 }

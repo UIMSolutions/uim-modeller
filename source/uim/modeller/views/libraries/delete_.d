@@ -52,8 +52,8 @@ class DMDLLibrariesDeleteView : DAPPEntityDeleteView {
     if (auto frm = cast(DForm)this.form) {
       frm
         .action("/modeller/libraries/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-        .headerTitle(headerTitle)
-        .bodyTitle(bodyTitle)
+        // .headerTitle(headerTitle)
+        // .bodyTitle(bodyTitle)
         .entity(this.entity);
     }
   }

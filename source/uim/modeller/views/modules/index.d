@@ -22,7 +22,7 @@ class DMDLModulesIndexView : DAPPEntitiesListView {
 
     this
       .header(
-        APPPageHeader(this)
+        PageHeader(this)
           .breadcrumbs(bc)
           .rootPath(this.rootPath)
           .title(titleView("Übersicht Modules"))

@@ -21,21 +21,24 @@ class DMDLMethodsIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Methoden";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Methods")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
-
-    if (auto frm = cast(DForm)this.form) { 
-      frm
-        .content(
-          EntitiesFormContent
-            .rootPath(this.rootPath));
-        .header(
-          FormHeader
-            .rootPath(this.rootPath)
-            .mainTitle("Methoden")
-            .subTitle("Methoden anzeigen")
-            .actions([["print", "export"]]));     
-    }        
+      .header(
+        PageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht Methods"))
+          .actions([["refresh", "list", "create"]]))
+      .form(
+        APPEntitiesListForm(this)
+          .rootPath(this.rootPath)
+          .content(
+            EntitiesFormContent
+              .rootPath(this.rootPath))
+          .header(
+            FormHeader
+              .rootPath(this.rootPath)
+              .mainTitle("Methoden")
+              .subTitle("Methoden anzeigen")
+              .actions([["print", "export"]])));     
   }
 
   override void beforeH5(STRINGAA options = null) {
