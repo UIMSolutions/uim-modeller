@@ -14,27 +14,30 @@ class DMDLInterfacesDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Interfaces")
+      .link(["href":this.rootPath], "Interfaces")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Blog löschen"));
+    }
 
-    this.form
-      .action("/modeller/interfaces/actions/delete")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/interfaces/actions/delete")
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent); 
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Interfaces")
-      .parameter("subTitle", "Interfaces löschen");
-    
-    this
-      .form
-        .body_(
-          MDLAttributeFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Interfaces")
+          .subTitle("Interfaces löschen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -44,11 +47,13 @@ class DMDLInterfacesDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Attribute ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Attribute Name:";
 
-    this
-      .form.action("/modeller/interfaces/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/interfaces/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLInterfacesDeleteView"));

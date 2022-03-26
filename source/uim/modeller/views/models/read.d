@@ -18,21 +18,26 @@ class DMDLModelsReadView : DAPPEntityReadView {
       .link(["active"], ["href":"/modeller/models/read"], "Anzeigen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
-      .parameter("title", titleView("Modell anzeigen"));
+      .rootPath(this.rootPath)
+      .title(titleView("Modell anzeigen"));
+    }
     
-    this.form
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLModelFormContent);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Modelle")
-      .parameter("subTitle", "Modell anzeigen");
-
-    this.form.body_(
-      MDLModelFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Modelle")
+          .subTitle("Modell anzeigen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -43,10 +48,12 @@ class DMDLModelsReadView : DAPPEntityReadView {
     auto headerTitle = "Modell ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Modell Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLModelsReadView"));

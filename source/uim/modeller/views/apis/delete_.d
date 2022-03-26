@@ -21,24 +21,27 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
       .link(["href":this.rootPath], "Apis")
     );
 
-    this.header
-      .breadcrumbs(bc)
-      .parameter("rootPath", this.rootPath)
-      .title(titleDelete("Blog löschen"));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(titleDelete("Blog löschen"));
+    }
 
-    this.form
-      .action("/modeller/apis/actions/delete")
-      .parameter("rootPath", this.rootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/apis/actions/delete")
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent); 
     
-    this.form.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("mainTitle", "Apis")
-      .parameter("subTitle", "Apis löschen");
-    
-    this
-      .form
-        .body_(
-          MDLAttributeFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Apis")
+          .subTitle("Apis löschen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -48,11 +51,13 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Attribute ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Attribute Name:";
 
-    this
-      .form.action("/modeller/apis/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/apis/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLApisDeleteView"));

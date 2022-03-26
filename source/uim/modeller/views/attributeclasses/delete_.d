@@ -18,22 +18,27 @@ class DMDLAttributeClassesDeleteView : DAPPEntityDeleteView {
       .link(["active"], ["href":"/modeller/attributeclasses/delete"], "Löschen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Blog löschen"));
+    }
 
-    this.form
-      .action("/modeller/attributeclasses/actions/delete")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/attributeclasses/actions/delete")
+        .rootPath(this.rootPath);
+        .content(
+          MDLAttributeClassFormContent);
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Attributklassen")
-      .parameter("subTitle", "Attributklasse löschen");
-    
-    this.form.body_(
-      MDLAttributeClassFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Attributklassen")
+          .subTitle("Attributklasse löschen");
+      }
+    } 
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -43,11 +48,13 @@ class DMDLAttributeClassesDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Attributklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Attributklasse Name:";
 
-    this.form
-      .action("/modeller/attributeclasses/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/attributeclasses/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLAttributeClassesDeleteView"));

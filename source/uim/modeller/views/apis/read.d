@@ -20,22 +20,27 @@ class DMDLApisReadView : DAPPEntityReadView {
       .link(["href":this.rootPath], "Apis")
     );
 
-    this.header
-      .breadcrumbs(bc)
-      .parameter("rootPath", this.rootPath)
-      .title(
-        titleView("Blog anzeigen"));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(
+          titleView("Blog anzeigen"));
+    }
     
-    this.form
-      .parameter("rootPath", this.rootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent); 
 
-    this.form.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("mainTitle", "Apis")
-      .parameter("subTitle", "Apis anzeigen");
-
-    this.form.body_(
-      MDLAttributeFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Apis")
+          .subTitle("Apis anzeigen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -45,8 +50,9 @@ class DMDLApisReadView : DAPPEntityReadView {
 /*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .headerTitle(headerTitle)
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
       .entity(this.entity); */
   }

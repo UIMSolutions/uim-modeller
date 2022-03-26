@@ -21,24 +21,29 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/entityclasses/update"], "Bearbeiten")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", this.rootPath)
+      .rootPath(this.rootPath)
       .title(titleEdit("Entitätenklasse bearbeiten"));
+    }
       
-    this.form
-      .action("/modeller/entityclasses/actions/save")
-      .crudMode(CRUDModes.Update)
-      .parameter("rootPath", this.rootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/entityclasses/actions/save")
+        .crudMode(CRUDModes.Update)
+        .rootPath(this.rootPath);
+        .content(
+          MDLEntityClassFormContent
+            .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
 
-    this.form.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("mainTitle", "Entitätsklassen")
-      .parameter("subTitle", "Entitätsklasse bearbeiten");
-      
-    this.form.body_(
-      MDLEntityClassFormContent(this.form)
-        .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Entitätsklassen")
+          .subTitle("Entitätsklasse bearbeiten");
+      }
+    }      
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -49,10 +54,12 @@ class DMDLEntityClassesUpdateView : DAPPEntityUpdateView {
     auto headerTitle = "Entitätenklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Entitätenklasse Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLEntityClassesUpdateView"));

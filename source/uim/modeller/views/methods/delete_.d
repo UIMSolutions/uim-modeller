@@ -14,27 +14,30 @@ class DMDLMethodsDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Methods")
+      .link(["href":this.rootPath], "Methods")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Blog löschen"));
+    }
 
-    this.form
-      .action("/modeller/methods/actions/delete")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/methods/actions/delete")
+        .rootPath(this.rootPath)
+        .content(
+          MDLMethodFormContent); 
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Methods")
-      .parameter("subTitle", "Methods löschen");
-    
-    this
-      .form
-        .body_(
-          MDLMethodFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Methods")
+          .subTitle("Methods löschen");
+      }
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -44,11 +47,13 @@ class DMDLMethodsDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Method ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Method Name:";
 
-    this
-      .form.action("/modeller/methods/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/methods/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLMethodsDeleteView"));

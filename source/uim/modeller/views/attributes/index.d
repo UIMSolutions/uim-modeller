@@ -14,25 +14,25 @@ class DMDLAttributesIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attributes")
+      .link(["href":this.rootPath], "Attributes")
     );
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Attributes")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Attributes")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 
-    if (this.form) {
-      this.form
+    if (auto frm = cast(DForm)this.form) {
+      frm
         .rootPath(this.rootPath)      
         .header(
-          APPEntitiesFormHeader(this.form)
-            .parameter("rootPath", myRootPath)
-            .parameter("mainTitle", "Attributes")
-            .parameter("subTitle", "Attributes anzeigen")
+          FormHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Attributes")
+            .subTitle("Attributes anzeigen")
             .actions([["print", "export"]]))
-          .body_(
-            APPEntitiesFormContent(this.form)
-              .parameter("rootPath", myRootPath));
+          .content(
+            EntitiesFormContent
+              .rootPath(this.rootPath));
     }        
   }
 
@@ -40,8 +40,14 @@ class DMDLAttributesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAttributesIndexView~":DMDLAttributesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(
-      FormHeader.rootPath("/attributes").parameter("mainTitle", "Attributes").parameter("subTitle", "Übersicht Attributes").actions([["refresh"],["create"]]));
+    if (auto frm = cast(DForm)this.form) { 
+      frm.header(
+        FormHeader
+          .rootPath("/attributes")
+          .mainTitle("Attributes")
+          .subTitle("Übersicht Attributes")
+          .actions([["refresh"],["create"]]));
+    }
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -50,7 +56,7 @@ class DMDLAttributesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.parameter("rootPath", myRootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLAttributesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

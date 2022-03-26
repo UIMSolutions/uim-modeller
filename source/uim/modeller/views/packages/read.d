@@ -14,27 +14,31 @@ class DMDLPackagesReadView : DAPPEntityReadView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Packages")
+      .link(["href":this.rootPath], "Packages")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(
         titleView("Blog anzeigen"));
+    }
     
-    this.form
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLPackageFormContent(frm)
+            .fields(["name", "display", "description", "packages", "text"])); 
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Packages")
-      .parameter("subTitle", "Packages anzeigen");
-
-    this.form.body_(
-      MDLPackageFormContent(this.form)
-        .fields(["name", "display", "description", "packages", "text"])); 
-
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Packages")
+          .subTitle("Packages anzeigen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -44,8 +48,9 @@ class DMDLPackagesReadView : DAPPEntityReadView {
 /*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .headerTitle(headerTitle)
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
       .entity(this.entity); */
   }

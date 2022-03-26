@@ -18,26 +18,29 @@ class DMDLAttributeClassesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/attributeclasses/create"], "Erstellen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleCreate("Attributklasse erstellen"));
+    }
 
-    this.form
-      .action("/modeller/attributeclasses/actions/create")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/attributeclasses/actions/create")
+      .rootPath(this.rootPath);
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Neue Attributklasse")
-      .parameter("subTitle", "Bitte Werte eingeben");
-
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neue Attributklasse")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"]]);
+      }
     }
     
-    this.form.body_(
-      MDLAttributeClassFormContent(this.form)); 
+    this.form.content(
+      MDLAttributeClassFormContent); 
   }
 
   override void beforeH5(STRINGAA options = null) {

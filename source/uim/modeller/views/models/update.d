@@ -18,23 +18,28 @@ class DMDLModelsUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/models/update"], "Bearbeiten")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleEdit("Modell bearbeiten"));
+    }
       
-    this.form
-      .action("/modeller/models/actions/save")
-      .crudMode(CRUDModes.Update)
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/models/actions/save")
+        .crudMode(CRUDModes.Update)
+        .rootPath(this.rootPath)
+        .content(
+          MDLModelFormContent(frm));
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Modelle")
-      .parameter("subTitle", "Modell anzeigen");
-      
-    this.form.body_(
-      MDLModelFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Modelle")
+          .subTitle("Modell anzeigen");
+      }
+    }      
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -45,10 +50,12 @@ class DMDLModelsUpdateView : DAPPEntityUpdateView {
     auto headerTitle = "Modell ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Modell Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLModelsUpdateView"));

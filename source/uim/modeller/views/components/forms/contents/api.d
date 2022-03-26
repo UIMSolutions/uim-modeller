@@ -1,10 +1,10 @@
-module uim.modeller.views.components.forms.bodies.app;
+module uim.modeller.views.components.forms.contents.api;
 
 @safe:
 import uim.modeller;
 
-class DMDLAppFormContent : DAPPEntityFormContent {
-  mixin(FormComponentThis!("MDLAppFormContent", true));
+class DMDLApiFormContent : DEntityFormContent {
+  mixin(FormComponentThis!("MDLApiFormContent", true));
 
   override void initialize() {
     super.initialize;
@@ -14,9 +14,9 @@ class DMDLAppFormContent : DAPPEntityFormContent {
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
-mixin(FormComponentCalls!("MDLAppFormContent", true));
+mixin(FormComponentCalls!("MDLApiFormContent", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLAppFormContent);
+    assert(MDLApiFormContent);
 }}

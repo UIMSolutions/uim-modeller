@@ -3,8 +3,8 @@ module uim.modeller.views.components.listitems.app;
 @safe:
 import uim.modeller;
 
-class DMDLAppListItem : DAPPListEntityComponent {
-  mixin(APPViewComponentThis!("MDLAppListItem"));
+class DMDLAppListItem : DEntityListItem {
+  mixin(ViewComponentThis!("MDLAppListItem"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);
@@ -26,4 +26,4 @@ class DMDLAppListItem : DAPPListEntityComponent {
     ].toH5;
   }
 }
-mixin(APPViewComponentCalls!("MDLAppListItem"));
+mixin(ViewComponentCalls!("MDLAppListItem"));

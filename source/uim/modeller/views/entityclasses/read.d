@@ -21,33 +21,26 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
       .link(["active"], ["href":"/modeller/entityclasses/read"], "Anzeigen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", this.rootPath)
-      .parameter("title", titleView("Entitätsklasse anzeigen"));
+      .rootPath(this.rootPath)
+      .title(titleView("Entitätsklasse anzeigen"));
+    }
     
-    this.form();
-    
-    this.form
-      .parameter("rootPath", this.rootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLEntityClassFormContent
+            .crudMode(CRUDModes.Read)
+            .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"]));
 
-    if (this.form) {
-      debug writeln("Found form: (%s)".format(form.name));
-      if (this.form.header) {
-        debug writeln("Found this.form.header: (%s)".format(this.form.header.name));
-
-        this.form.header
-          .parameter("rootPath", this.rootPath)
-          .parameter("mainTitle", "Entitätsklassen")
-          .parameter("subTitle", "Entitätsklasse anzeigen");
-      }
-
-      if (this.form.body_) {
-        debug writeln("Found this.form.body_: (%s)".format(this.form.body_.name));
-
-        this.form.body_(
-          MDLEntityClassFormContent(this.form).crudMode(CRUDModes.Read)
-            .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
+        if (auto frmHeader = cast(DFormHeader)frm.header) { 
+          frmHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Entitätsklassen")
+            .subTitle("Entitätsklasse anzeigen");
       }
     }
   }
@@ -57,8 +50,10 @@ class DMDLEntityClassesReadView : DAPPEntityReadView {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-    this.form
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm.entity(
+        this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLEntityClassesReadView"));

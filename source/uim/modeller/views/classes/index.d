@@ -14,18 +14,23 @@ class DMDLClassesIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Classes")
+      .link(["href":this.rootPath], "Classes")
     );
 
     auto headerTitle = titleList("Classes");
     auto bodyTitle = "Gefundene Classes";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Classes")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
+      .header(
+        APPPageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht Classes"))
+          .actions(["refresh", "list", "create"]))          
+      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 /*       .form
-        .formHeader(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Classes").parameter("subTitle", "Classes anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormContent(this.form).parameter("rootPath", myRootPath));
+        .formHeader(FormHeader.rootPath(this.rootPath).mainTitle("Classes").subTitle("Classes anzeigen").actions([["print", "export"]]))
+        .content(APPListFormContent.rootPath(this.rootPath));
         
  */  }
 
@@ -33,7 +38,14 @@ class DMDLClassesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLClassesIndexView~":DMDLClassesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(FormHeader.rootPath("/classes").parameter("mainTitle", "Classes").parameter("subTitle", "Übersicht Classes").actions([["refresh"],["create"]]));
+    if (auto frm = cast(DForm)this.form) { 
+        frm.header(
+          FormHeader
+            .rootPath("/classes")
+            .mainTitle("Classes")
+            .subTitle("Übersicht Classes")
+            .actions([["refresh"],["create"]]));
+    }
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -42,7 +54,7 @@ class DMDLClassesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.parameter("rootPath", myRootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLClassesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

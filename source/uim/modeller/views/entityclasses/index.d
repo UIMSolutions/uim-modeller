@@ -20,26 +20,26 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
       .link(["active"], ["href":this.rootPath], "Entitätsklassen")
     );
 
-    this
-      .header(
-        APPPageHeader(this)
-          .breadcrumbs(bc)
-          .parameter("rootPath", this.rootPath)
-          .parameter("title", titleView("Übersicht Entitätsklassen"))
-          .actions(["refresh", "list", "create"]));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(titleView("Übersicht Entitätsklassen"))
+        .actions([["refresh", "list", "create"]]);
+    }
 
-    if (this.form) {
-      this.form
+    if (auto frm = cast(DForm)this.form) {
+      frm
         .rootPath(this.rootPath)      
         .header(
-          APPEntitiesFormHeader(this.form)
-            .parameter("rootPath", this.rootPath)
-            .parameter("mainTitle", "Entityclasses")
-            .parameter("subTitle", "Entityclasses anzeigen")
+          FormHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Entityclasses")
+            .subTitle("Entityclasses anzeigen")
             .actions([["print", "export"]]))
-        .body_(
-          APPEntitiesFormContent(this.form)
-            .parameter("rootPath", this.rootPath));
+        .content(
+          EntitiesFormContent
+            .rootPath(this.rootPath));
     }        
   }
 
@@ -58,7 +58,7 @@ class DMDLEntityClassesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = this.rootPath;
 
-    this.parameter("rootPath", this.rootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLEntityClassesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

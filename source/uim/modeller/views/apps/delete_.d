@@ -14,27 +14,30 @@ class DMDLAppsDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Apps")
+      .link(["href":this.rootPath], "Apps")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Blog löschen"));
+    }
 
-    this.form
-      .action("/modeller/apps/actions/delete")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/apps/actions/delete")
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent); 
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Apps")
-      .parameter("subTitle", "Apps löschen");
-    
-    this
-      .form
-        .body_(
-          MDLAttributeFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Apps")
+          .subTitle("Apps löschen");
+      }
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -43,12 +46,14 @@ class DMDLAppsDeleteView : DAPPEntityDeleteView {
 
     auto headerTitle = "Attribute ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Attribute Name:";
-
-    this
-      .form.action("/modeller/apps/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/apps/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLAppsDeleteView"));

@@ -14,27 +14,29 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Anwendungen")
+      .link(["href":this.rootPath], "Anwendungen")
     );
 
     auto headerTitle = titleList("Anwendungen");
     auto bodyTitle = "Gefundene Anwendungen";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Apps")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Apps")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 
-    if (this.form) {
-      this.form.header(
-        APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", myRootPath)
-          .parameter("mainTitle", "Anwendungen")
-          .parameter("subTitle", "Anwendungen anzeigen")
-          .actions([["print", "export"]]));
-      
-      this.form.body_(
-          APPEntitiesFormContent(this.form)
-            .parameter("rootPath", myRootPath));
+    if (auto frm = cast(DForm)this.form) { 
+      frm.content(
+        EntitiesFormContent
+          .rootPath(this.rootPath));
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader(
+          FormHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Anwendungen")
+            .subTitle("Anwendungen anzeigen")
+            .actions([["print", "export"]]));
+      }      
     }        
   }
 
@@ -42,7 +44,14 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLAppsIndexView~":DMDLAppsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(FormHeader.rootPath("/apps").parameter("mainTitle", "Apps").parameter("subTitle", "Übersicht Apps").actions([["refresh"],["create"]]));
+    if (auto frm = cast(DForm)this.form) { 
+      frm.header(
+        FormHeader
+          .rootPath("/apps")
+          .mainTitle("Apps")
+          .subTitle("Übersicht Apps")
+          .actions([["refresh"],["create"]]));
+    }
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -51,7 +60,7 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.parameter("rootPath", myRootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLAppsIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

@@ -14,31 +14,34 @@ class DMDLMethodsCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Method")
+      .link(["href":this.rootPath], "Method")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleCreate("Attribut erstellen"));
+    }
 
-    this.form
-      .action("/modeller/methods/actions/create")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/methods/actions/create")
+        .rootPath(this.rootPath);
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Neues Method")
-      .parameter("subTitle", "Bitte Werte eingeben");
-
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neues Method")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"]]);
+      }
     }
 
     this
       .form
-        .body_(
-            MDLMethodFormContent(this.form)); 
+        .content(
+            MDLMethodFormContent); 
   }
 
   override void beforeH5(STRINGAA options = null) {

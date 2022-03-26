@@ -18,23 +18,28 @@ class DMDLAttributeClassesUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/attributeclasses/update"], "Bearbeiten")
     );
 
-    this.header
-      .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
-      .title(titleEdit("Blog bearbeiten"));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(titleEdit("Blog bearbeiten"));
+    }
       
-    this.form
-      .action("/modeller/attributeclasses/actions/save")
-      .crudMode(CRUDModes.Update)
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/attributeclasses/actions/save")
+        .crudMode(CRUDModes.Update)
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeClassFormContent);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Attributklassen")
-      .parameter("subTitle", "Attributklasse anzeigen");
-      
-    this.form.body_(
-      MDLAttributeClassFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Attributklassen")
+          .subTitle("Attributklasse anzeigen");
+      }
+    } 
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -44,10 +49,12 @@ class DMDLAttributeClassesUpdateView : DAPPEntityUpdateView {
     auto headerTitle = "Attributklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Attributklasse Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLAttributeClassesUpdateView"));

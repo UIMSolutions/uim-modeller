@@ -21,20 +21,24 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
     auto bodyTitle = "Gefundene Modelle";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Models")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
+      .header(
+        APPPageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht Models")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 
-    if (this.form) {
-      this.form.header(
-        APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", myRootPath)
-          .parameter("mainTitle", "Modelle")
-          .parameter("subTitle", "Modelle anzeigen")
-          .actions([["print", "export"]]));
-      
-      this.form.body_(
-          APPEntitiesFormContent(this.form)
-            .parameter("rootPath", myRootPath));
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .content(
+          EntitiesFormContent
+            .rootPath(this.rootPath))
+        .header(
+          FormHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Modelle")
+            .subTitle("Modelle anzeigen")
+            .actions([["print", "export"]]));
     }        
   }
 
@@ -42,7 +46,14 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLModelsIndexView~":DMDLModelsIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(FormHeader.rootPath("/models").parameter("mainTitle", "Modelle").parameter("subTitle", "Übersicht Modelle").actions([["refresh"],["create"]]));
+    if (auto frm = cast(DForm)this.form) { 
+      frm.header(
+        FormHeader
+          .rootPath("/models")
+          .mainTitle("Modelle")
+          .subTitle("Übersicht Modelle")
+          .actions([["refresh"],["create"]]));
+    }
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -51,7 +62,7 @@ class DMDLModelsIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.parameter("rootPath", myRootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLModelsIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

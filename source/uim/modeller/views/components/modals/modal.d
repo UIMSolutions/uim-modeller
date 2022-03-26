@@ -3,12 +3,10 @@ module uim.modeller.views.components.modals.modal;
 @safe:
 import uim.modeller;
 
-class DACModal : DAPPViewComponent, IAPPWithEntity {
-  this() {}
+class DACModal : DViewComponent {
+  mixin(ViewComponentThis!("ACModal"));
   
   protected auto _modalContent = BS5ModalContent;
-
-  mixin(OProperty!("DOOPEntity", "entity"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     auto id = entity ? entity.id.toString : UUID().toString;
@@ -24,3 +22,4 @@ class DACModal : DAPPViewComponent, IAPPWithEntity {
         ))].toH5;
   }
 }
+mixin(ViewComponentCalls!("ACModal"));

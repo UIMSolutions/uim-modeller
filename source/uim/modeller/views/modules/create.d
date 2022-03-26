@@ -18,28 +18,31 @@ class DMDLModulesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/modules/create"], "Erstellen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleCreate("Modul erstellen"));
+    }
 
-    this.form
-      .action("/modeller/modules/actions/create")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/modules/actions/create")
+        .rootPath(this.rootPath);
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Neues Modul")
-      .parameter("subTitle", "Bitte Werte eingeben");
-    
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neues Modul")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"]]);
+      }
     }
     
     this
       .form
-        .body_(
-            MDLModuleFormContent(this.form)); 
+        .content(
+            MDLModuleFormContent); 
   }
 
   override void beforeH5(STRINGAA options = null) {

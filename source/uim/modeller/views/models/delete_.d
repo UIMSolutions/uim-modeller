@@ -18,22 +18,27 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
       .link(["active"], ["href":"/modeller/models/delete"], "Löschen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Modell löschen"));
+    }
 
-    this.form
-      .action("/modeller/models/actions/delete")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/models/actions/delete")
+        .rootPath(this.rootPath)
+        .content(
+          MDLModelFormContent);
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Modelle")
-      .parameter("subTitle", "Modell löschen");
-    
-    this.form.body_(
-      MDLModelFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Modelle")
+          .subTitle("Modell löschen");
+      }
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -44,11 +49,13 @@ class DMDLModelsDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Modell ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Modell Name:";
 
-    this.form
-      .action("/modeller/models/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/models/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLModelsDeleteView"));

@@ -14,31 +14,34 @@ class DMDLPackagesCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Package")
+      .link(["href":this.rootPath], "Package")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleCreate("Attribut erstellen"));
+    }
 
-    this.form
-      .action("/modeller/packages/actions/create")
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/packages/actions/create")
+      .rootPath(this.rootPath);
     
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Neues Package")
-      .parameter("subTitle", "Bitte Werte eingeben");
-
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neues Package")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"]]);
+      }
     }
     
     this
       .form
-        .body_(
-            MDLPackageFormContent(this.form)
+        .content(
+            MDLPackageFormContent
               .fields(["name", "display", "description", "packages", "text"])); 
   }
 

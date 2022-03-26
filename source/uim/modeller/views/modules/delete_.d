@@ -18,24 +18,27 @@ class DMDLModulesDeleteView : DAPPEntityDeleteView {
       .link(["active"], ["href":"/modeller/modules/delete"], "Löschen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Modul löschen"));
+    }
 
-    this.form
-      .action("/modeller/modules/actions/delete")
-      .parameter("rootPath", myRootPath);
-    
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Module")
-      .parameter("subTitle", "Modul löschen");
-    
-    this
-      .form
-        .body_(
-          MDLModuleFormContent(this.form)); 
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/modules/actions/delete")
+        .rootPath(this.rootPath);
+        .content(
+          MDLModuleFormContent);     
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Module")
+          .subTitle("Modul löschen");
+      }
+    }   
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -45,11 +48,13 @@ class DMDLModulesDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Modul ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Modul Name:";
 
-    this
-      .form.action("/modeller/modules/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/modules/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLModulesDeleteView"));

@@ -18,23 +18,28 @@ class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
       .link(["active"], ["href":"/modeller/libraries/update"], "Bearbeiten")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleEdit("Libraryl bearbeiten"));
+    }
       
-    this.form
-      .action("/modeller/libraries/actions/save")
-      .crudMode(CRUDModes.Update)
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/libraries/actions/save")
+        .crudMode(CRUDModes.Update)
+        .rootPath(this.rootPath)
+        .content(
+          MDLLibraryFormContent);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Libraryle")
-      .parameter("subTitle", "Libraryl anzeigen");
-      
-    this.form.body_(
-      MDLLibraryFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Libraryle")
+          .subTitle("Libraryl anzeigen");
+      }
+    }      
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -44,10 +49,12 @@ class DMDLLibrariesUpdateView : DAPPEntityUpdateView {
     auto headerTitle = "Libraryl ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Libraryl Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLLibrariesUpdateView"));

@@ -1,9 +1,9 @@
-module uim.modeller.views.components.forms.bodies.entityclass;
+module uim.modeller.views.components.forms.contents.entityclass;
 
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassFormContent : DAPPEntityFormContent {
+class DMDLEntityClassFormContent : DEntityFormContent {
   mixin(FormComponentThis!("MDLEntityClassFormContent", true));
 
   override void initialize() {

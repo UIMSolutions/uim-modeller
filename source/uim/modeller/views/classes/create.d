@@ -14,31 +14,31 @@ class DMDLClassesCreateView : DAPPEntityCreateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attribute")
+      .link(["href":this.rootPath], "Attribute")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleCreate("Attribut erstellen"));
-
-    this.form
-      .action("/modeller/classes/actions/create")
-      .parameter("rootPath", myRootPath);
-    
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Neues Attribute")
-      .parameter("subTitle", "Bitte Werte eingeben");
-
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
     }
+
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/classes/actions/create")
+        .rootPath(this.rootPath)
+        .content(
+            MDLAttributeFormContent); 
     
-    this
-      .form
-        .body_(
-            MDLAttributeFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neues Attribute")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"]]);
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {

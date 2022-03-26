@@ -21,23 +21,28 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
       .link(["active"], ["href":this.rootPath~"/delete"], "Löschen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", this.rootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Entitätenklasse löschen"));
+    }
 
-    this.form
-      .action(this.rootPath~"/actions/delete")
-      .parameter("rootPath", this.rootPath);
-    
-    this.form.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("mainTitle", "Entitätenklassen")
-      .parameter("subTitle", "Entitätenklasse löschen");
-    
-    this.form.body_(
-      MDLEntityClassFormContent(this.form)
-        .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action(this.rootPath~"/actions/delete")
+        .rootPath(this.rootPath)
+        .content(
+          MDLEntityClassFormContent
+            .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Entitätenklassen")
+          .subTitle("Entitätenklasse löschen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -48,11 +53,13 @@ class DMDLEntityClassesDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .action(this.rootPath~"/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action(this.rootPath~"/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLEntityClassesDeleteView"));

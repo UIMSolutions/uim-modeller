@@ -18,27 +18,29 @@ class DMDLLibrariesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/libraries/create"], "Erstellen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleCreate("Libraryl erstellen"));
-
-    this.form
-      .action(myRootPath~"/actions/create")
-      .parameter("rootPath", myRootPath);
-    
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Neues Libraryl")
-      .parameter("subTitle", "Bitte Werte eingeben");
-
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
     }
-    
-    this.form.body_(
-      MDLLibraryFormContent(this.form)
-      .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
+
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action(myRootPath~"/actions/create")
+        .rootPath(this.rootPath)
+        .content(
+          MDLLibraryFormContent
+            .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neues Libraryl")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"]]);
+      }
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -52,11 +54,13 @@ class DMDLLibrariesCreateView : DAPPEntityCreateView {
     auto bodyTitle = "Blog Name:";
  */
 
-    this.form
-      .action("/modeller/libraries/actions/create")
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/libraries/actions/create")
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
  */      .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLLibrariesCreateView"));

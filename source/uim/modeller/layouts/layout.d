@@ -59,9 +59,9 @@ class DMDLLayout : DAPPLayout {
       ).toString;
 
     html
-    .body_(classes)
-		.body_(attributes)
-		.body_(bodyContent); 
+    .content(classes)
+		.content(attributes)
+		.content(bodyContent); 
   }
 }
 auto MDLLayout() { return new DMDLLayout; }

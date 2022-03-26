@@ -9,7 +9,7 @@ class DMDLListPageController : DAPPListPage {
   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { 
     super(); 
 
-    this
+    /* this
     .jsPath(jsPath).pgPath(myPath).entitiesName(myEntities).entityName(myEntity).collectionName(myCollectionName)
     .title("UIM!MDL > "~myEntities)
     .checks([APPCheckAppSessionExists, APPCheckAppSessionHasSession, APPCheckAppSessionHasSite, APPCheckDatabaseExists])
@@ -22,7 +22,7 @@ class DMDLListPageController : DAPPListPage {
         .item(["active"], ["aria-current":"page"], H5A(["href":"#"], myEntities)))
     )
     .collectionName(myCollectionName)
-    .form(APPEntitiesListForm.rootPath(pgPath));
+    .form(APPEntitiesListForm.rootPath(pgPath)); */
 
     this.scripts.addLinks(
       "/js/apps/"~jsPath~"/entity.js",

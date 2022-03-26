@@ -3,8 +3,8 @@ module uim.modeller.views.components.listitems.method;
 @safe:
 import uim.modeller;
 
-class DMDLMethodListItem : DAPPListEntityComponent {
-  mixin(APPViewComponentThis!("MDLMethodListItem"));
+class DMDLMethodListItem : DEntityListItem {
+  mixin(ViewComponentThis!("MDLMethodListItem"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);
@@ -26,4 +26,4 @@ class DMDLMethodListItem : DAPPListEntityComponent {
     ].toH5;
   }
 }
-mixin(APPViewComponentCalls!("MDLMethodListItem"));
+mixin(ViewComponentCalls!("MDLMethodListItem"));

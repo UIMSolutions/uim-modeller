@@ -14,27 +14,30 @@ class DMDLClassesDeleteView : DAPPEntityDeleteView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Classes")
+      .link(["href":this.rootPath], "Classes")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleDelete("Blog löschen"));
+    }
 
-    this.form
-      .action("/modeller/classes/actions/delete")
-      .parameter("rootPath", myRootPath);
-    
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Classes")
-      .parameter("subTitle", "Classes löschen");
-    
-    this
-      .form
-        .body_(
-          MDLAttributeFormContent(this.form)); 
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/classes/actions/delete")
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent); 
+  
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Classes")
+          .subTitle("Classes löschen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -44,11 +47,13 @@ class DMDLClassesDeleteView : DAPPEntityDeleteView {
     auto headerTitle = "Attribute ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Attribute Name:";
 
-    this
-      .form.action("/modeller/classes/actions/delete?entity_id="~(entity ? entity.id.toString : null))
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/classes/actions/delete?entity_id="~(entity ? entity.id.toString : null))
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLClassesDeleteView"));

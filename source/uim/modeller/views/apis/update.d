@@ -20,23 +20,28 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
       .link(["href":this.rootPath], "Apis")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", this.rootPath)
+      .rootPath(this.rootPath)
       .title(titleEdit("Blog bearbeiten"));
+    }
       
-    this.form
-      .action("/modeller/apis/actions/save")
-      .crudMode(CRUDModes.Update)
-      .parameter("rootPath", this.rootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/apis/actions/save")
+        .crudMode(CRUDModes.Update)
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent);
 
-    this.form.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("mainTitle", "Apis")
-      .parameter("subTitle", "Apis anzeigen");
-      
-    this.form.body_(
-      MDLAttributeFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Apis")
+          .subTitle("Apis anzeigen");
+      }
+    } 
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -46,10 +51,12 @@ class DMDLApisUpdateView : DAPPEntityUpdateView {
     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLApisUpdateView"));

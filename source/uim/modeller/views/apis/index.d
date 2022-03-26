@@ -10,6 +10,9 @@ class DMDLApisIndexView : DAPPEntitiesListView {
   override void initialize() {
     super.initialize;
 
+    this
+      .rootPath("/modeller/apis");
+
     auto bc = BS5Breadcrumb(
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
@@ -17,25 +20,27 @@ class DMDLApisIndexView : DAPPEntitiesListView {
       .link(["href":this.rootPath], "Apis")
     );
 
-    this
-      .header(
-        APPPageHeader(this)
-          .breadcrumbs(bc)
-          .parameter("rootPath", this.rootPath).parameter("title", titleView("Übersicht Apis")).actions(["refresh", "list", "create"]));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(titleView("Übersicht Apis"))
+        .actions(["refresh", "list", "create"]);
+    }
 
 
-    if (this.form) {
-      this.form
+    if (auto frm = cast(DForm)this.form) {
+      frm
         .rootPath(this.rootPath)      
+        .content(
+          EntitiesFormContent(frm)
+            .rootPath(this.rootPath))
         .header(
-          APPEntitiesFormHeader(this.form)
-            .parameter("rootPath", this.rootPath)
-            .parameter("mainTitle", "Apis")
-            .parameter("subTitle", "Apis anzeigen")
-            .actions([["print", "export"]]))
-        .body_(
-          APPEntitiesFormContent(this.form)
-            .rootPath(this.rootPath));
+          FormHeader(frm)
+            .rootPath(this.rootPath)
+            .mainTitle("Apis")
+            .subTitle("Apis anzeigen")
+            .actions([["print", "export"]]));
     }        
   }
 
@@ -43,7 +48,15 @@ class DMDLApisIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLApisIndexView~":DMDLApisIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(FormHeader.rootPath("/apis").parameter("mainTitle", "Apis").parameter("subTitle", "Übersicht Apis").actions([["refresh"],["create"]]));
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .header(
+          FormHeader
+            .rootPath("/apis")
+            .mainTitle("Apis")
+            .subTitle("Übersicht Apis")
+            .actions([["refresh"],["create"]]));
+    }
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -52,7 +65,7 @@ class DMDLApisIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = this.rootPath;
 
-    this.parameter("rootPath", this.rootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLApisIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

@@ -15,36 +15,58 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Packages")
+      .link(["href":this.rootPath], "Packages")
     );
 
     this
       .rootPath("/modeller/packages")
-      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Packages")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath))
-      .form
-        .header(APPEntitiesFormHeader(this.form).parameter("rootPath", myRootPath).parameter("mainTitle", "Packages").parameter("subTitle", "Packages anzeigen").actions([["print", "export"]]))
-        .body_(APPListFormContent(this.form).parameter("rootPath", myRootPath));
+      .header(
+        APPPageHeader(this)
+          .breadcrumbs(bc)
+          .rootPath(this.rootPath)
+          .title(titleView("Übersicht Packages"))
+          .actions(["refresh", "list", "create"]))
+      .form(
+        APPEntitiesListForm(this)
+        .rootPath(this.rootPath)
+        .header(
+          FormHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Packages")
+            .subTitle("Packages anzeigen")
+            .actions([["print", "export"]]))
+        .content(
+          APPListFormContent
+            .rootPath(this.rootPath)));
         
-    if (this.form) {
-      this.form.header(
-        APPEntitiesFormHeader(this.form)
-          .parameter("rootPath", myRootPath)
-          .parameter("mainTitle", "Packages")
-          .parameter("subTitle", "Packages anzeigen")
+/*     if (this.form) {
+      this.form.content(
+          EntitiesFormContent
+            .rootPath(this.rootPath));
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader(
+        FormHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Packages")
+          .subTitle("Packages anzeigen")
           .actions([["print", "export"]]));
-      
-      this.form.body_(
-          APPEntitiesFormContent(this.form)
-            .parameter("rootPath", myRootPath));
-    }   
+      }      
+    }  */  
   }
 
   override void beforeH5(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLPackagesIndexView~":DMDLPackagesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(FormHeader.rootPath("/packages").parameter("mainTitle", "Packages").parameter("subTitle", "Übersicht Packages").actions([["refresh"],["create"]]));
+    if (auto frm = cast(DForm)this.form) {
+      frm.header(
+        FormHeader
+          .rootPath("/packages")
+          .mainTitle("Packages")
+          .subTitle("Übersicht Packages")
+          .actions([["refresh"],["create"]]));
+    }
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -53,7 +75,7 @@ class DMDLPackagesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.parameter("rootPath", myRootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLPackagesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

@@ -3,7 +3,7 @@ module uim.modeller.views.components.forms.groups.theme;
 @safe:
 import uim.modeller;
 
-class DMDLFormGroupTheme : DAPPEntityFormGroup {
+class DMDLFormGroupTheme : DFormGroup {
   mixin(FormComponentThis!("MDLFormGroupTheme", true));
 
   override void initialize() {

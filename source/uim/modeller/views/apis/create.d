@@ -21,28 +21,27 @@ class DMDLApisCreateView : DAPPEntityCreateView {
       .link(["href":this.rootPath], "Attribute")
     );
 
-    this.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("title", titleCreate("Attribut erstellen"))
-      .breadcrumbs(bc);
-
-    this.form
-      .parameter("rootPath", this.rootPath)
-      .action("/modeller/apis/actions/create");
-    
-    this.form.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("mainTitle", "Neues Attribute")
-      .parameter("subTitle", "Bitte Werte eingeben");
-
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .rootPath(this.rootPath)
+        .title(titleCreate("Attribut erstellen"))
+        .breadcrumbs(bc);
     }
 
-    this
-      .form
-        .body_(
-            MDLAttributeFormContent(this.form)); 
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .action("/modeller/apis/actions/create")
+        .content(MDLAttributeFormContent);
+    
+      if (auto frmHeader = cast(DFormHeader)frm.header) {
+          frmHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Neues Attribute")
+            .subTitle("Bitte Werte eingeben")
+            .actions([["cancel", "save"]]);
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {

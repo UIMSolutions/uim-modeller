@@ -1,9 +1,9 @@
-module uim.modeller.views.components.forms.bodies.attribute;
+module uim.modeller.views.components.forms.contents.attribute;
 
 @safe:
 import uim.modeller;
 
-class DMDLAttributeFormContent : DAPPEntityFormContent {
+class DMDLAttributeFormContent : DEntityFormContent {
   mixin(FormComponentThis!("MDLAttributeFormContent", true));
 
   override void initialize() {

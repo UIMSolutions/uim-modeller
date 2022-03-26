@@ -14,29 +14,28 @@ class DMDLInterfacesIndexView : DAPPEntitiesListView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Interfaces")
+      .link(["href":this.rootPath], "Interfaces")
     );
 
     auto headerTitle = titleList("Interfaces");
     auto bodyTitle = "Gefundene Interfaces";
 
     this
-      .header(APPPageHeader(this).breadcrumbs(bc).parameter("rootPath", myRootPath).parameter("title", titleView("Übersicht Interfaces")).actions(["refresh", "list", "create"]))
-      .form(APPEntitiesListForm(this).parameter("rootPath", myRootPath));
+      .header(APPPageHeader(this).breadcrumbs(bc).rootPath(this.rootPath).title(titleView("Übersicht Interfaces")).actions(["refresh", "list", "create"]))
+      .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 
-    if (this.form) {
-      this.form
+    if (auto frm = cast(DForm)this.form) {
+      frm
         .rootPath(this.rootPath)           
         .header(
-          APPEntitiesFormHeader(this.form)
-            .parameter("rootPath", myRootPath)
-            .parameter("mainTitle", "Interfaces")
-            .parameter("subTitle", "Interfaces anzeigen")
-            .actions([["print", "export"]]));
-      
-      this.form.body_(
-          APPEntitiesFormContent(this.form)
-            .parameter("rootPath", myRootPath));
+          FormHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Interfaces")
+            .subTitle("Interfaces anzeigen")
+            .actions([["print", "export"]]))
+        .content(
+          EntitiesFormContent
+            .rootPath(this.rootPath));
     }        
   }
 
@@ -44,7 +43,14 @@ class DMDLInterfacesIndexView : DAPPEntitiesListView {
     debugMethodCall(moduleName!DMDLInterfacesIndexView~":DMDLInterfacesIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
 
-    this.form.header(FormHeader.rootPath("/interfaces").parameter("mainTitle", "Interfaces").parameter("subTitle", "Übersicht Interfaces").actions([["refresh"],["create"]]));
+    if (auto frm = cast(DForm)this.form) { 
+      frm.header(
+        FormHeader
+          .rootPath("/interfaces")
+          .mainTitle("Interfaces")
+          .subTitle("Übersicht Interfaces")
+          .actions([["refresh"],["create"]]));
+    }
   }
 
 /*   override DH5Obj[] toH5(STRINGAA options = null) {
@@ -53,7 +59,7 @@ class DMDLInterfacesIndexView : DAPPEntitiesListView {
 
     options["rootPath"] = myRootPath;
 
-    this.parameter("rootPath", myRootPath);
+    this.rootPath(this.rootPath);
     debug writeln("RootPath in DMDLInterfacesIndexView:toH5 -> ", this.rootPath);
     debug writeln("this.form.rootPath(",this.rootPath,")");
 

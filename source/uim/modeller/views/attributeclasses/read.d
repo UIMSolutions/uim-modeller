@@ -18,21 +18,26 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
       .link(["active"], ["href":"/modeller/attributeclasses/read"], "Anzeigen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
-      .parameter("title", titleView("Attributklasse anzeigen"));
+      .rootPath(this.rootPath)
+      .title(titleView("Attributklasse anzeigen"));
+    }
     
-    this.form
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeClassFormContent);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Attributklassen")
-      .parameter("subTitle", "Attributklasse anzeigen");
-
-    this.form.body_(
-      MDLAttributeClassFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Attributklassen")
+          .subTitle("Attributklasse anzeigen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -42,10 +47,12 @@ class DMDLAttributeClassesReadView : DAPPEntityReadView {
     auto headerTitle = "Attributklasse ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Attributklasse Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLAttributeClassesReadView"));

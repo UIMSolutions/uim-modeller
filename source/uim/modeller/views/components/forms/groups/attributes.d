@@ -3,7 +3,7 @@ module source.uim.modeller.views.components.forms.groups.attributes;
 @safe:
 import uim.modeller;
 
-class DMDLAttributesFormGroup : DAPPEntityFormGroup {
+class DMDLAttributesFormGroup : DFormGroup {
   mixin(FormComponentThis!("MDLAttributesFormGroup", true));
 
   override void initialize() {

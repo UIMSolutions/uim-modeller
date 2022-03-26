@@ -21,27 +21,31 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":this.rootPath~"/create"], "Erstellen")
     );
 
-    this.header
-      .breadcrumbs(bc)
-      .parameter("rootPath", this.rootPath)
-      .title(titleCreate("Entitätenklasse erstellen"));
 
-    this.form
-      .action(this.rootPath~"/actions/create")
-      .parameter("rootPath", this.rootPath);
-    
-    this.form.header
-      .parameter("rootPath", this.rootPath)
-      .parameter("mainTitle", "Neue Entitätenklasse")
-      .parameter("subTitle", "Bitte Werte eingeben");
-    
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(titleCreate("Entitätenklasse erstellen"))
+        .actions([["refresh", "list"]]); 
     }
-    
-    this.form.body_(
-      MDLEntityClassFormContent(this.form)
-        .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"])); 
+
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action(this.rootPath~"/actions/create")
+        .rootPath(this.rootPath)
+        .content(
+          MDLEntityClassFormContent
+            .fields(["name", "display", "description", "className", "models", "keywords", "imagePath", "summary", "text"]));
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) {
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neue Entitätenklasse")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"], ["print", "export"]]); 
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -50,17 +54,20 @@ class DMDLEntityClassesCreateView : DAPPEntityCreateView {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
+    this.rootPath(this.rootPath);
     options["rootPath"] = this.rootPath;
 
 /*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
  */
 
-    this.form
-      .action("/modeller/entityclasses/actions/create")
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/entityclasses/actions/create")
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
  */      .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLEntityClassesCreateView"));

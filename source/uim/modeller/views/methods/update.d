@@ -14,26 +14,31 @@ class DMDLMethodsUpdateView : DAPPEntityUpdateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Methods")
+      .link(["href":this.rootPath], "Methods")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleEdit("Blog bearbeiten"));
+    }
       
-    this.form
-      .action("/modeller/methods/actions/save")
-      .crudMode(CRUDModes.Update)
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/methods/actions/save")
+        .crudMode(CRUDModes.Update)
+        .rootPath(this.rootPath)
+        .content(
+          MDLMethodFormContent);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Methods")
-      .parameter("subTitle", "Methods anzeigen");
-      
-    this.form.body_(
-      MDLMethodFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Methods")
+          .subTitle("Methods anzeigen");
+      }
+    } 
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -43,10 +48,12 @@ class DMDLMethodsUpdateView : DAPPEntityUpdateView {
     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLMethodsUpdateView"));

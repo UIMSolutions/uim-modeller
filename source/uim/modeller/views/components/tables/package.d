@@ -3,7 +3,7 @@ module uim.modeller.views.components.tables;
 @safe:
 import uim.modeller;
 
-class DAPPEntityRow : DAPPViewComponent {
+class DAPPEntityRow : DViewComponent {
   this() { super(); }
 }
 

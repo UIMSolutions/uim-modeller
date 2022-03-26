@@ -3,7 +3,7 @@ module uim.modeller.views.components.forms.groups.keywords;
 @safe:
 import uim.modeller;
 
-class DMDLFormGroupKeywords : DAPPEntityFormGroup {
+class DMDLFormGroupKeywords : DFormGroup {
   mixin(FormComponentThis!("MDLFormGroupKeywords", true));
 
   override void initialize() {

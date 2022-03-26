@@ -18,27 +18,29 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
       .link(["active"], ["href":"/modeller/models/create"], "Erstellen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(titleCreate("Modell erstellen"));
-
-    this.form
-      .action("/modeller/models/actions/create")
-      .parameter("rootPath", myRootPath);
-    
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Neues Modell")
-      .parameter("subTitle", "Bitte Werte eingeben");
-
-    if (auto formHeader = cast(DFormHeader)this.form.header) {
-      formHeader.actions([["cancel", "save"]]);
     }
-    
-    this.form.body_(
-      MDLModelFormContent(this.form)
-      .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
+
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/models/actions/create")
+        .rootPath(this.rootPath);
+        .content(
+          MDLModelFormContent
+          .fields(["private", "name", "display", "description", "maintitle", "subtitle", "keywords", "image", "summary", "themes", "text"])); 
+
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Neues Modell")
+          .subTitle("Bitte Werte eingeben")
+          .actions([["cancel", "save"]]);
+      }
+    }    
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -52,11 +54,13 @@ class DMDLModelsCreateView : DAPPEntityCreateView {
     auto bodyTitle = "Blog Name:";
  */
 
-    this.form
-      .action("/modeller/models/actions/create")
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/models/actions/create")
 /*       .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
  */      .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLModelsCreateView"));

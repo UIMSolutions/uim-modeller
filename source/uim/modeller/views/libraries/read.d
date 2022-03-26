@@ -18,21 +18,26 @@ class DMDLLibrariesReadView : DAPPEntityReadView {
       .link(["active"], ["href":"/modeller/libraries/read"], "Anzeigen")
     );
 
-    this.header
-      .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
-      .parameter("title", titleView("Libraryl anzeigen"));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(titleView("Libraryl anzeigen"));
+    }
     
-    this.form
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLLibraryFormContent);
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Libraryle")
-      .parameter("subTitle", "Libraryl anzeigen");
-
-    this.form.body_(
-      MDLLibraryFormContent(this.form));
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Libraryle")
+          .subTitle("Libraryl anzeigen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -42,10 +47,12 @@ class DMDLLibrariesReadView : DAPPEntityReadView {
     auto headerTitle = "Libraryl ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Libraryl Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLLibrariesReadView"));

@@ -4,7 +4,7 @@ module uim.modeller.views.components.navbarslots;
 import uim.modeller;
 
 class DMDLNavSlot : DAPPNavbarSlot {
-  this() { super(); }
+  mixin(ViewComponentThis!("MDLNavSlot"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     auto rootPath = options.get("rootPath", "/");
@@ -30,7 +30,7 @@ class DMDLNavSlot : DAPPNavbarSlot {
       )].toH5;
   }
 }
-auto MDLNavSlot() { return new DMDLNavSlot; }
+mixin(ViewComponentCalls!("MDLNavSlot"));
 
 class DBSIStructure : DAPPNavbarSlot {
   this() { super(); }

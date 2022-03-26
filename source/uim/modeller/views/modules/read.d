@@ -18,22 +18,27 @@ class DMDLModulesReadView : DAPPEntityReadView {
       .link(["active"], ["href":"/modeller/modules/read"], "Anzeigen")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(
         titleView("Blog anzeigen"));
+    }
     
-    this.form
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLModuleFormContent); 
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Module")
-      .parameter("subTitle", "Modul anzeigen");
-
-    this.form.body_(
-      MDLModuleFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Module")
+          .subTitle("Modul anzeigen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -43,8 +48,9 @@ class DMDLModulesReadView : DAPPEntityReadView {
 /*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .headerTitle(headerTitle)
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
       .entity(this.entity); */
   }

@@ -14,28 +14,31 @@ class DMDLPackagesUpdateView : DAPPEntityUpdateView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Packages")
+      .link(["href":this.rootPath], "Packages")
     );
 
-    this.header
-      .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
-      .title(titleEdit("Blog bearbeiten"));
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
+        .breadcrumbs(bc)
+        .rootPath(this.rootPath)
+        .title(titleEdit("Blog bearbeiten"));
+    }
       
-    this.form
-      .action("/modeller/packages/actions/save")
-      .crudMode(CRUDModes.Update)
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .action("/modeller/packages/actions/save")
+        .crudMode(CRUDModes.Update)
+        .rootPath(this.rootPath);
+        .content(
+          MDLPackageFormContent
+            .fields(["name", "display", "description", "packages", "text"])); 
 
-    if (this.form) {
-      this.form.header
-        .parameter("rootPath", myRootPath)
-        .parameter("mainTitle", "Packages")
-        .parameter("subTitle", "Packages anzeigen");
-        
-      this.form.body_(
-        MDLPackageFormContent(this.form)
-          .fields(["name", "display", "description", "packages", "text"])); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Packages")
+          .subTitle("Packages anzeigen");
+      }        
     }
   }
 
@@ -46,10 +49,12 @@ class DMDLPackagesUpdateView : DAPPEntityUpdateView {
     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .headerTitle(headerTitle)
-      .bodyTitle(bodyTitle)
-      .entity(this.entity);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
+        .bodyTitle(bodyTitle)
+        .entity(this.entity);
+    }
   }
 }
 mixin(APPViewCalls!("MDLPackagesUpdateView"));

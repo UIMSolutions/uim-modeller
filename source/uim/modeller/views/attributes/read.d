@@ -14,25 +14,30 @@ class DMDLAttributesReadView : DAPPEntityReadView {
       BS5BreadcrumbList
       .link(["href":"/"], "UIM")
       .link(["href":"/modeller"], "Modeller")
-      .link(["href":myRootPath], "Attributes")
+      .link(["href":this.rootPath], "Attributes")
     );
 
-    this.header
+    if (auto pgHeader = cast(DPageHeader)this.header) {
+      pgHeader
       .breadcrumbs(bc)
-      .parameter("rootPath", myRootPath)
+      .rootPath(this.rootPath)
       .title(
         titleView("Blog anzeigen"));
+    }
     
-    this.form
-      .parameter("rootPath", myRootPath);
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .rootPath(this.rootPath)
+        .content(
+          MDLAttributeFormContent); 
 
-    this.form.header
-      .parameter("rootPath", myRootPath)
-      .parameter("mainTitle", "Attributes")
-      .parameter("subTitle", "Attributes anzeigen");
-
-    this.form.body_(
-      MDLAttributeFormContent(this.form)); 
+      if (auto frmHeader = cast(DFormHeader)frm.header) { 
+        frmHeader
+          .rootPath(this.rootPath)
+          .mainTitle("Attributes")
+          .subTitle("Attributes anzeigen");
+      }
+    }
   }
 
   override void beforeH5(STRINGAA options = null) {
@@ -42,8 +47,9 @@ class DMDLAttributesReadView : DAPPEntityReadView {
 /*     auto headerTitle = "Blog ID:"~(this.entity ? this.entity.id.toString : " - Unbekannt -");
     auto bodyTitle = "Blog Name:";
 
-    this.form
-      .headerTitle(headerTitle)
+    if (auto frm = cast(DForm)this.form) {
+      frm
+        .headerTitle(headerTitle)
       .bodyTitle(bodyTitle)
       .entity(this.entity); */
   }

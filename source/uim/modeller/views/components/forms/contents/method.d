@@ -1,9 +1,9 @@
-module uim.modeller.views.components.forms.bodies.method;
+module uim.modeller.views.components.forms.contents.method;
 
 @safe:
 import uim.modeller;
 
-class DMDLMethodFormContent : DAPPEntityFormContent {
+class DMDLMethodFormContent : DEntityFormContent {
   mixin(FormComponentThis!("MDLMethodFormContent", true));
 
   override void initialize() {
