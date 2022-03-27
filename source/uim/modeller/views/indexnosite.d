@@ -22,7 +22,7 @@ class DMDLIndexNoSiteView : DAPPView {
           H5Div(["ratio ratio-1x1"], 
             BS5Form(["method":"Post", "action": "/sites/select?siteId="~s.id.toString], 
               BS5Card(["h-100"])
-                .content(["text-center"], 
+                .body_(["text-center"], 
                   H5Div(["card-title mb-1"], s.id.toString),
                   H5Div(["card-title mb-1"], s.display),
                   H5Div(["text-muted"], BS5ButtonSubmit(["btn-info"], "Site auswählen"))))));

@@ -30,18 +30,16 @@ class DMDLAppsIndexView : DAPPEntitiesListView {
       .form(APPEntitiesListForm(this).rootPath(this.rootPath));
 
     if (auto frm = cast(DForm)this.form) { 
-      frm.content(
-        EntitiesFormContent
-          .rootPath(this.rootPath));
-
-      if (auto frmHeader = cast(DFormHeader)frm.header) { 
-        frmHeader(
+      frm
+        .content(
+          EntitiesFormContent
+            .rootPath(this.rootPath))
+        .header(
           FormHeader
             .rootPath(this.rootPath)
             .mainTitle("Anwendungen")
             .subTitle("Anwendungen anzeigen")
             .actions([["print", "export"]]));
-      }      
     }        
   }
 
