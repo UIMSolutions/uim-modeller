@@ -3,4 +3,4 @@ module uim.modeller.controllers.actions.attributes;
 @safe:
 import uim.modeller;
 
-mixin(EniityActions!("MDLAttribute", "/modeller/attributes", "modeller_attributes", "MDL"));
+mixin(EntityActions!("MDLAttribute", "/modeller/attributes", "modeller_attributes", "MDL"));

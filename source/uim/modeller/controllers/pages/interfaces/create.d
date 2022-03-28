@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.interfaces.create;
 @safe:
 import uim.modeller;
 
-mixin(MDLCreatePageController!(
+mixin(APPCreatePageController!(
   "MDLInterfaces",
   "MDLCreate",
   `this

@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.attributeclasses.create;
 @safe:
 import uim.modeller;
 
-mixin(MDLCreatePageController!(
+mixin(APPCreatePageController!(
   "MDLAttributeClasses",
   "MDLCreate",
   `this

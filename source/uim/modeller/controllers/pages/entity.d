@@ -18,7 +18,7 @@ class DMDLEntityPageController : DAPPEntityPageController {
   }
 
   override void beforeResponse(STRINGAA options = null) {
-    debugMethodCall(moduleName!DMDLCreatePageController~":DMDLCreatePageController("~this.name~")::beforeResponse");
+    debugMethodCall(moduleName!DMDLEntityPageController~":DMDLEntityPageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);
     if (hasError || "redirect" in options) { return; }
 

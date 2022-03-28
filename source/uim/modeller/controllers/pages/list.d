@@ -57,7 +57,7 @@ class DMDLListPageController : DAPPListPage {
     auto session  = appSession.session;
     auto site     = appSession.site;
       
-    // debug writeln(moduleName!DMDLCreatePageController~":DMDLCreatePageController::beforeResponse - Looking for entities in ", site.name, ":", collectionName);
+    // debug writeln(moduleName!DAPPCreatePageController~":DAPPCreatePageController::beforeResponse - Looking for entities in ", site.name, ":", collectionName);
     auto entities = database[appSession.site, collectionName].findMany;
 
     auto poolId = uniform(1, 1_000_000_000);

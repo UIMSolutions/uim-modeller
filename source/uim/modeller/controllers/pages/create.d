@@ -42,29 +42,6 @@ version(test_uim_modeller) {
 		testPageController(MDLCreatePageController); 
 }} 
 
-auto mdlCreatePageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
-  return `
-    class D`~classesName~`CreatePageController : D`~rootController~`PageController {
-      `~appPageControllerThis(classesName~`CreatePageController`, true)~`
-
-    override void initialize() {
-      super.initialize;
-
-      this
-        .view(
-          `~classesName~`CreateView(this));
-
-      `~addInitialize~`
-      }
-    }`~
-    appPageControllerCalls(classesName~`CreatePageController`, true);
-}
-
-
-template MDLCreatePageController(string classesName, string rootController, string addInitialize = "", string addBeforeResponse = "") {
-  const char[] MDLCreatePageController = mdlCreatePageController(classesName, rootController, addInitialize, addBeforeResponse);
-}
-
 /*   this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { super(); 
     this
     .jsPath(jsPath).pgPath(myPath).entitiesName(myEntities).entityName(myEntity).collectionName(myCollectionName)
