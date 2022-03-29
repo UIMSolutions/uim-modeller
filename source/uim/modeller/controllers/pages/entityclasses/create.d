@@ -3,13 +3,53 @@ module uim.modeller.controllers.pages.entityclasses.create;
 @safe:
 import uim.modeller;
 
-mixin(APPCreatePageController!(
-  "MDLEntityClasses",
-  "MDLCreate",
-  `this
-    .collectionName("modeller_entityclasses")
-    .rootPath("/modeller/entityclasses")
-    .scripts
+class DMDLEntityClassesCreatePageController : DMDLCreatePageController {
+  mixin(APPPageControllerThis!("MDLEntityClassesCreatePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_entityclasses")
+      .rootPath("/modeller/entityclasses");
+
+    auto myView =  
+      APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+    
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Entitätsklasse")
+        .link(["active"], ["href":this.rootPath~"/create"], "Erstellen")
+      );
+
+      pgHeader
+        .rootPath(this.rootPath)
+        .title(titleCreate("Entitätsklasse erstellen"))
+        .breadcrumbs(bc);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+        .rootPath(this.rootPath)
+        .action(this.rootPath~"/actions/create")
+        .content(MDLAttributeFormContent);
+    
+      if (auto frmHeader = cast(DFormHeader)frm.header) {
+          frmHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Neue Entitätsklasse")
+            .subTitle("Bitte Werte eingeben")
+            .actions([["cancel", "save"]]);
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
         .addContents(
           editorSummary~editorText,
           "window.addEventListener('load', (event) => {
@@ -18,7 +58,10 @@ mixin(APPCreatePageController!(
               editorText.save();
             })
           });"
-    );`));
+      );          
+  }
+}
+mixin(APPPageControllerCalls!("MDLEntityClassesCreatePageController"));
 
 version(test_uim_modeller) {
   unittest {
@@ -30,17 +73,6 @@ version(test_uim_modeller) {
 }}
 
 /*
-
-    .scripts
-      .addContents(
-        editorSummary~
-        editorText,
-  `window.addEventListener('load', (event) => {
-    document.getElementById("entityForm").addEventListener("submit", event => {
-      editorSummary.save();
-      editorText.save();
-    })
-  });`);
   
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLEntityClassesUpdatePageController~":DMDLEntityClassesUpdatePageController::beforeResponse");

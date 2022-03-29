@@ -7,7 +7,6 @@ import uim.modeller;
 public import uim.modeller.views.attributes.index;
 
 // CRUD Modules
-public import uim.modeller.views.attributes.create;
 public import uim.modeller.views.attributes.read;
 public import uim.modeller.views.attributes.update;
 public import uim.modeller.views.attributes.delete_;

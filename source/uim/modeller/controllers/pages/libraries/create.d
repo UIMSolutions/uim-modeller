@@ -3,22 +3,65 @@ module uim.modeller.controllers.pages.libraries.create;
 @safe:
 import uim.modeller;
 
-mixin(APPCreatePageController!(
-  "MDLLibraries",
-  "MDLCreate",
-  `this
-    .collectionName("modeller_libraries")
-    .rootPath("/modeller/libraries")
-    .scripts
-      .addContents(
-        editorSummary~editorText,
-        "window.addEventListener('load', (event) => {
-          document.getElementById('entityForm').addEventListener('submit', event => {
-            editorSummary.save();
-            editorText.save();
-          })
-        });"
-    );`));
+class DMDLLibrariesCreatePageController : DMDLCreatePageController {
+  mixin(APPPageControllerThis!("MDLLibrariesCreatePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_libraries")
+      .rootPath("/modeller/libraries");
+
+    auto myView =  
+      APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+    
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Bibliotheken")
+        .link(["active"], ["href":this.rootPath~"/create"], "Erstellen")
+      );
+
+      pgHeader
+        .rootPath(this.rootPath)
+        .title(titleCreate("Bibliothek erstellen"))
+        .breadcrumbs(bc);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+        .rootPath(this.rootPath)
+        .action(this.rootPath~"/actions/create")
+        .content(MDLBibliothekFormContent);
+    
+      if (auto frmHeader = cast(DFormHeader)frm.header) {
+          frmHeader
+            .rootPath(this.rootPath)
+            .mainTitle("Neue Bibliothek")
+            .subTitle("Bitte Werte eingeben")
+            .actions([["cancel", "save"]]);
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
+        .addContents(
+          editorSummary~editorText,
+          "window.addEventListener('load', (event) => {
+            document.getElementById('entityForm').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+      );          
+  }
+}
+mixin(APPPageControllerCalls!("MDLLibrariesCreatePageController"));
 
 version(test_uim_modeller) {
   unittest {

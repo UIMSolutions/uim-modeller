@@ -7,7 +7,6 @@ import uim.modeller;
 public import uim.modeller.views.apps.index;
 
 // CRUD Modules
-public import uim.modeller.views.apps.create;
 public import uim.modeller.views.apps.read;
 public import uim.modeller.views.apps.update;
 public import uim.modeller.views.apps.delete_;
