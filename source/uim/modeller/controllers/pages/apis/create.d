@@ -13,8 +13,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
       .collectionName("modeller_apis")
       .rootPath("/modeller/apis");
 
-    auto myView =  
-      APPEntityCreateView(this)
+    auto myView = APPEntityCreateView(this)
       .rootPath(this.rootPath);
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
