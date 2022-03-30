@@ -6,8 +6,6 @@ import uim.modeller;
 class DMDLCreatePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLCreatePageController"));
 
-  mixin(OProperty!("string", "rootPath"));
-
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLCreatePageController~":DMDLCreatePageController("~this.name~")::beforeResponse");
     super.beforeResponse(options);

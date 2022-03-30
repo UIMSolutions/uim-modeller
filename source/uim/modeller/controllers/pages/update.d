@@ -6,8 +6,6 @@ import uim.modeller;
 class DMDLUpdatePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLUpdatePageController"));
 
-  mixin(OProperty!("string", "rootPath"));
-
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLPackagesUpdatePageController~":DMDLPackagesUpdatePageController::beforeResponse");
     super.beforeResponse(options);

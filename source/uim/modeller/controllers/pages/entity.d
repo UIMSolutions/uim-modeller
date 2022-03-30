@@ -6,8 +6,8 @@ import uim.modeller;
 class DMDLEntityPageController : DAPPEntityPageController {
   mixin(APPPageControllerThis!("MDLEntityPageController"));
 
-  // mixin(OProperty!("string", "rootPath"));
-
+  mixin(OProperty!("string", "rootPath"));
+  
   override void initialize() {
     super.initialize;
 

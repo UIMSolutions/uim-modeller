@@ -14,34 +14,7 @@ class DMDLApisDeleteView : DAPPEntityDeleteView {
     this
       .rootPath("/modeller/apis");
       
-    auto bc = BS5Breadcrumb(
-      BS5BreadcrumbList
-      .link(["href":"/"], "UIM")
-      .link(["href":"/modeller"], "Modeller")
-      .link(["href":this.rootPath], "Apis")
-    );
-
-    if (auto pgHeader = cast(DPageHeader)this.header) {
-      pgHeader
-        .breadcrumbs(bc)
-        .rootPath(this.rootPath)
-        .title(titleDelete("Blog löschen"));
-    }
-
-    if (auto frm = cast(DForm)this.form) {
-      frm
-        .action("/modeller/apis/actions/delete")
-        .rootPath(this.rootPath)
-        .content(
-          MDLAttributeFormContent); 
     
-      if (auto frmHeader = cast(DFormHeader)frm.header) { 
-        frmHeader
-          .rootPath(this.rootPath)
-          .mainTitle("Apis")
-          .subTitle("Apis löschen");
-      }
-    }
   }
 
   override void beforeH5(STRINGAA options = null) {

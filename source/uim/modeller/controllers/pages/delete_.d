@@ -6,8 +6,6 @@ import uim.modeller;
 class DMDLDeletePageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLDeletePageController"));
 
-  mixin(OProperty!("string", "rootPath"));
-
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLDeletePageController~":DMDLDeletePageController::beforeResponse");
     super.beforeResponse(options);

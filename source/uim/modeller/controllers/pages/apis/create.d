@@ -35,7 +35,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
       frm
         .rootPath(this.rootPath)
         .action(this.rootPath~"/actions/create")
-        .content(MDLAttributeFormContent);
+        .content(MDLApiFormContent);
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
