@@ -3,20 +3,58 @@ module uim.modeller.controllers.pages.attributes.read;
 @safe:
 import uim.modeller;
 
-mixin(MDLReadPageController!(
-  "MDLAttributes",
-  "MDLRead",
-  `this
-    .collectionName("modeller_attributes")
-    .rootPath("/modeller/attributes")
-    .scripts
-      .addContents(
-        editorSummary~
-        editorText~
-        "editorSummary.disabled();"~
-        "editorText.disabled();"
+class DMDLAttributesReadPageController : DMDLReadPageController {
+  mixin(APPPageControllerThis!("MDLAttributesReadPageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_attributes")
+      .rootPath("/modeller/attributes");
+
+    auto myView = APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Attribute")
+        .item(["active fw-bold"], "Anzeigen")
       );
-  `));
+
+      pgHeader
+        .breadcrumbs(bc)
+        .title(titleCreate("Attribut anzeigen"));
+    }
+
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .action(this.rootPath~"/actions/read")
+        .content(
+          MDLAttributeFormContent); 
+    
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
+        myFormHeader
+          .mainTitle("Attribute")
+          .subTitle("Attribut anzeigen");
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
+        .addContents(
+          editorSummary~
+          editorText~
+          "editorSummary.disabled();"~
+          "editorText.disabled();"
+        );
+  }
+}
+mixin(APPPageControllerCalls!("MDLAttributesReadPageController"));
 
 version(test_uim_modeller) {
   unittest {

@@ -7,9 +7,7 @@ import uim.modeller;
 public import uim.modeller.views.interfaces.index;
 
 // CRUD Modules
-public import uim.modeller.views.interfaces.read;
 public import uim.modeller.views.interfaces.update;
-public import uim.modeller.views.interfaces.delete_;
 
 package:
   string myRootPath = "/modeller/interfaces";

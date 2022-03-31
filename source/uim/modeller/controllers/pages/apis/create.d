@@ -22,7 +22,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Api")
-        .link(["active"], ["href":this.rootPath~"/create"], "Erstellen")
+        .item(["active fw-bold"], "Erstellen")
       );
 
       pgHeader

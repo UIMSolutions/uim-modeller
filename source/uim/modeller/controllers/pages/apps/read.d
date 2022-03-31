@@ -22,12 +22,12 @@ class DMDLAppsReadPageController : DMDLReadPageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Apps")
-        .link(["active"], ["href":this.rootPath~"/read"], "Anzeigen")
+        .item(["active fw-bold"], "Anzeigen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleRead("App anzeigen"));
+        .title(titleCreate("App anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {

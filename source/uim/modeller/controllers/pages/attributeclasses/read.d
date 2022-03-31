@@ -22,12 +22,12 @@ class DMDLAttributeClassesReadPageController : DMDLReadPageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "AttributeClasses")
-        .link(["active"], ["href":this.rootPath~"/read"], "Anzeigen")
+        .item(["active fw-bold"], "Anzeigen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleRead("AttributeClass anzeigen"));
+        .title(titleCreate("AttributeClass anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {

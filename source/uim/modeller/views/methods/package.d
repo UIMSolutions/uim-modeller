@@ -7,8 +7,6 @@ import uim.modeller;
 public import uim.modeller.views.methods.index;
 
 // CRUD Modules
-public import uim.modeller.views.methods.create;
-public import uim.modeller.views.methods.read;
 public import uim.modeller.views.methods.update;
 
 package:

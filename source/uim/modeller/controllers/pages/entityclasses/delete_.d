@@ -22,7 +22,7 @@ class DMDLEntityClassesDeletePageController : DMDLDeletePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Entitätsklasse")
-        .link(["active"], ["href":this.rootPath~"/delete"], "Erstellen")
+        .item(["active fw-bold"], "Löschen")
       );
 
       pgHeader

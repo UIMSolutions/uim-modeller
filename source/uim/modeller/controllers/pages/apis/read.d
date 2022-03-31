@@ -22,12 +22,12 @@ class DMDLApisReadPageController : DMDLReadPageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Apis")
-        .link(["active"], ["href":this.rootPath~"/read"], "Anzeigen")
+        .item(["active fw-bold"], "Anzeigen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleRead("Api anzeigen"));
+        .title(titleCreate("Api anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
