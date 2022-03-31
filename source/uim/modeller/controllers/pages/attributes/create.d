@@ -27,20 +27,17 @@ class DMDLAttributesCreatePageController : DMDLCreatePageController {
       );
 
       pgHeader
-        .rootPath(this.rootPath)
         .title(titleCreate("Attribut erstellen"))
         .breadcrumbs(bc);
     }
 
     if (auto frm = cast(DForm)myView.form) {
       frm
-        .rootPath(this.rootPath)
         .action(this.rootPath~"/actions/create")
         .content(MDLAttributeFormContent);
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
-            .rootPath(this.rootPath)
             .mainTitle("Neues Attribute")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);

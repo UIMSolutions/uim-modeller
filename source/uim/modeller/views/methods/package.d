@@ -10,7 +10,6 @@ public import uim.modeller.views.methods.index;
 public import uim.modeller.views.methods.create;
 public import uim.modeller.views.methods.read;
 public import uim.modeller.views.methods.update;
-public import uim.modeller.views.methods.delete_;
 
 package:
   string myRootPath = "/modeller/methods";

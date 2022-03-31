@@ -9,7 +9,6 @@ public import uim.modeller.views.libraries.index;
 // CRUD Modules
 public import uim.modeller.views.libraries.read;
 public import uim.modeller.views.libraries.update;
-public import uim.modeller.views.libraries.delete_;
 
 package:
   string myRootPath = "/modeller/libraries";

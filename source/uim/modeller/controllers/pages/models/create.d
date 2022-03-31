@@ -26,20 +26,17 @@ class DMDLModelsCreatePageController : DMDLCreatePageController {
       );
 
       pgHeader
-        .rootPath(this.rootPath)
         .title(titleCreate("Model erstellen"))
         .breadcrumbs(bc);
     }
 
     if (auto frm = cast(DForm)myView.form) {
       frm
-        .rootPath(this.rootPath)
         .action(this.rootPath~"/actions/create")
         .content(MDLModelFormContent);
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
-            .rootPath(this.rootPath)
             .mainTitle("Neues Model")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);

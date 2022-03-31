@@ -9,7 +9,6 @@ public import uim.modeller.views.apis.index;
 // CRUD Modules
 public import uim.modeller.views.apis.read;
 public import uim.modeller.views.apis.update;
-public import uim.modeller.views.apis.delete_;
 
 package:
   string myRootPath = "/modeller/apis";

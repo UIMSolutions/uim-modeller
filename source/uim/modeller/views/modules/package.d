@@ -10,7 +10,6 @@ public import uim.modeller.views.modules.index;
 public import uim.modeller.views.modules.create;
 public import uim.modeller.views.modules.read;
 public import uim.modeller.views.modules.update;
-public import uim.modeller.views.modules.delete_;
 
 package:
   string myRootPath = "/modeller/modules";

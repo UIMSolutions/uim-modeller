@@ -1,10 +1,10 @@
-module source.uim.modeller.views.components.forms.contents.classes;
+module uim.modeller.views.components.forms.contents.class_;
 
 @safe:
 import uim.modeller;
 
-class DMDLAppFormContent : DEntityFormContent {
-  mixin(FormComponentThis!("MDLAppFormContent", true));
+class DMDLClassFormContent : DEntityFormContent {
+  mixin(FormComponentThis!("MDLClassFormContent", true));
 
   override void initialize() {
     super.initialize;
@@ -14,9 +14,9 @@ class DMDLAppFormContent : DEntityFormContent {
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }
-mixin(FormComponentCalls!("MDLAppFormContent", true));
+mixin(FormComponentCalls!("MDLClassFormContent", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLAppFormContent);
+    assert(MDLClassFormContent);
 }}

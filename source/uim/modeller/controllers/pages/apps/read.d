@@ -3,18 +3,58 @@ module uim.modeller.controllers.pages.apps.read;
 @safe:
 import uim.modeller;
 
-mixin(MDLReadPageController!(
-  "MDLApps",
-  "MDLRead",
-  `this
-    .collectionName("modeller_apps")
-    .rootPath("/modeller/apps")
-    .scripts.addContents(
-      editorSummary~
-      editorText~
-      "editorSummary.disabled();"~
-      "editorText.disabled();"
-    );`));
+class DMDLAppsReadPageController : DMDLReadPageController {
+  mixin(APPPageControllerThis!("MDLAppsReadPageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_apps")
+      .rootPath("/modeller/apps");
+
+    auto myView = APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Apps")
+        .link(["active"], ["href":this.rootPath~"/read"], "Anzeigen")
+      );
+
+      pgHeader
+        .breadcrumbs(bc)
+        .title(titleRead("App anzeigen"));
+    }
+
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .action(this.rootPath~"/actions/read")
+        .content(
+          MDLAppFormContent); 
+    
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
+        myFormHeader
+          .mainTitle("Apps")
+          .subTitle("App anzeigen");
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
+        .addContents(
+          editorSummary~
+          editorText~
+          "editorSummary.disabled();"~
+          "editorText.disabled();"
+        );
+  }
+}
+mixin(APPPageControllerCalls!("MDLAppsReadPageController"));
 
 version(test_uim_modeller) {
   unittest {

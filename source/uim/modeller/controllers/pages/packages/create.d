@@ -26,20 +26,17 @@ class DMDLPackagesCreatePageController : DMDLCreatePageController {
       );
 
       pgHeader
-        .rootPath(this.rootPath)
         .title(titleCreate("Paket erstellen"))
         .breadcrumbs(bc);
     }
 
     if (auto frm = cast(DForm)myView.form) {
       frm
-        .rootPath(this.rootPath)
         .action(this.rootPath~"/actions/create")
         .content(MDLPackageFormContent);
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
-            .rootPath(this.rootPath)
             .mainTitle("Neues Pakete")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);

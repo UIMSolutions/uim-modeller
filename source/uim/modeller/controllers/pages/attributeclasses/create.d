@@ -15,7 +15,7 @@ class DMDLAttributeClassesCreatePageController : DMDLCreatePageController {
 
     auto myView =  
       APPEntityCreateView(this)
-      .rootPath(this.rootPath);
+        .rootPath(this.rootPath);
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = BS5Breadcrumb(
@@ -27,20 +27,17 @@ class DMDLAttributeClassesCreatePageController : DMDLCreatePageController {
       );
 
       pgHeader
-        .rootPath(this.rootPath)
         .title(titleCreate("Attributklasseerstellen"))
         .breadcrumbs(bc);
     }
 
     if (auto frm = cast(DForm)myView.form) {
       frm
-        .rootPath(this.rootPath)
         .action(this.rootPath~"/actions/create")
         .content(MDLAttributeFormContent);
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
-            .rootPath(this.rootPath)
             .mainTitle("Neue Attributklasse")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);

@@ -22,24 +22,22 @@ class DMDLApisDeletePageController : DMDLDeletePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Apis")
+        .link(["active"], ["href":this.rootPath~"/delete"], "Löschen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .rootPath(this.rootPath)
         .title(titleDelete("Api löschen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
         .action(this.rootPath~"/actions/delete")
-        .rootPath(this.rootPath)
         .content(
           MDLApiFormContent); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .rootPath(this.rootPath)
           .mainTitle("Apis")
           .subTitle("Apis löschen");
       }

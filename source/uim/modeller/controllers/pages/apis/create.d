@@ -21,13 +21,13 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Attribute")
+        .link(["href":this.rootPath], "Api")
         .link(["active"], ["href":this.rootPath~"/create"], "Erstellen")
       );
 
       pgHeader
         .rootPath(this.rootPath)
-        .title(titleCreate("Attribut erstellen"))
+        .title(titleCreate("Api erstellen"))
         .breadcrumbs(bc);
     }
 
@@ -40,7 +40,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
             .rootPath(this.rootPath)
-            .mainTitle("Neues Attribute")
+            .mainTitle("Neue Api")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }

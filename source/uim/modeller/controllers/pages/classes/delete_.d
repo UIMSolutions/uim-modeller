@@ -3,20 +3,61 @@ module uim.modeller.controllers.pages.classes.delete_;
 @safe:
 import uim.modeller;
 
-mixin(MDLDeletePageController!(
-  "MDLClasses",
-  "MDLDelete",
-  `this
-    .collectionName("modeller_classes")
-    .rootPath("/modeller/classes")
-    .scripts
-      .addContents(
-        editorSummary~
-        editorText~
-        "editorSummary.disabled();"~
-        "editorText.disabled();"
+class DMDLClassesDeletePageController : DMDLDeletePageController {
+  mixin(APPPageControllerThis!("MDLClassesDeletePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_classes")
+      .rootPath("/modeller/classes");
+
+    auto myView = APPEntityDeleteView(this)
+      .rootPath(this.rootPath);
+    
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Klasse")
+        .link(["active"], ["href":this.rootPath~"/delete"], "Erstellen")
       );
-`));
+
+      pgHeader
+        .title(titleDelete("Klasse erstellen"))
+        .breadcrumbs(bc);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+        .action(this.rootPath~"/actions/delete")
+        .content(MDLClassFormContent);
+    
+      if (auto frmHeader = cast(DFormHeader)frm.header) {
+          frmHeader
+            .mainTitle("Neue Klasse")
+            .subTitle("Bitte Werte eingeben")
+            .actions([["cancel", "save"]]);
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
+        .addContents(
+          editorSummary~editorText,
+          "window.addEventListener('load', (event) => {
+            document.getElementById('entityForm').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+      );          
+  }
+}
+mixin(APPPageControllerCalls!("MDLClassesDeletePageController"));
 
 version(test_uim_modeller) {
   unittest {

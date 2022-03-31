@@ -3,12 +3,58 @@ module uim.modeller.controllers.pages.packages.delete_;
 @safe:
 import uim.modeller;
 
-mixin(MDLDeletePageController!(
-  "MDLPackages",
-  "MDLDelete",
-  `this
-    .collectionName("modeller_packages")
-    .rootPath("/modeller/packages");`));
+class DMDLPackagesDeletePageController : DMDLDeletePageController {
+  mixin(APPPageControllerThis!("MDLPackagesDeletePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_packages")
+      .rootPath("/modeller/packages");
+
+    auto myView = APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Packages")
+        .link(["active"], ["href":this.rootPath~"/delete"], "Löschen")
+      );
+
+      pgHeader
+        .breadcrumbs(bc)
+        .title(titleDelete("Package löschen"));
+    }
+
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .action(this.rootPath~"/actions/delete")
+        .content(
+          MDLPackageFormContent); 
+    
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
+        myFormHeader
+          .mainTitle("Packages")
+          .subTitle("Packages löschen");
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
+        .addContents(
+          editorSummary~
+          editorText~
+          "editorSummary.disabled();"~
+          "editorText.disabled();"
+        );
+  }
+}
+mixin(APPPageControllerCalls!("MDLPackagesDeletePageController"));
 
 version(test_uim_modeller) {
   unittest {

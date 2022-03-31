@@ -27,20 +27,17 @@ class DMDLAppsDeletePageController : DMDLDeletePageController {
 
       pgHeader
         .breadcrumbs(bc)
-        .rootPath(this.rootPath)
         .title(titleDelete("App löschen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
         .action(this.rootPath~"/actions/delete")
-        .rootPath(this.rootPath)
         .content(
           MDLAppFormContent); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .rootPath(this.rootPath)
           .mainTitle("Apps")
           .subTitle("Apps löschen");
       }

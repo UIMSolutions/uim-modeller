@@ -15,7 +15,7 @@ class DMDLAppsCreatePageController : DMDLCreatePageController {
 
     auto myView =  
       APPEntityCreateView(this)
-      .rootPath(this.rootPath);
+        .rootPath(this.rootPath);
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = BS5Breadcrumb(
@@ -27,20 +27,17 @@ class DMDLAppsCreatePageController : DMDLCreatePageController {
       );
 
       pgHeader
-        .rootPath(this.rootPath)
         .title(titleCreate("App erstellen"))
         .breadcrumbs(bc);
     }
 
     if (auto frm = cast(DForm)myView.form) {
       frm
-        .rootPath(this.rootPath)
         .action(this.rootPath~"/actions/create")
         .content(MDLAttributeFormContent);
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
-            .rootPath(this.rootPath)
             .mainTitle("Neue App")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
