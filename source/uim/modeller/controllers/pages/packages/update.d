@@ -22,7 +22,7 @@ class DMDLPackagesUpdatePageController : DMDLUpdatePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Packages")
-        .item(["active fw-bold"], "Anzeigen")
+        .item(["active", "fw-bold"], "Anzeigen")
       );
 
       pgHeader

@@ -22,7 +22,7 @@ class DMDLAttributesUpdatePageController : DMDLUpdatePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Attributes")
-        .item(["active fw-bold"], "Anzeigen")
+        .item(["active", "fw-bold"], "Anzeigen")
       );
 
       pgHeader

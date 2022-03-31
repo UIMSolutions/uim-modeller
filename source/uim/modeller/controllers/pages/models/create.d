@@ -22,7 +22,7 @@ class DMDLModelsCreatePageController : DMDLCreatePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Model")
-        .item(["active fw-bold"], "Erstellen")
+        .item(["active", "fw-bold"], "Erstellen")
       );
 
       pgHeader

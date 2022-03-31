@@ -9,11 +9,39 @@ class DMDLLibrariesIndexPageController : DMDLEntitiesPageController {
   override void initialize() {
     super.initialize;
 
+    auto myView = APPEntitiesListView(this);
+ 
     this
-      .collectionName("modeller_libraries")
-      .view(
-        MDLLibrariesIndexView(this)
-          .rootPath("/modeller/libraries"));
+      .view(myView)
+      .rootPath("/modeller/libraries")
+      .collectionName("modeller_libraries");
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .item(["active", "fw-bold"], "Bibliotheken")
+      );
+
+      pgHeader
+        .rootPath("/modeller/libraries")
+        .breadcrumbs(bc)
+        .title(titleView("Übersicht Bibliotheken"))
+        .actions([["refresh", "list", "create"]]);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+       .rootPath("/modeller/libraries")
+       .content(
+          EntitiesFormContent(frm))
+        .header(
+          FormHeader(frm)
+            .mainTitle("Bibliotheken")
+            .subTitle("Bibliotheken anzeigen")
+            .actions([["print", "export"]]));
+    } 
   }
 }
 mixin(APPPageControllerCalls!("MDLLibrariesIndexPageController"));

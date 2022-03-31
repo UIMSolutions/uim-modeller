@@ -6,14 +6,42 @@ import uim.modeller;
 class DMDLEntityClassesIndexPageController : DMDLEntitiesPageController {
   mixin(APPPageControllerThis!("MDLEntityClassesIndexPageController"));
 
-  override void initialize() {
+override void initialize() {
     super.initialize;
 
+    auto myView = APPEntitiesListView(this);
+ 
     this
-      .collectionName("modeller_entityclasses")
-      .view(
-        MDLEntityClassesIndexView(this)
-          .rootPath("/modeller/entityclasses"));
+      .view(myView)
+      .rootPath("/modeller/entityclasses")
+      .collectionName("modeller_entityclasses");
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .item(["active", "fw-bold"], "Entitätsklassen")
+      );
+
+      pgHeader
+        .rootPath("/modeller/entityclasses")
+        .breadcrumbs(bc)
+        .title(titleView("Übersicht Entitätsklassen"))
+        .actions([["refresh", "list", "create"]]);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+       .rootPath("/modeller/entityclasses")
+       .content(
+          EntitiesFormContent(frm))
+        .header(
+          FormHeader(frm)
+            .mainTitle("Entitätsklassen")
+            .subTitle("Entitätsklassen anzeigen")
+            .actions([["print", "export"]]));
+    } 
   }
 }
 mixin(APPPageControllerCalls!("MDLEntityClassesIndexPageController"));

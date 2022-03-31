@@ -9,11 +9,39 @@ class DMDLPackagesIndexPageController : DMDLEntitiesPageController {
   override void initialize() {
     super.initialize;
 
+    auto myView = APPEntitiesListView(this);
+ 
     this
-      .collectionName("modeller_packages")
-      .view(
-        MDLPackagesIndexView(this)
-          .rootPath("/modeller/packages"));
+      .view(myView)
+      .rootPath("/modeller/packages")
+      .collectionName("modeller_packages");
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .item(["active", "fw-bold"], "Packages")
+      );
+
+      pgHeader
+        .rootPath("/modeller/packages")
+        .breadcrumbs(bc)
+        .title(titleView("Übersicht Packages"))
+        .actions([["refresh", "list", "create"]]);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+       .rootPath("/modeller/packages")
+       .content(
+          EntitiesFormContent(frm))
+        .header(
+          FormHeader(frm)
+            .mainTitle("Packages")
+            .subTitle("Packages anzeigen")
+            .actions([["print", "export"]]));
+    } 
   }
 }
 mixin(APPPageControllerCalls!("MDLPackagesIndexPageController"));

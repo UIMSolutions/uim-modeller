@@ -9,11 +9,39 @@ class DMDLModulesIndexPageController : DMDLEntitiesPageController {
   override void initialize() {
     super.initialize;
 
+    auto myView = APPEntitiesListView(this);
+ 
     this
-      .collectionName("modeller_modules")
-      .view(
-        MDLModulesIndexView(this)
-          .rootPath("/modeller/modules"));
+      .view(myView)
+      .rootPath("/modeller/modules")
+      .collectionName("modeller_modules");
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .item(["active", "fw-bold"], "Module")
+      );
+
+      pgHeader
+        .rootPath("/modeller/modules")
+        .breadcrumbs(bc)
+        .title(titleView("Übersicht Module"))
+        .actions([["refresh", "list", "create"]]);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+       .rootPath("/modeller/modules")
+       .content(
+          EntitiesFormContent(frm))
+        .header(
+          FormHeader(frm)
+            .mainTitle("Module")
+            .subTitle("Module anzeigen")
+            .actions([["print", "export"]]));
+    } 
   }
 }
 mixin(APPPageControllerCalls!("MDLModulesIndexPageController"));

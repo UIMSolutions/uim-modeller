@@ -22,7 +22,7 @@ class DMDLAttributeClassesReadPageController : DMDLReadPageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "AttributeClasses")
-        .item(["active fw-bold"], "Anzeigen")
+        .item(["active", "fw-bold"], "Anzeigen")
       );
 
       pgHeader

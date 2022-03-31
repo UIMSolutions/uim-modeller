@@ -9,11 +9,39 @@ class DMDLMethodsIndexPageController : DMDLEntitiesPageController {
   override void initialize() {
     super.initialize;
 
+    auto myView = APPEntitiesListView(this);
+ 
     this
-      .collectionName("modeller_methods")
-      .view(
-        MDLMethodsIndexView(this)
-          .rootPath("/modeller/methods"));
+      .view(myView)
+      .rootPath("/modeller/methods")
+      .collectionName("modeller_methods");
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .item(["active", "fw-bold"], "Methoden")
+      );
+
+      pgHeader
+        .rootPath("/modeller/methods")
+        .breadcrumbs(bc)
+        .title(titleView("Übersicht Methoden"))
+        .actions([["refresh", "list", "create"]]);
+    }
+
+    if (auto frm = cast(DForm)myView.form) {
+      frm
+       .rootPath("/modeller/methods")
+       .content(
+          EntitiesFormContent(frm))
+        .header(
+          FormHeader(frm)
+            .mainTitle("Methoden")
+            .subTitle("Methoden anzeigen")
+            .actions([["print", "export"]]));
+    } 
   }
 }
 mixin(APPPageControllerCalls!("MDLMethodsIndexPageController"));
