@@ -3,13 +3,49 @@ module uim.modeller.controllers.pages.apps.update;
 @safe:
 import uim.modeller;
 
-mixin(MDLUpdatePageController!(
-  "MDLApps",
-  "MDLUpdate",
-  `this
-    .collectionName("modeller_apis")
-    .rootPath("/modeller/apis")
-    .scripts
+class DMDLAppsUpdatePageController : DMDLUpdatePageController {
+  mixin(APPPageControllerThis!("MDLAppsUpdatePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_apps")
+      .rootPath("/modeller/apps");
+
+    auto myView = APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Apps")
+        .item(["active fw-bold"], "Anzeigen")
+      );
+
+      pgHeader
+        .breadcrumbs(bc)
+        .title(titleCreate("App anzeigen"));
+    }
+
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .action(this.rootPath~"/actions/update")
+        .content(
+          MDLAppFormContent); 
+    
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
+        myFormHeader
+          .mainTitle("Apps")
+          .subTitle("App anzeigen");
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
         .addContents(
           editorSummary~editorText,
           "window.addEventListener('load', (event) => {
@@ -18,7 +54,10 @@ mixin(MDLUpdatePageController!(
               editorText.save();
             })
           });"
-    );`));
+        );
+  }
+}
+mixin(APPPageControllerCalls!("MDLAppsUpdatePageController"));
 
 version(test_uim_modeller) {
   unittest {

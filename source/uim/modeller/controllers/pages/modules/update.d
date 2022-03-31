@@ -3,13 +3,49 @@ module uim.modeller.controllers.pages.modules.update;
 @safe:
 import uim.modeller;
 
-mixin(MDLUpdatePageController!(
-  "MDLModules",
-  "MDLUpdate",
-  `this
-    .collectionName("modeller_modules")
-    .rootPath("/modeller/modules")
-    .scripts
+class DMDLModulesUpdatePageController : DMDLUpdatePageController {
+  mixin(APPPageControllerThis!("MDLModulesUpdatePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_moduls")
+      .rootPath("/modeller/moduls");
+
+    auto myView = APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Moduls")
+        .item(["active fw-bold"], "Anzeigen")
+      );
+
+      pgHeader
+        .breadcrumbs(bc)
+        .title(titleCreate("Modul anzeigen"));
+    }
+
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .action(this.rootPath~"/actions/update")
+        .content(
+          MDLModuleFormContent); 
+    
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
+        myFormHeader
+          .mainTitle("Moduls")
+          .subTitle("Modul anzeigen");
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
         .addContents(
           editorSummary~editorText,
           "window.addEventListener('load', (event) => {
@@ -18,7 +54,10 @@ mixin(MDLUpdatePageController!(
               editorText.save();
             })
           });"
-    );`));
+        );
+  }
+}
+mixin(APPPageControllerCalls!("MDLModulesUpdatePageController"));
 
 version(test_uim_modeller) {
   unittest {

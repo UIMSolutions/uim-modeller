@@ -6,10 +6,6 @@ import uim.modeller;
 // Main
 public import uim.modeller.views.apps.index;
 
-// CRUD Modules
-public import uim.modeller.views.apps.read;
-public import uim.modeller.views.apps.update;
-
 package:
   string myRootPath = "/modeller/apps";
   // Tuple!(string, "de", string, "en") entityNames = tuple!("Blog", "Blog");

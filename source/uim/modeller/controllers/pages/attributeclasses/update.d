@@ -3,22 +3,61 @@ module uim.modeller.controllers.pages.attributeclasses.update;
 @safe:
 import uim.modeller;
 
-mixin(MDLUpdatePageController!(
-  "MDLAttributeClasses",
-  "MDLUpdate",
-  `this
-    .collectionName("modeller_attributeclasses")
-    .rootPath("/modeller/attributeclasses")
-    .scripts
-      .addContents(
-        editorSummary~editorText,
-        "window.addEventListener('load', (event) => {
-          document.getElementById('entityForm').addEventListener('submit', event => {
-            editorSummary.save();
-            editorText.save();
-          })
-        });"
-    );`));
+class DMDLAttributeClassesUpdatePageController : DMDLUpdatePageController {
+  mixin(APPPageControllerThis!("MDLAttributeClassesUpdatePageController"));
+
+  override void initialize() {
+    super.initialize;
+
+    this
+      .collectionName("modeller_attributeclasses")
+      .rootPath("/modeller/attributeclasses");
+
+    auto myView = APPEntityCreateView(this)
+      .rootPath(this.rootPath);
+
+    if (auto pgHeader = cast(DPageHeader)myView.header) {
+      auto bc = BS5Breadcrumb(
+        BS5BreadcrumbList
+        .link(["href":"/"], "UIM")
+        .link(["href":"/modeller"], "Modeller")
+        .link(["href":this.rootPath], "Attributeclasses")
+        .item(["active fw-bold"], "Anzeigen")
+      );
+
+      pgHeader
+        .breadcrumbs(bc)
+        .title(titleCreate("Attributeclass anzeigen"));
+    }
+
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .action(this.rootPath~"/actions/update")
+        .content(
+          MDLAttributeClassFormContent); 
+    
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
+        myFormHeader
+          .mainTitle("Attributeclasses")
+          .subTitle("Attributeclass anzeigen");
+      }
+    }
+
+    this
+      .view(myView)
+      .scripts
+        .addContents(
+          editorSummary~editorText,
+          "window.addEventListener('load', (event) => {
+            document.getElementById('entityForm').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+        );
+  }
+}
+mixin(APPPageControllerCalls!("MDLAttributeClassesUpdatePageController"));
 
 version(test_uim_modeller) {
   unittest {
