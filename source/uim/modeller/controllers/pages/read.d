@@ -5,7 +5,7 @@ import uim.modeller;
 
 class DMDLReadPageController : DMDLEntityPageController {
   mixin(APPPageControllerThis!("MDLReadPageController"));
-
+  
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLApisReadPageController~":DMDLApisReadPageController::beforeResponse");
     super.beforeResponse(options);

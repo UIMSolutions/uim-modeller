@@ -34,7 +34,7 @@ class DMDLInterfacesDeletePageController : DMDLDeletePageController {
     if (auto frm = cast(DForm)myView.form) {
       frm
         .rootPath(this.rootPath)
-        .action(this.rootPath~"/actions/delete")
+         .method("post").action(this.rootPath~"/actions/delete")
         .content(MDLInterfaceFormContent);
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {

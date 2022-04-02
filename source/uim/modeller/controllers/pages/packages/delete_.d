@@ -13,7 +13,7 @@ class DMDLPackagesDeletePageController : DMDLDeletePageController {
       .collectionName("modeller_packages")
       .rootPath("/modeller/packages");
 
-    auto myView = APPEntityCreateView(this)
+    auto myView = APPEntityDeleteView(this)
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
@@ -32,7 +32,7 @@ class DMDLPackagesDeletePageController : DMDLDeletePageController {
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-        .action(this.rootPath~"/actions/delete")
+         .method("post").action(this.rootPath~"/actions/delete")
         .content(
           MDLPackageFormContent); 
     

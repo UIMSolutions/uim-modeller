@@ -13,7 +13,7 @@ class DMDLAppsUpdatePageController : DMDLUpdatePageController {
       .collectionName("modeller_apps")
       .rootPath("/modeller/apps");
 
-    auto myView = APPEntityCreateView(this)
+    auto myView = APPEntityUpdateView(this)
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
@@ -32,7 +32,7 @@ class DMDLAppsUpdatePageController : DMDLUpdatePageController {
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-        .action(this.rootPath~"/actions/update")
+         .method("post").action(this.rootPath~"/actions/update")
         .content(
           MDLAppFormContent); 
     

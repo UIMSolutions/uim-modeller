@@ -13,7 +13,7 @@ class DMDLAttributesReadPageController : DMDLReadPageController {
       .collectionName("modeller_attributes")
       .rootPath("/modeller/attributes");
 
-    auto myView = APPEntityCreateView(this)
+    auto myView = APPEntityReadView(this)
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
@@ -32,7 +32,7 @@ class DMDLAttributesReadPageController : DMDLReadPageController {
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-        .action(this.rootPath~"/actions/read")
+         .method("post").action(this.rootPath~"/actions/read")
         .content(
           MDLAttributeFormContent); 
     

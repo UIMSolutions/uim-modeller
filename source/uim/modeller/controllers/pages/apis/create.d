@@ -34,6 +34,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
     if (auto frm = cast(DForm)myView.form) {
       frm
         .rootPath(this.rootPath)
+        .method("post")
         .action(this.rootPath~"/actions/create")
         .content(MDLApiFormContent);
     
