@@ -41,20 +41,22 @@ class DMDLClassesUpdatePageController : DMDLUpdatePageController {
           .mainTitle("Classes")
           .subTitle("Class anzeigen");
       }
+
+      this
+        .scripts
+          .addContents(
+            editorSummary~editorText,
+            "window.addEventListener('load', (event) => {
+              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+                editorSummary.save();
+                editorText.save();
+              })
+            });"
+          );
     }
 
     this
-      .view(myView)
-      .scripts
-        .addContents(
-          editorSummary~editorText,
-          "window.addEventListener('load', (event) => {
-            document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
-              editorSummary.save();
-              editorText.save();
-            })
-          });"
-        );
+      .view(myView);
   }
 }
 mixin(APPPageControllerCalls!("MDLClassesUpdatePageController"));

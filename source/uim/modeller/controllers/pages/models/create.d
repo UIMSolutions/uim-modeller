@@ -30,31 +30,33 @@ class DMDLModelsCreatePageController : DMDLCreatePageController {
         .breadcrumbs(bc);
     }
 
-    if (auto frm = cast(DForm)myView.form) {
-      frm
-         .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLModelFormContent);
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .method("post").action(this.rootPath~"/actions/create")
+        .content(MDLModelFormContent(myForm));
     
-      if (auto frmHeader = cast(DFormHeader)frm.header) {
-          frmHeader
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
+          myFormHeader
             .mainTitle("Neues Model")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }
+
+      this
+        .scripts
+          .addContents(
+            editorSummary~editorText,
+            "window.addEventListener('load', (event) => {
+              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+                editorSummary.save();
+                editorText.save();
+              })
+            });"
+        );    
     }
 
     this
-      .view(myView)
-      .scripts
-        .addContents(
-          editorSummary~editorText,
-          "window.addEventListener('load', (event) => {
-            document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
-              editorSummary.save();
-              editorText.save();
-            })
-          });"
-      );          
+      .view(myView);      
   }
 }
 mixin(APPPageControllerCalls!("MDLModelsCreatePageController"));

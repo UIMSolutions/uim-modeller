@@ -42,20 +42,22 @@ class DMDLAttributeClassesCreatePageController : DMDLCreatePageController {
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }
+
+      this
+        .scripts
+          .addContents(
+            editorSummary~editorText,
+            "window.addEventListener('load', (event) => {
+              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+                editorSummary.save();
+                editorText.save();
+              })
+            });"
+        );   
     }
 
     this
-      .view(myView)
-      .scripts
-        .addContents(
-          editorSummary~editorText,
-          "window.addEventListener('load', (event) => {
-            document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
-              editorSummary.save();
-              editorText.save();
-            })
-          });"
-      );          
+      .view(myView);       
   }
 }
 mixin(APPPageControllerCalls!("MDLAttributeClassesCreatePageController"));

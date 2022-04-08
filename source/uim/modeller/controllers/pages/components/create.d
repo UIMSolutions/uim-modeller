@@ -31,32 +31,34 @@ class DMDLComponentsCreatePageController : DMDLCreatePageController {
         .breadcrumbs(bc);
     }
 
-    if (auto frm = cast(DForm)myView.form) {
-      frm
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
         .id("entityForm")
         .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLComponentFormContent(frm));
+        .content(MDLComponentFormContent(myForm));
     
-      if (auto frmHeader = cast(DFormHeader)frm.header) {
-          frmHeader
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
+          myFormHeader
             .mainTitle("Neue Klasse")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }
+
+      this
+        .scripts
+          .addContents(
+            editorSummary~editorText,
+            "window.addEventListener('load', (event) => {
+              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+                editorSummary.save();
+                editorText.save();
+              })
+            });"
+        );          
     }
 
     this
-      .view(myView)
-      .scripts
-        .addContents(
-          editorSummary~editorText,
-          "window.addEventListener('load', (event) => {
-            document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
-              editorSummary.save();
-              editorText.save();
-            })
-          });"
-      );          
+      .view(myView);      
   }
 }
 mixin(APPPageControllerCalls!("MDLComponentsCreatePageController"));

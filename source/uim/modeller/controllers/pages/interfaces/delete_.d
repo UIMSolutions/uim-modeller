@@ -31,33 +31,36 @@ class DMDLInterfacesDeletePageController : DMDLDeletePageController {
         .breadcrumbs(bc);
     }
 
-    if (auto frm = cast(DForm)myView.form) {
-      frm
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .method("post")
+        .action(this.rootPath~"/actions/delete")
         .rootPath(this.rootPath)
-         .method("post").action(this.rootPath~"/actions/delete")
-        .content(MDLInterfaceFormContent);
+        .content(MDLInterfaceFormContent(myForm));
     
-      if (auto frmHeader = cast(DFormHeader)frm.header) {
-          frmHeader
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
+          myFormHeader
             .rootPath(this.rootPath)
             .mainTitle("Neues Interface")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }
+
+      this
+        .scripts
+          .addContents(
+            editorSummary~editorText,
+            "window.addEventListener('load', (event) => {
+              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+                editorSummary.save();
+                editorText.save();
+              })
+            });"
+        );  
     }
 
     this
-      .view(myView)
-      .scripts
-        .addContents(
-          editorSummary~editorText,
-          "window.addEventListener('load', (event) => {
-            document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
-              editorSummary.save();
-              editorText.save();
-            })
-          });"
-      );          
+      .view(myView);        
   }
 }
 mixin(APPPageControllerCalls!("MDLInterfacesDeletePageController"));
