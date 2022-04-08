@@ -36,7 +36,7 @@ class DMDLMethodsDeletePageController : DMDLDeletePageController {
          .method("post").action(this.rootPath~"/actions/delete")
         .rootPath(this.rootPath)
         .content(
-          MDLMethodFormContent); 
+          MDLMethodFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

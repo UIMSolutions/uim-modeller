@@ -1,17 +1,17 @@
-module uim.modeller.controllers.pages.classes.update;
+module uim.modeller.controllers.pages.components.update;
 
 @safe:
 import uim.modeller;
 
-class DMDLClassesUpdatePageController : DMDLUpdatePageController {
-  mixin(APPPageControllerThis!("MDLClassesUpdatePageController"));
+class DMDLComponentsUpdatePageController : DMDLUpdatePageController {
+  mixin(APPPageControllerThis!("MDLComponentsUpdatePageController"));
 
   override void initialize() {
     super.initialize;
 
     this
-      .collectionName("modeller_classes")
-      .rootPath("/modeller/classes");
+      .collectionName("modeller_components")
+      .rootPath("/modeller/components");
 
     auto myView = APPEntityUpdateView(this)
       .rootPath(this.rootPath);
@@ -21,7 +21,7 @@ class DMDLClassesUpdatePageController : DMDLUpdatePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Classes")
+        .link(["href":this.rootPath], "components")
         .item(["active", "fw-bold"], "Anzeigen")
       );
 
@@ -38,7 +38,7 @@ class DMDLClassesUpdatePageController : DMDLUpdatePageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Classes")
+          .mainTitle("components")
           .subTitle("Class anzeigen");
       }
     }
@@ -57,13 +57,13 @@ class DMDLClassesUpdatePageController : DMDLUpdatePageController {
         );
   }
 }
-mixin(APPPageControllerCalls!("MDLClassesUpdatePageController"));
+mixin(APPPageControllerCalls!("MDLComponentsUpdatePageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLClassesUpdatePageController); 
+		testPageController(new DMDLComponentsUpdatePageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLClassesUpdatePageController); 
+		testPageController(MDLComponentsUpdatePageController); 
 }}

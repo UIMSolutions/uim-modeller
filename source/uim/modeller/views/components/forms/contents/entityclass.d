@@ -10,7 +10,7 @@ class DMDLEntityClassFormContent : DEntityFormContent {
     super.initialize;
 
     this
-      .addFields(["models", "packages", "modules", "mainTitle", "subTitle"])
+      .addFields(["models", "packages", "modules", "mainTitle", "subTitle", "summary", "text"])
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }

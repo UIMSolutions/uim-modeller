@@ -34,7 +34,7 @@ class DMDLModelsUpdatePageController : DMDLUpdatePageController {
       myForm
          .method("post").action(this.rootPath~"/actions/update")
         .content(
-          MDLModelFormContent); 
+          MDLModelFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

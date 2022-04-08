@@ -1,17 +1,17 @@
-module uim.modeller.controllers.pages.methods.read;
+module uim.modeller.controllers.pages.components.read;
 
 @safe:
 import uim.modeller;
 
-class DMDLMethodsReadPageController : DMDLReadPageController {
-  mixin(APPPageControllerThis!("MDLMethodsReadPageController"));
+class DMDLComponentsReadPageController : DMDLReadPageController {
+  mixin(APPPageControllerThis!("MDLComponentsReadPageController"));
 
   override void initialize() {
     super.initialize;
 
     this
-      .collectionName("modeller_methods")
-      .rootPath("/modeller/methods");
+      .collectionName("modeller_components")
+      .rootPath("/modeller/components");
 
     auto myView = APPEntityReadView(this)
       .rootPath(this.rootPath);
@@ -21,25 +21,25 @@ class DMDLMethodsReadPageController : DMDLReadPageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Methods")
+        .link(["href":this.rootPath], "Klassen")
         .link(["active"], "Anzeigen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Methode anzeigen"));
+        .title(titleCreate("Klasse anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
          .method("post").action(this.rootPath~"/actions/read")
         .content(
-          MDLMethodFormContent(myForm)); 
+          MDLClassFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Methoden")
-          .subTitle("Methode anzeigen");
+          .mainTitle("KLassen")
+          .subTitle("Klasse anzeigen");
       }
     }
 
@@ -54,13 +54,13 @@ class DMDLMethodsReadPageController : DMDLReadPageController {
         );
   }
 }
-mixin(APPPageControllerCalls!("MDLMethodsReadPageController"));
+mixin(APPPageControllerCalls!("MDLComponentsReadPageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLMethodsReadPageController); 
+		testPageController(new DMDLComponentsReadPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLMethodsReadPageController); 
+		testPageController(MDLComponentsReadPageController); 
 }}

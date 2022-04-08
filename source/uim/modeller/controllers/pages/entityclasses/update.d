@@ -32,9 +32,9 @@ class DMDLEntityClassesUpdatePageController : DMDLUpdatePageController {
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-         .method("post").action(this.rootPath~"/actions/update")
+        .method("post").action(this.rootPath~"/actions/update")
         .content(
-          MDLEntityClassFormContent); 
+          MDLEntityClassFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

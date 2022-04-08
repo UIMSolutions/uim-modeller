@@ -34,7 +34,7 @@ class DMDLApisUpdatePageController : DMDLUpdatePageController {
       myForm
          .method("post").action(this.rootPath~"/actions/update")
         .content(
-          MDLApiFormContent); 
+          MDLApiFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
