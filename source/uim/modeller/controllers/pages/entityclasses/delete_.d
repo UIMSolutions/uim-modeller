@@ -30,13 +30,13 @@ class DMDLEntityClassesDeletePageController : DMDLDeletePageController {
         .breadcrumbs(bc);
     }
 
-    if (auto frm = cast(DForm)myView.form) {
-      frm
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
          .method("post").action(this.rootPath~"/actions/delete")
-        .content(MDLEntityClassFormContent);
+        .content(MDLEntityClassFormContent(myForm));
     
-      if (auto frmHeader = cast(DFormHeader)frm.header) {
-          frmHeader
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
+          myFormHeader
             .mainTitle("Neue Entitätsklasse")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
@@ -52,7 +52,7 @@ class DMDLEntityClassesDeletePageController : DMDLDeletePageController {
                 editorText.save();
               })
             });"
-      );  
+        );  
     }
 
     this

@@ -31,13 +31,13 @@ class DMDLAttributeClassesCreatePageController : DMDLCreatePageController {
         .breadcrumbs(bc);
     }
 
-    if (auto frm = cast(DForm)myView.form) {
-      frm
-         .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLAttributeFormContent);
+    if (auto myForm = cast(DForm)myView.form) {
+      myForm
+        .method("post").action(this.rootPath~"/actions/create")
+        .content(MDLAttributeFormContent(myForm));
     
-      if (auto frmHeader = cast(DFormHeader)frm.header) {
-          frmHeader
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
+          myFormHeader
             .mainTitle("Neue Attributklasse")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
