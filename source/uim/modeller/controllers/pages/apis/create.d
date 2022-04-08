@@ -53,7 +53,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
         .addContents(
           editorSummary~editorText,
           "window.addEventListener('load', (event) => {
-            document.getElementById('entityForm').addEventListener('submit', event => {
+            document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
               editorSummary.save();
               editorText.save();
             })

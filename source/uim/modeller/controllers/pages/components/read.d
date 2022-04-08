@@ -32,9 +32,9 @@ class DMDLComponentsReadPageController : DMDLReadPageController {
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-         .method("post").action(this.rootPath~"/actions/read")
-        .content(
-          MDLClassFormContent(myForm)); 
+        .method("post")
+        .action(this.rootPath~"/actions/read")
+        .content(MDLComponentFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

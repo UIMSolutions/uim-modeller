@@ -12,8 +12,7 @@ class DMDLUpdatePageController : DMDLEntityPageController {
     if (hasError || "redirect" in options) { return; }
 
     auto appSession = getAppSession(options);
-    auto entityId = options.get("entity_id", null);
-    if (entityId && entityId.isUUID && this.database) {  
+    if (entityId && entityId.isUUID) {  
       if (auto dbEntity = database[appSession.site, this.collectionName].findOne(UUID(entityId))) {
         debug writeln("Found entity");
 

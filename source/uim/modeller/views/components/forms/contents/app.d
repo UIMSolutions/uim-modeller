@@ -10,7 +10,7 @@ class DMDLAppFormContent : DEntityFormContent {
     super.initialize;
     
     this
-      .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist"])
+      .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist", "summary", "text"])
       .formGroupHandler(MDLFormGroupHandler(this.form)); 
   }
 }

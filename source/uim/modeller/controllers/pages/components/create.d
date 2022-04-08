@@ -33,8 +33,9 @@ class DMDLComponentsCreatePageController : DMDLCreatePageController {
 
     if (auto frm = cast(DForm)myView.form) {
       frm
-         .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLAttributeFormContent);
+        .id("entityForm")
+        .method("post").action(this.rootPath~"/actions/create")
+        .content(MDLComponentFormContent(frm));
     
       if (auto frmHeader = cast(DFormHeader)frm.header) {
           frmHeader
@@ -50,7 +51,7 @@ class DMDLComponentsCreatePageController : DMDLCreatePageController {
         .addContents(
           editorSummary~editorText,
           "window.addEventListener('load', (event) => {
-            document.getElementById('entityForm').addEventListener('submit', event => {
+            document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
               editorSummary.save();
               editorText.save();
             })

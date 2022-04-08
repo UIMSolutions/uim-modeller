@@ -7,6 +7,7 @@ class DMDLEntityPageController : DAPPEntityPageController {
   mixin(APPPageControllerThis!("MDLEntityPageController"));
 
   mixin(OProperty!("string", "rootPath"));
+  mixin(OProperty!("string", "entityId"));
   
   override void initialize() {
     super.initialize;
@@ -25,13 +26,13 @@ class DMDLEntityPageController : DAPPEntityPageController {
 
     auto appSession = getAppSession(options);
     this.tenant(ETBNullTenant).collection(ETBNullCollection);
-    if (this.database) {
-      debug writeln("Found database"); 
 
-      this
-        .tenant(database[appSession.site])
-        .collection(this.tenant[this.collectionName]);
-    }
+    this.entityId(
+      options.get("entity_id", options.get("id", options.get("entityId", null))));
+   
+    this
+      .tenant(database[appSession.site])
+      .collection(this.tenant[this.collectionName]);
   }
 }
 mixin(APPPageControllerCalls!("MDLEntityPageController"));

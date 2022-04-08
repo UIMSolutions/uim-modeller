@@ -21,40 +21,42 @@ class DMDLComponentsUpdatePageController : DMDLUpdatePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "components")
-        .item(["active", "fw-bold"], "Anzeigen")
+        .link(["href":this.rootPath], "Komponenten")
+        .item(["active", "fw-bold"], "Bearbeiten")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Class anzeigen"));
+        .title(titleCreate("Komponente bearbeiten"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-         .method("post").action(this.rootPath~"/actions/update")
-        .content(
-          MDLClassFormContent(myForm)); 
+        .method("post")
+        .action(this.rootPath~"/actions/update")
+        .content(MDLComponentFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("components")
-          .subTitle("Class anzeigen");
+          .mainTitle("Neue Komponente")
+          .subTitle("Komponente bearbeiten");
       }
+
+      this
+        .scripts
+          .addContents(
+            editorSummary~editorText,
+            "window.addEventListener('load', (event) => {
+              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+                editorSummary.save();
+                editorText.save();
+              })
+            });"
+          );
     }
 
     this
-      .view(myView)
-      .scripts
-        .addContents(
-          editorSummary~editorText,
-          "window.addEventListener('load', (event) => {
-            document.getElementById('entityForm').addEventListener('submit', event => {
-              editorSummary.save();
-              editorText.save();
-            })
-          });"
-        );
+      .view(myView);
   }
 }
 mixin(APPPageControllerCalls!("MDLComponentsUpdatePageController"));

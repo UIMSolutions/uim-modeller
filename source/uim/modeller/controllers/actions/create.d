@@ -23,7 +23,7 @@ class DMDLCreateAction : DAPPActionController {
     if (this.collection) {
       if (auto entity = collection.createFromTemplate) {             
         debug writeln("Created entity:", entity.id);
-
+        debug writeln("Options:", options);
         entity.fromRequest(options);
 
         collection.insertOne(entity);

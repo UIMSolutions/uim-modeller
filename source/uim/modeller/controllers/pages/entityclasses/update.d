@@ -21,40 +21,42 @@ class DMDLEntityClassesUpdatePageController : DMDLUpdatePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Entityclasses")
-        .item(["active", "fw-bold"], "Anzeigen")
+        .link(["href":this.rootPath], "Entitätsklassen")
+        .item(["active", "fw-bold"], "Bearbeiten")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Entityclass anzeigen"));
+        .title(titleCreate("Entitätsklasse bearbeiten"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-        .method("post").action(this.rootPath~"/actions/update")
-        .content(
-          MDLEntityClassFormContent(myForm)); 
+        .method("post")
+        .action(this.rootPath~"/actions/update")
+        .content(MDLEntityClassFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Entityclasses")
-          .subTitle("Entityclass anzeigen");
-      }
-    }
+          .mainTitle("Entitätsklassen")
+          .subTitle("Entitätsklasse bearbeiten");
+      }    
+
+      this
+        .scripts
+          .addContents(
+            editorSummary~editorText,
+            "window.addEventListener('load', (event) => {
+              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+                editorSummary.save();
+                editorText.save();
+              })
+            });"
+          );    
+    }  
 
     this
-      .view(myView)
-      .scripts
-        .addContents(
-          editorSummary~editorText,
-          "window.addEventListener('load', (event) => {
-            document.getElementById('entityForm').addEventListener('submit', event => {
-              editorSummary.save();
-              editorText.save();
-            })
-          });"
-        );
+      .view(myView);
   }
 }
 mixin(APPPageControllerCalls!("MDLEntityClassesUpdatePageController"));

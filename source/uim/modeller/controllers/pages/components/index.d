@@ -34,8 +34,7 @@ class DMDLComponentsIndexPageController : DMDLEntitiesPageController {
     if (auto frm = cast(DForm)myView.form) {
       frm
        .rootPath("/modeller/components")
-       .content(
-          EntitiesFormContent(frm))
+       .content(EntitiesFormContent(frm))
         .header(
           FormHeader(frm)
             .mainTitle("Klassen")
