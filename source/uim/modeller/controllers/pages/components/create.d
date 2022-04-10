@@ -27,19 +27,18 @@ class DMDLComponentsCreatePageController : DMDLCreatePageController {
       );
 
       pgHeader
-        .title(titleCreate("Klasse erstellen"))
+        .title(titleCreate("Komponente erstellen"))
         .breadcrumbs(bc);
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-        .id("entityForm")
         .method("post").action(this.rootPath~"/actions/create")
         .content(MDLComponentFormContent(myForm));
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader
-            .mainTitle("Neue Klasse")
+            .mainTitle("Neue Komponente")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }

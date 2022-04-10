@@ -21,12 +21,12 @@ class DMDLComponentsDeletePageController : DMDLDeletePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Klasse")
+        .link(["href":this.rootPath], "Komponenten")
         .item(["active", "fw-bold"], "Löschen")
       );
 
       pgHeader
-        .title(titleDelete("Klasse erstellen"))
+        .title(titleDelete("Komponente löschen"))
         .breadcrumbs(bc);
     }
 
@@ -37,7 +37,7 @@ class DMDLComponentsDeletePageController : DMDLDeletePageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader
-            .mainTitle("Neue Klasse")
+            .mainTitle("Neue Komponente")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }

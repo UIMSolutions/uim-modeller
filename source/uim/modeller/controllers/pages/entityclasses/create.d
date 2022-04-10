@@ -22,7 +22,7 @@ class DMDLEntityClassesCreatePageController : DMDLCreatePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Entitätsklasse")
+        .link(["href":this.rootPath], "Entitätsklassen")
         .item(["active", "fw-bold"], "Erstellen")
       );
 

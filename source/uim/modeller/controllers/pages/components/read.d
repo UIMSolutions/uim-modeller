@@ -21,13 +21,13 @@ class DMDLComponentsReadPageController : DMDLReadPageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Klassen")
+        .link(["href":this.rootPath], "Komponenten")
         .link(["active"], "Anzeigen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Klasse anzeigen"));
+        .title(titleCreate("Komponente anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -38,8 +38,8 @@ class DMDLComponentsReadPageController : DMDLReadPageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("KLassen")
-          .subTitle("Klasse anzeigen");
+          .mainTitle("Komponenten")
+          .subTitle("Komponente anzeigen");
       }
     }
 

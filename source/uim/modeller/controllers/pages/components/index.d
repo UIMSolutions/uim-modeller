@@ -21,13 +21,13 @@ class DMDLComponentsIndexPageController : DMDLEntitiesPageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .item(["active", "fw-bold"], "components")
+        .item(["active", "fw-bold"], "Komponenten")
       );
 
       pgHeader
         .rootPath("/modeller/components")
         .breadcrumbs(bc)
-        .title(titleView("Übersicht KLassen"))
+        .title(titleView("Übersicht Komponenten"))
         .actions([["refresh", "list", "create"]]);
     }
 
@@ -37,8 +37,8 @@ class DMDLComponentsIndexPageController : DMDLEntitiesPageController {
        .content(EntitiesFormContent(frm))
         .header(
           FormHeader(frm)
-            .mainTitle("Klassen")
-            .subTitle("KLassen anzeigen")
+            .mainTitle("Komponenten")
+            .subTitle("Komponenten anzeigen")
             .actions([["print", "export"]]));
     } 
   }
