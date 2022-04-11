@@ -13,6 +13,7 @@ class DMDLFormGroupKeywords : DFormGroup {
     .id("entity_keywords")
     .name("entity_keywords")
     .fieldName("keywords")
+    .inputName("entity_keywords")
     .label("Stichworte")
     .placeholder("Stichworte mit # getrennt eingeben");
   }
