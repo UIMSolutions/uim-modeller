@@ -52,7 +52,9 @@ class DMDLModelsFormGroup : DFormGroup {
     DH5Obj[] selectOptions;
     if (entity && models) {
       selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Model");
-      selectOptions ~= models.map!(model => (entity[fieldName] == model.id.toString) 
+      selectOptions ~= models
+        .sort!("a.display < b.display")
+        .map!(model => (entity[fieldName] == model.id.toString) 
         ? H5Option(["selected":"selected", "value":model.id.toString], model.display)
         : H5Option(["value":model.id.toString], model.display)).array.toH5;
     }

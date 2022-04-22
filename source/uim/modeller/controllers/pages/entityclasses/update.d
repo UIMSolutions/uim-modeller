@@ -21,7 +21,7 @@ class DMDLEntityClassesUpdatePageController : DMDLUpdatePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Entitätsklassen")
+        .link(["href":this.rootPath], "Entitäten")
         .item(["active", "fw-bold"], "Bearbeiten")
       );
 

@@ -52,9 +52,11 @@ class DMDLModulesFormGroup : DFormGroup {
     DH5Obj[] selectOptions;
     if (entity && modules) {
       selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Modul");
-      selectOptions ~= modules.map!(model => (entity[fieldName] == model.id.toString) 
-        ? H5Option(["selected":"selected", "value":model.id.toString], model.display)
-        : H5Option(["value":model.id.toString], model.display)).array.toH5;
+      selectOptions ~= modules
+        .sort!("a.display < b.display")
+        .map!(mod => (entity[fieldName] == mod.id.toString) 
+        ? H5Option(["selected":"selected", "value":mod.id.toString], mod.display)
+        : H5Option(["value":mod.id.toString], mod.display)).array.toH5;
     }
 
     auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["moduleId"]], selectOptions); 

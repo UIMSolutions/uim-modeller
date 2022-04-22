@@ -15,7 +15,7 @@ class DMDLAttributeClassesFormGroup : DFormGroup {
     .fieldName("modelidId")
     .label("modelidThema"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "attributeclassId"));
+  mixin(SProperty!("DOOPEntity[]", "attributeclasses"));
 
   auto database() {
     if (auto f = form) {
@@ -33,7 +33,7 @@ class DMDLAttributeClassesFormGroup : DFormGroup {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.attributeclassId(database[appSession.site, "modeller_attributeclasses"].findMany());
+      this.attributeclasses(database[appSession.site, "modeller_attributeclasses"].findMany());
     }
   }
 
@@ -42,11 +42,13 @@ class DMDLAttributeClassesFormGroup : DFormGroup {
     if (hasError) { return null; }
     
     DH5Obj[] selectOptions;
-    if (entity && attributeclassId) {
+    if (entity && attributeclasses) {
       selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No modelid");
-      selectOptions ~= attributeclassId.map!(modelid => (entity[fieldName] == modelid.id.toString) 
-        ? H5Option(["selected":"selected", "value":modelid.id.toString], modelid.display)
-        : H5Option(["value":modelid.id.toString], modelid.display)).array.toH5;
+      selectOptions ~= attributeclasses
+        .sort!("a.display < b.display")
+        .map!(aclass => (entity[fieldName] == aclass.id.toString) 
+        ? H5Option(["selected":"selected", "value":aclass.id.toString], aclass.display)
+        : H5Option(["value":aclass.id.toString], aclass.display)).array.toH5;
     }
 
     auto input = H5Select(name, ["form-select"], ["name":name, "readonly":"readonly", "value":entity["modelid"]], selectOptions); 

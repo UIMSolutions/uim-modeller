@@ -16,7 +16,7 @@ class DMDLPackagesFormGroup : DFormGroup {
     .fieldName("packageId")
     .label("Name Package"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "packageId"));
+  mixin(SProperty!("DOOPEntity[]", "packages"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -34,7 +34,7 @@ class DMDLPackagesFormGroup : DFormGroup {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.packageId(database[appSession.site, "modeller_packages"].findMany());
+      this.packages(database[appSession.site, "modeller_packages"].findMany());
     }
   }
 
@@ -43,11 +43,13 @@ class DMDLPackagesFormGroup : DFormGroup {
     if (hasError) { return null; }
     
     DH5Obj[] selectOptions;
-    if (entity && packageId) {
+    if (entity && packages) {
       selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Package");
-      selectOptions ~= packageId.map!(modelid => (entity[fieldName] == modelid.id.toString) 
-        ? H5Option(["selected":"selected", "value":modelid.id.toString], modelid.display)
-        : H5Option(["value":modelid.id.toString], modelid.display)).array.toH5;
+      selectOptions ~= packages
+        .sort!("a.display < b.display")
+        .map!(pack => (entity[fieldName] == pack.id.toString) 
+        ? H5Option(["selected":"selected", "value":pack.id.toString], pack.display)
+        : H5Option(["value":pack.id.toString], pack.display)).array.toH5;
     }
 
     auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["packageId"]], selectOptions); 

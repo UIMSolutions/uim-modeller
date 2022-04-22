@@ -1,4 +1,4 @@
-module source.uim.modeller.views.components.forms.groups.attributes;
+module uim.modeller.views.components.forms.groups.attributes;
 
 @safe:
 import uim.modeller;
@@ -15,7 +15,7 @@ class DMDLAttributesFormGroup : DFormGroup {
     .fieldName("attributeId")
     .label("Attribute"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "attributeId"));
+  mixin(SProperty!("DOOPEntity[]", "attributeEntities"));
 
   auto database() {
     if (auto f = form) {
@@ -33,7 +33,7 @@ class DMDLAttributesFormGroup : DFormGroup {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.attributeId(database[appSession.site, "modeller_attributes"].findMany());
+      this.attributeEntities(database[appSession.site, "modeller_attributes"].findMany());
     }
   }
 
@@ -42,11 +42,13 @@ class DMDLAttributesFormGroup : DFormGroup {
     if (hasError) { return null; }
     
     DH5Obj[] selectOptions;
-    if (entity && attributeId) {
+    if (entity && attributeEntities) {
       selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No attributeId");
-      selectOptions ~= attributeId.map!(attributeId => (entity[fieldName] == attributeId.id.toString) 
-        ? H5Option(["selected":"selected", "value":attributeId.id.toString], attributeId.display)
-        : H5Option(["value":attributeId.id.toString], attributeId.display)).array.toH5;
+      selectOptions ~= attributeEntities
+        .sort!("a.display < b.display")
+        .map!(att => (entity[fieldName] == att.id.toString) 
+        ? H5Option(["selected":"selected", "value":att.id.toString], att.display)
+        : H5Option(["value":att.id.toString], att.display)).array.toH5;
     }
 
     auto input = H5Select(name, ["form-select"], ["name":name, "readonly":"readonly", "value":entity["attributeId"]], selectOptions); 

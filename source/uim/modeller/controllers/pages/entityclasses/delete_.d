@@ -21,7 +21,7 @@ class DMDLEntityClassesDeletePageController : DMDLDeletePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Entitätsklasse")
+        .link(["href":this.rootPath], "Entitäten")
         .item(["active", "fw-bold"], "Löschen")
       );
 

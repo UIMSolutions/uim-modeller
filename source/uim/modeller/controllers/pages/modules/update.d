@@ -10,8 +10,8 @@ class DMDLModulesUpdatePageController : DMDLUpdatePageController {
     super.initialize;
 
     this
-      .collectionName("modeller_moduls")
-      .rootPath("/modeller/moduls");
+      .collectionName("modeller_modules")
+      .rootPath("/modeller/modules");
 
     auto myView = APPEntityUpdateView(this)
       .rootPath(this.rootPath);
@@ -21,13 +21,13 @@ class DMDLModulesUpdatePageController : DMDLUpdatePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Moduls")
-        .item(["active", "fw-bold"], "Anzeigen")
+        .link(["href":this.rootPath], "Module")
+        .item(["active", "fw-bold"], "Bearbeiten")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Modul anzeigen"));
+        .title(titleCreate("Modul bearbeiten"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -38,8 +38,8 @@ class DMDLModulesUpdatePageController : DMDLUpdatePageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Moduls")
-          .subTitle("Modul anzeigen");
+          .mainTitle("Module")
+          .subTitle("Modul bearbeiten");
       }
 
       this

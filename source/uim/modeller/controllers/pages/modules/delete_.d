@@ -21,7 +21,7 @@ class DMDLModulesDeletePageController : DMDLDeletePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Modules")
+        .link(["href":this.rootPath], "Module")
         .item(["active", "fw-bold"], "Löschen")
       );
 

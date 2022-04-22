@@ -22,12 +22,12 @@ class DMDLApisUpdatePageController : DMDLUpdatePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Apis")
-        .item(["active", "fw-bold"], "Anzeigen")
+        .item(["active", "fw-bold"], "Bearbeiten")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Api anzeigen"));
+        .title(titleCreate("Api bearbeiten"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -39,7 +39,7 @@ class DMDLApisUpdatePageController : DMDLUpdatePageController {
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
           .mainTitle("Apis")
-          .subTitle("Api anzeigen");
+          .subTitle("Api bearbeiten");
       }
 
       this

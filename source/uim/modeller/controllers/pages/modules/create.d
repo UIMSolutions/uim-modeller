@@ -40,7 +40,7 @@ class DMDLModulesCreatePageController : DMDLCreatePageController {
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader
             .rootPath(this.rootPath)
-            .mainTitle("Neues Module")
+            .mainTitle("Neues Modul")
             .subTitle("Bitte Werte eingeben")
             .actions([["cancel", "save"]]);
       }
