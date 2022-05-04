@@ -24,11 +24,22 @@ class DMDLUpdateAction : DAPPActionController {
       auto entity = collection.findOne(UUID(entityId));
       
       entity.fromRequest(options);
-      foreach(name, attribute; entity.attributes) { // Workaround :-O
+      /* foreach(name, attribute; entity.attributes) { // Workaround :-O
         if (auto booleanAttribute = cast(DOOPBooleanAttribute)attribute) {
-          if ("entity_"~name !in options) booleanAttribute.value(false);  
+          if ("entity_"~name in options) {
+            booleanAttribute.value(true); }
+          else  {
+            booleanAttribute.value(false); }
         }
       }
+      foreach(key; entity.values.keys) { // Workaround :-O
+        if (auto booleanValue = cast(DBooleanValue)entity.values[key]) {
+          if ("entity_"~key in options) {
+            booleanValue.value(true); }
+          else {
+            booleanValue.value(false); }
+        }
+      } */
 
       if (auto site = appSession.site) {
         database[site.name, collectionName].updateOne(entity);

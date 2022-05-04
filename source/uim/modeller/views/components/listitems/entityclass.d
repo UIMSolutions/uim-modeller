@@ -3,8 +3,8 @@ module uim.modeller.views.components.listitems.entityclass;
 @safe:
 import uim.modeller;
 
-class DMDLEntityClassListItem : DEntityListItem {
-  mixin(ViewComponentThis!("MDLEntityClassListItem"));
+class DMDLEntityListItem : DEntityListItem {
+  mixin(ViewComponentThis!("MDLEntityListItem"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
     super.toH5(options);
@@ -16,7 +16,7 @@ class DMDLEntityClassListItem : DEntityListItem {
       BS5Row(
         BS5Col(["col-auto"], 
           H5A(["href":link], 
-            H5Span(["avatar"], ["style":"background-image: url("~(entity["imagePath"].length > 0 ? entity["imagePath"] : "/img/projects/entityclasses/entityclass.jpg")~")"]))),
+            H5Span(["avatar"], ["style":"background-image: url("~(entity["imagePath"].length > 0 ? entity["imagePath"] : "/img/projects/entities/entityclass.jpg")~")"]))),
         BS5Col(["col", "text-truncate"], 
           H5A(["text-body", "d-block"], ["href":link], entity["display"]),
           H5Div(["text-muted text-truncate mt-n1"], entity["className"])),
@@ -26,4 +26,4 @@ class DMDLEntityClassListItem : DEntityListItem {
     ].toH5;
   }
 }
-mixin(ViewComponentCalls!("MDLEntityClassListItem"));
+mixin(ViewComponentCalls!("MDLEntityListItem"));

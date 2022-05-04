@@ -3,71 +3,58 @@ module uim.modeller.controllers.pages.list;
 @safe:
 import uim.modeller;
 
-class DMDLListPageController : DAPPListPage {
+class DMDLListPageController : DAPPEntitiesPageController {
   mixin(APPPageControllerThis!("MDLListPageController"));
-  
-  this(string jsPath, string myPath, string myEntities, string myEntity, string myCollectionName) { 
-    super(); 
 
-    /* this
-    .jsPath(jsPath).pgPath(myPath).entitiesName(myEntities).entityName(myEntity).collectionName(myCollectionName)
-    .title("UIM!MDL > "~myEntities)
-    .checks([APPCheckAppSessionExists, APPCheckAppSessionHasSession, APPCheckAppSessionHasSite, APPCheckDatabaseExists])
-    .pageHeader(
-      PageHeader
-      .rootPath(pgPath).preTitle(myEntities).title("Übersicht "~myEntities).actions(["refresh", "create"])
-      .breadcrumbs(
-        BS5BreadcrumbList(["breadcrumb-arrows"])
-        .link(["href":"/"], "UIM!MDL")
-        .item(["active"], ["aria-current":"page"], H5A(["href":"#"], myEntities)))
-    )
-    .collectionName(myCollectionName)
-    .form(APPEntitiesListForm.rootPath(pgPath)); */
+  mixin(OProperty!("string", "rootPath"));
 
-    this.scripts.addLinks(
-      "/js/apps/"~jsPath~"/entity.js",
-      "/js/apps/"~jsPath~"/list.js");
+  override void initialize() {
+    super.initialize;
 
+    this
+    .addChecks([
+      APPCheckAppSessionHasSession, APPCheckAppSessionHasSite, // Check appSesssion
+      APPCheckDatabaseHasSessions, APPCheckDatabaseHasSites // Check database
+    ]);
   }
-  unittest {
-    version(test_uim_mdl) {
-      /// TODO
-    }}
-
-  override void jsCode(STRINGAA reqParameters) {
-    super.jsCode(reqParameters);
-    if (viewMode == ViewModes.JS) 
-      addToPageScript(reqParameters, 
-      `window.addEventListener("load", event => `~
-        jsBlock("listEntities('"~"(session ? session.id.toString : \"\")"~"');")
-      ~`)`);
-  }
-  unittest {
-    version(test_uim_mdl) {
-      /// TODO
-    }}
 
   override void beforeResponse(STRINGAA options = null) {
-    // debugMethodCall(moduleName!DMDLListPageController~":DMDLListPageController::beforeResponse");
-    super.beforeResponse(options);   
-    if ("redirect" in options) return; 
-
+    debugMethodCall(moduleName!DMDLListPageController~":DMDLListPageController("~this.name~")::beforeResponse");
+    super.beforeResponse(options);
+    if (hasError || "redirect" in options) { return; }
+    
     auto appSession = getAppSession(options);
+    if (appSession) {
+      if (!appSession.site) { 
+        this.error("AppSession missing"); 
+        return; }
+    }
+    else { debug writeln("AppSession missing"); return; }
 
-    auto session  = appSession.session;
-    auto site     = appSession.site;
-      
-    // debug writeln(moduleName!DAPPCreatePageController~":DAPPCreatePageController::beforeResponse - Looking for entities in ", site.name, ":", collectionName);
-    auto entities = database[appSession.site, collectionName].findMany;
+    auto db = this.database;
+    if (db) { debug writeln("Database found"); }
+    else { 
+      this.error("Database missing"); 
+      return; }
 
-    auto poolId = uniform(1, 1_000_000_000);
-    entitiesPool[poolId] = entities;
-    options["poolId"] = to!string(poolId);
+    if (auto entitiesView = cast(DAPPEntitiesListView)this.view) {
+      debug writeln("entitiesView found");
+
+      auto dbEntities = db[appSession.site.name, this.collectionName].findMany();
+      debug writeln("Found entities: ", dbEntities.length);
+
+      if ("entityName" in options) {
+        auto entityName = options["entityName"].toLower;
+        dbEntities = dbEntities.filter!(entity => entity.name.indexOf(entityName) == 0).array;
+      } 
+
+      entitiesView
+        .entities(dbEntities);
+    }
+    else { 
+      this.error("entitiesView missing"); 
+      return; }
   }
-  unittest {
-    version(test_uim_mdl) {
-      /// TODO
-    }}
 }
 mixin(APPPageControllerCalls!("MDLListPageController"));
 
