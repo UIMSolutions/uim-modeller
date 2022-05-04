@@ -14,3 +14,4 @@ uim-modeller-test-*
 *.obj
 *.lst
 libuim-modeller.a
+dub.selections.json
