@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.theme;
 @safe:
 import uim.modeller;
 
-class DMDLFormGroupTheme : DFormGroup {
-  mixin(FormComponentThis!("MDLFormGroupTheme", true));
+class DMDLFormInputTheme : DFormInput {
+  mixin(FormComponentThis!("MDLFormInputTheme", true));
 
   override void initialize() {
     super.initialize;
@@ -59,7 +59,7 @@ class DMDLFormGroupTheme : DFormGroup {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLFormGroupTheme", true));
+mixin(FormComponentCalls!("MDLFormInputTheme", true));
 
 version(test_uim_modeller) {
   unittest {

@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.classname;
 @safe:
 import uim.modeller;
 
-class DMDLClassNameFormGroup : DAPPTextFormGroup {
-  mixin(FormComponentThis!("MDLClassNameFormGroup", true));
+class DMDLClassNameFormInput : DTextFormInput {
+  mixin(FormComponentThis!("MDLClassNameFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLClassNameFormGroup : DAPPTextFormGroup {
     .label("Klassenname"); 
   }
 }
-mixin(FormComponentCalls!("MDLClassNameFormGroup", true));
+mixin(FormComponentCalls!("MDLClassNameFormInput", true));
 
 version(test_uim_modeller) {
   unittest {

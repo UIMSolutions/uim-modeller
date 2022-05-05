@@ -3,7 +3,7 @@ module uim.modeller.controllers.pages.attributes.index;
 @safe:
 import uim.modeller;
 
-class DMDLAttributesIndexPageController : DMDLEntitiesPageController {
+class DMDLAttributesIndexPageController : DMDLListPageController {
   mixin(APPPageControllerThis!("MDLAttributesIndexPageController"));
 
 override void initialize() {

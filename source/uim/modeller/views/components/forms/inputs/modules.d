@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.modules;
 @safe:
 import uim.modeller;
 
-class DMDLModulesFormGroup : DFormGroup {
-  mixin(FormComponentThis!("MDLModulesFormGroup", true));
+class DMDLModulesFormInput : DFormInput {
+  mixin(FormComponentThis!("MDLModulesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -30,7 +30,7 @@ class DMDLModulesFormGroup : DFormGroup {
   }
 
   override void beforeH5(STRINGAA options = null) { 
-    debugMethodCall(moduleName!DMDLModulesFormGroup~":DMDLModulesFormGroup("~this.name~")::beforeH5");
+    debugMethodCall(moduleName!DMDLModulesFormInput~":DMDLModulesFormInput("~this.name~")::beforeH5");
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
@@ -69,7 +69,7 @@ class DMDLModulesFormGroup : DFormGroup {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLModulesFormGroup", true));
+mixin(FormComponentCalls!("MDLModulesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

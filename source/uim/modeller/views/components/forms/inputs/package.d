@@ -7,6 +7,7 @@ import uim.modeller;
 public import uim.modeller.views.components.forms.inputs.handler;
 
 // Modules
+public import uim.modeller.views.components.forms.inputs.attributes;
 public import uim.modeller.views.components.forms.inputs.classname;
 public import uim.modeller.views.components.forms.inputs.entities;
 public import uim.modeller.views.components.forms.inputs.imagepath;

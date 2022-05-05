@@ -11,7 +11,7 @@ class DMDLAttributeFormContent : DEntityFormContent {
     
     this
       .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist","packages", "modules", "github", "summary", "text"])
-      .formGroupHandler(MDLFormGroupHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }
 mixin(FormComponentCalls!("MDLAttributeFormContent", true));

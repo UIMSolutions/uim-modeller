@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.dataformat;
 @safe:
 import uim.modeller;
 
-class DMDLDataFormatFormGroup : DAPPTextFormGroup {
-  mixin(FormComponentThis!("MDLDataFormatFormGroup", true));
+class DMDLDataFormatFormInput : DTextFormInput {
+  mixin(FormComponentThis!("MDLDataFormatFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLDataFormatFormGroup : DAPPTextFormGroup {
     .label("Datenformat"); 
   }
 }
-mixin(FormComponentCalls!("MDLDataFormatFormGroup", true));
+mixin(FormComponentCalls!("MDLDataFormatFormInput", true));
 
 version(test_uim_modeller) {
   unittest {

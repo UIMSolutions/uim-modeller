@@ -10,8 +10,8 @@ class DMDLLibraryFormContent : DEntityFormContent {
     super.initialize;
     
     this
-      .addFields(["mainTitle", "subTitle", "packages", "modules", "github", "summary", "text"])
-      .formGroupHandler(MDLFormGroupHandler(this.form)); 
+      .addFields(["mainTitle", "subTitle", "github", "summary", "text"])
+      .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }
 mixin(FormComponentCalls!("MDLLibraryFormContent", true));

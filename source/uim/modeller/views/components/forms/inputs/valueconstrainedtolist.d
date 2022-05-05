@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.valueconstrainedtolist;
 @safe:
 import uim.modeller;
 
-class DMDLValueConstrainedToListFormGroup : DAPPSwitchFormGroup {
-  mixin(FormComponentThis!("MDLValueConstrainedToListFormGroup", true));  
+class DMDLValueConstrainedToListFormInput : DSwitchFormInput {
+  mixin(FormComponentThis!("MDLValueConstrainedToListFormInput", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLValueConstrainedToListFormGroup : DAPPSwitchFormGroup {
     .label("Value Constrained To List"); 
   }
 }
-mixin(FormComponentCalls!("MDLValueConstrainedToListFormGroup", true));
+mixin(FormComponentCalls!("MDLValueConstrainedToListFormInput", true));
 
 version(test_uim_modeller) {
   unittest {

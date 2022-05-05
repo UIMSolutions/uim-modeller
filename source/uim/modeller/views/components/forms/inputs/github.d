@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.github;
 @safe:
 import uim.modeller;
 
-class DMDLGitHubFormGroup : DAPPTextFormGroup {
-  mixin(FormComponentThis!("MDLGitHubFormGroup", true));
+class DMDLGitHubFormInput : DTextFormInput {
+  mixin(FormComponentThis!("MDLGitHubFormInput", true));
   
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLGitHubFormGroup : DAPPTextFormGroup {
     .label("Link zu Github"); 
   }
 }
-mixin(FormComponentCalls!("MDLGitHubFormGroup", true));
+mixin(FormComponentCalls!("MDLGitHubFormInput", true));
 
 version(test_uim_modeller) {
   unittest {

@@ -3,33 +3,33 @@ module uim.modeller.views.components.forms.inputs.handler;
 @safe:
 import uim.modeller;
 
-class DMDLFormGroupHandler : DFormGroupHandler {
-  mixin(FormComponentThis!("MDLFormGroupHandler", true));
+class DMDLFormInputHandler : DFormInputHandler {
+  mixin(FormComponentThis!("MDLFormInputHandler", true));
 
   override void initialize() {
     super.initialize;
 
     this
-      .addFormGroups([
-        "attributeclasses": MDLAttributeClassesFormGroup,
-        "classname": MDLClassNameFormGroup,
-        "dataformat": MDLDataFormatFormGroup,
-        "entities": MDLEntityesFormGroup,
-        "imagepath": MDLIsArrayFormGroup,
-        "isarray": MDLIsArrayFormGroup,
-        "isbig": MDLIsBigFormGroup,
-        "isnullable": MDLIsNullableFormGroup,
-        "isreadonly": MDLIsReadOnlyFormGroup,
-        "github": MDLGitHubFormGroup,
-        "maintitle": MDLMainTitleFormGroup,
-        "models": MDLModelsFormGroup,
-        "modules": MDLModulesFormGroup,
-        "packages": MDLPackagesFormGroup,
-        "subtitle": MDLSubTitleFormGroup,
-        "summary": MDLSummaryFormGroup,
-        "text": MDLTextFormGroup,
-        "valueconstrainedtolist": MDLValueConstrainedToListFormGroup
+      .adDFormInputs([
+        "attributes": MDLAttributesFormInput,
+        "classname":  MDLClassNameFormInput,
+        "dataformat": MDLDataFormatFormInput,
+        "entities":   MDLEntitiesFormInput,
+        "imagepath":  MDLIsArrayFormInput,
+        "isarray":    MDLIsArrayFormInput,
+        "isbig":      MDLIsBigFormInput,
+        "isnullable": MDLIsNullableFormInput,
+        "isreadonly": MDLIsReadOnlyFormInput,
+        "github":     MDLGitHubFormInput,
+        "maintitle":  MDLMainTitleFormInput,
+        "models":     MDLModelsFormInput,
+        "modules":    MDLModulesFormInput,
+        "packages":   MDLPackagesFormInput,
+        "subtitle":   MDLSubTitleFormInput,
+        "summary":    MDLSummaryFormInput,
+        "text":       MDLTextFormInput,
+        "valueconstrainedtolist": MDLValueConstrainedToListFormInput
         ]); 
   } 
 }  
-mixin(FormComponentCalls!("MDLFormGroupHandler", true));
+mixin(FormComponentCalls!("MDLFormInputHandler", true));

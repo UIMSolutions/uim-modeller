@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.maintitle;
 @safe:
 import uim.modeller;
 
-class DMDLMainTitleFormGroup : DAPPTextFormGroup {
-  mixin(FormComponentThis!("MDLMainTitleFormGroup", true));
+class DMDLMainTitleFormInput : DTextFormInput {
+  mixin(FormComponentThis!("MDLMainTitleFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLMainTitleFormGroup : DAPPTextFormGroup {
     .label("Überschrift"); 
   }
 }
-mixin(FormComponentCalls!("MDLMainTitleFormGroup", true));
+mixin(FormComponentCalls!("MDLMainTitleFormInput", true));
 
 version(test_uim_modeller) {
   unittest {

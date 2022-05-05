@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.imagepath;
 @safe:
 import uim.modeller;
 
-class DMDLImagePathFormGroup : DAPPTextFormGroup {
-  mixin(FormComponentThis!("MDLImagePathFormGroup", true));
+class DMDLImagePathFormInput : DTextFormInput {
+  mixin(FormComponentThis!("MDLImagePathFormInput", true));
   
   override void initialize() {
     super.initialize;
@@ -17,9 +17,9 @@ class DMDLImagePathFormGroup : DAPPTextFormGroup {
     .label("Titelbild"); 
   }
 }
-mixin(FormComponentCalls!("MDLImagePathFormGroup", true));
+mixin(FormComponentCalls!("MDLImagePathFormInput", true));
 
 version(test_uim_modeller) {
   unittest {
-    assert(MDLImagePathFormGroup);
+    assert(MDLImagePathFormInput);
 }}

@@ -11,7 +11,7 @@ class DMDLInterfaceFormContent : DEntityFormContent {
 
     this
       .addFields(["mainTitle", "subTitle", "packages", "modules", "github", "summary", "text"])
-      .formGroupHandler(MDLFormGroupHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }
 mixin(FormComponentCalls!("MDLInterfaceFormContent", true));

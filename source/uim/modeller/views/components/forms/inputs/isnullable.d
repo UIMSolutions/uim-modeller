@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.isnullable;
 @safe:
 import uim.modeller;
 
-class DMDLIsNullableFormGroup : DAPPSwitchFormGroup {
-  mixin(FormComponentThis!("MDLIsNullableFormGroup", true));  
+class DMDLIsNullableFormInput : DSwitchFormInput {
+  mixin(FormComponentThis!("MDLIsNullableFormInput", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsNullableFormGroup : DAPPSwitchFormGroup {
     .label("Datenformat Nullable"); 
   }
 }
-mixin(FormComponentCalls!("MDLIsNullableFormGroup", true));
+mixin(FormComponentCalls!("MDLIsNullableFormInput", true));
 
 version(test_uim_modeller) {
   unittest {

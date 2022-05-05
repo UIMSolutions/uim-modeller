@@ -11,7 +11,7 @@ class DMDLPackageFormContent : DEntityFormContent {
     
     this
       .addFields(["mainTitle", "subTitle", "github", "packages", "summary", "text"])
-      .formGroupHandler(MDLFormGroupHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }
 mixin(FormComponentCalls!("MDLPackageFormContent", true));

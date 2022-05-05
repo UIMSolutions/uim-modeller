@@ -3,7 +3,7 @@ module uim.modeller.views.components.forms.inputs.keywords;
 @safe:
 import uim.modeller;
 
-class DMDLFormGroupKeywords : DFormGroup {
+class DMDLFormGroupKeywords : DFormInput {
   mixin(FormComponentThis!("MDLFormGroupKeywords", true));
 
   override void initialize() {

@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.summary;
 @safe:
 import uim.modeller;
 
-class DMDLSummaryFormGroup : DAPPTextAreaFormGroup {
-  mixin(FormComponentThis!("MDLSummaryFormGroup", true));
+class DMDLSummaryFormInput : DTextAreaFormInput {
+  mixin(FormComponentThis!("MDLSummaryFormInput", true));
 
   override void initialize() {
     super.initialize();
@@ -17,7 +17,7 @@ class DMDLSummaryFormGroup : DAPPTextAreaFormGroup {
     .label("Zusammenfassung"); 
   }
 }
-mixin(FormComponentCalls!("MDLSummaryFormGroup", true));
+mixin(FormComponentCalls!("MDLSummaryFormInput", true));
 
 version(test_uim_modeller) {
   unittest {

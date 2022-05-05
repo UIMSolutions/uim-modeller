@@ -11,7 +11,7 @@ class DMDLAppFormContent : DEntityFormContent {
     
     this
       .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist", "summary", "text"])
-      .formGroupHandler(MDLFormGroupHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }
 mixin(FormComponentCalls!("MDLAppFormContent", true));

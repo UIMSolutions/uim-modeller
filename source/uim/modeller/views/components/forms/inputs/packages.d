@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.packages;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesFormGroup : DFormGroup {
-  mixin(FormComponentThis!("MDLPackagesFormGroup", true));
+class DMDLPackagesFormInput : DFormInput {
+  mixin(FormComponentThis!("MDLPackagesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLPackagesFormGroup : DFormGroup {
     .fieldName("packageId")
     .label("Name Package"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "packages"));
+  mixin(OProperty!("DOOPEntity[]", "packages"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -62,7 +62,7 @@ class DMDLPackagesFormGroup : DFormGroup {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLPackagesFormGroup", true));
+mixin(FormComponentCalls!("MDLPackagesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.entities;
 @safe:
 import uim.modeller;
 
-class DMDLEntitiesFormGroup : DFormGroup {
-  mixin(FormComponentThis!("MDLEntitiesFormGroup", true));
+class DMDLEntitiesFormInput : DFormInput {
+  mixin(FormComponentThis!("MDLEntitiesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -60,7 +60,7 @@ class DMDLEntitiesFormGroup : DFormGroup {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLEntitiesFormGroup", true));
+mixin(FormComponentCalls!("MDLEntitiesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

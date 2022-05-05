@@ -3,8 +3,8 @@ module uim.modeller.views.components.forms.inputs.isbig;
 @safe:
 import uim.modeller;
 
-class DMDLIsBigFormGroup : DAPPSwitchFormGroup {
-  mixin(FormComponentThis!("MDLIsBigFormGroup", true));  
+class DMDLIsBigFormInput : DSwitchFormInput {
+  mixin(FormComponentThis!("MDLIsBigFormInput", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsBigFormGroup : DAPPSwitchFormGroup {
     .label("Datenformat Big"); 
   }
 }
-mixin(FormComponentCalls!("MDLIsBigFormGroup", true));
+mixin(FormComponentCalls!("MDLIsBigFormInput", true));
 
 version(test_uim_modeller) {
   unittest {
