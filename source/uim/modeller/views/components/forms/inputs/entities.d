@@ -16,7 +16,7 @@ class DMDLEntitiesFormInput : DFormInput {
     .inputName("entity_entityId")
     .label("entityidThema"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "entityId"));
+  mixin(OProperty!("DOOPEntity[]", "entityId"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 

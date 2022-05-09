@@ -15,7 +15,7 @@ class DMDLFormInputTheme : DFormInput {
     .fieldName("themeId")
     .label("Thema"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "themes"));
+  mixin(OProperty!("DOOPEntity[]", "themes"));
 
   auto database() {
     if (auto f = form) {

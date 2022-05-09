@@ -21,6 +21,8 @@ class DMDLFormInputHandler : DFormInputHandler {
         "isnullable": MDLIsNullableFormInput,
         "isreadonly": MDLIsReadOnlyFormInput,
         "github":     MDLGitHubFormInput,
+        "keywords":   MDLFormGroupKeywords,
+        "libraries":  MDLLibrariesFormInput,
         "maintitle":  MDLMainTitleFormInput,
         "models":     MDLModelsFormInput,
         "modules":    MDLModulesFormInput,

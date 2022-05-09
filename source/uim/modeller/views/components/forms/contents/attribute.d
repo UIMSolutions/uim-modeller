@@ -10,7 +10,7 @@ class DMDLAttributeFormContent : DEntityFormContent {
     super.initialize;
     
     this
-      .addFields(["isnullable", "isreadonly", "dataformat", "valueconstrainedtolist","packages", "modules", "github", "summary", "text"])
+      .addFields(["attributes", "libraries", "isnullable", "isreadonly", "dataformat", "valueconstrainedtolist","packages", "modules", "github", "summary", "text"])
       .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }

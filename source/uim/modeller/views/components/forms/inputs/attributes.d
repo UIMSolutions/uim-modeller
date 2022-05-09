@@ -12,10 +12,11 @@ class DMDLAttributesFormInput : DFormInput {
     this
     .id("entity_attributeId")
     .name("entity_attributeId")
+    .inputName("entity_attributeId")
     .fieldName("attributeId")
     .label("Attribute"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "attributeEntities"));
+  mixin(OProperty!("DOOPEntity[]", "attributeEntities"));
 
   auto database() {
     if (auto f = form) {
@@ -51,7 +52,8 @@ class DMDLAttributesFormInput : DFormInput {
         : H5Option(["value":att.id.toString], att.display)).array.toH5;
     }
 
-    auto input = H5Select(name, ["form-select"], ["name":name, "readonly":"readonly", "value":entity["attributeId"]], selectOptions); 
+    auto input = H5Select(name, ["form-select"], 
+      ["name":inputName, "readonly":"readonly", "value":entity["attributeId"]], selectOptions); 
     if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["attributeId"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     

@@ -38,6 +38,11 @@ class DMDLLayout : DAPPLayout {
       _bodyAttributes["style"] = "background-color: #ffffff;";
       _bodyClasses = ["d-flex", "flex-column", "h-100"];  
 
+      if (auto firstNavvar = cast(DAPPFirstNavbar)this.navigation.firstNavbar) {
+/*         firstNavvar
+          .appLogo("/img/logo.png")
+          .appTitle("UIM!Modeller"); */
+      }
       if (auto secNavvar = cast(DAPPSecondNavbar)this.navigation.secondNavbar) {
         secNavvar.leftSlotsWithLogin([MDLNavSlot]);
       }
@@ -47,7 +52,11 @@ class DMDLLayout : DAPPLayout {
     debugMethodCall(moduleName!DMDLLayout~"::DMDLLayout:renderBody");
     // super.renderBody(html, classes, attributes, content, options);
     
-    auto nav = navigation ? navigation.render(options) : options.get("navigation", null);
+    auto nav = navigation ? 
+      navigation
+        .render(options) 
+      : options.get("navigation", null);
+
     auto foot = footer ? footer.render(options) : options.get("footer", null);
     auto bodyContent = H5Div(["page"], ["style":"background-color:#ffffff;"], 
       nav~

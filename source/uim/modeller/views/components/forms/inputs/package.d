@@ -18,6 +18,7 @@ public import uim.modeller.views.components.forms.inputs.isbig;
 public import uim.modeller.views.components.forms.inputs.isnullable;
 public import uim.modeller.views.components.forms.inputs.isreadonly;
 public import uim.modeller.views.components.forms.inputs.keywords;
+public import uim.modeller.views.components.forms.inputs.libraries;
 public import uim.modeller.views.components.forms.inputs.maintitle;
 public import uim.modeller.views.components.forms.inputs.models;
 public import uim.modeller.views.components.forms.inputs.modules;

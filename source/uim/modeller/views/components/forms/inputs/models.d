@@ -16,7 +16,7 @@ class DMDLModelsFormInput : DFormInput {
     .inputName("entity_modelId")
     .label("Modell"); 
   }
-  mixin(SProperty!("DOOPEntity[]", "models"));
+  mixin(OProperty!("DOOPEntity[]", "models"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 

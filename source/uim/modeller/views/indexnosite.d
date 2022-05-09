@@ -18,7 +18,7 @@ class DMDLIndexNoSiteView : DAPPView {
     DH5Obj[] sitesContent; 
     foreach(s; sites) {
       sitesContent ~= 
-        H5Div(["col-md-6 col-xl-3"],
+        H5Div(["style":"width:300px"],
           H5Div(["ratio ratio-1x1"], 
             BS5Form(["method":"Post", "action": "/sites/select?siteId="~s.id.toString], 
               BS5Card(["h-100"])

@@ -1,22 +1,22 @@
-module uim.modeller.views.components.forms.inputs.packages;
+module uim.modeller.views.components.forms.inputs.libraries;
 
 @safe:
 import uim.modeller;
 
-class DMDLPackagesFormInput : DFormInput {
-  mixin(FormComponentThis!("MDLPackagesFormInput", true));
+class DMDLLibrariesFormInput : DFormInput {
+  mixin(FormComponentThis!("MDLLibrariesFormInput", true));
 
   override void initialize() {
     super.initialize;
 
     this
-    .id("entity_packageId")
-    .name("entity_packageId")
-    .inputName("entity_packageId")
-    .fieldName("packageId")
-    .label("In Package"); 
+    .id("entity_libraryId")
+    .name("entity_libraryId")
+    .inputName("entity_libraryId")
+    .fieldName("libraryId")
+    .label("In Bibliothek"); 
   }
-  mixin(OProperty!("DOOPEntity[]", "packages"));
+  mixin(OProperty!("DOOPEntity[]", "libraries"));
 
   DETBBase _database; 
   O database(this O)(DETBBase aDatabase) { 
@@ -34,14 +34,7 @@ class DMDLPackagesFormInput : DFormInput {
 
     auto appSession = getAppSession(options);
     if (this.database) {
-      this.packages(database[appSession.site, "modeller_packages"].findMany());
-
-      if (this.entity && this.entity["libraryId"] != "00000000-0000-0000-0000-000000000000") {
-        auto libraryId = this.entity["libraryId"];
-        this.packages(
-          this.packages.filter!(p => p["libraryId"] == libraryId).array
-        );
-      }
+      this.libraries(database[appSession.site, "modeller_libraries"].findMany());
     }
   }
 
@@ -50,9 +43,9 @@ class DMDLPackagesFormInput : DFormInput {
     if (hasError) { return null; }
     
     DH5Obj[] selectOptions;
-    if (entity && packages) {
-      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Package");
-      selectOptions ~= packages
+    if (entity && libraries) {
+      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Library");
+      selectOptions ~= libraries
         .sort!("a.display < b.display")
         .map!(pack => (entity[fieldName] == pack.id.toString) 
         ? H5Option(["selected":"selected", "value":pack.id.toString], pack.display)
@@ -60,8 +53,8 @@ class DMDLPackagesFormInput : DFormInput {
     }
 
     auto input = H5Select(id, ["form-select"], 
-    ["name":inputName, "readonly":"readonly", "value":entity["packageId"]], selectOptions); 
-    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["packageId"]);
+    ["name":inputName, "readonly":"readonly", "value":entity["libraryId"]], selectOptions); 
+    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["libraryId"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     
     return [
@@ -70,7 +63,7 @@ class DMDLPackagesFormInput : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLPackagesFormInput", true));
+mixin(FormComponentCalls!("MDLLibrariesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

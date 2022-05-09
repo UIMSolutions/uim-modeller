@@ -13,7 +13,7 @@ class DMDLIsReadOnlyFormInput : DSwitchFormInput {
     .id("entity_isreadonly")
     .inputName("entity_isReadOnly")
     .fieldName("isReadOnly")
-    .label("Datenformat ReadOnly"); 
+    .label("ReadOnly"); 
   }
 }
 mixin(FormComponentCalls!("MDLIsReadOnlyFormInput", true));

@@ -13,7 +13,7 @@ class DMDLIsNullableFormInput : DSwitchFormInput {
     .id("entity_isnullable")
     .inputName("entity_isNullable")
     .fieldName("isNullable")
-    .label("Datenformat Nullable"); 
+    .label("Nullable"); 
   }
 }
 mixin(FormComponentCalls!("MDLIsNullableFormInput", true));
