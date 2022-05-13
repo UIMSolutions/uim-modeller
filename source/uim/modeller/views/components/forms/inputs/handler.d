@@ -10,7 +10,7 @@ class DMDLFormInputHandler : DFormInputHandler {
     super.initialize;
 
     this
-      .adDFormInputs([
+      .addFormInputs([
         "attributes": MDLAttributesFormInput,
         "classname":  MDLClassNameFormInput,
         "dataformat": MDLDataFormatFormInput,

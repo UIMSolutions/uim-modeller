@@ -36,7 +36,7 @@ class DMDLPackagesFormInput : DFormInput {
     if (this.database) {
       this.packages(database[appSession.site, "modeller_packages"].findMany());
 
-      if (this.entity && this.entity["libraryId"] != "00000000-0000-0000-0000-000000000000") {
+      if (this.entity && this.entity["libraryId"].length > 0) {
         auto libraryId = this.entity["libraryId"];
         this.packages(
           this.packages.filter!(p => p["libraryId"] == libraryId).array
@@ -51,7 +51,7 @@ class DMDLPackagesFormInput : DFormInput {
     
     DH5Obj[] selectOptions;
     if (entity && packages) {
-      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Package");
+      selectOptions ~= cast(DH5Obj)H5Option(["value":UUID().toString], "No Package");
       selectOptions ~= packages
         .sort!("a.display < b.display")
         .map!(pack => (entity[fieldName] == pack.id.toString) 

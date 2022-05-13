@@ -38,10 +38,10 @@ class DMDLLayout : DAPPLayout {
       _bodyAttributes["style"] = "background-color: #ffffff;";
       _bodyClasses = ["d-flex", "flex-column", "h-100"];  
 
-      if (auto firstNavvar = cast(DAPPFirstNavbar)this.navigation.firstNavbar) {
-/*         firstNavvar
+      if (auto firstNav = cast(DAPPFirstNavbar)this.navigation.firstNavbar) {
+        firstNav
           .appLogo("/img/logo.png")
-          .appTitle("UIM!Modeller"); */
+          .appTitle("UIM!Modeller"); 
       }
       if (auto secNavvar = cast(DAPPSecondNavbar)this.navigation.secondNavbar) {
         secNavvar.leftSlotsWithLogin([MDLNavSlot]);
@@ -92,3 +92,4 @@ string footer(STRINGAA  options = null) {
     )).toString;
 }
  */
+
