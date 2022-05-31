@@ -10,7 +10,7 @@ class DMDLModuleFormContent : DEntityFormContent {
     super.initialize;
     
     this
-      .addFields(["mainTitle", "subTitle", "packages", "modules", "github", "summary", "text"])
+      .addFields(["mainTitle", "subTitle", "libraries", "packages", "modules", "github", "summary", "text"])
       .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }
