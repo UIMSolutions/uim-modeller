@@ -76,6 +76,7 @@ public import uim.modeller.translations;
 public import models.modeller.entities;
 
 public import uim.modeller.classes;
+public import uim.modeller.controls;
 public import uim.modeller.javascripts;
 public import uim.modeller.layouts;
 public import uim.modeller.scripts;
