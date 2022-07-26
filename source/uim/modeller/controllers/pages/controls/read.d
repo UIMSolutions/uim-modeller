@@ -3,15 +3,15 @@ module uim.modeller.controllers.pages.controls.read;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesReadPageController : DMDLReadPageController {
-  mixin(APPPageControllerThis!("MDLPackagesReadPageController"));
+class DMDLElementsControlsReadPageController : DMDLReadPageController {
+  mixin(APPPageControllerThis!("MDLElementsControlsReadPageController"));
 
   override void initialize() {
     super.initialize;
 
     this
-      .collectionName("modeller_packages")
-      .rootPath("/modeller/packages");
+      .collectionName("modeller_controls")
+      .rootPath("/modeller/controls");
 
     auto myView = APPEntityReadView(this)
       .rootPath(this.rootPath);
@@ -54,13 +54,13 @@ class DMDLPackagesReadPageController : DMDLReadPageController {
         );
   }
 }
-mixin(APPPageControllerCalls!("MDLPackagesReadPageController"));
+mixin(APPPageControllerCalls!("MDLElementsControlsReadPageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLPackagesReadPageController); 
+		testPageController(new DMDLElementsControlsReadPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLPackagesReadPageController); 
+		testPageController(MDLElementsControlsReadPageController); 
 }}

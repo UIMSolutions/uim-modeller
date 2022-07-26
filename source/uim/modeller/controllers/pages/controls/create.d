@@ -3,15 +3,15 @@ module uim.modeller.controllers.pages.controls.create;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesCreatePageController : DMDLCreatePageController {
-  mixin(APPPageControllerThis!("MDLPackagesCreatePageController"));
+class DMDLElementsControlsCreatePageController : DMDLCreatePageController {
+  mixin(APPPageControllerThis!("MDLElementsControlsCreatePageController"));
 
   override void initialize() {
     super.initialize;
 
     this
-      .collectionName("modeller_packages")
-      .rootPath("/modeller/packages");
+      .collectionName("modeller_controls")
+      .rootPath("/modeller/controls");
 
     auto myView = APPEntityCreateView(this)
       .rootPath(this.rootPath);
@@ -59,13 +59,13 @@ class DMDLPackagesCreatePageController : DMDLCreatePageController {
       .view(myView);        
   }
 }
-mixin(APPPageControllerCalls!("MDLPackagesCreatePageController"));
+mixin(APPPageControllerCalls!("MDLElementsControlsCreatePageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLPackagesCreatePageController); 
+		testPageController(new DMDLElementsControlsCreatePageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLPackagesCreatePageController); 
+		testPageController(MDLElementsControlsCreatePageController); 
 }}

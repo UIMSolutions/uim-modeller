@@ -3,15 +3,15 @@ module uim.modeller.controllers.pages.controls.update;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesUpdatePageController : DMDLUpdatePageController {
-  mixin(APPPageControllerThis!("MDLPackagesUpdatePageController"));
+class DMDLElementsControlsUpdatePageController : DMDLUpdatePageController {
+  mixin(APPPageControllerThis!("MDLElementsControlsUpdatePageController"));
 
   override void initialize() {
     super.initialize;
 
     this
-      .collectionName("modeller_packages")
-      .rootPath("/modeller/packages");
+      .collectionName("modeller_controls")
+      .rootPath("/modeller/controls");
 
     auto myView = APPEntityUpdateView(this)
       .rootPath(this.rootPath);
@@ -59,13 +59,13 @@ class DMDLPackagesUpdatePageController : DMDLUpdatePageController {
       .view(myView);
   }
 }
-mixin(APPPageControllerCalls!("MDLPackagesUpdatePageController"));
+mixin(APPPageControllerCalls!("MDLElementsControlsUpdatePageController"));
     
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLPackagesUpdatePageController); 
+		testPageController(new DMDLElementsControlsUpdatePageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLPackagesUpdatePageController); 
+		testPageController(MDLElementsControlsUpdatePageController); 
 }}

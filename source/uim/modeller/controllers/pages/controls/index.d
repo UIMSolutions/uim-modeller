@@ -3,8 +3,8 @@ module uim.modeller.controllers.pages.controls.index;
 @safe:
 import uim.modeller;
 
-class DMDLPackagesIndexPageController : DMDLListPageController {
-  mixin(APPPageControllerThis!("MDLPackagesIndexPageController"));
+class DMDLElementsControlsIndexPageController : DMDLListPageController {
+  mixin(APPPageControllerThis!("MDLElementsControlsIndexPageController"));
 
   override void initialize() {
     super.initialize;
@@ -13,8 +13,8 @@ class DMDLPackagesIndexPageController : DMDLListPageController {
  
     this
       .view(myView)
-      .rootPath("/modeller/packages")
-      .collectionName("modeller_packages");
+      .rootPath("/modeller/controls")
+      .collectionName("modeller_controls");
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = BS5Breadcrumb(
@@ -25,7 +25,7 @@ class DMDLPackagesIndexPageController : DMDLListPageController {
       );
 
       pgHeader
-        .rootPath("/modeller/packages")
+        .rootPath("/modeller/controls")
         .breadcrumbs(bc)
         .title(titleView("Übersicht Packages"))
         .actions([["refresh", "list", "create"]]);
@@ -33,7 +33,7 @@ class DMDLPackagesIndexPageController : DMDLListPageController {
 
     if (auto frm = cast(DForm)myView.form) {
       frm
-       .rootPath("/modeller/packages")
+       .rootPath("/modeller/controls")
        .content(
           EntitiesFormContent(frm))
         .header(
@@ -44,13 +44,13 @@ class DMDLPackagesIndexPageController : DMDLListPageController {
     } 
   }
 }
-mixin(APPPageControllerCalls!("MDLPackagesIndexPageController"));
+mixin(APPPageControllerCalls!("MDLElementsControlsIndexPageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLPackagesIndexPageController); 
+		testPageController(new DMDLElementsControlsIndexPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLPackagesIndexPageController); 
+		testPageController(MDLElementsControlsIndexPageController); 
 }}
