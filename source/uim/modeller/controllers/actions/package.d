@@ -14,6 +14,8 @@ public import uim.modeller.controllers.actions.apps;
 public import uim.modeller.controllers.actions.attributes;
 public import uim.modeller.controllers.actions.classes;
 public import uim.modeller.controllers.actions.components;
+public import uim.modeller.controllers.actions.controls;
+public import uim.modeller.controllers.actions.elements;
 public import uim.modeller.controllers.actions.entities;
 public import uim.modeller.controllers.actions.interfaces;
 public import uim.modeller.controllers.actions.libraries;
