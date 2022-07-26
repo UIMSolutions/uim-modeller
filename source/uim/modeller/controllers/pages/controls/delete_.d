@@ -1,10 +1,10 @@
-module uim.modeller.controllers.pages.elements.delete_;
+module uim.modeller.controllers.pages.controls.delete_;
 
 @safe:
 import uim.modeller;
 
-class DMDLElementsDeletePageController : DMDLDeletePageController {
-  mixin(APPPageControllerThis!("MDLElementsDeletePageController"));
+class DMDLPackagesDeletePageController : DMDLDeletePageController {
+  mixin(APPPageControllerThis!("MDLPackagesDeletePageController"));
 
   override void initialize() {
     super.initialize;
@@ -54,13 +54,13 @@ class DMDLElementsDeletePageController : DMDLDeletePageController {
         );
   }
 }
-mixin(APPPageControllerCalls!("MDLElementsDeletePageController"));
+mixin(APPPageControllerCalls!("MDLPackagesDeletePageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLElementsDeletePageController); 
+		testPageController(new DMDLPackagesDeletePageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLElementsDeletePageController); 
+		testPageController(MDLPackagesDeletePageController); 
 }}

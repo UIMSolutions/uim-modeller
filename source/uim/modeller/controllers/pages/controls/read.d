@@ -1,10 +1,10 @@
-module uim.modeller.controllers.pages.elements.delete_;
+module uim.modeller.controllers.pages.controls.read;
 
 @safe:
 import uim.modeller;
 
-class DMDLElementsDeletePageController : DMDLDeletePageController {
-  mixin(APPPageControllerThis!("MDLElementsDeletePageController"));
+class DMDLPackagesReadPageController : DMDLReadPageController {
+  mixin(APPPageControllerThis!("MDLPackagesReadPageController"));
 
   override void initialize() {
     super.initialize;
@@ -13,7 +13,7 @@ class DMDLElementsDeletePageController : DMDLDeletePageController {
       .collectionName("modeller_packages")
       .rootPath("/modeller/packages");
 
-    auto myView = APPEntityDeleteView(this)
+    auto myView = APPEntityReadView(this)
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
@@ -22,24 +22,24 @@ class DMDLElementsDeletePageController : DMDLDeletePageController {
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
         .link(["href":this.rootPath], "Packages")
-        .item(["active", "fw-bold"], "Löschen")
+        .link(["active"], "Anzeigen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleDelete("Package löschen"));
+        .title(titleCreate("Package anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-         .method("post").action(this.rootPath~"/actions/delete")
+         .method("post").action(this.rootPath~"/actions/read")
         .content(
           MDLPackageFormContent(myForm)); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
           .mainTitle("Packages")
-          .subTitle("Packages löschen");
+          .subTitle("Package anzeigen");
       }
     }
 
@@ -54,13 +54,13 @@ class DMDLElementsDeletePageController : DMDLDeletePageController {
         );
   }
 }
-mixin(APPPageControllerCalls!("MDLElementsDeletePageController"));
+mixin(APPPageControllerCalls!("MDLPackagesReadPageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLElementsDeletePageController); 
+		testPageController(new DMDLPackagesReadPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLElementsDeletePageController); 
+		testPageController(MDLPackagesReadPageController); 
 }}

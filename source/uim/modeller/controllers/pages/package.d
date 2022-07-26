@@ -9,6 +9,8 @@ public import uim.modeller.controllers.pages.apps;
 public import uim.modeller.controllers.pages.attributes;
 public import uim.modeller.controllers.pages.classes;
 public import uim.modeller.controllers.pages.components;
+public import uim.modeller.controllers.pages.controls;
+public import uim.modeller.controllers.pages.elements;
 public import uim.modeller.controllers.pages.entities;
 public import uim.modeller.controllers.pages.interfaces;
 public import uim.modeller.controllers.pages.libraries;

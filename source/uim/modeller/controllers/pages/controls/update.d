@@ -1,10 +1,10 @@
-module uim.modeller.controllers.pages.elements.create;
+module uim.modeller.controllers.pages.controls.update;
 
 @safe:
 import uim.modeller;
 
-class DMDLElementsCreatePageController : DMDLCreatePageController {
-  mixin(APPPageControllerThis!("MDLElementsCreatePageController"));
+class DMDLPackagesUpdatePageController : DMDLUpdatePageController {
+  mixin(APPPageControllerThis!("MDLPackagesUpdatePageController"));
 
   override void initialize() {
     super.initialize;
@@ -13,33 +13,33 @@ class DMDLElementsCreatePageController : DMDLCreatePageController {
       .collectionName("modeller_packages")
       .rootPath("/modeller/packages");
 
-    auto myView = APPEntityCreateView(this)
+    auto myView = APPEntityUpdateView(this)
       .rootPath(this.rootPath);
-    
+
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = BS5Breadcrumb(
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Pakete")
-        .item(["active", "fw-bold"], "Erstellen")
+        .link(["href":this.rootPath], "Packages")
+        .item(["active", "fw-bold"], "Anzeigen")
       );
 
       pgHeader
-        .title(titleCreate("Paket erstellen"))
-        .breadcrumbs(bc);
+        .breadcrumbs(bc)
+        .title(titleCreate("Package anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-        .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLPackageFormContent(myForm));
+         .method("post").action(this.rootPath~"/actions/update")
+        .content(
+          MDLPackageFormContent(myForm)); 
     
-      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
-          myFormHeader
-            .mainTitle("Neues Pakete")
-            .subTitle("Bitte Werte eingeben")
-            .actions([["cancel", "save"]]);
+      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
+        myFormHeader
+          .mainTitle("Packages")
+          .subTitle("Package anzeigen");
       }
 
       this
@@ -52,20 +52,20 @@ class DMDLElementsCreatePageController : DMDLCreatePageController {
                 editorText.save();
               })
             });"
-        );  
+          );
     }
 
     this
-      .view(myView);        
+      .view(myView);
   }
 }
-mixin(APPPageControllerCalls!("MDLElementsCreatePageController"));
-
+mixin(APPPageControllerCalls!("MDLPackagesUpdatePageController"));
+    
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLElementsCreatePageController); 
+		testPageController(new DMDLPackagesUpdatePageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLElementsCreatePageController); 
+		testPageController(MDLPackagesUpdatePageController); 
 }}
