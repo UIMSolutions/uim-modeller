@@ -53,8 +53,8 @@ class DMDLControlCategoryFormInput : DFormInput {
         : H5Option(["value":key], categories[key])).array.toH5;
     }
 
-    auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["category"]], selectOptions); 
-    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["category"]);
+    auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity[fieldName]], selectOptions); 
+    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity[fieldName]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     
     return [

@@ -13,6 +13,7 @@ class DMDLFormInputHandler : DFormInputHandler {
       .addFormInputs([
         "attributes": MDLAttributesFormInput,
         "classname":  MDLClassNameFormInput,
+        "controlcategory": MDLControlCategoryFormInput,
         "dataformat": MDLDataFormatFormInput,
         "entities":   MDLEntitiesFormInput,
         "imagepath":  MDLIsArrayFormInput,
