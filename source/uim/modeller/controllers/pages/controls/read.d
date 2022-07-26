@@ -21,13 +21,13 @@ class DMDLControlsReadPageController : DMDLReadPageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Packages")
+        .link(["href":this.rootPath], "Controls")
         .link(["active"], "Anzeigen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Package anzeigen"));
+        .title(titleCreate("Control bearbeiten"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -38,8 +38,8 @@ class DMDLControlsReadPageController : DMDLReadPageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Packages")
-          .subTitle("Package anzeigen");
+          .mainTitle("Controls")
+          .subTitle("Control bearbeiten");
       }
     }
 

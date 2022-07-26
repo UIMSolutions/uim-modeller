@@ -21,13 +21,13 @@ class DMDLControlsIndexPageController : DMDLListPageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .item(["active", "fw-bold"], "Packages")
+        .item(["active", "fw-bold"], "Controls")
       );
 
       pgHeader
         .rootPath("/modeller/controls")
         .breadcrumbs(bc)
-        .title(titleView("Übersicht Packages"))
+        .title(titleView("Übersicht Controls"))
         .actions([["refresh", "list", "create"]]);
     }
 
@@ -38,8 +38,8 @@ class DMDLControlsIndexPageController : DMDLListPageController {
           EntitiesFormContent(frm))
         .header(
           FormHeader(frm)
-            .mainTitle("Packages")
-            .subTitle("Packages anzeigen")
+            .mainTitle("Controls")
+            .subTitle("Controls anzeigen")
             .actions([["print", "export"]]));
     } 
   }

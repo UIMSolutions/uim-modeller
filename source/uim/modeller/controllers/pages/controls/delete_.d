@@ -21,13 +21,13 @@ class DMDLControlsDeletePageController : DMDLDeletePageController {
         BS5BreadcrumbList
         .link(["href":"/"], "UIM")
         .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Packages")
+        .link(["href":this.rootPath], "Controls")
         .item(["active", "fw-bold"], "Löschen")
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleDelete("Package löschen"));
+        .title(titleDelete("Control löschen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -38,8 +38,8 @@ class DMDLControlsDeletePageController : DMDLDeletePageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Packages")
-          .subTitle("Packages löschen");
+          .mainTitle("Controls")
+          .subTitle("Controls löschen");
       }
     }
 
