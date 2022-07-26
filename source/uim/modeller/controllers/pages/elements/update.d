@@ -10,8 +10,8 @@ class DMDLElementsUpdatePageController : DMDLUpdatePageController {
     super.initialize;
 
     this
-      .collectionName("modeller_packages")
-      .rootPath("/modeller/packages");
+      .collectionName("modeller_elements")
+      .rootPath("/modeller/elements");
 
     auto myView = APPEntityUpdateView(this)
       .rootPath(this.rootPath);
