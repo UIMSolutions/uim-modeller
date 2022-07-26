@@ -12,7 +12,7 @@ class DMDLControlCategoryFormInput : DFormInput {
     this
     .id("entity_controlCategory")
     .name("entity_controlCategory")
-    .fieldName("controlCategory")
+    .fieldName("category")
     .inputName("entity_controlCategory")
     .label("Modell"); 
   }
@@ -24,11 +24,18 @@ class DMDLControlCategoryFormInput : DFormInput {
     if (hasError || "redirect" in options) { return; }
 
     this.categories([
-      "ui": "UI Control",
+      "bar": "Bar Control",
       "chart": "Chart Control",
+      "info": "Info Control",
+      "list": "List Control",
+      "layout": "Layout Control",
+      "popup": "Popup Control",
       "input": "Input Control",
+      "map": "Map Control",
+      "tile": "Tile Control",
       "table": "Table Control",
-      "form": "Form Control",
+      "tree": "Tree Control",
+      "action": "Action Control",
       "container": "Container Control",
     ])
   }
@@ -38,13 +45,12 @@ class DMDLControlCategoryFormInput : DFormInput {
     if (hasError) { return null; }
     
     DH5Obj[] selectOptions;
-    if (entity && models) {
-      selectOptions ~= cast(DH5Obj)H5Option(["value":"00000000-0000-0000-0000-000000000000"], "No Model");
-      selectOptions ~= models
-        .sort!("a.display < b.display")
-        .map!(model => (entity[fieldName] == model.id.toString) 
-        ? H5Option(["selected":"selected", "value":model.id.toString], model.display)
-        : H5Option(["value":model.id.toString], model.display)).array.toH5;
+    selectOptions ~= cast(DH5Obj)H5Option(["value":""], "No Category");
+    selectOptions ~= categories.keys
+        .sort!("a < b")
+        .map!(key => (entity[fieldName] == key) 
+        ? H5Option(["selected":"selected", "value":key], categories[key])
+        : H5Option(["value":key], categories[key])).array.toH5;
     }
 
     auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["category"]], selectOptions); 
