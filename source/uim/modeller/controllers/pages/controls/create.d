@@ -3,8 +3,8 @@ module uim.modeller.controllers.pages.controls.create;
 @safe:
 import uim.modeller;
 
-class DMDLElementsControlsCreatePageController : DMDLCreatePageController {
-  mixin(APPPageControllerThis!("MDLElementsControlsCreatePageController"));
+class DMDLControlsCreatePageController : DMDLCreatePageController {
+  mixin(APPPageControllerThis!("MDLControlsCreatePageController"));
 
   override void initialize() {
     super.initialize;
@@ -59,13 +59,13 @@ class DMDLElementsControlsCreatePageController : DMDLCreatePageController {
       .view(myView);        
   }
 }
-mixin(APPPageControllerCalls!("MDLElementsControlsCreatePageController"));
+mixin(APPPageControllerCalls!("MDLControlsCreatePageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLElementsControlsCreatePageController); 
+		testPageController(new DMDLControlsCreatePageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLElementsControlsCreatePageController); 
+		testPageController(MDLControlsCreatePageController); 
 }}

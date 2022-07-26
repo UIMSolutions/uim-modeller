@@ -3,8 +3,8 @@ module uim.modeller.controllers.pages.controls.index;
 @safe:
 import uim.modeller;
 
-class DMDLElementsControlsIndexPageController : DMDLListPageController {
-  mixin(APPPageControllerThis!("MDLElementsControlsIndexPageController"));
+class DMDLControlsIndexPageController : DMDLListPageController {
+  mixin(APPPageControllerThis!("MDLControlsIndexPageController"));
 
   override void initialize() {
     super.initialize;
@@ -44,13 +44,13 @@ class DMDLElementsControlsIndexPageController : DMDLListPageController {
     } 
   }
 }
-mixin(APPPageControllerCalls!("MDLElementsControlsIndexPageController"));
+mixin(APPPageControllerCalls!("MDLControlsIndexPageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLElementsControlsIndexPageController); 
+		testPageController(new DMDLControlsIndexPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLElementsControlsIndexPageController); 
+		testPageController(MDLControlsIndexPageController); 
 }}

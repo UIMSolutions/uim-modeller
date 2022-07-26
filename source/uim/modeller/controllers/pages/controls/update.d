@@ -3,8 +3,8 @@ module uim.modeller.controllers.pages.controls.update;
 @safe:
 import uim.modeller;
 
-class DMDLElementsControlsUpdatePageController : DMDLUpdatePageController {
-  mixin(APPPageControllerThis!("MDLElementsControlsUpdatePageController"));
+class DMDLControlsUpdatePageController : DMDLUpdatePageController {
+  mixin(APPPageControllerThis!("MDLControlsUpdatePageController"));
 
   override void initialize() {
     super.initialize;
@@ -59,13 +59,13 @@ class DMDLElementsControlsUpdatePageController : DMDLUpdatePageController {
       .view(myView);
   }
 }
-mixin(APPPageControllerCalls!("MDLElementsControlsUpdatePageController"));
+mixin(APPPageControllerCalls!("MDLControlsUpdatePageController"));
     
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLElementsControlsUpdatePageController); 
+		testPageController(new DMDLControlsUpdatePageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLElementsControlsUpdatePageController); 
+		testPageController(MDLControlsUpdatePageController); 
 }}

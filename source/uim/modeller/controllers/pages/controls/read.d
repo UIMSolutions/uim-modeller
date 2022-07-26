@@ -3,8 +3,8 @@ module uim.modeller.controllers.pages.controls.read;
 @safe:
 import uim.modeller;
 
-class DMDLElementsControlsReadPageController : DMDLReadPageController {
-  mixin(APPPageControllerThis!("MDLElementsControlsReadPageController"));
+class DMDLControlsReadPageController : DMDLReadPageController {
+  mixin(APPPageControllerThis!("MDLControlsReadPageController"));
 
   override void initialize() {
     super.initialize;
@@ -54,13 +54,13 @@ class DMDLElementsControlsReadPageController : DMDLReadPageController {
         );
   }
 }
-mixin(APPPageControllerCalls!("MDLElementsControlsReadPageController"));
+mixin(APPPageControllerCalls!("MDLControlsReadPageController"));
 
 version(test_uim_modeller) {
   unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(new DMDLElementsControlsReadPageController); 
+		testPageController(new DMDLControlsReadPageController); 
 
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
-		testPageController(MDLElementsControlsReadPageController); 
+		testPageController(MDLControlsReadPageController); 
 }}

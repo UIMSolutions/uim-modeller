@@ -22,6 +22,8 @@ class DMDLNavSlot : DAPPNavbarSlot {
         .link((options.get("serverMdlThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/functions"], "Funktionen")
         .link((options.get("serverMdlThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/interfaces"], "Interfaces")
         .link((options.get("serverMdlComponents", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/components"], "Komponenten")
+        .link((options.get("serverMdlControls", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/controls"], "Controls")
+        .link((options.get("serverMdlElements", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/elements"], "Elements")
         .link((options.get("serverMdlNews", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/entities"], "Entities")
         .link((options.get("serverMdlThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/models"], "Models")
         .link((options.get("serverMdlThemes", "") == "active" ? ["active"] : [""]), ["href":/* rootPath~ */"/modeller/modules"], "Module")
