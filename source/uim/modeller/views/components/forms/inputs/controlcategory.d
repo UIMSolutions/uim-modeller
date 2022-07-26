@@ -23,7 +23,14 @@ class DMDLControlCategoryFormInput : DFormInput {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
 
-
+    this.categories([
+      "ui": "UI Control",
+      "chart": "Chart Control",
+      "input": "Input Control",
+      "table": "Table Control",
+      "form": "Form Control",
+      "container": "Container Control",
+    ])
   }
 
   override DH5Obj[] toH5(STRINGAA options = null) { // hook
@@ -40,8 +47,8 @@ class DMDLControlCategoryFormInput : DFormInput {
         : H5Option(["value":model.id.toString], model.display)).array.toH5;
     }
 
-    auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["controlcategory"]], selectOptions); 
-    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["controlcategory"]);
+    auto input = H5Select(id, ["form-select"], ["name":inputName, "readonly":"readonly", "value":entity["category"]], selectOptions); 
+    if (_crudMode != CRUDModes.Create && entity) input.attribute("value", entity["category"]);
     if (_crudMode == CRUDModes.Read || _crudMode == CRUDModes.Delete) input.attribute("disabled","disabled");
     
     return [
