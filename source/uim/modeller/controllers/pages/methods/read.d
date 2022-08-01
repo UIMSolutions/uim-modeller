@@ -31,7 +31,7 @@ class DMDLMethodsReadPageController : DMDLReadPageController {
 
     if (auto myForm = cast(DForm)myView.form) {
       myForm
-         .method("post").action(this.rootPath~"/actions/read")
+        .method("post").action(this.rootPath~"/actions/read")
         .content(
           MDLMethodFormContent(myForm)); 
     
