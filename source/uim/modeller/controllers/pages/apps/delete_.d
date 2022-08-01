@@ -20,8 +20,8 @@ class DMDLAppsDeletePageController : DMDLDeletePageController {
       auto bc = UIMBreadcrumb(
         UIMBreadcrumbItem.link("/")("UIM"),
         UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Apps")
-        .link(["href":this.rootPath~"/delete"], "Apps")
+        UIMBreadcrumbItem.link(this.rootPath)("Apps"),
+        UIMBreadcrumbItem.active(true)("Löschen")
       );
 
       pgHeader

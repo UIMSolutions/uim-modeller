@@ -20,8 +20,8 @@ class DMDLModelsReadPageController : DMDLReadPageController {
       auto bc = UIMBreadcrumb(
         UIMBreadcrumbItem.link("/")("UIM"),
         UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Modelle")
-        .link(["active"], "Anzeigen")
+        UIMBreadcrumbItem.link(this.rootPath)("Modelle"),
+        UIMBreadcrumbItem.active(true)("Anzeigen")
       );
 
       pgHeader

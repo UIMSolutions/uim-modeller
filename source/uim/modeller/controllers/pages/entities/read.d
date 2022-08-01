@@ -20,8 +20,8 @@ class DMDLEntitiesReadPageController : DMDLReadPageController {
       auto bc = UIMBreadcrumb(
         UIMBreadcrumbItem.link("/")("UIM"),
         UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Entitäten")
-        .item(["active fw-bold"], "Anzeigen")
+        UIMBreadcrumbItem.link(this.rootPath)("Entitäten"),
+        UIMBreadcrumbItem(["fw-bold"]).active(true)("Anzeigen")
       );
 
       pgHeader
