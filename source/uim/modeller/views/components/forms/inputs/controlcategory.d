@@ -10,10 +10,10 @@ class DMDLControlCategoryFormInput : DFormInput {
     super.initialize;
 
     this
-    .id("entity_controlCategory")
-    .name("entity_controlCategory")
+    .id("entity_category")
+    .name("entity_category")
     .fieldName("category")
-    .inputName("entity_controlCategory")
+    .inputName("entity_category")
     .label("Kategorie"); 
   }
   mixin(OProperty!("STRINGAA", "categories"));
@@ -32,6 +32,7 @@ class DMDLControlCategoryFormInput : DFormInput {
       "popup": "Popup Control",
       "input": "Input Control",
       "map": "Map Control",
+      "navigation": "Navigation Control",
       "tile": "Tile Control",
       "table": "Table Control",
       "tree": "Tree Control",

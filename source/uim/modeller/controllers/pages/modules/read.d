@@ -17,11 +17,10 @@ class DMDLModulesReadPageController : DMDLReadPageController {
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = BS5Breadcrumb(
-        BS5BreadcrumbList
-        .link(["href":"/"], "UIM")
-        .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Module")
+      auto bc = UIMBreadcrumb(
+        UIMBreadcrumbItem.link("/")("UIM"),
+        UIMBreadcrumbItem.link("/modeller")("Modeller"),
+        UIMBreadcrumbItem.link(this.rootPath)("Module")
         .link(["active"], "Anzeigen")
       );
 

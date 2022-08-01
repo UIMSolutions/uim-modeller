@@ -17,12 +17,11 @@ class DMDLElementsCreatePageController : DMDLCreatePageController {
       .rootPath(this.rootPath);
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = BS5Breadcrumb(
-        BS5BreadcrumbList
-        .link(["href":"/"], "UIM")
-        .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Pakete")
-        .item(["active", "fw-bold"], "Erstellen")
+      auto bc = UIMBreadcrumb(
+        UIMBreadcrumbItem.link("/")("UIM"),
+        UIMBreadcrumbItem.link("/modeller")("Modeller"),
+        UIMBreadcrumbItem.link(this.rootPath)("Pakete"),
+        UIMBreadcrumbItem(["fw-bold"]).active(true)("Erstellen")
       );
 
       pgHeader

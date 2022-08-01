@@ -17,11 +17,10 @@ class DMDLLibrariesIndexPageController : DMDLListPageController {
       .collectionName("modeller_libraries");
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = BS5Breadcrumb(
-        BS5BreadcrumbList
-        .link(["href":"/"], "UIM")
-        .link(["href":"/modeller"], "Modeller")
-        .item(["active", "fw-bold"], "Bibliotheken")
+      auto bc = UIMBreadcrumb(
+        UIMBreadcrumbItem.link("/")("UIM"),
+        UIMBreadcrumbItem.link("/modeller")("Modeller"),
+        UIMBreadcrumbItem(["fw-bold"]).active(true)("Bibliotheken")
       );
 
       pgHeader

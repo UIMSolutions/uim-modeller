@@ -17,12 +17,11 @@ class DMDLControlsDeletePageController : DMDLDeletePageController {
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = BS5Breadcrumb(
-        BS5BreadcrumbList
-        .link(["href":"/"], "UIM")
-        .link(["href":"/modeller"], "Modeller")
-        .link(["href":this.rootPath], "Controls")
-        .item(["active", "fw-bold"], "Löschen")
+      auto bc = UIMBreadcrumb(
+        UIMBreadcrumbItem.link("/")("UIM"),
+        UIMBreadcrumbItem.link("/modeller")("Modeller"),
+        UIMBreadcrumbItem.link(this.rootPath)("Controls"),
+        UIMBreadcrumbItem(["fw-bold"]).active(true)("Löschen")
       );
 
       pgHeader
