@@ -10,7 +10,7 @@ class DMDLControlFormContent : DEntityFormContent {
     super.initialize;
 
     this
-      .addFields(["github", "summary", "text", "controlcategory"])
+      .addFields(["controlcategory", "mainTitle", "subTitle", "github", "imagePath", "summary", "text"])
       .inputHandler(MDLFormInputHandler(this.form)); 
   }
 }

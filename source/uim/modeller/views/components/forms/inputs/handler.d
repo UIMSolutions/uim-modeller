@@ -16,7 +16,7 @@ class DMDLFormInputHandler : DFormInputHandler {
         "controlcategory": MDLControlCategoryFormInput,
         "dataformat": MDLDataFormatFormInput,
         "entities":   MDLEntitiesFormInput,
-        "imagepath":  MDLIsArrayFormInput,
+        "imagepath":  MDLImagePathFormInput,
         "isarray":    MDLIsArrayFormInput,
         "isbig":      MDLIsBigFormInput,
         "isnullable": MDLIsNullableFormInput,
