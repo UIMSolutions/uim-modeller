@@ -61,7 +61,6 @@ class DMDLFormInputTheme : DFormInput {
 }
 mixin(FormComponentCalls!("MDLFormInputTheme", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     // TODO Tests
 }}

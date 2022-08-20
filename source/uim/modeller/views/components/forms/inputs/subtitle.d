@@ -19,8 +19,7 @@ class DMDLSubTitleFormInput : DTextFormInput {
 }
 mixin(FormComponentCalls!("MDLSubTitleFormInput", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     assert(new DMDLSubTitleFormInput);
     assert(MDLSubTitleFormInput);
 }}

@@ -16,7 +16,6 @@ class DMDLModuleFormContent : DEntityFormContent {
 }
 mixin(FormComponentCalls!("MDLModuleFormContent", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     assert(MDLModuleFormContent);
 }}

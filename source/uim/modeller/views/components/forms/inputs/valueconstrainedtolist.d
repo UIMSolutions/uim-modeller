@@ -18,7 +18,6 @@ class DMDLValueConstrainedToListFormInput : DSwitchFormInput {
 }
 mixin(FormComponentCalls!("MDLValueConstrainedToListFormInput", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     // TODO Tests
 }}

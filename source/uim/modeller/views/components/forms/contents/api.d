@@ -16,7 +16,6 @@ class DMDLApiFormContent : DEntityFormContent {
 }
 mixin(FormComponentCalls!("MDLApiFormContent", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     assert(MDLApiFormContent);
 }}

@@ -19,7 +19,6 @@ class DMDLImagePathFormInput : DTextFormInput {
 }
 mixin(FormComponentCalls!("MDLImagePathFormInput", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     assert(MDLImagePathFormInput);
 }}

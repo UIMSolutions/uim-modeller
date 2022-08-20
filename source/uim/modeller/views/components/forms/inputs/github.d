@@ -19,7 +19,6 @@ class DMDLGitHubFormInput : DTextFormInput {
 }
 mixin(FormComponentCalls!("MDLGitHubFormInput", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     assert(MDGithubFormGroup);
 }}

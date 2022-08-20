@@ -19,7 +19,10 @@ class DMDLSummaryFormInput : DTextAreaFormInput {
 }
 mixin(FormComponentCalls!("MDLSummaryFormInput", true));
 
-version(test_uim_modeller) {
-  unittest {
-    // TODO Tests
+version(test_uim_modeller) { unittest {
+    assert(MDLSummaryFormInput.id == "entity_summary")
+    assert(MDLSummaryFormInput.name == "entity_summary");
+    assert(MDLSummaryFormInput.inputName == "entity_summary");
+    assert(MDLSummaryFormInput.fieldName == "summary");
+    assert(MDLSummaryFormInput.label == "Zusammenfassung");
 }}

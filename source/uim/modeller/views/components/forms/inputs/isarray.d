@@ -18,7 +18,6 @@ class DMDLIsArrayFormInput : DSwitchFormInput {
 }
 mixin(FormComponentCalls!("MDLIsArrayFormInput", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     // TODO Tests
 }}

@@ -16,7 +16,6 @@ class DMDLAttributeFormContent : DEntityFormContent {
 }
 mixin(FormComponentCalls!("MDLAttributeFormContent", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     assert(MDLAttributeFormContent);
 }}

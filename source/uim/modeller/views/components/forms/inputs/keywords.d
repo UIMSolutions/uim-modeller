@@ -27,13 +27,12 @@ class DMDLFormGroupKeywords : DFormInput {
     
     return [
       BS5FormGroup(["row", "mb-1"],
-        H5Label(["form-label col-2 col-form-label"], label),
+        UIMFormLabel(["col-2 col-form-label"], label),
         BS5Col(["col"], input))].toH5;
   }
 }
 mixin(FormComponentCalls!("MDLFormGroupKeywords", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     // TODO Tests
 }}

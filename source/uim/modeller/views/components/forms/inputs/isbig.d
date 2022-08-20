@@ -18,7 +18,6 @@ class DMDLIsBigFormInput : DSwitchFormInput {
 }
 mixin(FormComponentCalls!("MDLIsBigFormInput", true));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     // TODO Tests
 }}
