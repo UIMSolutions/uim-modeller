@@ -9,10 +9,9 @@ class DMDLPackagesIndexPageController : DMDLListPageController {
   override void initialize() {
     super.initialize;
 
-    auto myView = APPEntitiesListView(this);
- 
     this
-      .view(myView)
+      .view(
+        APPEntitiesListView(this))
       .rootPath("/modeller/packages")
       .collectionName("modeller_packages");
 

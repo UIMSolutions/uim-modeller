@@ -65,7 +65,7 @@ class DMDLModulesFormInput : DFormInput {
     
     return [
       BS5FormGroup(["row", "mb-1"],
-        H5Label(["form-label col-2 col-form-label"], label),
+        UIMFormLabel(["col-2 col-form-label"], label),
         BS5Col(["col"], input))].toH5;
   }
 }
