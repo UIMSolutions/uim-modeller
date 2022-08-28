@@ -9,17 +9,17 @@ class DMDLPackagesIndexPageController : DMDLListPageController {
   override void initialize() {
     super.initialize;
 
+    auto myView = APPEntitiesListView(this);
     this
-      .view(
-        APPEntitiesListView(this))
+      .view(myView)
       .rootPath("/modeller/packages")
       .collectionName("modeller_packages");
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Packages")
+      auto bc = UIMBreadcrumb.items(
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Packages"]
       );
 
       pgHeader
