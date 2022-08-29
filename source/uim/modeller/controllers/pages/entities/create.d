@@ -15,7 +15,18 @@ class DMDLEntitiesCreatePageController : DMDLCreatePageController {
 
     auto myView =  
       APPEntityCreateView(this)
-      .rootPath(this.rootPath);
+        .rootPath(this.rootPath)
+        .entityTab(
+          UIMTab
+            .panes([
+              UIMTabPane
+                .title("Allgemein")
+                .content(H5Div("This is a primary pane")),
+              UIMTabPane
+                .title("Beschreibungen")
+                .content(H5Div("This is a secondary pane"))
+            ])
+        );
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb.items(

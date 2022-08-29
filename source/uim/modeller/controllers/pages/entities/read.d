@@ -52,6 +52,7 @@ class DMDLEntitiesReadPageController : DMDLReadPageController {
           "editorSummary.disabled();"~
           "editorText.disabled();"
         );
+                       
   }
 }
 mixin(APPPageControllerCalls!("MDLEntitiesReadPageController"));

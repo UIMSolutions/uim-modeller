@@ -1,0 +1,1 @@
+module uim.modeller.controls.tabs.panes.properties;

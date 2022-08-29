@@ -14,8 +14,8 @@ class DMDLEntitiesUpdatePageController : DMDLUpdatePageController {
       .rootPath("/modeller/entities");
 
     auto myView = APPEntityUpdateView(this)
-      .rootPath(this.rootPath);
-
+      .rootPath(this.rootPath);    
+      
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb.items(
         ["/", "UIM"],

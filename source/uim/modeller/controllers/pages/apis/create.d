@@ -35,7 +35,8 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
         .rootPath(this.rootPath)
         .method("post")
         .action(this.rootPath~"/actions/create")
-        .content(MDLApiFormContent(myForm));
+        .content(
+          MDLApiFormContent(myForm));
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader
