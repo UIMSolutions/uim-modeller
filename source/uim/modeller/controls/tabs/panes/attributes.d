@@ -1,7 +1,5 @@
 module uim.modeller.controls.tabs.panes.attributes;
 
-module uim.controls.tabs.panes.pane;
-
 @safe:
 import uim.controls;
 
