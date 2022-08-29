@@ -18,10 +18,10 @@ class DMDLApisDeletePageController : DMDLDeletePageController {
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Apis"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Löschen")
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Apis"],
+        [this.rootPath~"/delete", "Löschen"]
       );
 
       pgHeader
@@ -55,8 +55,7 @@ class DMDLApisDeletePageController : DMDLDeletePageController {
 }
 mixin(APPPageControllerCalls!("MDLApisDeletePageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLApisDeletePageController); 
 

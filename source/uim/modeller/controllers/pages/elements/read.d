@@ -18,15 +18,15 @@ class DMDLElementsReadPageController : DMDLReadPageController {
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Packages"),
-        UIMBreadcrumbItem.active(true)("Anzeigen")
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Elements"],
+        [this.rootPath~"/read", "Anzeigen"]
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Package anzeigen"));
+        .title(titleCreate("Element anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -37,8 +37,8 @@ class DMDLElementsReadPageController : DMDLReadPageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Packages")
-          .subTitle("Package anzeigen");
+          .mainTitle("Elements")
+          .subTitle("Element anzeigen");
       }
     }
 
@@ -55,8 +55,7 @@ class DMDLElementsReadPageController : DMDLReadPageController {
 }
 mixin(APPPageControllerCalls!("MDLElementsReadPageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLElementsReadPageController); 
 

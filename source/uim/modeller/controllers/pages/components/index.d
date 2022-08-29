@@ -18,9 +18,9 @@ class DMDLComponentsIndexPageController : DMDLListPageController {
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Komponenten")
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Komponenten"]
       );
 
       pgHeader
@@ -44,8 +44,7 @@ class DMDLComponentsIndexPageController : DMDLListPageController {
 }
 mixin(APPPageControllerCalls!("MDLComponentsIndexPageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLComponentsIndexPageController); 
 

@@ -17,17 +17,17 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
       .rootPath(this.rootPath);
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Api"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Erstellen")
-      );
-
       pgHeader
         .rootPath(this.rootPath)
         .title(titleCreate("Api erstellen"))
-        .breadcrumbs(bc);
+        .breadcrumbs(
+          UIMBreadcrumb.items(
+            ["/", "UIM"],
+            ["/modeller", "Modeller"],
+            [this.rootPath, "Api"],
+            [this.rootPath~"/create", "Erstellen"]
+          )
+        );
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -64,8 +64,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
 }
 mixin(APPPageControllerCalls!("MDLApisCreatePageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new MDLApisCreatePageController); 
 

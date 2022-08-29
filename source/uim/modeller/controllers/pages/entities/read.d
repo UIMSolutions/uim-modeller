@@ -18,10 +18,10 @@ class DMDLEntitiesReadPageController : DMDLReadPageController {
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Entitäten"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Anzeigen")
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Entitäten"],
+        [this.rootPath~"/read", "Anzeigen"]
       );
 
       pgHeader
@@ -56,8 +56,7 @@ class DMDLEntitiesReadPageController : DMDLReadPageController {
 }
 mixin(APPPageControllerCalls!("MDLEntitiesReadPageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLEntitiesReadPageController); 
 

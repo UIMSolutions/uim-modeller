@@ -19,10 +19,10 @@ class DMDLAttributesCreatePageController : DMDLCreatePageController {
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem.link(this.rootPath)("Attribute"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Erstellen")
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Attributes"],
+        [this.rootPath~"/create", "Erstellen"]
       );
 
       pgHeader
@@ -61,8 +61,7 @@ class DMDLAttributesCreatePageController : DMDLCreatePageController {
 }
 mixin(APPPageControllerCalls!("MDLAttributesCreatePageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLAttributesCreatePageController); 
 

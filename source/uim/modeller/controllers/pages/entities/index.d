@@ -18,15 +18,15 @@ override void initialize() {
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Entitätsklassen")
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Entitäten"]
       );
 
       pgHeader
         .rootPath("/modeller/entities")
         .breadcrumbs(bc)
-        .title(titleView("Übersicht Entitätsklassen"))
+        .title(titleView("Übersicht Entitäten"))
         .actions([["refresh", "list", "create"]]);
     }
 
@@ -37,16 +37,15 @@ override void initialize() {
           EntitiesFormContent(frm))
         .header(
           FormHeader(frm)
-            .mainTitle("Entitätsklassen")
-            .subTitle("Entitätsklassen anzeigen")
+            .mainTitle("Entitäten")
+            .subTitle("Entität anzeigen")
             .actions([["print", "export"]]));
     } 
   }
 }
 mixin(APPPageControllerCalls!("MDLEntitiesIndexPageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLEntitiesIndexPageController); 
 

@@ -18,15 +18,15 @@ class DMDLElementsIndexPageController : DMDLListPageController {
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
       auto bc = UIMBreadcrumb(
-        UIMBreadcrumbItem.link("/")("UIM"),
-        UIMBreadcrumbItem.link("/modeller")("Modeller"),
-        UIMBreadcrumbItem(["fw-bold"]).active(true)("Packages")
+        ["/", "UIM"],
+        ["/modeller", "Modeller"],
+        [this.rootPath, "Elements"]
       );
 
       pgHeader
         .rootPath("/modeller/elements")
         .breadcrumbs(bc)
-        .title(titleView("Übersicht Packages"))
+        .title(titleView("Übersicht Elements"))
         .actions([["refresh", "list", "create"]]);
     }
 
@@ -37,16 +37,15 @@ class DMDLElementsIndexPageController : DMDLListPageController {
           EntitiesFormContent(frm))
         .header(
           FormHeader(frm)
-            .mainTitle("Packages")
-            .subTitle("Packages anzeigen")
+            .mainTitle("Elements")
+            .subTitle("Elements anzeigen")
             .actions([["print", "export"]]));
     } 
   }
 }
 mixin(APPPageControllerCalls!("MDLElementsIndexPageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLElementsIndexPageController); 
 

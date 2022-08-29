@@ -31,8 +31,7 @@ class DMDLReadPageController : DMDLEntityPageController {
 }
 mixin(APPPageControllerCalls!("MDLReadPageController"));
 
-version(test_uim_modeller) {
-  unittest {
+version(test_uim_modeller) { unittest {
     writeln("--- Tests in ", __MODULE__, "/", __LINE__);
 		testPageController(new DMDLReadPageController); 
 
