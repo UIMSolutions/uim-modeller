@@ -4,6 +4,7 @@ module uim.modeller.views;
 import uim.modeller;
 
 public import uim.modeller.views.components;
+public import uim.modeller.views.pages;
 
 // Modules
 public import uim.modeller.views.indexnosite;
