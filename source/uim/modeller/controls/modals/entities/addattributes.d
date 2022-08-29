@@ -7,7 +7,7 @@ class DMDLAddAttributesModalControl : DUIMModalControl {
   mixin(ControlThis!("MDLAddAttributesModalControl"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
-  mixin(OProperty!("DOOPEntity[]", "attributes"));
+  mixin(OProperty!("DOOPEntity[]", "entityAttributes"));
 
   override void initialize() {
     super.initialize;
@@ -24,15 +24,17 @@ class DMDLAddAttributesModalControl : DUIMModalControl {
         UIMModalHeader("Attribute hinzufügen")
       ]) 
       .bodies([
-        UIMForm(
-          UIMHiddenInput(["name":"entityId", "value":entity["id"]]),
-          UIMList.items(
-            attributes.map!(att =>
-              UIMListItem(att.display)
-            ).array
+        UIMModalBodyControl(
+          UIMForm(
+            UIMHiddenInput(["name":"entityId", "value":entity["id"]]),
+            UIMList.items(
+              entityAttributes.map!(att =>
+                UIMListItem(att.display)
+              ).array
+            )
           )
-        )
-      ]); 
+        )]
+      ); 
   }
 }
 mixin(ControlCalls!("MDLAddAttributesModalControl", "DMDLAddAttributesModalControl"));

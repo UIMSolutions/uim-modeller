@@ -7,7 +7,7 @@ class DMDLRemoveAttributesModalControl : DUIMModalControl {
   mixin(ControlThis!("MDLRemoveAttributesModalControl"));
 
   mixin(OProperty!("DOOPEntity", "entity"));
-  mixin(OProperty!("DOOPEntity[]", "attributes"));
+  mixin(OProperty!("DOOPEntity[]", "entityAttributes"));
 
   override void initialize() {
     super.initialize;
@@ -24,12 +24,14 @@ class DMDLRemoveAttributesModalControl : DUIMModalControl {
         UIMModalHeader("Attribute entfernen")
       ]) 
       .bodies([
-        UIMForm(
-          UIMHiddenInput(["name":"entityId", "value":entity["id"]]),
-          UIMList.items(
-            attributes.map!(att =>
-              UIMListItem(att.display)
-            ).array
+        UIMModalBodyControl(
+          UIMForm(
+            UIMHiddenInput(["name":"entityId", "value":entity["id"]]),
+            UIMList.items(
+              entityAttributes.map!(att =>
+                UIMListItem(att.display)
+              ).array
+            )
           )
         )
       ]); 
