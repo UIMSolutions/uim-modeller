@@ -17,10 +17,10 @@ class DMDLMethodsCreatePageController : DMDLCreatePageController {
       .rootPath(this.rootPath);
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
+      auto bc = UIMBreadcrumb.items(
         ["/", "UIM"],
         ["/modeller", "Modeller"],
-        [this.rootPath, "Methoden"),
+        [this.rootPath, "Methoden"],
         [this.rootPath~"/create", "Erstellen"]
       );
 

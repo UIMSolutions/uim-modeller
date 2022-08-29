@@ -17,16 +17,16 @@ class DMDLLibrariesUpdatePageController : DMDLUpdatePageController {
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
+      auto bc = UIMBreadcrumb.items(
         ["/", "UIM"],
         ["/modeller", "Modeller"],
-        [this.rootPath, "Libraries"),
+        [this.rootPath, "Bibliotheken"],
         [this.rootPath~"/read", "Anzeigen"]
       );
 
       pgHeader
         .breadcrumbs(bc)
-        .title(titleCreate("Library anzeigen"));
+        .title(titleCreate("Bibliothek anzeigen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -37,8 +37,8 @@ class DMDLLibrariesUpdatePageController : DMDLUpdatePageController {
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
-          .mainTitle("Libraries")
-          .subTitle("Library anzeigen");
+          .mainTitle("Bibliotheken")
+          .subTitle("Bibliothek anzeigen");
       }
 
       this

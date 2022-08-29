@@ -17,10 +17,10 @@ class DMDLLibrariesDeletePageController : DMDLDeletePageController {
       .rootPath(this.rootPath);
     
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
+      auto bc = UIMBreadcrumb.items(
         ["/", "UIM"],
         ["/modeller", "Modeller"],
-        [this.rootPath, "Bibliothek"),
+        [this.rootPath, "Bibliotheken"],
         [this.rootPath~"/delete", "Löschen"]
       );
 

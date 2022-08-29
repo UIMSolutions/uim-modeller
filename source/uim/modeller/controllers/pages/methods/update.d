@@ -17,10 +17,10 @@ class DMDLMethodsUpdatePageController : DMDLUpdatePageController {
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
+      auto bc = UIMBreadcrumb.items(
         ["/", "UIM"],
         ["/modeller", "Modeller"],
-        [this.rootPath, "Methods"),
+        [this.rootPath, "Methoden"],
         [this.rootPath~"/read", "Anzeigen"]
       );
 

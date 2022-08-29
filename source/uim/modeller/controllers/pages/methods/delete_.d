@@ -17,17 +17,17 @@ class DMDLMethodsDeletePageController : DMDLDeletePageController {
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
+      auto bc = UIMBreadcrumb.items(
         ["/", "UIM"],
         ["/modeller", "Modeller"],
-        [this.rootPath, "Methods"),
+        [this.rootPath, "Methoden"],
         [this.rootPath~"/delete", "Löschen"]
       );
 
       pgHeader
         .breadcrumbs(bc)
         .rootPath(this.rootPath)
-        .title(titleDelete("Method löschen"));
+        .title(titleDelete("Methode löschen"));
     }
 
     if (auto myForm = cast(DForm)myView.form) {
@@ -40,8 +40,8 @@ class DMDLMethodsDeletePageController : DMDLDeletePageController {
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
           .rootPath(this.rootPath)
-          .mainTitle("Methods")
-          .subTitle("Methods löschen");
+          .mainTitle("Methoden")
+          .subTitle("Methode löschen");
       }
     }
 

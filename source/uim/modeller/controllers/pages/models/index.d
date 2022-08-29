@@ -17,10 +17,10 @@ class DMDLModelsIndexPageController : DMDLListPageController {
       .collectionName("modeller_models");
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb(
+      auto bc = UIMBreadcrumb.items(
         ["/", "UIM"],
         ["/modeller", "Modeller"],
-        [this.rootPath, "Modelle")
+        [this.rootPath, "Modelle"]
       );
 
       pgHeader
