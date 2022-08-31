@@ -13,44 +13,19 @@ class DMDLEntitiesReadPageController : DMDLReadPageController {
       .collectionName("modeller_entities")
       .rootPath("/modeller/entities");
 
-    auto myView = APPEntityReadView(this)
+    auto myView = MDLEntityReadView(this)
       .rootPath(this.rootPath);
 
-    if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb.items(
-        ["/", "UIM"],
-        ["/modeller", "Modeller"],
-        [this.rootPath, "Entitäten"],
-        [this.rootPath~"/read", "Anzeigen"]
-      );
-
-      pgHeader
-        .breadcrumbs(bc)
-        .title(titleCreate("Entitätsklasse anzeigen"));
-    }
-
-    if (auto myForm = cast(DForm)myView.form) {
-      myForm
-        .method("post")
-        .action(this.rootPath~"/actions/read")
-        .content(
-          MDLEntityFormContent(myForm)); 
+    string formId = myView.form.id;
+    this
+      .view(myView);
     
-      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
-        myFormHeader
-          .mainTitle("Entitätsklassen")
-          .subTitle("Entitätsklasse anzeigen");
-      }
-    }
-
     this
       .view(myView)
       .scripts
         .addContents(
-          editorSummary~
-          editorText~
-          "editorSummary.disabled();"~
-          "editorText.disabled();"
+          editorSummary~editorText~
+          "editorSummary.disabled(); editorText.disabled();"
         );
                        
   }

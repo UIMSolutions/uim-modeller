@@ -1,6 +1,7 @@
 module uim.modeller.views.pages.entities;
 
-// CRUD
+// I-CRUD
+public import uim.modeller.views.pages.entities.index;
 public import uim.modeller.views.pages.entities.create;
 public import uim.modeller.views.pages.entities.read;
 public import uim.modeller.views.pages.entities.update;

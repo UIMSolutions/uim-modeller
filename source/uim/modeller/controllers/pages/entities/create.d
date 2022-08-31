@@ -12,62 +12,14 @@ class DMDLEntitiesCreatePageController : DMDLCreatePageController {
     this
       .collectionName("modeller_entities")
       .rootPath("/modeller/entities");
-
-    auto myView =  
-      APPEntityCreateView(this)
-        .rootPath(this.rootPath)
-        .entityTab(
-          UIMTab
-            .panes([
-              UIMTabPane
-                .title("Allgemein")
-                .content(H5Div("This is a primary pane")),
-              UIMTabPane
-                .title("Beschreibungen")
-                .content(H5Div("This is a secondary pane"))
-            ])
-        );
     
-    if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb.items(
-        ["/", "UIM"],
-        ["/modeller", "Modeller"],
-        [this.rootPath, "Entitäten"],
-        [this.rootPath~"/create", "Erstellen"]
-      );
+    auto myView = MDLEntityCreateView(this)
+      .rootPath(this.rootPath);
 
-      pgHeader
-        .title(titleCreate("Entitätsklasse erstellen"))
-        .breadcrumbs(bc);
-    }
-
-    if (auto myForm = cast(DForm)myView.form) {
-      myForm
-        .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLEntityFormContent(myForm));
-    
-      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
-          myFormHeader
-            .mainTitle("Neue Entitätsklasse")
-            .subTitle("Bitte Werte eingeben")
-            .actions([["cancel", "save"]]);
-      }
-
-      this
-        .scripts
-          .addContents(
-            editorSummary~editorText,
-            "window.addEventListener('load', (event) => {
-              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
-                editorSummary.save();
-                editorText.save();
-              })
-            });"
-        );      
-    }
-
+    string formId = myView.form.id;
     this
-      .view(myView);        
+      .view(myView);
+        
   }
 }
 mixin(APPPageControllerCalls!("MDLEntitiesCreatePageController"));
@@ -81,7 +33,6 @@ version(test_uim_modeller) { unittest {
 }}
 
 /*
-  
   override void beforeResponse(STRINGAA options = null) {
     debugMethodCall(moduleName!DMDLEntitiesUpdatePageController~":DMDLEntitiesUpdatePageController::beforeResponse");
     super.beforeResponse(options);

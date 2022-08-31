@@ -13,49 +13,24 @@ class DMDLEntitiesDeletePageController : DMDLDeletePageController {
       .collectionName("modeller_entities")
       .rootPath("/modeller/entities");
 
-    auto myView = APPEntityDeleteView(this)
+    auto myView = MDLEntityDeleteView(this)
       .rootPath(this.rootPath);
-    
-    if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb.items(
-        ["/", "UIM"],
-        ["/modeller", "Modeller"],
-        [this.rootPath, "Entitäten"],
-        [this.rootPath~"/delete", "Löschen"]
-      );
 
-      pgHeader
-        .title(titleDelete("EntityClass erstellen"))
-        .breadcrumbs(bc);
-    }
-
-    if (auto myForm = cast(DForm)myView.form) {
-      myForm
-         .method("post").action(this.rootPath~"/actions/delete")
-        .content(MDLEntityFormContent(myForm));
-    
-      if (auto myFormHeader = cast(DFormHeader)myForm.header) {
-          myFormHeader
-            .mainTitle("Neue Entitätsklasse")
-            .subTitle("Bitte Werte eingeben")
-            .actions([["cancel", "save"]]);
-      }
-
-      this
-        .scripts
-          .addContents(
-            editorSummary~editorText,
-            "window.addEventListener('load', (event) => {
-              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
-                editorSummary.save();
-                editorText.save();
-              })
-            });"
-        );  
-    }
+    string formId = myView.form.id;
+    this
+      .view(myView);
 
     this
-      .view(myView);        
+      .scripts
+        .addContents(
+          editorSummary~editorText,
+          "window.addEventListener('load', (event) => {
+            document.getElementById('"~formId~"').addEventListener('submit', event => {
+              editorSummary.save();
+              editorText.save();
+            })
+          });"
+      );  
   }
 }
 mixin(APPPageControllerCalls!("MDLEntitiesDeletePageController"));

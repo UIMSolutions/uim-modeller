@@ -13,49 +13,24 @@ class DMDLEntitiesUpdatePageController : DMDLUpdatePageController {
       .collectionName("modeller_entities")
       .rootPath("/modeller/entities");
 
-    auto myView = APPEntityUpdateView(this)
-      .rootPath(this.rootPath);    
-      
-    if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb.items(
-        ["/", "UIM"],
-        ["/modeller", "Modeller"],
-        [this.rootPath, "Entitäten"],
-        [this.rootPath~"/update", "Bearbeiten"]
-      );
+    auto myView = MDLEntityUpdateView(this)
+      .rootPath(this.rootPath);
 
-      pgHeader
-        .breadcrumbs(bc)
-        .title(titleCreate("Entitätsklasse bearbeiten"));
-    }
-
-    if (auto myForm = cast(DForm)myView.form) {
-      myForm
-        .method("post")
-        .action(this.rootPath~"/actions/update")
-        .content(MDLEntityFormContent(myForm)); 
-    
-      if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
-        myFormHeader
-          .mainTitle("Entitätsklassen")
-          .subTitle("Entitätsklasse bearbeiten");
-      }    
+    string formId = myView.form.id;
+    this
+      .view(myView);
 
       this
         .scripts
           .addContents(
             editorSummary~editorText,
             "window.addEventListener('load', (event) => {
-              document.getElementById('"~myForm.id~"').addEventListener('submit', event => {
+              document.getElementById('"~formId~"').addEventListener('submit', event => {
                 editorSummary.save();
                 editorText.save();
               })
             });"
           );    
-    }  
-
-    this
-      .view(myView);
   }
 }
 mixin(APPPageControllerCalls!("MDLEntitiesUpdatePageController"));
