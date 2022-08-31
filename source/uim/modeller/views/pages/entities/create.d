@@ -65,7 +65,7 @@ class DMDLEntityCreateView : DAPPEntityCreateView {
     if (hasError || "redirect" in options) { return; } 
 
     if (auto myPageHeader = cast(DPageHeader)this.header) {
-      myPageHeade
+      myPageHeader
         .breadcrumbs
           .items(
             ["/", "UIM"],

@@ -38,13 +38,13 @@ class DMDLEntityDeleteView : DAPPEntityDeleteView {
     if (auto pgHeader = cast(DPageHeader)this.header) {
       pgHeader
         .title(titleDelete("Entität erstellen"))
-        .breadcrumbs(
-          UIMBreadcrumb.items(
+        .breadcrumbs
+          .items(
             ["/", "UIM"],
             ["/modeller", "Modeller"],
             [this.rootPath, "Entitäten"],
             [this.rootPath~"/delete", "Löschen"]
-          ));
+          );
     }
 
     if (auto myForm = cast(DForm)this.form) {

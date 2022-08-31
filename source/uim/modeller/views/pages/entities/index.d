@@ -10,13 +10,13 @@ class DMDLEntityIndexView : DAPPEntitiesListView {
   override void initialize() {
     super.initialize;
 
-    if (auto myPageHeader = cast(DPageHeader)myView.header) {
+    if (auto myPageHeader = cast(DPageHeader)this.header) {
       myPageHeader
         .title(titleView("Übersicht Entitäten"))
         .actions([["refresh", "list", "create"]]);
     }
 
-    if (auto myForm = cast(DForm)myView.form) {
+    if (auto myForm = cast(DForm)this.form) {
       myForm
        .content(
           EntitiesFormContent(myForm))
@@ -33,7 +33,7 @@ class DMDLEntityIndexView : DAPPEntitiesListView {
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
     
-    if (auto myPageHeader = cast(DPageHeader)myView.header) {
+    if (auto myPageHeader = cast(DPageHeader)this.header) {
       myPageHeader
         .rootPath(this.rootPath)
         .breadcrumbs
@@ -44,9 +44,10 @@ class DMDLEntityIndexView : DAPPEntitiesListView {
           );
     }
 
-    if (auto myForm = cast(DForm)myView.form) {
+    if (auto myForm = cast(DForm)this.form) {
       myForm
-       .rootPath(this.rootPath);
+        .rootPath(
+          this.rootPath);
     } 
   }
 }
