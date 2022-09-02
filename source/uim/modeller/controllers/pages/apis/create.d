@@ -20,8 +20,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
       pgHeader
         .rootPath(this.rootPath)
         .title(titleCreate("Api erstellen"))
-        .breadcrumbs(
-          UIMBreadcrumb.items(
+        .breadcrumbs.items(
             ["/", "UIM"],
             ["/modeller", "Modeller"],
             [this.rootPath, "Api"],
