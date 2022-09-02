@@ -49,7 +49,7 @@ class DMDLEntityReadView : DAPPEntityReadView {
     }
 
     if (auto myForm = cast(DForm)this.form) {
-      myForm
+      myForm    
         .method("post")
         .action(this.rootPath~"/actions/read")
         .content(
@@ -64,3 +64,7 @@ class DMDLEntityReadView : DAPPEntityReadView {
   }
 }
 mixin(APPViewCalls!("MDLEntityReadView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLEntityReadView);
+}}

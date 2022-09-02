@@ -9,10 +9,10 @@ class DMDLEntitiesIndexPageController : DMDLListPageController {
   override void initialize() {
     super.initialize;
 
-    auto myView = APPEntitiesListView(this);
     this
-      .view(myView)
       .rootPath("/modeller/entities")
+      .view(
+        MDLEntityIndexView(this))
       .collectionName("modeller_entities");
   }
 }

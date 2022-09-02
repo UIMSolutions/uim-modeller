@@ -4,8 +4,10 @@ module uim.modeller.views.read;
 import uim.modeller;
 
 class DMDLReadView : DAPPView {
-  this() { super(); }
-  this(DAPPPageController aController) { this().controller(aController); }
+  mixin(APPViewThis!("MDLReadView"));
 }
-auto MDLReadView() { return new DMDLReadView; }
-auto MDLReadView(DAPPPageController aController) { return new DMDLReadView(aController); }
+mixin(APPViewCalls!("MDLReadView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLReadView);
+}}

@@ -6,8 +6,6 @@ import uim.modeller;
 class DMDLListPageController : DAPPEntitiesPageController {
   mixin(APPPageControllerThis!("MDLListPageController"));
 
-  mixin(OProperty!("string", "rootPath"));
-
   override void initialize() {
     super.initialize;
 
@@ -48,8 +46,10 @@ class DMDLListPageController : DAPPEntitiesPageController {
         dbEntities = dbEntities.filter!(entity => entity.name.indexOf(entityName) == 0).array;
       } 
 
+      debug writeln("Set entitiesView with %s items".format(dbEntities.length));
       entitiesView
-        .entities(dbEntities);
+        .entities(
+          dbEntities);
     }
     else { 
       this.error("entitiesView missing"); 

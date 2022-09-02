@@ -4,8 +4,10 @@ module uim.modeller.views.update;
 import uim.modeller;
 
 class DMDLUpdateView : DAPPView {
-  this() { super(); }
-  this(DAPPPageController aController) { this().controller(aController); }
+  mixin(APPViewThis!("MDLUpdateView"));
 }
-auto MDLUpdateView() { return new DMDLUpdateView; }
-auto MDLUpdateView(DAPPPageController aController) { return new DMDLUpdateView(aController); }
+mixin(APPViewCalls!("MDLUpdateView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLUpdateView);
+}}

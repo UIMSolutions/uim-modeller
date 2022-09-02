@@ -70,3 +70,7 @@ class DMDLEntityUpdateView : DAPPEntityUpdateView {
   }
 }
 mixin(APPViewCalls!("MDLEntityUpdateView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLEntityUpdateView);
+}}

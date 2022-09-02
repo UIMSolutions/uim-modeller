@@ -18,20 +18,34 @@ class DMDLEntityIndexView : DAPPEntitiesListView {
 
     if (auto myForm = cast(DForm)this.form) {
       myForm
-       .content(
-          EntitiesFormContent(myForm))
         .header(
           FormHeader(myForm)
             .mainTitle("Entitäten")
             .subTitle("Entität anzeigen")
-            .actions([["print", "export"]]));
+            .actions([["print", "export"]]))
+       .content(
+          EntitiesFormContent(myForm));
     } 
+  }
+  
+  override void _afterSetController() {
+    writeln("_afterSetController");
+    super._afterSetController;
+
+    if (this.controller) {
+      this
+        .rootPath(this.controller.rootPath);
+    }
   }
 
   // Set dynamic parts of a view
   override void beforeH5(STRINGAA options = null) {
+    debugMethodCall(moduleName!DMDLEntityIndexView~":DMDLEntityIndexView("~this.name~")::beforeH5");
     super.beforeH5(options);
     if (hasError || "redirect" in options) { return; }
+
+    writeln("In DMDLEntityIndexView -> %s entities".format(entities.length));
+    writeln("In DMDLEntityIndexView -> rootPath = '%s'".format(this.rootPath));
     
     if (auto myPageHeader = cast(DPageHeader)this.header) {
       myPageHeader
@@ -47,8 +61,16 @@ class DMDLEntityIndexView : DAPPEntitiesListView {
     if (auto myForm = cast(DForm)this.form) {
       myForm
         .rootPath(
-          this.rootPath);
+          this.rootPath)
+       .content(
+          EntitiesFormContent(myForm)
+            .entities(entities)
+            .rootPath(this.rootPath));
     } 
   }
 }
 mixin(APPViewCalls!("MDLEntityIndexView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLEntityIndexView);
+}}

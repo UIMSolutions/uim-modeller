@@ -13,14 +13,13 @@ class DMDLReadPageController : DMDLEntityPageController {
 
     auto appSession = getAppSession(options);
     if (entityId && entityId.isUUID) {  
-      if (auto dbEntity = database[appSession.site, collectionName].findOne(UUID(entityId))) {
+      if (auto myEntity = database[appSession.site, collectionName].findOne(UUID(entityId))) {
         
-        debug writeln("Found Entity -> ", dbEntity.id);        
-        if (auto entityView = cast(DAPPEntityCRUDView)this.view) {
-
-          debug writeln("Setting entityView");
-          entityView
-            .entity(dbEntity)
+        debug writeln("Found Entity -> ", myEntity.id);        
+        if (auto myView = cast(DAPPEntityCRUDView)this.view) {
+          debug writeln("In MDLReadPageController -> Setting entityView");
+          myView
+            .entity(myEntity)
             .crudMode(CRUDModes.Read)
             .rootPath(this.rootPath)
             .readonly(true);

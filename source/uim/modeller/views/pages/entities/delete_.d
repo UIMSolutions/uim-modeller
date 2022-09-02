@@ -62,3 +62,7 @@ class DMDLEntityDeleteView : DAPPEntityDeleteView {
   }
 }
 mixin(APPViewCalls!("MDLEntityDeleteView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLEntityDeleteView);
+}}

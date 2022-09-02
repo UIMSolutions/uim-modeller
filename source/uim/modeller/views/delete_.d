@@ -4,8 +4,10 @@ module uim.modeller.views.delete_;
 import uim.modeller;
 
 class DMDLDeleteView : DAPPView {
-  this() { super(); }
-  this(DAPPPageController aController) { this().controller(aController); }
+  mixin(APPViewThis!("MDLDeleteView"));
 }
-auto MDLDeleteView() { return new DMDLDeleteView; }
-auto MDLDeleteView(DAPPPageController aController) { return new DMDLDeleteView(aController); }
+mixin(APPViewCalls!("MDLDeleteView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLDeleteView);
+}}

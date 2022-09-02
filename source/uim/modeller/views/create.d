@@ -4,8 +4,10 @@ module uim.modeller.views.create;
 import uim.modeller;
 
 class DMDLCreateView : DAPPView {
-  this() { super(); }
-  this(DAPPPageController aController) { this().controller(aController); }
+  mixin(APPViewThis!("MDLCreateView"));
 }
-auto MDLCreateView() { return new DMDLCreateView; }
-auto MDLCreateView(DAPPPageController aController) { return new DMDLCreateView(aController); }
+mixin(APPViewCalls!("MDLCreateView"));
+
+version(test_uim_modeller) { unittest {
+  assert(MDLCreateView);
+}}

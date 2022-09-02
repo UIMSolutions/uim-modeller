@@ -7,7 +7,7 @@ class DMDLNavSlot : DAPPNavbarSlot {
   mixin(ViewComponentThis!("MDLNavSlot"));
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    auto rootPath = options.get("rootPath", "/");
+    this.rootPath(options.get("rootPath", "/"));
 
     return
       [BS5NavItem(["dropdown"], 
@@ -38,7 +38,7 @@ class DBSIStructure : DAPPNavbarSlot {
   this() { super(); }
 
   override DH5Obj[] toH5(STRINGAA options = null) {
-    auto rootPath = options.get("rootPath", "/");
+    this.rootPath(options.get("rootPath", "/"));
 
     return
       [BS5NavItem(["dropdown"], 
