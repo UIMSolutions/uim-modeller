@@ -17,16 +17,17 @@ class DMDLApisReadPageController : DMDLReadPageController {
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = UIMBreadcrumb.items(
-        ["/", "UIM"],
-        ["/modeller", "Modeller"],
-        [this.rootPath, "Apis"],
-        [this.rootPath~"/read", "Anzeigen"]
-      );
+      auto bc = ;
 
       pgHeader
-        .breadcrumbs(bc)
         .title(titleCreate("Api anzeigen"));
+        .breadcrumbs
+          .items(
+            ["/", "UIM"],
+            ["/modeller", "Modeller"],
+            [this.rootPath, "Apis"],
+            [this.rootPath~"/read", "Anzeigen"]
+          );
     }
 
     if (auto myForm = cast(DForm)myView.form) {
