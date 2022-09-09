@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.modules;
 import uim.modeller;
 
 class DMDLModulesFormInput : DFormInput {
-  mixin(FormComponentThis!("MDLModulesFormInput", true));
+  mixin(ViewComponentThis!("MDLModulesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -25,7 +25,7 @@ class DMDLModulesFormInput : DFormInput {
 
   DETBBase database() {
     if (_database) { return _database; } // has his own database
-    if (this.form && this.form.database) { return this.form.database; } // owner class has database
+    if (this.view && this.view.database) { return this.view.database; } // owner class has database
     return null; // no database found
   }
 
@@ -36,7 +36,6 @@ class DMDLModulesFormInput : DFormInput {
 
     auto appSession = getAppSession(options);
     if (appSession) debug writeln("Has appSession");
-    debug writeln(this.form ? "Has form" : "No form");
 
     if (this.database) {
       debug writeln("Has database");
@@ -69,7 +68,7 @@ class DMDLModulesFormInput : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLModulesFormInput", true));
+mixin(ViewComponentCalls!("MDLModulesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

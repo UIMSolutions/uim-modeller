@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.dataformat;
 import uim.modeller;
 
 class DMDLDataFormatFormInput : DTextFormInput {
-  mixin(FormComponentThis!("MDLDataFormatFormInput", true));
+  mixin(ViewComponentThis!("MDLDataFormatFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -56,7 +56,7 @@ class DMDLDataFormatFormInput : DTextFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLDataFormatFormInput", true));
+mixin(ViewComponentCalls!("MDLDataFormatFormInput", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

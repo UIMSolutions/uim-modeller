@@ -34,9 +34,9 @@ class DMDLMethodsIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/methods")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Methoden")
             .subTitle("Methoden anzeigen")
             .actions([["print", "export"]]));

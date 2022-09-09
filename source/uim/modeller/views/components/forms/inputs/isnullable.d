@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.isnullable;
 import uim.modeller;
 
 class DMDLIsNullableFormInput : DSwitchFormInput {
-  mixin(FormComponentThis!("MDLIsNullableFormInput", true));  
+  mixin(ViewComponentThis!("MDLIsNullableFormInput", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsNullableFormInput : DSwitchFormInput {
     .label("Nullable"); 
   }
 }
-mixin(FormComponentCalls!("MDLIsNullableFormInput", true));
+mixin(ViewComponentCalls!("MDLIsNullableFormInput", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

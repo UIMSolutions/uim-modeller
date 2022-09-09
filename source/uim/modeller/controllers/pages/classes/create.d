@@ -33,7 +33,7 @@ class DMDLClassesCreatePageController : DMDLCreatePageController {
     if (auto myForm = cast(DForm)myView.form) {
       myForm
         .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLAttributeFormContent(myForm));
+        .content(MDLAttributeFormContent);
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader

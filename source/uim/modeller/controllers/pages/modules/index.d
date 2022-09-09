@@ -34,9 +34,9 @@ class DMDLModulesIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/modules")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Module")
             .subTitle("Module anzeigen")
             .actions([["print", "export"]]));

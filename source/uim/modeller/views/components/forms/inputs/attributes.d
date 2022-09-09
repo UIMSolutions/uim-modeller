@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.attributes;
 import uim.modeller;
 
 class DMDLAttributesFormInput : DFormInput {
-  mixin(FormComponentThis!("MDLAttributesFormInput", true));
+  mixin(ViewComponentThis!("MDLAttributesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -19,13 +19,10 @@ class DMDLAttributesFormInput : DFormInput {
   mixin(OProperty!("DOOPEntity[]", "attributeEntities"));
 
   auto database() {
-    if (auto f = form) {
-      if (auto v = f.view) {
-        if (auto c = v.controller) {
-          return c.database;
-        }
-      }
-    }
+    if (auto myView = this.view) {
+      if (auto myController = myView.controller) {
+        return myController.database;
+    }}
     return null;
   }
 
@@ -63,7 +60,7 @@ class DMDLAttributesFormInput : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLAttributesFormInput", true));
+mixin(ViewComponentCalls!("MDLAttributesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

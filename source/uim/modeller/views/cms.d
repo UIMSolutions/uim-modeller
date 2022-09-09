@@ -3,7 +3,7 @@ module uim.modeller.views.mdl;
 @safe:
 import uim.modeller;
 
-class DMDLCmsView : DAPPView {
+class DMDLCmsView : DView {
   this() { super(); }
   this(DAPPPageController aController) { this().controller(aController); }
 }

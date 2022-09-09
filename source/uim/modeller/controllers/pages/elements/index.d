@@ -34,9 +34,9 @@ class DMDLElementsIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/elements")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Elements")
             .subTitle("Elements anzeigen")
             .actions([["print", "export"]]));

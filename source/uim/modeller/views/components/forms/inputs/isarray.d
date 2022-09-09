@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.isarray;
 import uim.modeller;
 
 class DMDLIsArrayFormInput : DSwitchFormInput {
-  mixin(FormComponentThis!("MDLIsArrayFormInput", true));  // not MDLIsArrayFormInput!
+  mixin(ViewComponentThis!("MDLIsArrayFormInput", true));  // not MDLIsArrayFormInput!
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsArrayFormInput : DSwitchFormInput {
     .label("Datenformat Array"); 
   }
 }
-mixin(FormComponentCalls!("MDLIsArrayFormInput", true));
+mixin(ViewComponentCalls!("MDLIsArrayFormInput", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

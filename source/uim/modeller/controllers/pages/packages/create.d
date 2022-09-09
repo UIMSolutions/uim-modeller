@@ -32,7 +32,7 @@ class DMDLPackagesCreatePageController : DMDLCreatePageController {
     if (auto myForm = cast(DForm)myView.form) {
       myForm
         .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLPackageFormContent(myForm));
+        .content(MDLPackageFormContent);
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader

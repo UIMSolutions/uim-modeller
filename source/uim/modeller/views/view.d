@@ -3,10 +3,10 @@ module uim.modeller.views.view;
 @safe:
 import uim.modeller;
 
-class DMDLView : DAPPView {
-  mixin(APPViewThis!("MDLView"));
+class DMDLView : DView {
+  mixin(ViewThis!("MDLView"));
 }
-mixin(APPViewCalls!("MDLView"));
+mixin(ViewCalls!("MDLView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLView);

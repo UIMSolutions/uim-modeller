@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.valueconstrainedtolist;
 import uim.modeller;
 
 class DMDLValueConstrainedToListFormInput : DSwitchFormInput {
-  mixin(FormComponentThis!("MDLValueConstrainedToListFormInput", true));  
+  mixin(ViewComponentThis!("MDLValueConstrainedToListFormInput", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLValueConstrainedToListFormInput : DSwitchFormInput {
     .label("Value Constrained To List"); 
   }
 }
-mixin(FormComponentCalls!("MDLValueConstrainedToListFormInput", true));
+mixin(ViewComponentCalls!("MDLValueConstrainedToListFormInput", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

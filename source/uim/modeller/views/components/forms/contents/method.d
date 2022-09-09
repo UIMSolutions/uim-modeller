@@ -4,17 +4,17 @@ module uim.modeller.views.components.forms.contents.method;
 import uim.modeller;
 
 class DMDLMethodFormContent : DEntityFormContent {
-  mixin(FormComponentThis!("MDLMethodFormContent", true));
+  mixin(ViewComponentThis!("MDLMethodFormContent", true));
 
   override void initialize() {
     super.initialize;
     
     this
       .addFields(["mainTitle", "subTitle", "packages", "modules", "summary", "text"])
-      .inputHandler(MDLFormInputHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler); 
   }
 }
-mixin(FormComponentCalls!("MDLMethodFormContent", true));
+mixin(ViewComponentCalls!("MDLMethodFormContent", true));
 
 version(test_uim_modeller) { unittest {
     assert(MDLMethodFormContent);

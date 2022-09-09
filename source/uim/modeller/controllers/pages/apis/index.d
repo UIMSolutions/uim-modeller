@@ -34,9 +34,9 @@ class DMDLApisIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/apis")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Apis")
             .subTitle("Apis anzeigen")
             .actions([["print", "export"]]));

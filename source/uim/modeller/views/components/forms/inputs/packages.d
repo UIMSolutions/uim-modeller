@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.packages;
 import uim.modeller;
 
 class DMDLPackagesFormInput : DFormInput {
-  mixin(FormComponentThis!("MDLPackagesFormInput", true));
+  mixin(ViewComponentThis!("MDLPackagesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -25,7 +25,7 @@ class DMDLPackagesFormInput : DFormInput {
 
   DETBBase database() {
     if (_database) { return _database; } // has his own database
-    if (this.form && this.form.database) { return this.form.database; } // owner class has database
+    if (this.view && this.view.database) { return this.view.database; } // owner class has database
     return null; // no database found
   }
 
@@ -70,7 +70,7 @@ class DMDLPackagesFormInput : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLPackagesFormInput", true));
+mixin(ViewComponentCalls!("MDLPackagesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

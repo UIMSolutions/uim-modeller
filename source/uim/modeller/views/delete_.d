@@ -3,10 +3,10 @@ module uim.modeller.views.delete_;
 @safe:
 import uim.modeller;
 
-class DMDLDeleteView : DAPPView {
-  mixin(APPViewThis!("MDLDeleteView"));
+class DMDLDeleteView : DView {
+  mixin(ViewThis!("MDLDeleteView"));
 }
-mixin(APPViewCalls!("MDLDeleteView"));
+mixin(ViewCalls!("MDLDeleteView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLDeleteView);

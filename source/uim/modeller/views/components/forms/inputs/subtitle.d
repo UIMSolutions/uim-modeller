@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.subtitle;
 import uim.modeller;
 
 class DMDLSubTitleFormInput : DTextFormInput {
-  mixin(FormComponentThis!("MDLSubTitleFormInput", true));
+  mixin(ViewComponentThis!("MDLSubTitleFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLSubTitleFormInput : DTextFormInput {
     .label("Untertitle"); 
   }
 }
-mixin(FormComponentCalls!("MDLSubTitleFormInput", true));
+mixin(ViewComponentCalls!("MDLSubTitleFormInput", true));
 
 version(test_uim_modeller) { unittest {
     assert(new DMDLSubTitleFormInput);

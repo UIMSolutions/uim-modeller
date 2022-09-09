@@ -4,17 +4,17 @@ module uim.modeller.views.components.forms.contents.control;
 import uim.modeller;
 
 class DMDLControlFormContent : DEntityFormContent {
-  mixin(FormComponentThis!("MDLControlFormContent", true));
+  mixin(ViewComponentThis!("MDLControlFormContent", true));
 
   override void initialize() {
     super.initialize;
 
     this
       .addFields(["controlcategory", "mainTitle", "subTitle", "github", "imagePath", "summary", "text"])
-      .inputHandler(MDLFormInputHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler); 
   }
 }
-mixin(FormComponentCalls!("MDLControlFormContent", true));
+mixin(ViewComponentCalls!("MDLControlFormContent", true));
 
 version(test_uim_modeller) { unittest {
     assert(MDLControlFormContent);

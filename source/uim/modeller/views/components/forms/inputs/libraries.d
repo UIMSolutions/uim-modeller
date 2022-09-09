@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.libraries;
 import uim.modeller;
 
 class DMDLLibrariesFormInput : DFormInput {
-  mixin(FormComponentThis!("MDLLibrariesFormInput", true));
+  mixin(ViewComponentThis!("MDLLibrariesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -25,7 +25,7 @@ class DMDLLibrariesFormInput : DFormInput {
 
   DETBBase database() {
     if (_database) { return _database; } // has his own database
-    if (this.form && this.form.database) { return this.form.database; } // owner class has database
+    if (this.view && this.view.database) { return this.view.database; } // owner class has database
     return null; // no database found
   }
 
@@ -63,7 +63,7 @@ class DMDLLibrariesFormInput : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLLibrariesFormInput", true));
+mixin(ViewComponentCalls!("MDLLibrariesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

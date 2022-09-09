@@ -3,8 +3,8 @@ module uim.modeller.views.indexnosite;
 @safe:
 import uim.modeller;
 
-class DMDLIndexNoSiteView : DAPPView { 
-  mixin(APPViewThis!("MDLIndexNoSiteView"));
+class DMDLIndexNoSiteView : DView { 
+  mixin(ViewThis!("MDLIndexNoSiteView"));
 
   mixin(OProperty!("DOOPEntity[]", "sites"));
 
@@ -35,4 +35,4 @@ class DMDLIndexNoSiteView : DAPPView {
             BS5Row(["row-deck row-cards"], sitesContent)))].toH5;
     }
   }
-mixin(APPViewCalls!("MDLIndexNoSiteView"));
+mixin(ViewCalls!("MDLIndexNoSiteView"));

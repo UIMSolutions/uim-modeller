@@ -3,7 +3,7 @@ module uim.modeller.views.list;
 @safe:
 import uim.modeller;
 
-class DMDLListView : DAPPView {
+class DMDLListView : DView {
   this() { super(); }
   this(DAPPPageController aController) { this().controller(aController); }
 }

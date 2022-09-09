@@ -33,9 +33,9 @@ class DMDLComponentsIndexPageController : DMDLListPageController {
     if (auto frm = cast(DForm)myView.form) {
       frm
        .rootPath("/modeller/components")
-       .content(EntitiesFormContent(frm))
+       .content(EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Komponenten")
             .subTitle("Komponenten anzeigen")
             .actions([["print", "export"]]));

@@ -4,17 +4,17 @@ module uim.modeller.views.components.forms.contents.function_;
 import uim.modeller;
 
 class DMDLFunctionFormContent : DEntityFormContent {
-  mixin(FormComponentThis!("MDLFunctionFormContent", true));
+  mixin(ViewComponentThis!("MDLFunctionFormContent", true));
 
   override void initialize() {
     super.initialize;
 
     this
       .addFields(["mainTitle", "subTitle", "packages", "modules", "github", "summary", "text"])
-      .inputHandler(MDLFormInputHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler); 
   }
 }
-mixin(FormComponentCalls!("MDLFunctionFormContent", true));
+mixin(ViewComponentCalls!("MDLFunctionFormContent", true));
 
 version(test_uim_modeller) { unittest {
     assert(MDLFunctionFormContent);

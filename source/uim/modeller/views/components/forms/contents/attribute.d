@@ -4,17 +4,17 @@ module uim.modeller.views.components.forms.contents.attribute;
 import uim.modeller;
 
 class DMDLAttributeFormContent : DEntityFormContent {
-  mixin(FormComponentThis!("MDLAttributeFormContent", true));
+  mixin(ViewComponentThis!("MDLAttributeFormContent", true));
 
   override void initialize() {
     super.initialize;
     
     this
       .addFields(["attributes", "libraries", "isnullable", "isreadonly", "dataformat", "valueconstrainedtolist","packages", "modules", "github", "summary", "text"])
-      .inputHandler(MDLFormInputHandler(this.form)); 
+      .inputHandler(MDLFormInputHandler); 
   }
 }
-mixin(FormComponentCalls!("MDLAttributeFormContent", true));
+mixin(ViewComponentCalls!("MDLAttributeFormContent", true));
 
 version(test_uim_modeller) { unittest {
     assert(MDLAttributeFormContent);

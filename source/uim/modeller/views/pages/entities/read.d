@@ -4,7 +4,7 @@ module uim.modeller.views.pages.entities.read;
 import uim.modeller;
 
 class DMDLEntityReadView : DAPPEntityReadView {
-  mixin(APPViewThis!("MDLEntityReadView"));
+  mixin(ViewThis!("MDLEntityReadView"));
 
   // Initial (static) parts of a view
   override void initialize() {
@@ -53,7 +53,7 @@ class DMDLEntityReadView : DAPPEntityReadView {
         .method("post")
         .action(this.rootPath~"/actions/read")
         .content(
-          MDLEntityFormContent(myForm)); 
+          MDLEntityFormContent); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader
@@ -63,7 +63,7 @@ class DMDLEntityReadView : DAPPEntityReadView {
     } 
   }
 }
-mixin(APPViewCalls!("MDLEntityReadView"));
+mixin(ViewCalls!("MDLEntityReadView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLEntityReadView);

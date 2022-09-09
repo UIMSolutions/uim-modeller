@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.classname;
 import uim.modeller;
 
 class DMDLClassNameFormInput : DTextFormInput {
-  mixin(FormComponentThis!("MDLClassNameFormInput", true));
+  mixin(ViewComponentThis!("MDLClassNameFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLClassNameFormInput : DTextFormInput {
     .label("Klassenname"); 
   }
 }
-mixin(FormComponentCalls!("MDLClassNameFormInput", true));
+mixin(ViewComponentCalls!("MDLClassNameFormInput", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

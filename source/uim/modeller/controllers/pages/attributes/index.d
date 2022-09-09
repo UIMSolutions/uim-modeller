@@ -34,9 +34,9 @@ override void initialize() {
       frm
        .rootPath("/modeller/attributes")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Attributes")
             .subTitle("Attributes anzeigen")
             .actions([["print", "export"]]));

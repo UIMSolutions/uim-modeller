@@ -33,7 +33,7 @@ class DMDLPackagesReadPageController : DMDLReadPageController {
       myForm
          .method("post").action(this.rootPath~"/actions/read")
         .content(
-          MDLPackageFormContent(myForm)); 
+          MDLPackageFormContent); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

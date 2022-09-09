@@ -32,7 +32,7 @@ class DMDLComponentsDeletePageController : DMDLDeletePageController {
     if (auto myForm = cast(DForm)myView.form) {
       myForm
         .method("post").action(this.rootPath~"/actions/delete")
-        .content(MDLComponentFormContent(myForm));
+        .content(MDLComponentFormContent);
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader

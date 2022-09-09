@@ -17,10 +17,8 @@ class DMDLApisReadPageController : DMDLReadPageController {
       .rootPath(this.rootPath);
 
     if (auto pgHeader = cast(DPageHeader)myView.header) {
-      auto bc = ;
-
       pgHeader
-        .title(titleCreate("Api anzeigen"));
+        .title(titleCreate("Api anzeigen"))
         .breadcrumbs
           .items(
             ["/", "UIM"],
@@ -34,7 +32,7 @@ class DMDLApisReadPageController : DMDLReadPageController {
       myForm
          .method("post").action(this.rootPath~"/actions/read")
         .content(
-          MDLApiFormContent(myForm)); 
+          MDLApiFormContent); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

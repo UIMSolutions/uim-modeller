@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.theme;
 import uim.modeller;
 
 class DMDLFormInputTheme : DFormInput {
-  mixin(FormComponentThis!("MDLFormInputTheme", true));
+  mixin(ViewComponentThis!("MDLFormInputTheme", true));
 
   override void initialize() {
     super.initialize;
@@ -18,11 +18,9 @@ class DMDLFormInputTheme : DFormInput {
   mixin(OProperty!("DOOPEntity[]", "themes"));
 
   auto database() {
-    if (auto f = form) {
-      if (auto v = f.view) {
-        if (auto c = v.controller) {
-          return c.database;
-        }
+    if (auto myView = this.view) {
+      if (auto myController = myView.controller) {
+        return myController.database;
       }
     }
     return null;
@@ -59,7 +57,7 @@ class DMDLFormInputTheme : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLFormInputTheme", true));
+mixin(ViewComponentCalls!("MDLFormInputTheme", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

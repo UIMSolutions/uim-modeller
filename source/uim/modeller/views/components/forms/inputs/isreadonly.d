@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.isreadonly;
 import uim.modeller;
 
 class DMDLIsReadOnlyFormInput : DSwitchFormInput {
-  mixin(FormComponentThis!("MDLIsReadOnlyFormInput", true));  
+  mixin(ViewComponentThis!("MDLIsReadOnlyFormInput", true));  
 
   override void initialize() {
     super.initialize;
@@ -16,7 +16,7 @@ class DMDLIsReadOnlyFormInput : DSwitchFormInput {
     .label("ReadOnly"); 
   }
 }
-mixin(FormComponentCalls!("MDLIsReadOnlyFormInput", true));
+mixin(ViewComponentCalls!("MDLIsReadOnlyFormInput", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

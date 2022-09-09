@@ -33,7 +33,7 @@ class DMDLInterfacesReadPageController : DMDLReadPageController {
       myForm
          .method("post").action(this.rootPath~"/actions/read")
         .content(
-          MDLInterfaceFormContent(myForm)); 
+          MDLInterfaceFormContent); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

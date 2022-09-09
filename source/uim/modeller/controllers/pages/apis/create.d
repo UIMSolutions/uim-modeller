@@ -25,7 +25,6 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
             ["/modeller", "Modeller"],
             [this.rootPath, "Api"],
             [this.rootPath~"/create", "Erstellen"]
-          )
         );
     }
 
@@ -35,7 +34,7 @@ class DMDLApisCreatePageController : DMDLCreatePageController {
         .method("post")
         .action(this.rootPath~"/actions/create")
         .content(
-          MDLApiFormContent(myForm));
+          MDLApiFormContent);
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader

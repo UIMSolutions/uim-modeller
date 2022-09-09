@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.controlcategory;
 import uim.modeller;
 
 class DMDLControlCategoryFormInput : DFormInput {
-  mixin(FormComponentThis!("MDLControlCategoryFormInput", true));
+  mixin(ViewComponentThis!("MDLControlCategoryFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -66,7 +66,7 @@ class DMDLControlCategoryFormInput : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLControlCategoryFormInput", true));
+mixin(ViewComponentCalls!("MDLControlCategoryFormInput", true));
 
 version(test_uim_cms) {
   unittest {

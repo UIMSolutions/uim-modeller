@@ -33,9 +33,9 @@ class DMDLPackagesIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/packages")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Packages")
             .subTitle("Packages anzeigen")
             .actions([["print", "export"]]));

@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.maintitle;
 import uim.modeller;
 
 class DMDLMainTitleFormInput : DTextFormInput {
-  mixin(FormComponentThis!("MDLMainTitleFormInput", true));
+  mixin(ViewComponentThis!("MDLMainTitleFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLMainTitleFormInput : DTextFormInput {
     .label("Überschrift"); 
   }
 }
-mixin(FormComponentCalls!("MDLMainTitleFormInput", true));
+mixin(ViewComponentCalls!("MDLMainTitleFormInput", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

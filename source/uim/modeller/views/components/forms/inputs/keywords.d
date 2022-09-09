@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.keywords;
 import uim.modeller;
 
 class DMDLFormGroupKeywords : DFormInput {
-  mixin(FormComponentThis!("MDLFormGroupKeywords", true));
+  mixin(ViewComponentThis!("MDLFormGroupKeywords", true));
 
   override void initialize() {
     super.initialize;
@@ -31,7 +31,7 @@ class DMDLFormGroupKeywords : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLFormGroupKeywords", true));
+mixin(ViewComponentCalls!("MDLFormGroupKeywords", true));
 
 version(test_uim_modeller) { unittest {
     // TODO Tests

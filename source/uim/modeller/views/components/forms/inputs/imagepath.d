@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.imagepath;
 import uim.modeller;
 
 class DMDLImagePathFormInput : DTextFormInput {
-  mixin(FormComponentThis!("MDLImagePathFormInput", true));
+  mixin(ViewComponentThis!("MDLImagePathFormInput", true));
   
   override void initialize() {
     super.initialize;
@@ -17,7 +17,7 @@ class DMDLImagePathFormInput : DTextFormInput {
     .label("Titelbild"); 
   }
 }
-mixin(FormComponentCalls!("MDLImagePathFormInput", true));
+mixin(ViewComponentCalls!("MDLImagePathFormInput", true));
 
 version(test_uim_modeller) { unittest {
     assert(MDLImagePathFormInput);

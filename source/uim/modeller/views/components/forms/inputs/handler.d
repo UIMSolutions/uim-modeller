@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.handler;
 import uim.modeller;
 
 class DMDLFormInputHandler : DFormInputHandler {
-  mixin(FormComponentThis!("MDLFormInputHandler", true));
+  mixin(ViewComponentThis!("MDLFormInputHandler", true));
 
   override void initialize() {
     super.initialize;
@@ -35,4 +35,4 @@ class DMDLFormInputHandler : DFormInputHandler {
         ]); 
   } 
 }  
-mixin(FormComponentCalls!("MDLFormInputHandler", true));
+mixin(ViewComponentCalls!("MDLFormInputHandler", true));

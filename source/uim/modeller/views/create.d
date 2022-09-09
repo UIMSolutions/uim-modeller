@@ -3,10 +3,10 @@ module uim.modeller.views.create;
 @safe:
 import uim.modeller;
 
-class DMDLCreateView : DAPPView {
-  mixin(APPViewThis!("MDLCreateView"));
+class DMDLCreateView : DView {
+  mixin(ViewThis!("MDLCreateView"));
 }
-mixin(APPViewCalls!("MDLCreateView"));
+mixin(ViewCalls!("MDLCreateView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLCreateView);

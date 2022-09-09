@@ -34,9 +34,9 @@ class DMDLClassesIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/classes")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Klassen")
             .subTitle("KLassen anzeigen")
             .actions([["print", "export"]]));

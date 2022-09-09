@@ -3,10 +3,10 @@ module uim.modeller.views.update;
 @safe:
 import uim.modeller;
 
-class DMDLUpdateView : DAPPView {
-  mixin(APPViewThis!("MDLUpdateView"));
+class DMDLUpdateView : DView {
+  mixin(ViewThis!("MDLUpdateView"));
 }
-mixin(APPViewCalls!("MDLUpdateView"));
+mixin(ViewCalls!("MDLUpdateView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLUpdateView);

@@ -4,7 +4,7 @@ module uim.modeller.views.pages.entities.create;
 import uim.modeller;
 
 class DMDLEntityCreateView : DAPPEntityCreateView {
-  mixin(APPViewThis!("MDLEntityCreateView"));
+  mixin(ViewThis!("MDLEntityCreateView"));
 
   // Initial (static) parts of a view
   override void initialize() {
@@ -35,7 +35,7 @@ class DMDLEntityCreateView : DAPPEntityCreateView {
         .method("post")
         .action(this.rootPath~"/actions/create")
         .content(
-          MDLEntityFormContent(myForm));
+          MDLEntityFormContent);
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
         myFormHeader
@@ -76,7 +76,7 @@ class DMDLEntityCreateView : DAPPEntityCreateView {
     }
   } 
 }
-mixin(APPViewCalls!("MDLEntityCreateView"));
+mixin(ViewCalls!("MDLEntityCreateView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLEntityCreateView);

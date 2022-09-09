@@ -34,9 +34,9 @@ class DMDLLibrariesIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/libraries")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Bibliotheken")
             .subTitle("Bibliotheken anzeigen")
             .actions([["print", "export"]]));

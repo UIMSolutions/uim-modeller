@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.entities;
 import uim.modeller;
 
 class DMDLEntitiesFormInput : DFormInput {
-  mixin(FormComponentThis!("MDLEntitiesFormInput", true));
+  mixin(ViewComponentThis!("MDLEntitiesFormInput", true));
 
   override void initialize() {
     super.initialize;
@@ -25,7 +25,7 @@ class DMDLEntitiesFormInput : DFormInput {
 
   DETBBase database() {
     if (_database) { return _database; } // has his own database
-    if (this.form && this.form.database) { return this.form.database; } // owner class has database
+    if (this.view && this.view.database) { return this.view.database; } // owner class has database
     return null; // no database found
   }
 
@@ -60,7 +60,7 @@ class DMDLEntitiesFormInput : DFormInput {
         BS5Col(["col"], input))].toH5;
   }
 }
-mixin(FormComponentCalls!("MDLEntitiesFormInput", true));
+mixin(ViewComponentCalls!("MDLEntitiesFormInput", true));
 
 version(test_uim_cms) {
   unittest {

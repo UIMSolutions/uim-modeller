@@ -3,7 +3,7 @@ module uim.modeller.views.indexwithsite;
 @safe:
 import uim.modeller;
 
-class DMDLIndexWithSiteView : DAPPView {
+class DMDLIndexWithSiteView : DView {
   this() { 
     super();
     this.name = "MDLIndexWithSiteView";

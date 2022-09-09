@@ -33,7 +33,7 @@ class DMDLApisDeletePageController : DMDLDeletePageController {
       myForm
          .method("post").action(this.rootPath~"/actions/delete")
         .content(
-          MDLApiFormContent(myForm)); 
+          MDLApiFormContent); 
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) { 
         myFormHeader

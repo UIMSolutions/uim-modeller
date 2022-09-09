@@ -4,7 +4,7 @@ module uim.modeller.views.pages.entities.index;
 import uim.modeller;
 
 class DMDLEntityIndexView : DAPPEntitiesListView {
-  mixin(APPViewThis!("MDLEntityIndexView"));
+  mixin(ViewThis!("MDLEntityIndexView"));
 
   // Initial (static) parts of a view
   override void initialize() {
@@ -19,12 +19,12 @@ class DMDLEntityIndexView : DAPPEntitiesListView {
     if (auto myForm = cast(DForm)this.form) {
       myForm
         .header(
-          FormHeader(myForm)
+          FormHeader
             .mainTitle("Entitäten")
             .subTitle("Entität anzeigen")
             .actions([["print", "export"]]))
        .content(
-          EntitiesFormContent(myForm));
+          EntitiesFormContent);
     } 
   }
   
@@ -63,13 +63,13 @@ class DMDLEntityIndexView : DAPPEntitiesListView {
         .rootPath(
           this.rootPath)
        .content(
-          EntitiesFormContent(myForm)
+          EntitiesFormContent
             .entities(entities)
             .rootPath(this.rootPath));
     } 
   }
 }
-mixin(APPViewCalls!("MDLEntityIndexView"));
+mixin(ViewCalls!("MDLEntityIndexView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLEntityIndexView);

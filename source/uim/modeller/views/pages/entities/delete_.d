@@ -4,7 +4,7 @@ module uim.modeller.views.pages.entities.delete_;
 import uim.modeller;
 
 class DMDLEntityDeleteView : DAPPEntityDeleteView {
-  mixin(APPViewThis!("MDLEntityDeleteView"));
+  mixin(ViewThis!("MDLEntityDeleteView"));
 
   // Initial (static) parts of a view
   override void initialize() {
@@ -50,7 +50,7 @@ class DMDLEntityDeleteView : DAPPEntityDeleteView {
     if (auto myForm = cast(DForm)this.form) {
       myForm
         .method("post").action(this.rootPath~"/actions/delete")
-        .content(MDLEntityFormContent(myForm));
+        .content(MDLEntityFormContent);
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader
@@ -61,7 +61,7 @@ class DMDLEntityDeleteView : DAPPEntityDeleteView {
     }
   }
 }
-mixin(APPViewCalls!("MDLEntityDeleteView"));
+mixin(ViewCalls!("MDLEntityDeleteView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLEntityDeleteView);

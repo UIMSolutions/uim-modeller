@@ -34,9 +34,9 @@ class DMDLInterfacesIndexPageController : DMDLListPageController {
       frm
        .rootPath("/modeller/interfaces")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Interfaces")
             .subTitle("Interfaces anzeigen")
             .actions([["print", "export"]]));

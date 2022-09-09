@@ -34,9 +34,9 @@ override void initialize() {
       frm
        .rootPath("/modeller/apps")
        .content(
-          EntitiesFormContent(frm))
+          EntitiesFormContent)
         .header(
-          FormHeader(frm)
+          FormHeader
             .mainTitle("Apps")
             .subTitle("Apps anzeigen")
             .actions([["print", "export"]]));

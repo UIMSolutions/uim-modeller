@@ -35,7 +35,7 @@ class DMDLLibrariesCreatePageController : DMDLCreatePageController {
       myForm
         .rootPath(this.rootPath)
          .method("post").action(this.rootPath~"/actions/create")
-        .content(MDLLibraryFormContent(myForm));
+        .content(MDLLibraryFormContent);
     
       if (auto myFormHeader = cast(DFormHeader)myForm.header) {
           myFormHeader

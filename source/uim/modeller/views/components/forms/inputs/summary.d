@@ -4,7 +4,7 @@ module uim.modeller.views.components.forms.inputs.summary;
 import uim.modeller;
 
 class DMDLSummaryFormInput : DTextAreaFormInput {
-  mixin(FormComponentThis!("MDLSummaryFormInput", true));
+  mixin(ViewComponentThis!("MDLSummaryFormInput", true));
 
   override void initialize() {
     super.initialize();
@@ -17,7 +17,7 @@ class DMDLSummaryFormInput : DTextAreaFormInput {
       .label("Zusammenfassung"); 
   }
 }
-mixin(FormComponentCalls!("MDLSummaryFormInput", true));
+mixin(ViewComponentCalls!("MDLSummaryFormInput", true));
 
 version(test_uim_modeller) { unittest {
   assert(MDLSummaryFormInput.id == "entity_summary");

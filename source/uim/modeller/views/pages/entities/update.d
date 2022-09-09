@@ -4,7 +4,7 @@ module uim.modeller.views.pages.entities.update;
 import uim.modeller;
 
 class DMDLEntityUpdateView : DAPPEntityUpdateView {
-  mixin(APPViewThis!("MDLEntityUpdateView"));
+  mixin(ViewThis!("MDLEntityUpdateView"));
 
   // Initial (static) parts of a view
   override void initialize() {
@@ -65,11 +65,11 @@ class DMDLEntityUpdateView : DAPPEntityUpdateView {
     if (auto myForm = cast(DForm)this.form) {
       myForm
         .action(this.rootPath~"/actions/update")
-        .content(MDLEntityFormContent(myForm));   
+        .content(MDLEntityFormContent);   
     }     
   }
 }
-mixin(APPViewCalls!("MDLEntityUpdateView"));
+mixin(ViewCalls!("MDLEntityUpdateView"));
 
 version(test_uim_modeller) { unittest {
   assert(MDLEntityUpdateView);
