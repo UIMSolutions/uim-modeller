@@ -66,21 +66,5 @@ public import uim.oop;
 public import uim.apps;
 public import uim.servers;
 
-// uim-modeller
-public import uim.modeller.controllers;
-/* public import uim.modeller.javascripts;
-public import uim.modeller.layouts;
-public import uim.modeller.translations;
- */public import uim.modeller.views;
 
-public import models.modeller.entities;
-
-public import uim.modeller.classes;
-public import uim.modeller.controls;
-public import uim.modeller.javascripts;
-public import uim.modeller.layouts;
-public import uim.modeller.scripts;
-public import uim.modeller.controllers;
-public import uim.modeller.helpers;
-public import uim.modeller.views;
 
