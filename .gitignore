@@ -1,7 +1,7 @@
   .dub
 docs.json
 __dummy.html
-docs/
+
 /uim-modeller
 uim-modeller.so
 uim-modeller.dylib
